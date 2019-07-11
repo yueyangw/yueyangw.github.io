@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title> 图论——Tarjan算法求lca		 | Blog of YorkWu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Tarjan算法 tarjan算法本质是使用并查集对“向上标记法”的一种优化。它是一个离线算法。理论时间复杂度为$O(n+m)$。  在dfs当中，树中的节点一共可以分为3类：  已经访问完毕并且回溯的节点。在这些节点标记2。 已经开始递归，但是尚未回溯的节点。这些节点就是当前正在访问的节点$x$以及$x$的祖先。在这些节点标记1。 尚未访问的节点。不标记。   对于正在访问的节点$x$，它到根节">
+<meta name="keywords" content="LCA,图论">
+<meta property="og:type" content="article">
+<meta property="og:title" content=" 图论——Tarjan算法求lca		">
+<meta property="og:url" content="http://yueyangw.github.io/2019/03/11/e5-9b-be-e8-ae-ba-tarjan-e7-ae-97-e6-b3-95-e6-b1-82lca/index.html">
+<meta property="og:site_name" content="Blog of YorkWu">
+<meta property="og:description" content="Tarjan算法 tarjan算法本质是使用并查集对“向上标记法”的一种优化。它是一个离线算法。理论时间复杂度为$O(n+m)$。  在dfs当中，树中的节点一共可以分为3类：  已经访问完毕并且回溯的节点。在这些节点标记2。 已经开始递归，但是尚未回溯的节点。这些节点就是当前正在访问的节点$x$以及$x$的祖先。在这些节点标记1。 尚未访问的节点。不标记。   对于正在访问的节点$x$，它到根节">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:updated_time" content="2019-07-11T07:49:01.802Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content=" 图论——Tarjan算法求lca		">
+<meta name="twitter:description" content="Tarjan算法 tarjan算法本质是使用并查集对“向上标记法”的一种优化。它是一个离线算法。理论时间复杂度为$O(n+m)$。  在dfs当中，树中的节点一共可以分为3类：  已经访问完毕并且回溯的节点。在这些节点标记2。 已经开始递归，但是尚未回溯的节点。这些节点就是当前正在访问的节点$x$以及$x$的祖先。在这些节点标记1。 尚未访问的节点。不标记。   对于正在访问的节点$x$，它到根节">
+  
+    <link rel="alternate" href="/atom.xml" title="Blog of YorkWu" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Blog of YorkWu</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">山西省实验中学蒟蒻OIer</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yueyangw.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-e5-9b-be-e8-ae-ba-tarjan-e7-ae-97-e6-b3-95-e6-b1-82lca" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/11/e5-9b-be-e8-ae-ba-tarjan-e7-ae-97-e6-b3-95-e6-b1-82lca/" class="article-date">
+  <time datetime="2019-03-11T08:43:56.000Z" itemprop="datePublished">2019-03-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/OI/">OI</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+       图论——Tarjan算法求lca		
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Tarjan算法"><a href="#Tarjan算法" class="headerlink" title="Tarjan算法"></a>Tarjan算法</h2><ul>
+<li><p><strong>tarjan算法本质是使用并查集对“向上标记法”的一种优化。它是一个离线算法。理论时间复杂度为$O(n+m)$。</strong></p>
+</li>
+<li><p><strong>在dfs当中，树中的节点一共可以分为3类：</strong></p>
+<ol>
+<li>已经访问完毕并且回溯的节点。在这些节点标记2。</li>
+<li>已经开始递归，但是尚未回溯的节点。这些节点就是当前正在访问的节点$x$以及$x$的祖先。在这些节点标记1。</li>
+<li>尚未访问的节点。不标记。</li>
+</ol>
+</li>
+<li><p>对于正在访问的节点$x$，它到根节点的路径以及标记为1。若$y$是以及访问完回溯的节点，那么$lca(x,y)$就是从y节点向上走，直到遇到第一个标记为1的节点。</p>
+</li>
+<li><p>可以使用并查集对此进行优化，即每次回溯时，把它所在的集合合并到它父亲所在的集合当中，这样，$lca(x,y)$只需查询$get(y)$，就等价于从y向上找到第一个标记为1的节点。</p>
+</li>
+<li><p>每当dfs回溯时，扫描有关x的所有讯问，若y的标记为2，则$lca(x,y)$就是$get(y)$。</p>
+</li>
+</ul>
+<h4 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h4><pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int SIZE=500009;
+struct Edge{
+    int to,next;
+}e[SIZE*2];
+int deep[SIZE],fa[SIZE],tot,head[SIZE],tag[SIZE],lca[SIZE];
+int n,m,s;
+vector&lt;int&gt; ask[SIZE],ask_id[SIZE];
+
+void add(int x,int y){
+    e[++tot].to=y;
+    e[tot].next=head[x];
+    head[x]=tot;
+}
+
+int get(int x){
+    return x==fa[x]?x:fa[x]=get(fa[x]);
+}
+
+void tarjan(int x){
+    tag[x]=1;
+    for(int i=head[x];i;i=e[i].next){
+        int y=e[i].to;
+        if(tag[y]) continue;
+        deep[y]=deep[x]+1;
+        tarjan(y);
+        fa[y]=x;
+    }
+    for(int i=0;i&lt;ask[x].size();i++){
+        if(tag[ask[x][i]]==2){
+            lca[ask_id[x][i]]=get(ask[x][i]);
+        }
+    }
+    tag[x]=2;
+}
+
+int main(){
+    cin&gt;&gt;n&gt;&gt;m&gt;&gt;s;
+    for(int i=1;i&lt;=n;i++) fa[i]=i;
+    for(int i=1;i&lt;n;i++){
+        int x,y;
+        scanf(&quot;%d%d&quot;,&amp;x,&amp;y);
+        add(x,y),add(y,x);
+    }
+    for(int i=1;i&lt;=m;i++){
+        int x,y;
+        scanf(&quot;%d%d&quot;,&amp;x,&amp;y);
+        ask[x].push_back(y);
+        ask[y].push_back(x);
+        ask_id[x].push_back(i);
+        ask_id[y].push_back(i);
+    }
+    tarjan(s);
+    for(int i=1;i&lt;=m;i++){
+        printf(&quot;%d\n&quot;,lca[i]);
+    }
+    return 0;
+}</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yueyangw.github.io/2019/03/11/e5-9b-be-e8-ae-ba-tarjan-e7-ae-97-e6-b3-95-e6-b1-82lca/" data-id="cjxyjm6jk00046shq456a0cu2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LCA/">LCA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图论/">图论</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/06/06/codeforces-484-b-maximum-value/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+           CodeForces 484 B. Maximum Value		
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/03/10/e4-bd-a0-e5-a5-bd-ef-bc-8c-e5-88-9d-e6-ac-a1-e8-a7-81-e9-9d-a2-e3-80-82/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"> 你好，初次见面。		</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/OI/">OI</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/OI/题目/">题目</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/LCA/">LCA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图论/">图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/精/">精</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/LCA/" style="font-size: 10px;">LCA</a> <a href="/tags/图论/" style="font-size: 10px;">图论</a> <a href="/tags/精/" style="font-size: 10px;">精</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/11/test/">test</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/11/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/06/codeforces-484-b-maximum-value/"> CodeForces 484 B. Maximum Value		</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/11/e5-9b-be-e8-ae-ba-tarjan-e7-ae-97-e6-b3-95-e6-b1-82lca/"> 图论——Tarjan算法求lca		</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/10/e4-bd-a0-e5-a5-bd-ef-bc-8c-e5-88-9d-e6-ac-a1-e8-a7-81-e9-9d-a2-e3-80-82/"> 你好，初次见面。		</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Yueyang Wu<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
