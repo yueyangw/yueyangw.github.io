@@ -89,7 +89,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Blog of YorkWu" height="28">
+                Blog of YorkWu
             
             </a>
         </div>
@@ -140,6 +140,9 @@
     <div class="card">
     
     <div class="card-content article ">
+        <!--top置顶排序2019/7/12-->
+        
+        <!--排序结束-->
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
@@ -153,7 +156,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 952 个字)
+                    6 分钟 读完 (大约 953 个字)
                 </span>
                 
                 
@@ -166,158 +169,17 @@
             
         </h1>
         <div class="content">
-            <h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><h3 id="动态规划难点"><a href="#动态规划难点" class="headerlink" title="动态规划难点"></a>动态规划难点</h3><ul>
-<li>意识到这个题用动态规划解决</li>
-<li>高效设计状态</li>
-<li>多做题</li>
-</ul>
-<h3 id="最长上升子序列问题"><a href="#最长上升子序列问题" class="headerlink" title="最长上升子序列问题"></a>最长上升子序列问题</h3><ul>
-<li><p><strong>题目：</strong> （）</p>
-</li>
-<li><p>设计状态：</p>
-</li>
-<li><p>$f[i]$表示以$a[i]$结尾的最长上升子序列长度。</p>
-</li>
-<li><p>最终答案$max_1\leq i \leq n$</p>
-</li>
-<li><p>如何转移？</p>
-<p>for(int i=1;i&lt;=n;i++){</p>
-<pre><code>f[i]=1;
-for(int j=1;j&lt;i;j++){
-    if(a[i]&lt;a[j]) f[i]=max(f[i],1+f[j]);
-}</code></pre><p>}</p>
-</li>
-</ul>
-<ul>
-<li>时间复杂度$O(n^2)$</li>
-<li>如何优化？</li>
-</ul>
-<h4 id="方法一：树状数组优化"><a href="#方法一：树状数组优化" class="headerlink" title="方法一：树状数组优化"></a>方法一：树状数组优化</h4><ul>
-<li><p>假设$a_i$互不相同。</p>
-</li>
-<li><p>离散化：$a_1,a_2,…,a_n$是一个${1,2,…,n}$的排列</p>
-</li>
-<li><p>DP值$f[i]$插入数组的$a_i$位置（这里树状数组用于求前缀max）</p>
-</li>
-<li><p>离散化？</p>
-<p>//a[i]互不相同时<br>int a[N];<br>int a2[N];<br>int ord[N];<br>int cmp(int i,int j){</p>
-<pre><code>return a[i]&lt;a[j];</code></pre><p>}<br>void lsh(){</p>
-<pre><code>for(int i=0;i&lt;=n;i++){
-    ord[i]=i;
-}
-sort(ord+1,ord+n+1,cmp);
-for(int i=1;i&lt;=n;i++){
-    a2[ord[i]]=a[i];
-}</code></pre><p>}</p>
-</li>
-</ul>
-<ul>
-<li>时间复杂度$O(nlogn)$。</li>
-</ul>
-<h4 id="方法二：”单调栈”"><a href="#方法二：”单调栈”" class="headerlink" title="方法二：”单调栈”"></a>方法二：”单调栈”</h4><ul>
-<li>令$g[j]$表示目前为止，长度为j的上升子序列的末尾元素最小是多少。</li>
-<li>$a[1…5]={1,5,2,4,3}$ $g[1]=inf$ 插入1，$g[1]=1,g[2]=inf$ 插入5，$g[1]=1,g[2]=5,g[3]=inf$ 插入2，$g[1]=1,g[2]=2,g[3]=inf$ 插入4，$g[1]=1,g[2]=2,g[3]=4,g[4]=inf$ 插入3，$g[1]=1,g[2]=2,g[3]=3,g[4]=inf$</li>
-<li>如何快速更新？</li>
-<li>二分查找？</li>
-<li>时间复杂度$O(nlogn)$</li>
-<li>假如输入数列有重复？ 映射到不同的值上。</li>
-</ul>
-<h4 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h4><ul>
-<li>输入一个整数序列$a_1,a_2,…,a_n$，最少需要修改几次使整个序列变成严格上升序列？（要求修改后均为整数）。</li>
-<li>让$a_i$减去$i$，得到一个数列，求n-该数列最长不下降子序列长度。</li>
-</ul>
-<h3 id="最长公共子序列"><a href="#最长公共子序列" class="headerlink" title="最长公共子序列"></a>最长公共子序列</h3><ul>
-<li>状态：$f[i][j]$表示$s[1..i],t[1,,j]$的最长公共子序列</li>
-<li>转移方程： $s[i]=t[j]：f[i][j]=f[i-1][j-1]+1$ $s[i]\neq t[j]：f[i][j]=max{f[i-1][j],f[i][j-1]}$</li>
-<li>时间复杂度$O(n^2)$</li>
-</ul>
-<h5 id="如果-s-t-leq100000-呢？"><a href="#如果-s-t-leq100000-呢？" class="headerlink" title="如果$s,t\leq100000$呢？"></a>如果$s,t\leq100000$呢？</h5><ul>
-<li>保证s中每一个元素出现的次数小于10次。</li>
-</ul>
-<h6 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h6><ul>
-<li>如果互不相同</li>
-<li>让t中在s中没有出现过的元素删去，让t以s的顺序排序，算一个最长上升子序列。</li>
-<li>那次数$\leq10$呢？</li>
-<li>转化为LIS（最长上升子序列）</li>
-<li>例如： s=abdbad t=abcbd a:5,1 b:4,2 c:。。 d:6,3 所以t转化为5，1，4，2，4，2，6，3 再求t的最长上升子序列。</li>
-<li>总结起来就是： 将每个元素在s中出现的下表以降序存在一个链表里，未完。。。</li>
-</ul>
-<h3 id="DAG上的dp"><a href="#DAG上的dp" class="headerlink" title="DAG上的dp"></a>DAG上的dp</h3><ul>
-<li>输入一个有向无环图（DAG），并给定起点s，边权为正，计算从s到每个点u的最长路长度$d[u]$.</li>
-<li>要求时间复杂度$O(n+m)$</li>
-<li>先进行拓扑排序$v_1,v_2…,v_n$ 假设$v_1=s$。（否则，s走不到排在s前面的点，可以直接设置它们最短路为-inf）</li>
-<li>$d[v_i]=0$ 从$i=2,…,n$，枚举所有指向$v_i$的边，计算的$d[v_i]=max{d[v_j]+w(v_j,v_i)}$</li>
-</ul>
-<h4 id="记忆化搜索"><a href="#记忆化搜索" class="headerlink" title="记忆化搜索"></a>记忆化搜索</h4><p><img src="https://img-blog.csdnimg.cn/20190129102104444.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMyNDQwNDg=,size_16,color_FFFFFF,t_70" alt="记忆化搜索"></p>
-<h3 id="背包问题"><a href="#背包问题" class="headerlink" title="背包问题"></a>背包问题</h3><h4 id="01背包"><a href="#01背包" class="headerlink" title="01背包"></a>01背包</h4><ul>
-<li><p>有$n$个物品，每个有体积$w[i]$,价值$v[i]$。总体积为$W$的背包最多能装多少总价值？</p>
-</li>
-<li><p>$(n,W\leq2000)$</p>
-</li>
-<li><p>设计状态：$f[i][j]$表示$j$体积装前$i$件物品，最大的总价值。</p>
-</li>
-<li><p>如何转移？ $f[i][j]=max(f[i-1][j],f[i-1][j-w[i]]+v[i])$ <code>cpp for(int i=1;i&lt;=n;i++){ for(int j=0;j&lt;=w[i];j++) f[i][j]=f[i-1][j]; for(int j=w[i];j&lt;=W;j++){ f[i][j]=max(f[i-1][j],f[i-1][j-w[i]]+v[i]) } }</code> 优化空间后：</p>
-<pre><code>for(int i=1;i&lt;=n;i++){
-    for(int j=W;j&gt;=w[i];j--){
-        f[j]=max(f[j],f[j-w[i]]+v[i])
-    }
-}</code></pre></li>
-</ul>
-<h4 id="完全背包"><a href="#完全背包" class="headerlink" title="完全背包"></a>完全背包</h4><ul>
-<li>有$n$种物品，每种有体积$w[i]$,价值$v[i]$且有无限个。总体积为$W$的背包最多能装多少总价值？</li>
-<li>$(n,W\leq2000)$ <code>cpp for(int i=1;i&lt;=n;i++){ for(int j=w[i];j&lt;=W;j++){ f[j]=max(f[j],f[j-w[i]]+v[i]) } }</code></li>
-</ul>
-<h4 id="子集和问题"><a href="#子集和问题" class="headerlink" title="子集和问题"></a>子集和问题</h4><ul>
-<li>有$n$个物品，第$i$个体积为$w_i$。能否选出一个子集和，使总容量为$W$的背包装满？</li>
-<li>$f[i][j]=1 or 0$表示用前$i$件物品能否凑出$j$体积。</li>
-<li>$f[0][0]=1$ <code>cpp for(int i=1;i&lt;=n;i++){ for(int j=0;j&lt;=W;j++) f[i][j]=f[i-1][j]; for(int j=w[i];j&lt;=W;j++){ if(f[i-1][j-w[i]]) f[i][j]=1; } } //f[n][W]==1 or 0?</code></li>
-</ul>
-<h4 id="动态子集和问题"><a href="#动态子集和问题" class="headerlink" title="动态子集和问题"></a>动态子集和问题</h4><p><img src="https://img-blog.csdnimg.cn/20190129105743142." alt="动态子集和问题"></p>
-<h4 id="01背包-1"><a href="#01背包-1" class="headerlink" title="01背包"></a>01背包</h4><ul>
-<li><p>有$n$个物品，每个有体积$w[i]$,价值$v[i]$。总体积为$W$的背包最多能装多少总价值？</p>
-</li>
-<li><p>$(n\leq2000，v[1]+v[2]+···+v[n]\leq2000,W\leq10^9)$</p>
-</li>
-<li><p>小技巧：反转状态和dp值 状态$f[i][v]$表示前$i$件物品凑出$v$的总价值最小总体积。 边界$f[0][0]=0$。</p>
-</li>
-<li><p>伪代码：</p>
-<p>f[0][0]=0;<br>for(int i=0;i&lt;=n;i++){</p>
-<pre><code>f[0][i]=inf;</code></pre><p>}</p>
-<p>for(int i=1;i&lt;=n;i++){</p>
-<pre><code>for(int j=0;j&lt;=2000;j++){
-    f[i][j]=f[i-1][j];
-}
-for(int j=0;j&lt;=2000;j++){
-    f[i][j]=min(f[i][j],f[i-1][j-v[i]]+w[i]);
-}</code></pre><p>}</p>
-</li>
-</ul>
-<h3 id="区间DP"><a href="#区间DP" class="headerlink" title="区间DP"></a>区间DP</h3><h4 id="合法子序列问题"><a href="#合法子序列问题" class="headerlink" title="合法子序列问题"></a>合法子序列问题</h4><ul>
-<li>一个由$$组成的序列，求出最长的合法子序列长度，$(n\leq300)$。</li>
-<li>定义：合法子序列是一个合法的括号序列，每一对匹配的括号都是同一类型的。比如$<a href="()()">()[]</a>$是合法的。</li>
-<li>设计状态： $f[i][j]$表示在$[i,j]$有多长的合法子序列。</li>
-<li>转移： 如果$a[l],a[r]$是匹配的括号，则$2+f[l+1][r-1]$ 枚举断点$k:f[l][k]+f[k+1][r]$</li>
-<li>按什么顺序进行DP？ 区间长度从小到大的顺序。 （或者：记忆化搜索）</li>
-<li>时间复杂度：$O(n^3)$</li>
-</ul>
-<h4 id="矩阵链乘法"><a href="#矩阵链乘法" class="headerlink" title="矩阵链乘法"></a>矩阵链乘法</h4><ul>
-<li>将一个$p \times q$的矩阵乘一个$q \times r$的矩阵，得到一个$p \times r$的矩阵，运算花费是$p \times q \times r$。</li>
-<li>现在输入$p_1,p_2,p_3,…,p_n$。将$p_1 \times p_2,p_2 \times p_3,…,p_{n-1} \times p_n$的矩阵乘起来，最小的总运算花费是多少？</li>
-</ul>
-<h4 id="例题n（记不清了）"><a href="#例题n（记不清了）" class="headerlink" title="例题n（记不清了）"></a>例题n（记不清了）</h4><p><img src="https://img-blog.csdnimg.cn/20190129151756823.?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMyNDQwNDg=,size_16,color_FFFFFF,t_70" alt="例题"> - 设计状态： $f[l][r]$表示$a[l,r]$字串的答案。 - 转移：$f[l][k]+f[k+1][r]$ 当a[l]==a[r]时，未完。。。</p>
-<h4 id="Floyd也是dp"><a href="#Floyd也是dp" class="headerlink" title="Floyd也是dp"></a>Floyd也是dp</h4><ul>
-<li>n个点的无向图，有向点和边权。每一对s，t，计算从s到t的路径，使得最小化：路径上的总边权+路径最大点权</li>
-<li>$(n\leq300)$</li>
-</ul>
-<h3 id="状态压缩DP"><a href="#状态压缩DP" class="headerlink" title="状态压缩DP"></a>状态压缩DP</h3><h4 id="经典问题"><a href="#经典问题" class="headerlink" title="经典问题"></a>经典问题</h4><ul>
-<li>求n个点的无向图的色数。（可以把顶点染成k种颜色之一，使得每条边两端不同色。最小的k是多少）</li>
-<li>$n\leq16$</li>
-<li>设计状态，用f[s]表示结点子集S的色数。枚举子集进行转移。</li>
-<li>$f[S]=min(f[S],1+f[S-T])$，T是S的子集$((T\&amp;S)==t)$，T中的点两两不相邻。</li>
-</ul>
-
+            <p>动态规划</p>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/03/09/e6-b8-85-e5-8c-97-e5-ad-a6-e5-a0-82noip2019-e9-9b-86-e8-ae-add5-e5-8a-a8-e6-80-81-e8-a7-84-e5-88-92/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -333,6 +195,9 @@ for(int j=0;j&lt;=2000;j++){
     <div class="card">
     
     <div class="card-content article ">
+        <!--top置顶排序2019/7/12-->
+        
+        <!--排序结束-->
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
@@ -346,7 +211,7 @@ for(int j=0;j&lt;=2000;j++){
                 <span class="level-item has-text-grey">
                     
                     
-                    10 分钟 读完 (大约 1562 个字)
+                    10 分钟 读完 (大约 1563 个字)
                 </span>
                 
                 
@@ -359,206 +224,17 @@ for(int j=0;j&lt;=2000;j++){
             
         </h1>
         <div class="content">
-            <h1 id="基本数据结构"><a href="#基本数据结构" class="headerlink" title="基本数据结构"></a>基本数据结构</h1><p>栈<br>-</p>
-<ul>
-<li>STL：stack</li>
-<li>定义：stack a;</li>
-<li>查询堆顶：a.top();</li>
-<li>压入栈顶:a.pop();</li>
-<li>查询a中的元素个数：a.size();</li>
-<li>清空只能慢慢pop。</li>
-</ul>
-<h4 id="例题1"><a href="#例题1" class="headerlink" title="例题1"></a>例题1</h4><ul>
-<li>给定一个栈，维护三个操作。 1：将一个数x压入栈中。 2：求栈中数的最大值。 3：弹出栈顶的数。 Q&lt;=1000。 Q&lt;=100000。</li>
-</ul>
-<h4 id="例题2"><a href="#例题2" class="headerlink" title="例题2"></a>例题2</h4><ul>
-<li>给定一个栈，维护四个操作。 1：将一个数x压入栈中。 2：求栈中数的最大值。 3：弹出栈顶的数。 4：求栈中的栈底开始的最大前缀和。 Q&lt;=1000。 Q&lt;=100000。</li>
-</ul>
-<h4 id="例题3"><a href="#例题3" class="headerlink" title="例题3"></a>例题3</h4><ul>
-<li>给定一个栈，维护五个操作。 1：将一个数x压入栈中。 2：求栈中数的最大值。 3：弹出栈顶的数。 4：求栈中的栈底开始的最大前缀和。 5：求栈中的栈顶开始的最大前缀和。  总和-栈底开始的最小前缀和 Q&lt;=1000。 Q&lt;=100000。</li>
-</ul>
-<h4 id="例题4"><a href="#例题4" class="headerlink" title="例题4"></a>例题4</h4><ul>
-<li>给定一个数列，维护五个操作。 1：在光标的后面插入一个数字。 2：删除光标前的最后一个数字。 3：左移光标。 4：右移光标。 5：求光标前的最大前缀和。 Q&lt;=1000。 Q&lt;=100000。</li>
-</ul>
-<h5 id="栈的一些其它应用"><a href="#栈的一些其它应用" class="headerlink" title="栈的一些其它应用"></a>栈的一些其它应用</h5><ul>
-<li>有n个数排成一列，每次可以选择最前面的数压入栈，或者弹出栈顶的元素。 求不同的出栈序列方案总数。 例如当n=3时共有5个不同的出栈序列方案：123,132,213,231,321.</li>
-<li>卡特兰数！</li>
-</ul>
-<h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2><ul>
-<li>queue：</li>
-<li>定义：queue a; 插入队尾：a.push(x); 删除队首：a.pop(); 查询队尾：a.back(); 查询队首：a.front(); 查询长度：a.size(); 清空只能慢慢pop。</li>
-<li>deque：</li>
-<li>定义：deque a; 插入队尾：a.push_back(x); 插入队首：a.push_front(x); 删除队首：a.pop_front(); 删除队尾：a.pop_back(); 查询队尾：a.back(); 查询队首：a.front(); 查询长度：a.size(); 清空：a.clear();</li>
-</ul>
-<h4 id="例题1-1"><a href="#例题1-1" class="headerlink" title="例题1"></a>例题1</h4><ul>
-<li><p>给定一个队列，维护三个操作。 1：将一个数x压入队列中。 2：求队列中数的最大值。 3：弹出队列的数。 Q&lt;=1000。 Q&lt;=100000。</p>
-<p>include &lt;bits/stdc++.h&gt;<br>using namespace std;<br>int main()<br>{</p>
-<pre><code>deque &lt;int&gt; a,b; //a值，b时间戳 
-for (i=1; i&lt;=Q; i++)
-{
-    cin&gt;&gt;A;
-    if (A==1)  //每执行A==1 都会使a.size+1 
-    {
-        cntI++;
-        cin&gt;&gt;x;
-        while (a.back()&lt;=x) a.pop_back(),b.pop_back();  //每执行这个while，都会使a.size减-1 
-        a.push_back(x);
-        b.push_back(cntI);
-    }
-    if (A==2) cout&lt;&lt;a.front()&lt;&lt;endl;
-    if (A==3)
-    {
-        cntD++;
-        if (cntD == b.front()) a.pop_front(),b.pop_front();
-    }
-} 
-return 0; </code></pre><p>}<br>O(Q) </p>
-</li>
-</ul>
-<h3 id="单调队列"><a href="#单调队列" class="headerlink" title="单调队列"></a>单调队列</h3><ul>
-<li>在每次进入队伍时，判断当前元素与队尾元素的大小关系，若小于队尾元素，则队尾不可能成为最小值，直接删除即可。 每次查询的答案一定在队首位置。 由于每个元素至多进队列和出队列一次，时间复杂度为O(n)。</li>
-</ul>
-<h4 id="例题1-2"><a href="#例题1-2" class="headerlink" title="例题1"></a>例题1</h4><ul>
-<li>给定一个队列，维护五个操作。 1：将一个数x压入队列中。 2：求队列中数的最大值。 3：弹出队列的数。 4：求队列中的最大前缀和。 5：求队列中的最大后缀和。 = 总和 - 最小前缀和 Q&lt;=1000。 Q&lt;=100000。</li>
-</ul>
-<h4 id="例题2——广告印刷"><a href="#例题2——广告印刷" class="headerlink" title="例题2——广告印刷"></a>例题2——广告印刷</h4><ul>
-<li>有n个数ai。从中选出一段区间[L,R]，使得(R-L+1)*min{a_L,…,a_R}最大。 n&lt;=100000。</li>
-<li><strong>思路：</strong>枚举最小值a[i]，之后向右找最远扩展到哪里，右边最近的且比a[i]小的</li>
-<li>对于每个i，都在右边找一个最近且比a[i]小的。 这件事情可以用单调队列解决。</li>
-<li>考虑对于第i个数，求出当这个数成为最小值时，往左往右分别最远能到哪里。 用这些来更新答案就可以了。 使用单调队列来实现这一过程。</li>
-</ul>
-<h4 id="例题3-1"><a href="#例题3-1" class="headerlink" title="例题3"></a>例题3</h4><ul>
-<li>给定n*m的01矩阵 找一个面积最大的全0子矩阵。 $n,m\leq1000$ <code>cpp if (a[i][j]==0) f[i][j] = f[i-1][j] + 1; else f[i][j] = 0;</code></li>
-</ul>
-<h2 id="RMQ问题"><a href="#RMQ问题" class="headerlink" title="RMQ问题"></a>RMQ问题</h2><ul>
-<li><p>给定n个数，有Q次询问，每次询问一段区间的最小值。</p>
-</li>
-<li><p>倍增。 nlgn 1 线段树。 n lgn 分块。 nsqrtn sqrtn 整体二分。</p>
-</li>
-<li><p>倍增：记录所有长度为2的幂次的区间的最小值。 n=5 [1,1] [2,2] [3,3] [4,4] [5,5] [1,2] [2,3] [3,4] [4,5] [1,4] [2,5] f[i][j] 表示 [i,i+2^j-1] 这段区间的最小值 [2,5] f[2][2] nlgn项</p>
-<pre><code>f[i][0] = a[i]     f[i][j]表示[i,i+2^j-1]这段区间的最小值
-f[i][j] = min(f[i][j-1],f[i+(1&lt;&lt;j-1)][j-1])
-for (j=1; j&lt;=20; j++)
-  for (i=1; i&lt;=n-(1&lt;&lt;j)+1; i++)
-     f[i][j]=min(f[i][j-1],f[i+(1&lt;&lt;j-1)][j-1])
-
-[L,R]  先找到一个k，使得2^k &lt;= R-L+1  且 2^(k+1) &gt; R-L+1
-一开始预处理 p[x] 表示当R-L+1=x时k应该是多少
-k=int(log(R-L+1)/log(2))
-k=p[R-L+1];
-min(f[L][k],f[R-(1&lt;&lt;k)+1][k])       开车旅行</code></pre></li>
-</ul>
-<ul>
-<li>我们考虑记录a[x]<del>a[x+2^k-1]的最小值，令其为f[x][k]。这可以在nlgn的时间内求出。 对于每次询问L</del>R，令k=log[R-L+1]。有ans=min(f[L][k],f[R-2^k+1][k])。(即进行O(1)询问)</li>
-</ul>
-<h2 id="LCA"><a href="#LCA" class="headerlink" title="LCA"></a>LCA</h2><ul>
-<li>给定一棵树，求两个点的最近公共祖先。 通过倍增来求LCA。</li>
-<li><strong>思路：</strong> 1.将两个点深度变成一样。</li>
-</ul>
-<ol start="2">
-<li>一起往上走找最近公共祖先。</li>
-</ol>
-<ul>
-<li><p>事先得先求出每个点的父亲是谁，以及它的深度是多少。</p>
-</li>
-<li><p>dfs</p>
-</li>
-<li><p>fa[i]表示i的父亲，dep[i]表示i的深度 第一步：将x和y走到同一层。 if (dep[x]&lt;dep[y]) swap(x,y); // 保证dep[x]&gt;=dep[y] 意味着 x要向上走dep[x]-dep[y]步。</p>
-</li>
-<li><p>f[i][j] 表示 i向上走2^j步后，能到哪儿 f[i][0]=fa[i]; f[i][j]=f[f[i][j-1]][j-1] for (j=1; j&lt;=20; j++) for (i=1; i&lt;=n; i++) f[i][j]=f[f[i][j-1]][j-1] 通过f数组来加速x向上走这个过程。</p>
-</li>
-<li><p>x向上走dep[x]-dep[y]步。 t=dep[x]-dep[y] 将t二进制分解 10 = 1010 x先向上跳8步，再向上跳2步 for (i=20; i&gt;=0; i–) if (t&amp;(1&lt;&lt;i)) x=f[x][i]; x和y就会到达同一层 让x和y一起往上跳，找它们的最近公共祖先</p>
-<pre><code>for (i=20; i&gt;=0; i--)
-  if (f[x][i]!=f[y][i]) x=f[x][i],y=f[y][i] 
-
-if (x==y) return x; else return f[x][0];</code></pre></li>
-</ul>
-<ul>
-<li><p>预处理fa，dep</p>
-<pre><code>f[i][0]=fa[i];  f[i][j]=f[f[i][j-1]][j-1]
-for (j=1; j&lt;=20; j++) for (i=1; i&lt;=n; i++) f[i][j]=f[f[i][j-1]][j-1]
-
-t=dep[x]-dep[y] 
-for (i=20; i&gt;=0; i--) if (t&amp;(1&lt;&lt;i)) x=f[x][i];  //这一步结束时有可能x==y
-if (x==y) return x;
-for (i=20; i&gt;=0; i--)
-  if (f[x][i]!=f[y][i]) x=f[x][i],y=f[y][i] 
-return f[x][0];</code></pre></li>
-</ul>
-<ul>
-<li><p>dfs</p>
-<pre><code>void dfs(int x,int y)
-{
-  dep[x]=y;
-  for (i=son of x) {fa[i]=x; dfs(i,y+1);}
-} 
-dfs(1,1);</code></pre></li>
-</ul>
-<h4 id="链上最大值问题"><a href="#链上最大值问题" class="headerlink" title="链上最大值问题"></a>链上最大值问题</h4><ul>
-<li><p>给定一棵带边权的树，每次询问两个点x,y，求这两个点的路径上最长的边是多少。</p>
-</li>
-<li><p><strong>思路：</strong> f[i][j]从i出发向上走2^j步能走到哪儿 g[i][j]从i出发向上走2^j步的过程中经过的最长边是什么</p>
-</li>
-<li><p>f[i][0]=fa[i],g[i][0]=dis(i,fa[i]); f[i][j]=f[f[i][j-1]][j-1] g[i][j]=max(g[i][j-1],g[f[i][j-1]][j-1]). 求答案的时候，用g数组来更新最大值</p>
-</li>
-</ul>
-<h4 id="链上和问题"><a href="#链上和问题" class="headerlink" title="链上和问题"></a>链上和问题</h4><ul>
-<li>给定一棵树，每次询问两个点x,y，求这条路径上边权和是多少。</li>
-<li><strong>思路：</strong> dis[i] 从根节点出发到i经过的边的长度和 x~y的路径长度 dis[x]+dis[y] – 2*dis[LCA(x,y)]</li>
-</ul>
-<h4 id="链上异或问题"><a href="#链上异或问题" class="headerlink" title="链上异或问题"></a>链上异或问题</h4><ul>
-<li>给定一棵树，每次询问两个点x,y，求这条路径上边权异或和是多少。</li>
-<li><strong>思路：</strong> dis[i]表示从1出发到i经过的边的边权亦或和 x~y = dis[x]^dis[y]</li>
-</ul>
-<h2 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h2><h3 id="简单Hash"><a href="#简单Hash" class="headerlink" title="简单Hash"></a>简单Hash</h3><ul>
-<li><p>有100个数字，每个数字的大小都是$\leq10^5$。 问是否存在一对数字的值相等。 要求一个线性做法。</p>
-<pre><code>for (i=1; i&lt;=100; i++)
-{
-  cin&gt;&gt;A; f[A]++;
-  if (f[A]==2) return true;
-}
-return false;</code></pre></li>
-</ul>
-<ul>
-<li><p>$\leq10^9$ 呢？</p>
-<pre><code>for (i=1; i&lt;=100; i++)
-{
-  cin&gt;&gt;A; A%=12345678; f[A]++;
-  if (f[A]==2) return true;
-}
-return false;</code></pre></li>
-</ul>
-<h4 id="重要性质"><a href="#重要性质" class="headerlink" title="重要性质"></a>重要性质</h4><ul>
-<li>假如有n个自然数。 要使得这n个数之间在大概率下不冲突(不同的数在模p意义下相等)。 p&gt;=n^2。</li>
-</ul>
-<h3 id="一维Hash"><a href="#一维Hash" class="headerlink" title="一维Hash"></a>一维Hash</h3><pre><code>void Insert(int x)
-{
-  int t=x % 19999997;  //a[i]来表示i这个位置存的数是什么
-  while (a[t] &amp;&amp; a[t]!=x) t=(t+1) % 19999997;
-  a[t]=x; b[t]++;  // b[i]表示a[i]这个数字出现了几次
-}
-int Query(int x)
-{
-  int t=x % 19999997;
-  while (a[t] &amp;&amp; a[t]!=x) t=(t+1) % 19999997;
-  if (a[t]==x) return b[t]; else return 0;
-}
-cin&gt;&gt;A; Insert(A);
-if (Query(A)==2) return true;</code></pre><ul>
-<li>模数开成10倍的元素个数，近似线性</li>
-</ul>
-<h3 id="字符串Hash"><a href="#字符串Hash" class="headerlink" title="字符串Hash"></a>字符串Hash</h3><ul>
-<li>给定一个字符串，求是否存在两个长度为k的子串完全相同。</li>
-<li>abcabc k=4</li>
-<li>要求$O(|s|)$</li>
-<li>|s|&lt;=100W 对于每一个数字 先对10^18取模 得到 n-k+1个 10^18级别的数，询问是否存在一对数相同 两次hash 第一次hash -&gt; 很大的26进制数 变成 10^18级别的数 二次 -&gt; 10^18级别的数映射到1000W级别的数组</li>
-</ul>
-<h3 id="二维Hash"><a href="#二维Hash" class="headerlink" title="二维Hash"></a>二维Hash</h3><ul>
-<li>给定一个n_n的矩阵，求是否存在两个完全相同的k_k的子矩阵。 要求时间复杂度与读入同阶。</li>
-</ul>
-
+            <p>基本数据结构</p>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/03/09/e6-b8-85-e5-8c-97-e5-ad-a6-e5-a0-82noip2019-e9-9b-86-e8-ae-add2-e6-95-b0-e6-8d-ae-e7-bb-93-e6-9e-84/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -574,6 +250,9 @@ if (Query(A)==2) return true;</code></pre><ul>
     <div class="card">
     
     <div class="card-content article ">
+        <!--top置顶排序2019/7/12-->
+        
+        <!--排序结束-->
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
@@ -628,6 +307,9 @@ if (Query(A)==2) return true;</code></pre><ul>
     <div class="card">
     
     <div class="card-content article ">
+        <!--top置顶排序2019/7/12-->
+        
+        <!--排序结束-->
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
@@ -680,6 +362,9 @@ if (Query(A)==2) return true;</code></pre><ul>
     <div class="card">
     
     <div class="card-content article ">
+        <!--top置顶排序2019/7/12-->
+        
+        <!--排序结束-->
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
@@ -732,6 +417,9 @@ if (Query(A)==2) return true;</code></pre><ul>
     <div class="card">
     
     <div class="card-content article ">
+        <!--top置顶排序2019/7/12-->
+        
+        <!--排序结束-->
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
@@ -745,7 +433,7 @@ if (Query(A)==2) return true;</code></pre><ul>
                 <span class="level-item has-text-grey">
                     
                     
-                    7 分钟 读完 (大约 1011 个字)
+                    7 分钟 读完 (大约 1012 个字)
                 </span>
                 
                 
@@ -759,362 +447,16 @@ if (Query(A)==2) return true;</code></pre><ul>
         </h1>
         <div class="content">
             <p>清北学堂2018noip集训D1</p>
-<p>====================</p>
-<h2 id="枚举算法"><a href="#枚举算法" class="headerlink" title="枚举算法"></a><strong>枚举算法</strong></h2><h3 id="例1"><a href="#例1" class="headerlink" title="例1"></a>例1</h3><ul>
-<li><p>n个二元组$ (x_1,y_1),(x_2,y_2),…,(x_n,y_n) $。计算有多少对$(x_i,y_i),(x_j,y_j)$满足$x_i+y_i=x_j+y_j$,且$i&lt;j$</p>
-</li>
-<li><p>$n\leq1000$</p>
-</li>
-<li><p>$n\leq10^5$</p>
-</li>
-<li><p>移项？</p>
-</li>
-<li><p>$(x_i-y_i)+(x_j-y_j)=0$</p>
-</li>
-<li><p>代码如下：</p>
-<pre><code>#include&lt;iostream&gt;
-#include&lt;cmath&gt;
-using namespace std;
-
-int a1[20000],n1[20000],a2[20000],n2[20000],t1,t2,x,ans;
-
-int main(){
-    cin &gt;&gt; x;
-    for(int i=1;i&lt;=x;i++){
-        cin &gt;&gt; t1 &gt;&gt; t2;
-        if(t1-t2&gt;0) a1[t1-t2]++;
-        else n1[abs(t1-t2)]++;
-        if(t2-t1&gt;0) a1[t2-t1]++;
-        else n2[abs(t2-t1)]++;
-    }
-    for(int i=0;i&lt;=20000;i++){
-        if(a1[i]&gt;=1)    if(n2[i]&gt;=1)  ans+=min(a1[i],n2[i]);
-        if(a2[i]&gt;=1)    if(n1[i]&gt;=1)  ans+=min(a2[i],n1[i]);
-    }
-    cout &lt;&lt; ans;
-}</code></pre></li>
-</ul>
-<hr>
-<h3 id="例2"><a href="#例2" class="headerlink" title="例2"></a>例2</h3><ul>
-<li><p><strong>有n元钱，买m只鸡，公鸡3元/只，母鸡5元/只，小鸡一元三只。用n元买m只鸡，各买多少？$n,m\leq100$</strong></p>
-</li>
-<li><p>得到方程 $3x+5y+\frac{z}{3}=n\x+y+z=m$</p>
-</li>
-<li><p><strong>(1</strong> 直接枚举x,y,z。</p>
-</li>
-<li><p><strong>优化1</strong> $3x+5y+\frac{z}{3}=n\x+y+z=m\-&gt;\frac{x}{3}+\frac{y}{3}+\frac{z}{3}=\frac{m}{3}\–&gt;\frac{8}{3}x+\frac{14}{3}y=n-\frac{m}{3}$ 于是枚举x，就可以得到y，由y又可以推出z。</p>
-</li>
-<li><p>代码如下：</p>
-<p>#include&lt;bits/stdc++.h&gt;<br>using namespace std;<br>int main(){</p>
-<pre><code>int n,m,x,y,z;
-cin&gt;&gt;n&gt;&gt;m;
-for(int x=1;x&lt;=m;x++){
-    y=(n-m/3-8*x/3)*3/14;
-    z=m-x-y;
-    if(x+y+z==m&amp;&amp;3*x+5*y+z/3==n&amp;&amp;z/3==z/3.0){
-        cout&lt;&lt;x&lt;&lt;endl&lt;&lt;y&lt;&lt;endl&lt;&lt;z&lt;&lt;endl;
-    }
-}
-return 0;</code></pre><p>}</p>
-</li>
-</ul>
-<hr>
-<h3 id="例3"><a href="#例3" class="headerlink" title="例3"></a>例3</h3><ul>
-<li><p>一个数n，$f(n)$为n每位数的平方之和，给定k,a,b,求区间$[a,b]$中符合$k \times f(n)=n$的个数。$1\leq k,a,b\leq 10^6和1\leq k,a,b\leq 10^{18}$</p>
-</li>
-<li><p>f(n)最大为$9^2\times 18=1458$</p>
-</li>
-<li><p>枚举f(n)，再验证$k\times f(n)=n$即可。</p>
-</li>
-<li><p>代码如下：</p>
-<p>#include&lt;bits/stdc++.h&gt;<br>using namespace std;<br>int pfh(int n,int s){</p>
-<pre><code>if(n/10&gt;0){
-    s+=(n%10)*(n%10);
-    return s+pfh(n/10,s-((n%10)*(n%10)));
-}
-else{
-    s+=n*n;
-    return s;
-}</code></pre><p>}<br>int main(){</p>
-<pre><code>int k,a,b,cnt=0;
-cin&gt;&gt;k&gt;&gt;a&gt;&gt;b;
-for(int x=1;x&lt;=1458;x++){
-    if(x*k==pfh(x*k,0)){
-        cout&lt;&lt;x*k&lt;&lt;endl;
-        cnt++;
-    }
-}
-cout&lt;&lt;cnt;
-return 0;</code></pre><p>}</p>
-</li>
-</ul>
-<h2 id><a href="#" class="headerlink" title="---"></a>---</h2><h2 id="回溯算法"><a href="#回溯算法" class="headerlink" title="回溯算法"></a><strong>回溯算法</strong></h2><h3 id="例1-1"><a href="#例1-1" class="headerlink" title="例1"></a>例1</h3><h4 id="子集和问题"><a href="#子集和问题" class="headerlink" title="子集和问题"></a>子集和问题</h4><h5 id="有一个大小为n的-N-集合，-S-n-1-n-2-n-3-…-求是否有一个子集A使A所有元素和为c？"><a href="#有一个大小为n的-N-集合，-S-n-1-n-2-n-3-…-求是否有一个子集A使A所有元素和为c？" class="headerlink" title="有一个大小为n的$N^*$集合，$S={n_1,n_2,n_3,…}$,求是否有一个子集A使A所有元素和为c？"></a>有一个大小为n的$N^*$集合，$S={n_1,n_2,n_3,…}$,求是否有一个子集A使A所有元素和为c？</h5><pre><code>bool check(){
-    return sum==c;
-}
-void dfs(int i){
-    if(i&gt;n){
-        if(check())flag=1;
-        return;
-    }
-
-    //假如不选择x_i
-    dfs(i+1);
-
-    //假如选择
-    vis[i]=1;
-    sum+=x[i];
-    dfs(i+1);
-    sum-=x[i];
-    vis[i]=0; 
-}</code></pre><p>代码如下：</p>
-<pre><code>#include&lt;bits/stdc++.h&gt;
-using namespace std;
-int c,n,a[200010],f;
-bool b[200010];
-int dfs(int k,int s){
-    if(s==c){
-        cout&lt;&lt;&quot;yes&quot;;
-        s=0;
-        f=1;
-        return 1;
-    }
-    else{
-        for(int i=0;i&lt;n;i++){
-            if(b[i]!=1){
-                b[i]=1;
-                if(dfs(k+1,s+a[i])==1){
-                    return 1;
-                }
-                b[i]=0;
-            }
-        }
-    }
-}
-int main(){
-    cin&gt;&gt;n&gt;&gt;c;
-    for(int i=0;i&lt;n;i++){
-        cin&gt;&gt;a[i];
-    }
-    dfs(0,0);
-    if(f==0){
-        cout&lt;&lt;&quot;no&quot;;
-    }
-    return 0;
-}</code></pre><hr>
-<h3 id="八皇后问题"><a href="#八皇后问题" class="headerlink" title="八皇后问题"></a>八皇后问题</h3><h5 id="检查一个8-x-8的跳棋棋盘，有六个棋子被放置在棋盘上，使得每行、每列有且只有一个，每条对角线-包括两条主对角线的所有平行线-上至多有一个棋子。共有几种结果？"><a href="#检查一个8-x-8的跳棋棋盘，有六个棋子被放置在棋盘上，使得每行、每列有且只有一个，每条对角线-包括两条主对角线的所有平行线-上至多有一个棋子。共有几种结果？" class="headerlink" title="检查一个8 x 8的跳棋棋盘，有六个棋子被放置在棋盘上，使得每行、每列有且只有一个，每条对角线(包括两条主对角线的所有平行线)上至多有一个棋子。共有几种结果？"></a>检查一个8 x 8的跳棋棋盘，有六个棋子被放置在棋盘上，使得每行、每列有且只有一个，每条对角线(包括两条主对角线的所有平行线)上至多有一个棋子。共有几种结果？</h5><ul>
-<li><p>优化1：枚举每行的皇后位置，因为每行只有一个皇后。</p>
-</li>
-<li><p>优化2：通过记录某些信息，就可以减少不必要的搜索，也就是所说的剪枝。</p>
-</li>
-<li><p>代码如下：</p>
-<p>#include&lt;bits/stdc++.h&gt;<br>using namespace std;<br>int a[9],n,m,cnt;<br>int dfs(int k){</p>
-<pre><code>int f=0;
-if(k&gt;7){
-    cnt++;
-    return 0;
-}
-else{
-    for(int i=0;i&lt;8;i++){
-        f=0;
-        for(int j=0;j&lt;8;j++){
-            if(a[j]==i||a[j]-j==i-k||a[j]+j==k+i){
-                f=1;
-                break;
-            }
-        }
-        if(f==1) continue;
-        else{
-            a[k]=i;
-            dfs(k+1);
-            a[k]=9999999;
-        }
-    }
-}</code></pre><p>}<br>int main(){</p>
-<pre><code>memset(a,127,sizeof(a));
-dfs(0);
-cout&lt;&lt;cnt;
-return 0;</code></pre><p>}</p>
-</li>
-</ul>
-<ul>
-<li><p>n皇后代码：</p>
-<p>#include&lt;bits/stdc++.h&gt;<br>using namespace std;<br>int n,a[15],cnt=0;<br>void print(){</p>
-<pre><code>if(cnt&lt;3){
-    for(int i=0;i&lt;n;i++){
-        cout&lt;&lt;a[i]+1&lt;&lt;&quot; &quot;;
-    }
-    cout&lt;&lt;endl;
-}
-cnt++;</code></pre><p>}<br>int search(int k){</p>
-<pre><code>if(n==13&amp;&amp;cnt&gt;=3) return 0;
-for(int i=0;i&lt;n;i++){
-    int flag=0;
-    for(int j=0;j&lt;n;j++){
-        if(a[j]==i||a[j]-j==i-k||a[j]+j==i+k){
-            flag=1;
-            break;
-        }
-    }
-    if(flag==1) continue;
-    a[k]=i;
-    if(k==n-1){
-        print();
-    }
-    else{
-        search(k+1);
-    }
-    a[k]=999999;
-}</code></pre><p>}<br>int main(){</p>
-<pre><code>cin&gt;&gt;n;
-int x=0;
-for(int i=0;i&lt;n;i++){
-    a[i]=9999999;
-}
-search(0);
-if(n!=13) cout&lt;&lt;cnt;
-else cout&lt;&lt;73712;
-return 0;</code></pre><p>}</p>
-</li>
-</ul>
-<hr>
-<h2 id="分治算法"><a href="#分治算法" class="headerlink" title="分治算法"></a><strong>分治算法</strong></h2><h3 id="例1-2"><a href="#例1-2" class="headerlink" title="例1"></a>例1</h3><h5 id="给定n个数，求其最大-小值，要求次数尽量小。"><a href="#给定n个数，求其最大-小值，要求次数尽量小。" class="headerlink" title="给定n个数，求其最大/小值，要求次数尽量小。"></a><strong>给定n个数，求其最大/小值，要求次数尽量小。</strong></h5><ul>
-<li>直接比</li>
-<li>分解问题，求解子问题，合并子问题的解- 分解问题，求解子问题，合并子问题的解- 分解问题，求解子问题，合并子问题的解- 分解问题，求解子问题，合并子问题的解</li>
-<li>分解：将整个序列分成前后两部分，分别求最大最小值。</li>
-<li>求解：当长度为1时，最大/小值为它本身。</li>
-</ul>
-<h2 id="合并：两个最大值取较大，最小取较小。"><a href="#合并：两个最大值取较大，最小取较小。" class="headerlink" title="- 合并：两个最大值取较大，最小取较小。"></a>- 合并：两个最大值取较大，最小取较小。</h2><h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><h4 id="给定n，将n个数排序。"><a href="#给定n，将n个数排序。" class="headerlink" title="给定n，将n个数排序。"></a>给定n，将n个数排序。</h4><ul>
-<li><p>代码如下（这个程序包括与sort排序对比准确性）：</p>
-<p>#include&lt;bits/stdc++.h&gt;<br>using namespace std;<br>const int MAXN=1e5;<br>int n,a[MAXN],b[MAXN],c[MAXN];<br>int gb(int l,int r){</p>
-<pre><code>//子问题求解 
-if(r==l) return 0;
-//分解问题 
-int m=(l+r)/2;
-gb(l,m);
-gb(m+1,r);
-//合并子问题的解 
-for(int i=l;i&lt;=r;i++) b[i]=a[i];
-int i=l,j=m+1,tmp=l;
-while(i&lt;=m||j&lt;=r){
-    if(j&gt;r)a[tmp++]=b[i++];
-    else if(i&gt;m)a[tmp++]=b[j++];
-    else if(b[i]&lt;b[j])a[tmp++]=b[i++];
-    else a[tmp++]=b[j++];
-}</code></pre><p>}<br>int main(){</p>
-<pre><code>int n;
-cin&gt;&gt;n;
-srand(time(0));
-for(int i=1;i&lt;=n;i++)a[i]=rand();
-gb(1,n);
-for(int i=1;i&lt;=n;i++){
-    c[i]=a[i]; 
-    cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;
-} 
-cout&lt;&lt;endl&lt;&lt;endl;
-sort(a+1,a+n+1);
-int flag=0;
-for(int i=1;i&lt;=n;i++){
-    cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;
-    if(c[i]!=a[i]){
-        flag=1;
-    }
-}
-cout&lt;&lt;endl&lt;&lt;endl;
-if(flag){
-    cout&lt;&lt;&quot;Error&quot;;
-}
-else{
-    cout&lt;&lt;&quot;Right&quot;;
-}
-return 0;</code></pre><p>}</p>
-</li>
-</ul>
-<hr>
-<h3 id="求逆序对数"><a href="#求逆序对数" class="headerlink" title="求逆序对数"></a>求逆序对数</h3><h5 id="给定一个长度为n的序列，求其中的逆序对数。-n-leq10-5"><a href="#给定一个长度为n的序列，求其中的逆序对数。-n-leq10-5" class="headerlink" title="给定一个长度为n的序列，求其中的逆序对数。$n\leq10^5$"></a>给定一个长度为n的序列，求其中的逆序对数。$n\leq10^5$</h5><ul>
-<li><p>分解：分为前后两部分，分别求解。</p>
-</li>
-<li><p>求解：当长度为1时，逆序对数为0</p>
-</li>
-<li><p>合并：？</p>
-</li>
-<li><p>代码如下：</p>
-<p>#include&lt;bits/stdc++.h&gt;<br>using namespace std;<br>const int MAXN=1e5;<br>int n,a[MAXN],b[MAXN],c[MAXN],cnt;<br>int gb(int l,int r){</p>
-<pre><code>//子问题求解 
-if(r==l) return 0;
-//分解问题 
-int m=(l+r)/2;
-gb(l,m);
-gb(m+1,r);
-//合并子问题的解 
-for(int i=l;i&lt;=r;i++) b[i]=a[i];
-int i=l,j=m+1,tmp=l;
-while(i&lt;=m||j&lt;=r){
-    if(j&gt;r)a[tmp++]=b[i++];
-    else if(i&gt;m)a[tmp++]=b[j++];
-    else if(b[i]&gt;b[j]){
-        cnt+=m-i+1;
-        a[tmp++]=b[j++];
-    }
-    else a[tmp++]=b[i++];
-}</code></pre><p>}<br>int main(){</p>
-<pre><code>int n;
-cin&gt;&gt;n;
-srand(time(0));
-for(int i=1;i&lt;=n;i++)cin&gt;&gt;a[i];
-gb(1,n);
-for(int i=1;i&lt;=n;i++){
-    c[i]=a[i]; 
-    cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;
-}
-cout&lt;&lt;endl&lt;&lt;cnt;
-return 0;</code></pre><p>}</p>
-</li>
-</ul>
-<hr>
-<h3 id="例4"><a href="#例4" class="headerlink" title="例4"></a>例4</h3><h2 id="给定一个长度为n的单调递增数组，求第一个大于等于k的数出现的位置。-n-leq10-5-1-leq-a-k-leq10-9"><a href="#给定一个长度为n的单调递增数组，求第一个大于等于k的数出现的位置。-n-leq10-5-1-leq-a-k-leq10-9" class="headerlink" title="##### 给定一个长度为n的单调递增数组，求第一个大于等于k的数出现的位置。$n\leq10^5,1\leq a,k\leq10^9$"></a>##### 给定一个长度为n的单调递增数组，求第一个大于等于k的数出现的位置。$n\leq10^5,1\leq a,k\leq10^9$</h2><h3 id="例5"><a href="#例5" class="headerlink" title="例5"></a>例5</h3><h5 id="给定一个长度为n的数组，求第k大的数。-n-leq10-6-1-leq-a-k-leq10-9"><a href="#给定一个长度为n的数组，求第k大的数。-n-leq10-6-1-leq-a-k-leq10-9" class="headerlink" title="给定一个长度为n的数组，求第k大的数。$n\leq10^6,1\leq a,k\leq10^9$"></a>给定一个长度为n的数组，求第k大的数。$n\leq10^6,1\leq a,k\leq10^9$</h5><ul>
-<li>随机取一个x，将比x小的移到左边，大于x的移到右边。位数大于k向左递归，小于k向右递归。</li>
-</ul>
-<hr>
-<h2 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a><strong>贪心算法</strong></h2><h3 id="P1589-泥泞路"><a href="#P1589-泥泞路" class="headerlink" title="P1589 泥泞路"></a>P1589 泥泞路</h3><h2 id="暴雨过后，FJ的农场到镇上的公路上有一些泥泞路，他有若干块长度为L的木板可以铺在这些泥泞路上，问他至少需要多少块木板，才能把所有的泥泞路覆盖住。-n-l-leq10000-s-leq-e-leq10-9"><a href="#暴雨过后，FJ的农场到镇上的公路上有一些泥泞路，他有若干块长度为L的木板可以铺在这些泥泞路上，问他至少需要多少块木板，才能把所有的泥泞路覆盖住。-n-l-leq10000-s-leq-e-leq10-9" class="headerlink" title="##### 暴雨过后，FJ的农场到镇上的公路上有一些泥泞路，他有若干块长度为L的木板可以铺在这些泥泞路上，问他至少需要多少块木板，才能把所有的泥泞路覆盖住。$n,l\leq10000,s\leq e\leq10^9$"></a>##### 暴雨过后，FJ的农场到镇上的公路上有一些泥泞路，他有若干块长度为L的木板可以铺在这些泥泞路上，问他至少需要多少块木板，才能把所有的泥泞路覆盖住。$n,l\leq10000,s\leq e\leq10^9$</h2><h3 id="P3620-APIO-CTSC-2007-数据备份"><a href="#P3620-APIO-CTSC-2007-数据备份" class="headerlink" title="P3620 [APIO/CTSC 2007]数据备份"></a>P3620 [APIO/CTSC 2007]数据备份</h3><h6 id="你在一家-IT-公司为大型写字楼或办公楼-offices-的计算机数据做备份。然而数据备份的工作是枯燥乏味的，因此你想设计一个系统让不同的办公楼彼此之间互相备份，而你则坐在家中尽享计算机游戏的乐趣。已知办公楼都位于同一条街上。你决定给这些办公楼配对-两个一组-。每一对办公楼可以通过在这两个建筑物之间铺设网络电缆使得它们可以互相备份。然而，网络电缆的费用很高。当地电信公司仅能为你提供-K-条网络电缆，这意味着你仅能为-K-对办公楼-或总计-2K-个办公楼-安排备份。任一个办公楼都属于唯一的配对组-换句话说，这-2K-个办公楼一定是相异的-。此外，电信公司需按网络电缆的长度-公里数-收费。因而，你需要选择这-K对办公楼使得电缆的总长度尽可能短。换句话说，你需要选择这-K-对办公楼，使得每一对办公楼之间的距离之和-总距离-尽可能小。下面给出一个示例，假定你有-5-个客户，其办公楼都在一条街上，如下图所示。这-5-个办公楼分别位于距离大街起点-1km-3km-4km-6km-和-12km-处。电信公司仅为你提供-K-2-条电缆。"><a href="#你在一家-IT-公司为大型写字楼或办公楼-offices-的计算机数据做备份。然而数据备份的工作是枯燥乏味的，因此你想设计一个系统让不同的办公楼彼此之间互相备份，而你则坐在家中尽享计算机游戏的乐趣。已知办公楼都位于同一条街上。你决定给这些办公楼配对-两个一组-。每一对办公楼可以通过在这两个建筑物之间铺设网络电缆使得它们可以互相备份。然而，网络电缆的费用很高。当地电信公司仅能为你提供-K-条网络电缆，这意味着你仅能为-K-对办公楼-或总计-2K-个办公楼-安排备份。任一个办公楼都属于唯一的配对组-换句话说，这-2K-个办公楼一定是相异的-。此外，电信公司需按网络电缆的长度-公里数-收费。因而，你需要选择这-K对办公楼使得电缆的总长度尽可能短。换句话说，你需要选择这-K-对办公楼，使得每一对办公楼之间的距离之和-总距离-尽可能小。下面给出一个示例，假定你有-5-个客户，其办公楼都在一条街上，如下图所示。这-5-个办公楼分别位于距离大街起点-1km-3km-4km-6km-和-12km-处。电信公司仅为你提供-K-2-条电缆。" class="headerlink" title="  你在一家 IT 公司为大型写字楼或办公楼(offices)的计算机数据做备份。然而数据备份的工作是枯燥乏味的，因此你想设计一个系统让不同的办公楼彼此之间互相备份，而你则坐在家中尽享计算机游戏的乐趣。已知办公楼都位于同一条街上。你决定给这些办公楼配对(两个一组)。每一对办公楼可以通过在这两个建筑物之间铺设网络电缆使得它们可以互相备份。然而，网络电缆的费用很高。当地电信公司仅能为你提供 K 条网络电缆，这意味着你仅能为 K 对办公楼(或总计 2K 个办公楼)安排备份。任一个办公楼都属于唯一的配对组(换句话说，这 2K 个办公楼一定是相异的)。此外，电信公司需按网络电缆的长度(公里数)收费。因而，你需要选择这 K对办公楼使得电缆的总长度尽可能短。换句话说，你需要选择这 K 对办公楼，使得每一对办公楼之间的距离之和(总距离)尽可能小。下面给出一个示例，假定你有 5 个客户，其办公楼都在一条街上，如下图所示。这 5 个办公楼分别位于距离大街起点 1km, 3km, 4km, 6km 和 12km 处。电信公司仅为你提供 K=2 条电缆。"></a>  你在一家 IT 公司为大型写字楼或办公楼(offices)的计算机数据做备份。然而数据备份的工作是枯燥乏味的，因此你想设计一个系统让不同的办公楼彼此之间互相备份，而你则坐在家中尽享计算机游戏的乐趣。已知办公楼都位于同一条街上。你决定给这些办公楼配对(两个一组)。每一对办公楼可以通过在这两个建筑物之间铺设网络电缆使得它们可以互相备份。然而，网络电缆的费用很高。当地电信公司仅能为你提供 K 条网络电缆，这意味着你仅能为 K 对办公楼(或总计 2K 个办公楼)安排备份。任一个办公楼都属于唯一的配对组(换句话说，这 2K 个办公楼一定是相异的)。此外，电信公司需按网络电缆的长度(公里数)收费。因而，你需要选择这 K对办公楼使得电缆的总长度尽可能短。换句话说，你需要选择这 K 对办公楼，使得每一对办公楼之间的距离之和(总距离)尽可能小。下面给出一个示例，假定你有 5 个客户，其办公楼都在一条街上，如下图所示。这 5 个办公楼分别位于距离大街起点 1km, 3km, 4km, 6km 和 12km 处。电信公司仅为你提供 K=2 条电缆。</h6><p><img src="https://cdn.luogu.org/upload/pic/4386.png" alt="1"></p>
-<h2 id="上例中最好的配对方案是将第-1-个和第-2-个办公楼相连，第-3-个和第-4-个办公楼相连。这样可按要求使用-K-2-条电缆。第-1-条电缆的长度是-3km―1km-2km，第-2-条电缆的长度是-6km―4km-2-km。这种配对方案需要总长-4km-的网络电缆，满足距离之和最小的要求。"><a href="#上例中最好的配对方案是将第-1-个和第-2-个办公楼相连，第-3-个和第-4-个办公楼相连。这样可按要求使用-K-2-条电缆。第-1-条电缆的长度是-3km―1km-2km，第-2-条电缆的长度是-6km―4km-2-km。这种配对方案需要总长-4km-的网络电缆，满足距离之和最小的要求。" class="headerlink" title="######   上例中最好的配对方案是将第 1 个和第 2 个办公楼相连，第 3 个和第 4 个办公楼相连。这样可按要求使用 K=2 条电缆。第 1 条电缆的长度是 3km―1km = 2km，第 2 条电缆的长度是 6km―4km = 2 km。这种配对方案需要总长 4km 的网络电缆，满足距离之和最小的要求。"></a>######   上例中最好的配对方案是将第 1 个和第 2 个办公楼相连，第 3 个和第 4 个办公楼相连。这样可按要求使用 K=2 条电缆。第 1 条电缆的长度是 3km―1km = 2km，第 2 条电缆的长度是 6km―4km = 2 km。这种配对方案需要总长 4km 的网络电缆，满足距离之和最小的要求。</h2><h2 id="快速幂"><a href="#快速幂" class="headerlink" title="快速幂"></a><strong>快速幂</strong></h2><h3 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h3><h5 id="递归版："><a href="#递归版：" class="headerlink" title="递归版："></a>递归版：</h5><pre><code>#include&lt;bits/stdc++.h&gt;
-using namespace std;
-int power(int n,int k,int m){
-    if(k==0) return 1;
-    if(k==1) return n%m;
-    if(k%2==0){
-        int z=power(n,k/2,m)%m;
-        return (1ll*z*z)%m;
-    }
-    else{
-        int z=power(n,k/2,m)%m;
-        return (1ll*z*z*n)%m;
-    }
-}
-int main(){
-    int n,k,m;
-    cin&gt;&gt;n&gt;&gt;k&gt;&gt;m;
-    cout&lt;&lt;power(n,k,m);
-
-    return 0;
-}</code></pre><hr>
-<h5 id="非递归版"><a href="#非递归版" class="headerlink" title="非递归版"></a>非递归版</h5><pre><code>#include&lt;bits/stdc++.h&gt;
-using namespace std;
-int power(int n,int k,int m){
-    int res=1;
-    while(k){
-        if(k%2==1)res=1ll*res*n%m;
-        k/=2;
-        n=1ll*n*n%m;
-    } 
-}
-int main(){
-    int n,k,m;
-    cin&gt;&gt;n&gt;&gt;k&gt;&gt;m;
-    cout&lt;&lt;power(n,k,m);
-    return 0;
-}</code></pre>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/03/09/e6-b8-85-e5-8c-97-e5-ad-a6-e5-a0-822018noip-e9-9b-86-e8-ae-add1/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -1193,7 +535,7 @@ int main(){
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        50
+                        49
                     </p>
                 </div>
             </div>
@@ -1203,7 +545,7 @@ int main(){
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        8
+                        6
                     </p>
                 </div>
             </div>
@@ -1372,7 +714,7 @@ int main(){
                 <span class="level-item">知识点</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/OI/集训/">
@@ -1388,17 +730,9 @@ int main(){
                 <span class="level-item">题目</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">29</span>
+                <span class="level-item tag">30</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/OI-题目/">
-            <span class="level-start">
-                <span class="level-item">OI - 题目</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/政治/">
             <span class="level-start">
                 <span class="level-item">政治</span>
@@ -1443,7 +777,7 @@ int main(){
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-06T07:05:38.000Z">2019-06-06</time></div>
                     <a href="/2019/06/06/codeforces-484-b-maximum-value/" class="has-link-black-ter is-size-6"> CodeForces 484 B. Maximum Value</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI-题目/">OI - 题目</a>
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
                     </p>
                 </div>
             </div>
@@ -1554,7 +888,7 @@ int main(){
                     <span class="level-item">五月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">15</span>
+                    <span class="level-item tag">14</span>
                 </span>
             </a>
         </li>
@@ -1763,7 +1097,7 @@ int main(){
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-06T07:05:38.000Z">2019-06-06</time></div>
                     <a href="/2019/06/06/codeforces-484-b-maximum-value/" class="has-link-black-ter is-size-6"> CodeForces 484 B. Maximum Value</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI-题目/">OI - 题目</a>
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
                     </p>
                 </div>
             </div>
@@ -1874,7 +1208,7 @@ int main(){
                     <span class="level-item">五月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">15</span>
+                    <span class="level-item tag">14</span>
                 </span>
             </a>
         </li>
@@ -2064,7 +1398,7 @@ int main(){
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Blog of YorkWu" height="28">
+                    Blog of YorkWu
                 
                 </a>
                 <p class="is-size-7">

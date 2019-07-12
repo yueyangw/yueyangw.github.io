@@ -7,19 +7,19 @@
 
 
 
-    <meta name="description" content="割边判定法则 无向边$(x,y)$是桥，当且仅当搜索树上x的子节点y，满足$dfn[x] &amp;lt; low[y]$。 桥一定是搜索树上的边，并且一个简单环中的边一定不是桥！  求出一个无向图中所有的桥： #include&amp;lt;bits/stdc++.h&amp;gt; using namespace std; const int SIZE=100009; struct Edge{     int to,">
+    <meta name="description" content="Tarjan求割点、桥">
 <meta name="keywords" content="图论,Tarjan">
 <meta property="og:type" content="article">
 <meta property="og:title" content=" Tarjan求割边、桥		">
 <meta property="og:url" content="http://yueyangw.github.io/2019/03/12/tarjan-e6-b1-82-e5-89-b2-e8-be-b9-e3-80-81-e6-a1-a5/index.html">
 <meta property="og:site_name" content="Blog of YorkWu">
-<meta property="og:description" content="割边判定法则 无向边$(x,y)$是桥，当且仅当搜索树上x的子节点y，满足$dfn[x] &amp;lt; low[y]$。 桥一定是搜索树上的边，并且一个简单环中的边一定不是桥！  求出一个无向图中所有的桥： #include&amp;lt;bits/stdc++.h&amp;gt; using namespace std; const int SIZE=100009; struct Edge{     int to,">
+<meta property="og:description" content="Tarjan求割点、桥">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yueyangw.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-11T17:30:55.492Z">
+<meta property="og:updated_time" content="2019-07-12T02:55:05.937Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" Tarjan求割边、桥		">
-<meta name="twitter:description" content="割边判定法则 无向边$(x,y)$是桥，当且仅当搜索树上x的子节点y，满足$dfn[x] &amp;lt; low[y]$。 桥一定是搜索树上的边，并且一个简单环中的边一定不是桥！  求出一个无向图中所有的桥： #include&amp;lt;bits/stdc++.h&amp;gt; using namespace std; const int SIZE=100009; struct Edge{     int to,">
+<meta name="twitter:description" content="Tarjan求割点、桥">
 <meta name="twitter:image" content="http://yueyangw.github.io/images/og_image.png">
 
 
@@ -94,7 +94,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt=" Tarjan求割边、桥		" height="28">
+                Blog of YorkWu
             
             </a>
         </div>
@@ -133,6 +133,9 @@
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
     
     <div class="card-content article ">
+        <!--top置顶排序2019/7/12-->
+        
+        <!--排序结束-->
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
@@ -146,7 +149,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 257 个字)
+                    2 分钟 读完 (大约 264 个字)
                 </span>
                 
                 
@@ -159,7 +162,9 @@
             
         </h1>
         <div class="content">
-            <h4 id="割边判定法则"><a href="#割边判定法则" class="headerlink" title="割边判定法则"></a>割边判定法则</h4><ul>
+            <p>Tarjan求割点、桥</p>
+<a id="more"></a>
+<h4 id="割边判定法则"><a href="#割边判定法则" class="headerlink" title="割边判定法则"></a>割边判定法则</h4><ul>
 <li>无向边$(x,y)$是桥，当且仅当搜索树上x的子节点y，满足$dfn[x] &lt; low[y]$。</li>
 <li><strong>桥一定是搜索树上的边</strong>，并且<strong>一个简单环中的边一定不是桥！</strong></li>
 </ul>
@@ -326,7 +331,7 @@ int main(){
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        50
+                        49
                     </p>
                 </div>
             </div>
@@ -336,7 +341,7 @@ int main(){
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        8
+                        6
                     </p>
                 </div>
             </div>
@@ -505,7 +510,7 @@ int main(){
                 <span class="level-item">知识点</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/OI/集训/">
@@ -521,17 +526,9 @@ int main(){
                 <span class="level-item">题目</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">29</span>
+                <span class="level-item tag">30</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/OI-题目/">
-            <span class="level-start">
-                <span class="level-item">OI - 题目</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/政治/">
             <span class="level-start">
                 <span class="level-item">政治</span>
@@ -576,7 +573,7 @@ int main(){
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-06T07:05:38.000Z">2019-06-06</time></div>
                     <a href="/2019/06/06/codeforces-484-b-maximum-value/" class="has-link-black-ter is-size-6"> CodeForces 484 B. Maximum Value</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI-题目/">OI - 题目</a>
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
                     </p>
                 </div>
             </div>
@@ -687,7 +684,7 @@ int main(){
                     <span class="level-item">五月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">15</span>
+                    <span class="level-item tag">14</span>
                 </span>
             </a>
         </li>
@@ -896,7 +893,7 @@ int main(){
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-06T07:05:38.000Z">2019-06-06</time></div>
                     <a href="/2019/06/06/codeforces-484-b-maximum-value/" class="has-link-black-ter is-size-6"> CodeForces 484 B. Maximum Value</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI-题目/">OI - 题目</a>
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
                     </p>
                 </div>
             </div>
@@ -1007,7 +1004,7 @@ int main(){
                     <span class="level-item">五月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">15</span>
+                    <span class="level-item tag">14</span>
                 </span>
             </a>
         </li>
@@ -1197,7 +1194,7 @@ int main(){
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt=" Tarjan求割边、桥		" height="28">
+                    Blog of YorkWu
                 
                 </a>
                 <p class="is-size-7">

@@ -89,7 +89,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Blog of YorkWu" height="28">
+                Blog of YorkWu
             
             </a>
         </div>
@@ -139,6 +139,9 @@
     <div class="card">
     
     <div class="card-content article ">
+        <!--top置顶排序2019/7/12-->
+        
+        <!--排序结束-->
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
@@ -152,7 +155,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 630 个字)
+                    4 分钟 读完 (大约 638 个字)
                 </span>
                 
                 
@@ -165,68 +168,17 @@
             
         </h1>
         <div class="content">
-            <h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>这里有一个n*m的矩阵，请你选出其中k个子矩阵，使得这个k个子矩阵分值之和最大。注意：选出的k个子矩阵不能相互重叠。</p>
-<h4 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h4><h5 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h5><p>第一行为n,m,k（1≤n≤100,1≤m≤2,1≤k≤10），接下来n行描述矩阵每行中的每个元素的分值(每个元素的分值的绝对值不超过32767)。</p>
-<h5 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h5><p>只有一行为k个子矩阵分值之和最大为多少。 <a href="https://www.luogu.org/problemnew/show/P2331" title="题目链接" target="_blank" rel="noopener">题目链接</a></p>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><ul>
-<li><p>首先，可以注意到，m只能为1或2，那不妨分情况讨论。</p>
-</li>
-<li><p>当m=1时，可以发现答案即最大连续字段和，设计状态$dp(i,j)$表示从前i个元素里选择j个矩形的最大和，因此状态转移方程： 若选，$dp(i,j)=max(dp(len,j-1)+sum[i]-sum[j-1])$ 若不选，$dp(i,j)=max(dp(i,j),dp(i-1,j))$</p>
-</li>
-<li><p>当m=2时，$dp(i,j,k)$表示第一列前i个元素，第二列前j个元素，一共选择k个矩阵所得的最大值，因此状态转移方程分四种情况：</p>
-<ol>
-<li>当两列均不选时：$dp(i,j,k)=max(dp(i,j-1,k),dp(i-1,j,k))$</li>
-<li>当只选择第一列时，$dp(i,j,k)=max(dp(len,j,k-1)+sum_1[i]-sum_1[len-1]),len\in[1,i)$</li>
-<li>当只选择第二列时，$dp(i,j,k)=max(dp(i,len,k-1)+sum_2[j]-sum_2[len-1]),len\in[1,j)$</li>
-<li>当$i=j$时，两列都选，$dp(i,j,k)=max(dp(len,len,k-1)+sum_1[i]-sum_1[len-1]+sum_2[j]-sum_2[len-1])$ <strong>最后这四种情况取最大值。</strong></li>
-</ol>
-</li>
-</ul>
-<h4 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h4><pre><code>#include&lt;bits/stdc++.h&gt;
-using namespace std;
-int n,m,k;
-int sum1[109],sum2[109],dp1[109][15],f[109][109][15];
-
-int main(){
-    cin&gt;&gt;n&gt;&gt;m&gt;&gt;k;
-    if(m==1){
-        for(int i=1;i&lt;=n;i++){
-            int x;
-            cin&gt;&gt;x;
-            sum1[i]=sum1[i-1]+x;
-        }
-        for(int len=1;len&lt;=k;len++){
-            for(int i=1;i&lt;=n;i++){
-                dp1[i][len]=dp1[i-1][len];
-                for(int j=0;j&lt;i;j++){
-                    dp1[i][len]=max(dp1[i][len],dp1[j][len-1]+sum1[i]-sum1[j]);
-                }
-            }
-        }
-        cout&lt;&lt;dp1[n][k];
-    }
-    else{
-        for(int i=1;i&lt;=n;i++){
-            cin&gt;&gt;sum1[i]&gt;&gt;sum2[i];
-            sum1[i]+=sum1[i-1];
-            sum2[i]+=sum2[i-1];
-        }
-        for(int len=1;len&lt;=k;len++){
-            for(int i=1;i&lt;=n;i++){
-                for(int j=1;j&lt;=n;j++){
-                    f[i][j][len]=max(f[i-1][j][len],f[i][j-1][len]);
-                    for(int l=0;l&lt;i;l++) f[i][j][len]=max(f[i][j][len],f[l][j][len-1]+sum1[i]-sum1[l]);
-                    for(int l=0;l&lt;j;l++) f[i][j][len]=max(f[i][j][len],f[i][l][len-1]+sum2[j]-sum2[l]);
-                    if(i==j)  for(int l=0;l&lt;i;l++) f[i][j][len]=max(f[i][j][len],f[l][l][len-1]+sum1[i]-sum1[l]+sum2[j]-sum2[l]);
-                }
-            }
-        }
-        cout&lt;&lt;f[n][n][k];
-    }
-    return 0;
-}</code></pre>
+            <p>P2331 [SCOI2005]最大子矩阵</p>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/03/11/p2331-scoi2005-e6-9c-80-e5-a4-a7-e5-ad-90-e7-9f-a9-e9-98-b5/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -282,7 +234,7 @@ int main(){
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        50
+                        49
                     </p>
                 </div>
             </div>
@@ -292,7 +244,7 @@ int main(){
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        8
+                        6
                     </p>
                 </div>
             </div>
@@ -461,7 +413,7 @@ int main(){
                 <span class="level-item">知识点</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/OI/集训/">
@@ -477,17 +429,9 @@ int main(){
                 <span class="level-item">题目</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">29</span>
+                <span class="level-item tag">30</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/OI-题目/">
-            <span class="level-start">
-                <span class="level-item">OI - 题目</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/政治/">
             <span class="level-start">
                 <span class="level-item">政治</span>
@@ -532,7 +476,7 @@ int main(){
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-06T07:05:38.000Z">2019-06-06</time></div>
                     <a href="/2019/06/06/codeforces-484-b-maximum-value/" class="has-link-black-ter is-size-6"> CodeForces 484 B. Maximum Value</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI-题目/">OI - 题目</a>
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
                     </p>
                 </div>
             </div>
@@ -643,7 +587,7 @@ int main(){
                     <span class="level-item">五月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">15</span>
+                    <span class="level-item tag">14</span>
                 </span>
             </a>
         </li>
@@ -852,7 +796,7 @@ int main(){
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-06T07:05:38.000Z">2019-06-06</time></div>
                     <a href="/2019/06/06/codeforces-484-b-maximum-value/" class="has-link-black-ter is-size-6"> CodeForces 484 B. Maximum Value</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI-题目/">OI - 题目</a>
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
                     </p>
                 </div>
             </div>
@@ -963,7 +907,7 @@ int main(){
                     <span class="level-item">五月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">15</span>
+                    <span class="level-item tag">14</span>
                 </span>
             </a>
         </li>
@@ -1153,7 +1097,7 @@ int main(){
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Blog of YorkWu" height="28">
+                    Blog of YorkWu
                 
                 </a>
                 <p class="is-size-7">

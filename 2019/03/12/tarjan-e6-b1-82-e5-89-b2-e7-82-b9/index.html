@@ -7,19 +7,19 @@
 
 
 
-    <meta name="description" content="割点判定法则 若x不是搜索树的根节点，则x是割点当且仅当搜索树上存在一个x的子节点y，满足：$dfn[x]\leq low[y]$。 特别的，若x是搜索树的根节点，则x是割点当且仅当搜索树上至少存在两个子节点$y_1,y_2$满足此条件。 证明方法与求桥雷同。 因为判定是小于等于，所以求割点时，无需考虑父节点和重边的问题，从x出发访问的所有时间戳均可更新$low[x]$。   代码如下：#incl">
+    <meta name="description" content="Tarjan求割点">
 <meta name="keywords" content="图论,Tarjan">
 <meta property="og:type" content="article">
 <meta property="og:title" content=" Tarjan求割点		">
 <meta property="og:url" content="http://yueyangw.github.io/2019/03/12/tarjan-e6-b1-82-e5-89-b2-e7-82-b9/index.html">
 <meta property="og:site_name" content="Blog of YorkWu">
-<meta property="og:description" content="割点判定法则 若x不是搜索树的根节点，则x是割点当且仅当搜索树上存在一个x的子节点y，满足：$dfn[x]\leq low[y]$。 特别的，若x是搜索树的根节点，则x是割点当且仅当搜索树上至少存在两个子节点$y_1,y_2$满足此条件。 证明方法与求桥雷同。 因为判定是小于等于，所以求割点时，无需考虑父节点和重边的问题，从x出发访问的所有时间戳均可更新$low[x]$。   代码如下：#incl">
+<meta property="og:description" content="Tarjan求割点">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yueyangw.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-11T17:02:28.183Z">
+<meta property="og:updated_time" content="2019-07-12T02:54:46.723Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" Tarjan求割点		">
-<meta name="twitter:description" content="割点判定法则 若x不是搜索树的根节点，则x是割点当且仅当搜索树上存在一个x的子节点y，满足：$dfn[x]\leq low[y]$。 特别的，若x是搜索树的根节点，则x是割点当且仅当搜索树上至少存在两个子节点$y_1,y_2$满足此条件。 证明方法与求桥雷同。 因为判定是小于等于，所以求割点时，无需考虑父节点和重边的问题，从x出发访问的所有时间戳均可更新$low[x]$。   代码如下：#incl">
+<meta name="twitter:description" content="Tarjan求割点">
 <meta name="twitter:image" content="http://yueyangw.github.io/images/og_image.png">
 
 
@@ -94,7 +94,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt=" Tarjan求割点		" height="28">
+                Blog of YorkWu
             
             </a>
         </div>
@@ -133,6 +133,9 @@
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
     
     <div class="card-content article ">
+        <!--top置顶排序2019/7/12-->
+        
+        <!--排序结束-->
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
@@ -146,7 +149,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 335 个字)
+                    2 分钟 读完 (大约 340 个字)
                 </span>
                 
                 
@@ -159,7 +162,9 @@
             
         </h1>
         <div class="content">
-            <h4 id="割点判定法则"><a href="#割点判定法则" class="headerlink" title="割点判定法则"></a>割点判定法则</h4><ul>
+            <p>Tarjan求割点</p>
+<a id="more"></a>
+<h4 id="割点判定法则"><a href="#割点判定法则" class="headerlink" title="割点判定法则"></a>割点判定法则</h4><ul>
 <li>若x不是搜索树的根节点，则x是割点当且仅当搜索树上存在一个x的子节点y，满足：$dfn[x]\leq low[y]$。 特别的，若x是搜索树的根节点，则x是割点当且仅当搜索树上至少存在两个子节点$y_1,y_2$满足此条件。</li>
 <li>证明方法与求桥雷同。</li>
 <li>因为判定是小于等于，所以求割点时，无需考虑父节点和重边的问题，从x出发访问的所有时间戳均可更新$low[x]$。</li>
@@ -337,7 +342,7 @@ int main(){
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        50
+                        49
                     </p>
                 </div>
             </div>
@@ -347,7 +352,7 @@ int main(){
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        8
+                        6
                     </p>
                 </div>
             </div>
@@ -516,7 +521,7 @@ int main(){
                 <span class="level-item">知识点</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/OI/集训/">
@@ -532,17 +537,9 @@ int main(){
                 <span class="level-item">题目</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">29</span>
+                <span class="level-item tag">30</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/OI-题目/">
-            <span class="level-start">
-                <span class="level-item">OI - 题目</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/政治/">
             <span class="level-start">
                 <span class="level-item">政治</span>
@@ -587,7 +584,7 @@ int main(){
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-06T07:05:38.000Z">2019-06-06</time></div>
                     <a href="/2019/06/06/codeforces-484-b-maximum-value/" class="has-link-black-ter is-size-6"> CodeForces 484 B. Maximum Value</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI-题目/">OI - 题目</a>
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
                     </p>
                 </div>
             </div>
@@ -698,7 +695,7 @@ int main(){
                     <span class="level-item">五月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">15</span>
+                    <span class="level-item tag">14</span>
                 </span>
             </a>
         </li>
@@ -907,7 +904,7 @@ int main(){
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-06T07:05:38.000Z">2019-06-06</time></div>
                     <a href="/2019/06/06/codeforces-484-b-maximum-value/" class="has-link-black-ter is-size-6"> CodeForces 484 B. Maximum Value</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI-题目/">OI - 题目</a>
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
                     </p>
                 </div>
             </div>
@@ -1018,7 +1015,7 @@ int main(){
                     <span class="level-item">五月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">15</span>
+                    <span class="level-item tag">14</span>
                 </span>
             </a>
         </li>
@@ -1208,7 +1205,7 @@ int main(){
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt=" Tarjan求割点		" height="28">
+                    Blog of YorkWu
                 
                 </a>
                 <p class="is-size-7">

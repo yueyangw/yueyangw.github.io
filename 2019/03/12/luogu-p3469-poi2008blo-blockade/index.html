@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="题目链接 题目大意给定一张无向图，求每个点被封锁之后有多少个有序点对(x,y)(x!=y,1&amp;lt;=x,y&amp;lt;=n)满足x无法到达y。 输入第1行：N, M （1&amp;lt;=N&amp;lt;=100000, 1&amp;lt;=M&amp;lt;=500000） 第2~M+1行 X Y 表示X与Y中有一条边。 输出共N行，每行一个正整数代表如果去掉第i个点有多少个不能到大的点对。  代码如下#include&amp;lt;">
+    <meta name="description" content="题目链接">
 <meta property="og:type" content="article">
 <meta property="og:title" content=" Luogu P3469 [POI2008]BLO-Blockade		">
 <meta property="og:url" content="http://yueyangw.github.io/2019/03/12/luogu-p3469-poi2008blo-blockade/index.html">
 <meta property="og:site_name" content="Blog of YorkWu">
-<meta property="og:description" content="题目链接 题目大意给定一张无向图，求每个点被封锁之后有多少个有序点对(x,y)(x!=y,1&amp;lt;=x,y&amp;lt;=n)满足x无法到达y。 输入第1行：N, M （1&amp;lt;=N&amp;lt;=100000, 1&amp;lt;=M&amp;lt;=500000） 第2~M+1行 X Y 表示X与Y中有一条边。 输出共N行，每行一个正整数代表如果去掉第i个点有多少个不能到大的点对。  代码如下#include&amp;lt;">
+<meta property="og:description" content="题目链接">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yueyangw.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-11T17:02:28.183Z">
+<meta property="og:updated_time" content="2019-07-12T02:54:20.373Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" Luogu P3469 [POI2008]BLO-Blockade		">
-<meta name="twitter:description" content="题目链接 题目大意给定一张无向图，求每个点被封锁之后有多少个有序点对(x,y)(x!=y,1&amp;lt;=x,y&amp;lt;=n)满足x无法到达y。 输入第1行：N, M （1&amp;lt;=N&amp;lt;=100000, 1&amp;lt;=M&amp;lt;=500000） 第2~M+1行 X Y 表示X与Y中有一条边。 输出共N行，每行一个正整数代表如果去掉第i个点有多少个不能到大的点对。  代码如下#include&amp;lt;">
+<meta name="twitter:description" content="题目链接">
 <meta name="twitter:image" content="http://yueyangw.github.io/images/og_image.png">
 
 
@@ -93,7 +93,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt=" Luogu P3469 [POI2008]BLO-Blockade		" height="28">
+                Blog of YorkWu
             
             </a>
         </div>
@@ -132,6 +132,9 @@
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
     
     <div class="card-content article ">
+        <!--top置顶排序2019/7/12-->
+        
+        <!--排序结束-->
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
@@ -145,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 307 个字)
+                    2 分钟 读完 (大约 309 个字)
                 </span>
                 
                 
@@ -159,68 +162,13 @@
         </h1>
         <div class="content">
             <p><a href="https://www.luogu.org/problemnew/show/P3469" title="题目链接" target="_blank" rel="noopener">题目链接</a></p>
+<a id="more"></a>
+
 <h4 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h4><p>给定一张无向图，求每个点被封锁之后有多少个有序点对(x,y)(x!=y,1&lt;=x,y&lt;=n)满足x无法到达y。</p>
 <h4 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h4><p>第1行：N, M （1&lt;=N&lt;=100000, 1&lt;=M&lt;=500000） 第2~M+1行 X Y 表示X与Y中有一条边。</p>
 <h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><p>共N行，每行一个正整数代表如果去掉第i个点有多少个不能到大的点对。</p>
 <hr>
-<h4 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h4><pre><code>#include&lt;bits/stdc++.h&gt;
-using namespace std;
-typedef long long ll;
-const int SIZE=500009;
-struct Edge{
-    int to,next;
-}e[2*SIZE];
-int head[100010],tot,num,dfn[100010],low[100010],n,m;
-ll ans[100009],size[100009];
-bool cut[100010];
-
-void add(int x,int y){
-    e[++tot].to=y;
-    e[tot].next=head[x];
-    head[x]=tot;
-}
-
-void tarjan(int x){
-    dfn[x]=low[x]=++num;
-    size[x]=1;
-    int cnt=0;
-    ll sum=0;
-    for(int i=head[x];i;i=e[i].next){
-        int y=e[i].to;
-        if(!dfn[y]){
-            tarjan(y);
-            size[x]+=size[y];
-            low[x]=min(low[x],low[y]);
-            if(low[y]&gt;=dfn[x]){
-                cnt++;
-                ans[x]+=(ll)size[y]*(n-size[y]);
-                sum+=size[y];
-                if(x!=1||cnt&gt;1) cut[x]=1;
-            }
-        }
-        else low[x]=min(low[x],dfn[y]);
-    }
-    if(cut[x]){
-        ans[x]+=(n-sum-1)*(sum+1)+(n-1);
-    }
-    else ans[x]=2*(n-1);
-}
-
-int main(){
-    cin&gt;&gt;n&gt;&gt;m;
-    tot=1;
-    for(int i=1;i&lt;=m;i++){
-        int x,y;
-        scanf(&quot;%d%d&quot;,&amp;x,&amp;y);
-        if(x==y) continue;
-        add(x,y),add(y,x);
-    }
-    tarjan(1);
-    for(int i=1;i&lt;=n;i++){
-        printf(&quot;%lld\n&quot;, ans[i]);
-    }
-    return 0;
-}</code></pre>
+<h4 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h4><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> SIZE=<span class="hljs-number">500009</span>;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span>&#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> to,next;</span><br><span class="line">&#125;e[<span class="hljs-number">2</span>*SIZE];</span><br><span class="line"><span class="hljs-keyword">int</span> head[<span class="hljs-number">100010</span>],tot,num,dfn[<span class="hljs-number">100010</span>],low[<span class="hljs-number">100010</span>],n,m;</span><br><span class="line">ll ans[<span class="hljs-number">100009</span>],size[<span class="hljs-number">100009</span>];</span><br><span class="line"><span class="hljs-keyword">bool</span> cut[<span class="hljs-number">100010</span>];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    e[++tot].to=y;</span><br><span class="line">    e[tot].next=head[x];</span><br><span class="line">    head[x]=tot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">tarjan</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    dfn[x]=low[x]=++num;</span><br><span class="line">    size[x]=<span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">int</span> cnt=<span class="hljs-number">0</span>;</span><br><span class="line">    ll sum=<span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=head[x];i;i=e[i].next)&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> y=e[i].to;</span><br><span class="line">        <span class="hljs-keyword">if</span>(!dfn[y])&#123;</span><br><span class="line">            tarjan(y);</span><br><span class="line">            size[x]+=size[y];</span><br><span class="line">            low[x]=min(low[x],low[y]);</span><br><span class="line">            <span class="hljs-keyword">if</span>(low[y]&gt;=dfn[x])&#123;</span><br><span class="line">                cnt++;</span><br><span class="line">                ans[x]+=(ll)size[y]*(n-size[y]);</span><br><span class="line">                sum+=size[y];</span><br><span class="line">                <span class="hljs-keyword">if</span>(x!=<span class="hljs-number">1</span>||cnt&gt;<span class="hljs-number">1</span>) cut[x]=<span class="hljs-number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">else</span> low[x]=min(low[x],dfn[y]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">if</span>(cut[x])&#123;</span><br><span class="line">        ans[x]+=(n-sum<span class="hljs-number">-1</span>)*(sum+<span class="hljs-number">1</span>)+(n<span class="hljs-number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">else</span> ans[x]=<span class="hljs-number">2</span>*(n<span class="hljs-number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    tot=<span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> x,y;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>,&amp;x,&amp;y);</span><br><span class="line">        <span class="hljs-keyword">if</span>(x==y) <span class="hljs-keyword">continue</span>;</span><br><span class="line">        add(x,y),add(y,x);</span><br><span class="line">    &#125;</span><br><span class="line">    tarjan(<span class="hljs-number">1</span>);</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>, ans[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
         
@@ -327,7 +275,7 @@ int main(){
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        50
+                        49
                     </p>
                 </div>
             </div>
@@ -337,7 +285,7 @@ int main(){
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        8
+                        6
                     </p>
                 </div>
             </div>
@@ -506,7 +454,7 @@ int main(){
                 <span class="level-item">知识点</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/OI/集训/">
@@ -522,17 +470,9 @@ int main(){
                 <span class="level-item">题目</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">29</span>
+                <span class="level-item tag">30</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/OI-题目/">
-            <span class="level-start">
-                <span class="level-item">OI - 题目</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/政治/">
             <span class="level-start">
                 <span class="level-item">政治</span>
@@ -577,7 +517,7 @@ int main(){
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-06T07:05:38.000Z">2019-06-06</time></div>
                     <a href="/2019/06/06/codeforces-484-b-maximum-value/" class="has-link-black-ter is-size-6"> CodeForces 484 B. Maximum Value</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI-题目/">OI - 题目</a>
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
                     </p>
                 </div>
             </div>
@@ -688,7 +628,7 @@ int main(){
                     <span class="level-item">五月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">15</span>
+                    <span class="level-item tag">14</span>
                 </span>
             </a>
         </li>
@@ -897,7 +837,7 @@ int main(){
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-06T07:05:38.000Z">2019-06-06</time></div>
                     <a href="/2019/06/06/codeforces-484-b-maximum-value/" class="has-link-black-ter is-size-6"> CodeForces 484 B. Maximum Value</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI-题目/">OI - 题目</a>
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
                     </p>
                 </div>
             </div>
@@ -1008,7 +948,7 @@ int main(){
                     <span class="level-item">五月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">15</span>
+                    <span class="level-item tag">14</span>
                 </span>
             </a>
         </li>
@@ -1198,7 +1138,7 @@ int main(){
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt=" Luogu P3469 [POI2008]BLO-Blockade		" height="28">
+                    Blog of YorkWu
                 
                 </a>
                 <p class="is-size-7">

@@ -7,19 +7,19 @@
 
 
 
-    <meta name="description" content="题目链接  题目翻译：给定序列$a_n$，求$a_i \% a_j$的最大值，$1 \leq i,j \leq n$且$a_i&amp;gt;a_j$。 可以先将输入的数据由小到大排序，如果有相同的数据就去重，然后枚举除数，对于一个除数，从它的二倍开始，直到它大于数列中的最大值。 。。。好不通顺。。。看代码吧。 12345678910111213141516171819202122232425262728">
+    <meta name="description" content="题目链接">
 <meta name="keywords" content="精">
 <meta property="og:type" content="article">
 <meta property="og:title" content=" CodeForces 484 B. Maximum Value">
 <meta property="og:url" content="http://yueyangw.github.io/2019/06/06/codeforces-484-b-maximum-value/index.html">
 <meta property="og:site_name" content="Blog of YorkWu">
-<meta property="og:description" content="题目链接  题目翻译：给定序列$a_n$，求$a_i \% a_j$的最大值，$1 \leq i,j \leq n$且$a_i&amp;gt;a_j$。 可以先将输入的数据由小到大排序，如果有相同的数据就去重，然后枚举除数，对于一个除数，从它的二倍开始，直到它大于数列中的最大值。 。。。好不通顺。。。看代码吧。 12345678910111213141516171819202122232425262728">
+<meta property="og:description" content="题目链接">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yueyangw.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-11T17:05:06.299Z">
+<meta property="og:updated_time" content="2019-07-12T02:17:57.014Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" CodeForces 484 B. Maximum Value">
-<meta name="twitter:description" content="题目链接  题目翻译：给定序列$a_n$，求$a_i \% a_j$的最大值，$1 \leq i,j \leq n$且$a_i&amp;gt;a_j$。 可以先将输入的数据由小到大排序，如果有相同的数据就去重，然后枚举除数，对于一个除数，从它的二倍开始，直到它大于数列中的最大值。 。。。好不通顺。。。看代码吧。 12345678910111213141516171819202122232425262728">
+<meta name="twitter:description" content="题目链接">
 <meta name="twitter:image" content="http://yueyangw.github.io/images/og_image.png">
 
 
@@ -94,7 +94,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt=" CodeForces 484 B. Maximum Value" height="28">
+                Blog of YorkWu
             
             </a>
         </div>
@@ -133,20 +133,23 @@
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
     
     <div class="card-content article ">
+        <!--top置顶排序2019/7/12-->
+        
+        <!--排序结束-->
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-06-06T07:05:38.000Z">2019-06-06</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI-题目/">OI - 题目</a>
+                <a class="has-link-grey -link" href="/categories/OI/">OI</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 261 个字)
+                    2 分钟 读完 (大约 262 个字)
                 </span>
                 
                 
@@ -160,6 +163,8 @@
         </h1>
         <div class="content">
             <p><a href="http://codeforces.com/problemset/problem/484/B" title="题目链接" target="_blank" rel="noopener">题目链接</a></p>
+<a id="more"></a>
+
 <hr>
 <p>题目翻译：给定序列$a_n$，求$a_i \% a_j$的最大值，$1 \leq i,j \leq n$且$a_i&gt;a_j$。 可以先将输入的数据由小到大排序，如果有相同的数据就去重，然后枚举除数，对于一个除数，从它的二倍开始，直到它大于数列中的最大值。 。。。好不通顺。。。看代码吧。</p>
 <figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">cmp</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span>&amp; a,<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span>&amp; b)</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> a&gt;b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Solution</span>&#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> n,ans,maxn,q;</span><br><span class="line">    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; a;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Solve</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;n);</span><br><span class="line">        a.resize(n);</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;a[i]);</span><br><span class="line">            maxn=max(maxn,a[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        sort(a.begin(),a.end());</span><br><span class="line">        n=unique(a.begin(),a.end())-a.begin();</span><br><span class="line">        a.resize(n);</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> k=<span class="hljs-number">2</span>*a[i];</span><br><span class="line">            <span class="hljs-keyword">while</span>(k&lt;maxn+a[i])&#123;</span><br><span class="line">                <span class="hljs-keyword">int</span> x=lower_bound(a.begin(),a.end(),k)-a.begin()<span class="hljs-number">-1</span>;</span><br><span class="line">                <span class="hljs-keyword">if</span>(x==<span class="hljs-number">-1</span>)&#123;</span><br><span class="line">                    k+=a[i];</span><br><span class="line">                    <span class="hljs-keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="hljs-comment">//printf("k=%d a[%d]=%d a[x] mod a[i]=%d\n",k,x,a[x],a[x]%a[i]);</span></span><br><span class="line">                ans=max(ans,a[x]%a[i]);</span><br><span class="line">                k+=a[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,ans);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    Solution().Solve();</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -271,7 +276,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        50
+                        49
                     </p>
                 </div>
             </div>
@@ -281,7 +286,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        8
+                        6
                     </p>
                 </div>
             </div>
@@ -450,7 +455,7 @@
                 <span class="level-item">知识点</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/OI/集训/">
@@ -466,17 +471,9 @@
                 <span class="level-item">题目</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">29</span>
+                <span class="level-item tag">30</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/OI-题目/">
-            <span class="level-start">
-                <span class="level-item">OI - 题目</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/政治/">
             <span class="level-start">
                 <span class="level-item">政治</span>
@@ -521,7 +518,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-06T07:05:38.000Z">2019-06-06</time></div>
                     <a href="/2019/06/06/codeforces-484-b-maximum-value/" class="has-link-black-ter is-size-6"> CodeForces 484 B. Maximum Value</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI-题目/">OI - 题目</a>
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
                     </p>
                 </div>
             </div>
@@ -632,7 +629,7 @@
                     <span class="level-item">五月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">15</span>
+                    <span class="level-item tag">14</span>
                 </span>
             </a>
         </li>
@@ -841,7 +838,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-06T07:05:38.000Z">2019-06-06</time></div>
                     <a href="/2019/06/06/codeforces-484-b-maximum-value/" class="has-link-black-ter is-size-6"> CodeForces 484 B. Maximum Value</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI-题目/">OI - 题目</a>
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
                     </p>
                 </div>
             </div>
@@ -952,7 +949,7 @@
                     <span class="level-item">五月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">15</span>
+                    <span class="level-item tag">14</span>
                 </span>
             </a>
         </li>
@@ -1142,7 +1139,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt=" CodeForces 484 B. Maximum Value" height="28">
+                    Blog of YorkWu
                 
                 </a>
                 <p class="is-size-7">

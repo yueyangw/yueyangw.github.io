@@ -7,19 +7,19 @@
 
 
 
-    <meta name="description" content="状态压缩DP最短哈密顿回路问题 给定一个完全图，带正边权$w(u,v)$。求出一个顶点的排列$v_1,v_2,…,v_n$，使得$w(v_1,v_2),w(v_2,v_3),…,w(v_{n-1},v_n),w(v_n,v_1)$的和最小。  $n\leq17$  $f[i][j]$表示在$i$这个点集中，从$0$到$j$的最短距离。（$0和$j$都在$i$集合里）//0~n-1 for(int">
+    <meta name="description" content="状态压缩DP">
 <meta name="keywords" content="dp">
 <meta property="og:type" content="article">
 <meta property="og:title" content=" 清北学堂noip2019集训D6——动态规划		">
 <meta property="og:url" content="http://yueyangw.github.io/2019/03/09/e6-b8-85-e5-8c-97-e5-ad-a6-e5-a0-82noip2019-e9-9b-86-e8-ae-add6-e5-8a-a8-e6-80-81-e8-a7-84-e5-88-92/index.html">
 <meta property="og:site_name" content="Blog of YorkWu">
-<meta property="og:description" content="状态压缩DP最短哈密顿回路问题 给定一个完全图，带正边权$w(u,v)$。求出一个顶点的排列$v_1,v_2,…,v_n$，使得$w(v_1,v_2),w(v_2,v_3),…,w(v_{n-1},v_n),w(v_n,v_1)$的和最小。  $n\leq17$  $f[i][j]$表示在$i$这个点集中，从$0$到$j$的最短距离。（$0和$j$都在$i$集合里）//0~n-1 for(int">
+<meta property="og:description" content="状态压缩DP">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yueyangw.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-11T17:02:28.183Z">
+<meta property="og:updated_time" content="2019-07-12T02:50:51.461Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" 清北学堂noip2019集训D6——动态规划		">
-<meta name="twitter:description" content="状态压缩DP最短哈密顿回路问题 给定一个完全图，带正边权$w(u,v)$。求出一个顶点的排列$v_1,v_2,…,v_n$，使得$w(v_1,v_2),w(v_2,v_3),…,w(v_{n-1},v_n),w(v_n,v_1)$的和最小。  $n\leq17$  $f[i][j]$表示在$i$这个点集中，从$0$到$j$的最短距离。（$0和$j$都在$i$集合里）//0~n-1 for(int">
+<meta name="twitter:description" content="状态压缩DP">
 <meta name="twitter:image" content="http://yueyangw.github.io/images/og_image.png">
 
 
@@ -94,7 +94,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt=" 清北学堂noip2019集训D6——动态规划		" height="28">
+                Blog of YorkWu
             
             </a>
         </div>
@@ -133,6 +133,9 @@
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
     
     <div class="card-content article ">
+        <!--top置顶排序2019/7/12-->
+        
+        <!--排序结束-->
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
@@ -146,7 +149,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 286 个字)
+                    2 分钟 读完 (大约 287 个字)
                 </span>
                 
                 
@@ -159,7 +162,9 @@
             
         </h1>
         <div class="content">
-            <h3 id="状态压缩DP"><a href="#状态压缩DP" class="headerlink" title="状态压缩DP"></a>状态压缩DP</h3><h4 id="最短哈密顿回路问题"><a href="#最短哈密顿回路问题" class="headerlink" title="最短哈密顿回路问题"></a>最短哈密顿回路问题</h4><ul>
+            <h3 id="状态压缩DP"><a href="#状态压缩DP" class="headerlink" title="状态压缩DP"></a>状态压缩DP</h3><a id="more"></a>
+
+<h4 id="最短哈密顿回路问题"><a href="#最短哈密顿回路问题" class="headerlink" title="最短哈密顿回路问题"></a>最短哈密顿回路问题</h4><ul>
 <li><p>给定一个完全图，带正边权$w(u,v)$。求出一个顶点的排列$v_1,v_2,…,v_n$，使得$w(v_1,v_2),w(v_2,v_3),…,w(v_{n-1},v_n),w(v_n,v_1)$的和最小。</p>
 </li>
 <li><p>$n\leq17$</p>
@@ -312,7 +317,7 @@ $n$个点的二分图，求其最小支配集。$n\leq30$(两边一共$n$个点)
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        50
+                        49
                     </p>
                 </div>
             </div>
@@ -322,7 +327,7 @@ $n$个点的二分图，求其最小支配集。$n\leq30$(两边一共$n$个点)
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        8
+                        6
                     </p>
                 </div>
             </div>
@@ -491,7 +496,7 @@ $n$个点的二分图，求其最小支配集。$n\leq30$(两边一共$n$个点)
                 <span class="level-item">知识点</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/OI/集训/">
@@ -507,17 +512,9 @@ $n$个点的二分图，求其最小支配集。$n\leq30$(两边一共$n$个点)
                 <span class="level-item">题目</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">29</span>
+                <span class="level-item tag">30</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/OI-题目/">
-            <span class="level-start">
-                <span class="level-item">OI - 题目</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/政治/">
             <span class="level-start">
                 <span class="level-item">政治</span>
@@ -562,7 +559,7 @@ $n$个点的二分图，求其最小支配集。$n\leq30$(两边一共$n$个点)
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-06T07:05:38.000Z">2019-06-06</time></div>
                     <a href="/2019/06/06/codeforces-484-b-maximum-value/" class="has-link-black-ter is-size-6"> CodeForces 484 B. Maximum Value</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI-题目/">OI - 题目</a>
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
                     </p>
                 </div>
             </div>
@@ -673,7 +670,7 @@ $n$个点的二分图，求其最小支配集。$n\leq30$(两边一共$n$个点)
                     <span class="level-item">五月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">15</span>
+                    <span class="level-item tag">14</span>
                 </span>
             </a>
         </li>
@@ -882,7 +879,7 @@ $n$个点的二分图，求其最小支配集。$n\leq30$(两边一共$n$个点)
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-06T07:05:38.000Z">2019-06-06</time></div>
                     <a href="/2019/06/06/codeforces-484-b-maximum-value/" class="has-link-black-ter is-size-6"> CodeForces 484 B. Maximum Value</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI-题目/">OI - 题目</a>
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
                     </p>
                 </div>
             </div>
@@ -993,7 +990,7 @@ $n$个点的二分图，求其最小支配集。$n\leq30$(两边一共$n$个点)
                     <span class="level-item">五月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">15</span>
+                    <span class="level-item tag">14</span>
                 </span>
             </a>
         </li>
@@ -1183,7 +1180,7 @@ $n$个点的二分图，求其最小支配集。$n\leq30$(两边一共$n$个点)
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt=" 清北学堂noip2019集训D6——动态规划		" height="28">
+                    Blog of YorkWu
                 
                 </a>
                 <p class="is-size-7">

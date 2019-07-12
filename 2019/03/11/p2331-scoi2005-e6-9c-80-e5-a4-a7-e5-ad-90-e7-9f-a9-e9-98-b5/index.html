@@ -7,19 +7,19 @@
 
 
 
-    <meta name="description" content="题目描述这里有一个n*m的矩阵，请你选出其中k个子矩阵，使得这个k个子矩阵分值之和最大。注意：选出的k个子矩阵不能相互重叠。 输入输出格式输入格式：第一行为n,m,k（1≤n≤100,1≤m≤2,1≤k≤10），接下来n行描述矩阵每行中的每个元素的分值(每个元素的分值的绝对值不超过32767)。 输出格式：只有一行为k个子矩阵分值之和最大为多少。 题目链接 思路 首先，可以注意到，m只能为1或2，">
+    <meta name="description" content="P2331 [SCOI2005]最大子矩阵">
 <meta name="keywords" content="dp,前缀和">
 <meta property="og:type" content="article">
 <meta property="og:title" content=" P2331 [SCOI2005]最大子矩阵		">
 <meta property="og:url" content="http://yueyangw.github.io/2019/03/11/p2331-scoi2005-e6-9c-80-e5-a4-a7-e5-ad-90-e7-9f-a9-e9-98-b5/index.html">
 <meta property="og:site_name" content="Blog of YorkWu">
-<meta property="og:description" content="题目描述这里有一个n*m的矩阵，请你选出其中k个子矩阵，使得这个k个子矩阵分值之和最大。注意：选出的k个子矩阵不能相互重叠。 输入输出格式输入格式：第一行为n,m,k（1≤n≤100,1≤m≤2,1≤k≤10），接下来n行描述矩阵每行中的每个元素的分值(每个元素的分值的绝对值不超过32767)。 输出格式：只有一行为k个子矩阵分值之和最大为多少。 题目链接 思路 首先，可以注意到，m只能为1或2，">
+<meta property="og:description" content="P2331 [SCOI2005]最大子矩阵">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yueyangw.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-11T17:02:28.183Z">
+<meta property="og:updated_time" content="2019-07-12T02:55:41.242Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" P2331 [SCOI2005]最大子矩阵		">
-<meta name="twitter:description" content="题目描述这里有一个n*m的矩阵，请你选出其中k个子矩阵，使得这个k个子矩阵分值之和最大。注意：选出的k个子矩阵不能相互重叠。 输入输出格式输入格式：第一行为n,m,k（1≤n≤100,1≤m≤2,1≤k≤10），接下来n行描述矩阵每行中的每个元素的分值(每个元素的分值的绝对值不超过32767)。 输出格式：只有一行为k个子矩阵分值之和最大为多少。 题目链接 思路 首先，可以注意到，m只能为1或2，">
+<meta name="twitter:description" content="P2331 [SCOI2005]最大子矩阵">
 <meta name="twitter:image" content="http://yueyangw.github.io/images/og_image.png">
 
 
@@ -94,7 +94,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt=" P2331 [SCOI2005]最大子矩阵		" height="28">
+                Blog of YorkWu
             
             </a>
         </div>
@@ -133,6 +133,9 @@
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
     
     <div class="card-content article ">
+        <!--top置顶排序2019/7/12-->
+        
+        <!--排序结束-->
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
@@ -146,7 +149,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 630 个字)
+                    4 分钟 读完 (大约 638 个字)
                 </span>
                 
                 
@@ -159,7 +162,9 @@
             
         </h1>
         <div class="content">
-            <h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>这里有一个n*m的矩阵，请你选出其中k个子矩阵，使得这个k个子矩阵分值之和最大。注意：选出的k个子矩阵不能相互重叠。</p>
+            <p>P2331 [SCOI2005]最大子矩阵</p>
+<a id="more"></a>
+<h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>这里有一个n*m的矩阵，请你选出其中k个子矩阵，使得这个k个子矩阵分值之和最大。注意：选出的k个子矩阵不能相互重叠。</p>
 <h4 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h4><h5 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h5><p>第一行为n,m,k（1≤n≤100,1≤m≤2,1≤k≤10），接下来n行描述矩阵每行中的每个元素的分值(每个元素的分值的绝对值不超过32767)。</p>
 <h5 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h5><p>只有一行为k个子矩阵分值之和最大为多少。 <a href="https://www.luogu.org/problemnew/show/P2331" title="题目链接" target="_blank" rel="noopener">题目链接</a></p>
 <h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><ul>
@@ -334,7 +339,7 @@ int main(){
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        50
+                        49
                     </p>
                 </div>
             </div>
@@ -344,7 +349,7 @@ int main(){
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        8
+                        6
                     </p>
                 </div>
             </div>
@@ -513,7 +518,7 @@ int main(){
                 <span class="level-item">知识点</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/OI/集训/">
@@ -529,17 +534,9 @@ int main(){
                 <span class="level-item">题目</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">29</span>
+                <span class="level-item tag">30</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/OI-题目/">
-            <span class="level-start">
-                <span class="level-item">OI - 题目</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/政治/">
             <span class="level-start">
                 <span class="level-item">政治</span>
@@ -584,7 +581,7 @@ int main(){
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-06T07:05:38.000Z">2019-06-06</time></div>
                     <a href="/2019/06/06/codeforces-484-b-maximum-value/" class="has-link-black-ter is-size-6"> CodeForces 484 B. Maximum Value</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI-题目/">OI - 题目</a>
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
                     </p>
                 </div>
             </div>
@@ -695,7 +692,7 @@ int main(){
                     <span class="level-item">五月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">15</span>
+                    <span class="level-item tag">14</span>
                 </span>
             </a>
         </li>
@@ -904,7 +901,7 @@ int main(){
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-06T07:05:38.000Z">2019-06-06</time></div>
                     <a href="/2019/06/06/codeforces-484-b-maximum-value/" class="has-link-black-ter is-size-6"> CodeForces 484 B. Maximum Value</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI-题目/">OI - 题目</a>
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
                     </p>
                 </div>
             </div>
@@ -1015,7 +1012,7 @@ int main(){
                     <span class="level-item">五月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">15</span>
+                    <span class="level-item tag">14</span>
                 </span>
             </a>
         </li>
@@ -1205,7 +1202,7 @@ int main(){
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt=" P2331 [SCOI2005]最大子矩阵		" height="28">
+                    Blog of YorkWu
                 
                 </a>
                 <p class="is-size-7">

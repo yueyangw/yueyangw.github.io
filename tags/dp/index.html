@@ -89,7 +89,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Blog of YorkWu" height="28">
+                Blog of YorkWu
             
             </a>
         </div>
@@ -139,6 +139,9 @@
     <div class="card">
     
     <div class="card-content article ">
+        <!--top置顶排序2019/7/12-->
+        
+        <!--排序结束-->
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
@@ -191,6 +194,9 @@
     <div class="card">
     
     <div class="card-content article ">
+        <!--top置顶排序2019/7/12-->
+        
+        <!--排序结束-->
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
@@ -243,6 +249,9 @@
     <div class="card">
     
     <div class="card-content article ">
+        <!--top置顶排序2019/7/12-->
+        
+        <!--排序结束-->
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
@@ -295,6 +304,9 @@
     <div class="card">
     
     <div class="card-content article ">
+        <!--top置顶排序2019/7/12-->
+        
+        <!--排序结束-->
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
@@ -347,6 +359,9 @@
     <div class="card">
     
     <div class="card-content article ">
+        <!--top置顶排序2019/7/12-->
+        
+        <!--排序结束-->
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
@@ -399,6 +414,9 @@
     <div class="card">
     
     <div class="card-content article ">
+        <!--top置顶排序2019/7/12-->
+        
+        <!--排序结束-->
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
@@ -451,6 +469,9 @@
     <div class="card">
     
     <div class="card-content article ">
+        <!--top置顶排序2019/7/12-->
+        
+        <!--排序结束-->
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
@@ -506,6 +527,9 @@
     <div class="card">
     
     <div class="card-content article ">
+        <!--top置顶排序2019/7/12-->
+        
+        <!--排序结束-->
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
@@ -519,7 +543,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    5 分钟 读完 (大约 686 个字)
+                    5 分钟 读完 (大约 698 个字)
                 </span>
                 
                 
@@ -532,31 +556,17 @@
             
         </h1>
         <div class="content">
-            <a id="more"></a>
-<h4 id="简单入门题——没有上司的舞会"><a href="#简单入门题——没有上司的舞会" class="headerlink" title="简单入门题——没有上司的舞会"></a>简单入门题——没有上司的舞会</h4><p>一棵树，每个点有权值，一个点和其儿子 / 父亲不能同时取，求解从树上选取点能获得的最大权值。 - 树形 DP 中的覆盖问题，同时是一个子树转移问题（当前树的最优解由子树的最优解得到） 对于这类问题，我们应该维护每个子树的最优解 并关注子树到根的转移方式</p>
-<ul>
-<li>$dp[i][0]$ 表示我们不选择 $i$ 节点时子树的最大值 $dp[i][1]$ 表示我们选择 $i$ 节点时子树的最大值 转移方程，对于每个节点 $i$ 的所有子节点 $dp[i][0] += max(dp[j][0], dp[j][1])$ $dp[i][1] += dp[j][0]$<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-keyword">int</span> n,f[<span class="hljs-number">6009</span>][<span class="hljs-number">2</span>],value[<span class="hljs-number">6009</span>],root;</span><br><span class="line"><span class="hljs-keyword">bool</span> vis[<span class="hljs-number">6009</span>];</span><br><span class="line"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; son[<span class="hljs-number">6009</span>];</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dp</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    f[u][<span class="hljs-number">0</span>]=<span class="hljs-number">0</span>;</span><br><span class="line">    f[u][<span class="hljs-number">1</span>]=value[u];</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;son[u].size();i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> y=son[u][i];</span><br><span class="line">        dp(y);</span><br><span class="line">        f[u][<span class="hljs-number">0</span>]+=max(f[y][<span class="hljs-number">0</span>],f[y][<span class="hljs-number">1</span>]);</span><br><span class="line">        f[u][<span class="hljs-number">1</span>]+=f[y][<span class="hljs-number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="hljs-built_in">cin</span>&gt;&gt;value[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>)&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> x,y;</span><br><span class="line">        <span class="hljs-built_in">cin</span>&gt;&gt;x&gt;&gt;y;</span><br><span class="line">        <span class="hljs-keyword">if</span>(x==y&amp;&amp;x==<span class="hljs-number">0</span>) <span class="hljs-keyword">break</span>;</span><br><span class="line">        vis[x]=<span class="hljs-number">1</span>;</span><br><span class="line">        son[y].push_back(x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(vis[i]==<span class="hljs-number">0</span>)&#123;</span><br><span class="line">            root=i;</span><br><span class="line">            <span class="hljs-keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    dp(root);</span><br><span class="line">    <span class="hljs-built_in">cout</span>&lt;&lt;max(f[root][<span class="hljs-number">0</span>],f[root][<span class="hljs-number">1</span>]);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<hr>
-<h4 id="Codeforce——767C-Garland"><a href="#Codeforce——767C-Garland" class="headerlink" title="Codeforce——767C Garland"></a>Codeforce——767C Garland</h4><p>给定一个树，树有点权 要求你把树的某些边删去，使得树变成三个部分 每个部分的点权值和都相等 <img src="http://yueyangwu.cn/wp-content/uploads/2019/04/%E5%9B%BE%E7%89%871-1.png" alt="题目" title="题目"> - 思路：可以想到，一旦能够找到一颗子树和为$w_总/3$就把它和它的父节点断开，即可。 - 原因：因为如果两颗子树的和各是总和的三分之一，那么它们一定不会有交集。</p>
-<hr>
-<h4 id="HDU-3586"><a href="#HDU-3586" class="headerlink" title="HDU 3586"></a>HDU 3586</h4><p>给定一颗无向带权树，要切断所有叶子节点和根节点的联系，每次切断的费用不能超过上限 Limit，问在保证 总费用 &lt;=m 的情况下最小的 Limit - 二分+树形DP - dp[u]表示u子树中上限为limit时符合条件的最小总费用。 那么可以这样设计转移：</p>
-<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">if</span>(dis(u,v)&gt;limit)&#123;</span><br><span class="line">    dp[u]+=dp[v];</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">else</span>&#123;</span><br><span class="line">    dp[u]+=min(dp[u],dis(u,v));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="Luogu-P2458——保安站岗"><a href="#Luogu-P2458——保安站岗" class="headerlink" title="Luogu P2458——保安站岗"></a>Luogu P2458——保安站岗</h4><p>设计状态$dp[i][0/1/2]$， - $dp[i][0]$表示靠父节点的控制 - $dp[i][1]$表示靠自己的控制 - $dp[i][2]$表示靠子节点的控制 这样即可推得状态转移方程： - $dp[u][0]=\sum min(dp[v][1],dp[v][2])$ - $dp[u][1]=\sum min(dp[v][0],dp[v][1],dp[v][2])+val[u]$ - $dp[u][2]=\sum min(dp[v][1],dp[v][2])+某一个dp[v][2]$(这个比较麻烦。。。)</p>
-<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; son[<span class="hljs-number">1509</span>];</span><br><span class="line"><span class="hljs-keyword">int</span> n,v[<span class="hljs-number">1509</span>],dp[<span class="hljs-number">1509</span>][<span class="hljs-number">3</span>];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> fa)</span></span>&#123;</span><br><span class="line">    dp[x][<span class="hljs-number">0</span>]=dp[x][<span class="hljs-number">1</span>]=<span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;son[x].size();i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> y=son[x][i];</span><br><span class="line">        <span class="hljs-keyword">if</span>(y==fa) <span class="hljs-keyword">continue</span>;</span><br><span class="line">        f(y,x);</span><br><span class="line">        dp[x][<span class="hljs-number">0</span>]+=min(dp[y][<span class="hljs-number">1</span>],dp[y][<span class="hljs-number">2</span>]);</span><br><span class="line">        dp[x][<span class="hljs-number">1</span>]+=min(min(dp[y][<span class="hljs-number">0</span>],dp[y][<span class="hljs-number">1</span>]),dp[y][<span class="hljs-number">2</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    dp[x][<span class="hljs-number">1</span>]+=v[x];dp[x][<span class="hljs-number">2</span>]=<span class="hljs-number">0x3f3f3f3f</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;son[x].size();i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> y=son[x][i];</span><br><span class="line">        <span class="hljs-keyword">if</span>(y==fa) <span class="hljs-keyword">continue</span>;</span><br><span class="line">        dp[x][<span class="hljs-number">2</span>]=min(dp[x][<span class="hljs-number">2</span>],dp[x][<span class="hljs-number">0</span>]-min(dp[y][<span class="hljs-number">1</span>],dp[y][<span class="hljs-number">2</span>])+dp[y][<span class="hljs-number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> x,m;</span><br><span class="line">        <span class="hljs-built_in">cin</span>&gt;&gt;x;</span><br><span class="line">        <span class="hljs-built_in">cin</span>&gt;&gt;v[x];</span><br><span class="line">        <span class="hljs-built_in">cin</span>&gt;&gt;m;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> y;</span><br><span class="line">            <span class="hljs-built_in">cin</span>&gt;&gt;y;</span><br><span class="line">            son[x].push_back(y);</span><br><span class="line">            son[y].push_back(x);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    f(<span class="hljs-number">1</span>,<span class="hljs-number">-1</span>);</span><br><span class="line">    <span class="hljs-built_in">cout</span>&lt;&lt;min(dp[<span class="hljs-number">1</span>][<span class="hljs-number">1</span>],dp[<span class="hljs-number">1</span>][<span class="hljs-number">2</span>]);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="树上dp的链问题"><a href="#树上dp的链问题" class="headerlink" title="树上dp的链问题"></a>树上dp的链问题</h4><p>有一类树上 DP 的问题，求的是树上的满足条件的“最优链” 经典问题：HDU 2196 给定一棵有边权的树，输出树中与其距离最远的点的距离值 - 显然，从一个节点x出发到达的点只有两种情况： 1. 在x的子树中。 2. 在x的子树外。</p>
-<ul>
-<li>显然第一种十分好维护，令 f[i] 表示以 i 为起点的，到 i 的子树内距离最远是多少 则 $f[i] = max(f[j] + dist(i,j))$ 那么第二种如何维护？我们令 $g[i]$ 表示 i 为起点到 i 的子树外距离最远是多少 第二种情况需要再做一次分类 一类是经过它的父亲，到父亲外，即 $g[i]$ &lt;- $g[fa[i]]$ 另一类是经过它的父亲，到了它的兄弟子树中</li>
-</ul>
-
+            <p>清北学堂noip2019-DP图论-Day2树形DP</p>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/04/30/e6-b8-85-e5-8c-97-e5-ad-a6-e5-a0-82noip2019-dp-e5-9b-be-e8-ae-ba-day2-e6-a0-91-e5-bd-a2dp/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -572,6 +582,9 @@
     <div class="card">
     
     <div class="card-content article ">
+        <!--top置顶排序2019/7/12-->
+        
+        <!--排序结束-->
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
@@ -624,6 +637,9 @@
     <div class="card">
     
     <div class="card-content article ">
+        <!--top置顶排序2019/7/12-->
+        
+        <!--排序结束-->
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
@@ -737,7 +753,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        50
+                        49
                     </p>
                 </div>
             </div>
@@ -747,7 +763,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        8
+                        6
                     </p>
                 </div>
             </div>
@@ -916,7 +932,7 @@
                 <span class="level-item">知识点</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/OI/集训/">
@@ -932,17 +948,9 @@
                 <span class="level-item">题目</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">29</span>
+                <span class="level-item tag">30</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/OI-题目/">
-            <span class="level-start">
-                <span class="level-item">OI - 题目</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/政治/">
             <span class="level-start">
                 <span class="level-item">政治</span>
@@ -987,7 +995,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-06T07:05:38.000Z">2019-06-06</time></div>
                     <a href="/2019/06/06/codeforces-484-b-maximum-value/" class="has-link-black-ter is-size-6"> CodeForces 484 B. Maximum Value</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI-题目/">OI - 题目</a>
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
                     </p>
                 </div>
             </div>
@@ -1098,7 +1106,7 @@
                     <span class="level-item">五月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">15</span>
+                    <span class="level-item tag">14</span>
                 </span>
             </a>
         </li>
@@ -1307,7 +1315,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-06T07:05:38.000Z">2019-06-06</time></div>
                     <a href="/2019/06/06/codeforces-484-b-maximum-value/" class="has-link-black-ter is-size-6"> CodeForces 484 B. Maximum Value</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI-题目/">OI - 题目</a>
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
                     </p>
                 </div>
             </div>
@@ -1418,7 +1426,7 @@
                     <span class="level-item">五月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">15</span>
+                    <span class="level-item tag">14</span>
                 </span>
             </a>
         </li>
@@ -1608,7 +1616,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Blog of YorkWu" height="28">
+                    Blog of YorkWu
                 
                 </a>
                 <p class="is-size-7">
