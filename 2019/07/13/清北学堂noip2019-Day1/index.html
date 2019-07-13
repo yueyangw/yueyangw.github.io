@@ -15,7 +15,7 @@
 <meta property="og:description" content="清北学堂noip2019-Day1">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yueyangwu.cn/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-13T04:39:40.375Z">
+<meta property="og:updated_time" content="2019-07-13T15:42:06.379Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="清北学堂noip2019-Day1">
 <meta name="twitter:description" content="清北学堂noip2019-Day1">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    14 分钟 读完 (大约 2027 个字)
+                    15 分钟 读完 (大约 2178 个字)
                 </span>
                 
                 
@@ -174,6 +174,7 @@
 <h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a><a href="https://www.luogu.org/problemnew/solution/P2706" target="_blank" rel="noopener">题解</a></h4><p>横向切会使纵向次数+1，纵向同理。</p>
 <p>所以肯定先切大的，再切小的。</p>
 <p>于是把横纵放到一起排序，依次取最大值统计答案即可。</p>
+<hr>
 <h3 id="problem-2"><a href="#problem-2" class="headerlink" title="problem 2"></a>problem 2</h3><h4 id="USACO-Allowance"><a href="#USACO-Allowance" class="headerlink" title="USACO Allowance"></a><a href="https://www.luogu.org/problemnew/show/P2376" target="_blank" rel="noopener">USACO Allowance</a></h4><ul>
 <li>John决定每个星期给b一点零花钱</li>
 <li>j有一些硬币， 共n种面额。每一个面额都能整除比他大的所有面额。</li>
@@ -188,6 +189,10 @@
 <li><p>开始能用大面额就用大面额，直到凑到的$sum + a_i&gt;C$，然后尽量用小的凑，直到$sum+a_i&gt;C$。</p>
 </li>
 </ul>
+<p>代码：</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> n, c;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span>&#123;</span></span><br><span class="line">	<span class="hljs-keyword">int</span> v, b;</span><br><span class="line">&#125;a[<span class="hljs-number">30</span>];</span><br><span class="line"><span class="hljs-keyword">int</span> k;</span><br><span class="line"><span class="hljs-keyword">int</span> ans;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">cmp</span><span class="hljs-params">(<span class="hljs-keyword">const</span> node &amp;a, <span class="hljs-keyword">const</span> node &amp;b)</span></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">return</span> a.v &lt; b.v;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;n, &amp;c);</span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">		<span class="hljs-keyword">int</span> v, b;</span><br><span class="line">		<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;v, &amp;b);</span><br><span class="line">		<span class="hljs-keyword">if</span>(v &gt;= c) ans += b;</span><br><span class="line">		<span class="hljs-keyword">else</span> a[++k].v = v, a[k].b = b;</span><br><span class="line">	&#125;</span><br><span class="line">	sort(a + <span class="hljs-number">1</span>, a + k + <span class="hljs-number">1</span>, cmp);</span><br><span class="line">	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, ans);</span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= k; i++)&#123;</span><br><span class="line">		<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d %d\n"</span>, a[i].v, a[i].b);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>)&#123;</span><br><span class="line">		<span class="hljs-keyword">int</span> x = c;</span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = k; i &gt;= <span class="hljs-number">1</span>; i--)&#123;</span><br><span class="line">			<span class="hljs-keyword">while</span>(a[i].b &gt; <span class="hljs-number">0</span> &amp;&amp; x &gt;= a[i].v)&#123;</span><br><span class="line">				x -= a[i].v;</span><br><span class="line">				a[i].b--;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-keyword">if</span>(x &gt; <span class="hljs-number">0</span>)&#123;</span><br><span class="line">			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= k; i++)&#123;</span><br><span class="line">				<span class="hljs-keyword">if</span>(a[i].b &gt; <span class="hljs-number">0</span> &amp;&amp; x &lt;= a[i].v)&#123;</span><br><span class="line">					x -= a[i].v;</span><br><span class="line">					a[i].b--;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-keyword">if</span>(x &gt; <span class="hljs-number">0</span>) <span class="hljs-keyword">break</span>;</span><br><span class="line">		ans++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d"</span>, ans);</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
 <h3 id="problem-3"><a href="#problem-3" class="headerlink" title="problem 3"></a>problem 3</h3><h4 id="Face-the-Right-Way"><a href="#Face-the-Right-Way" class="headerlink" title="Face the Right Way"></a><a href="https://www.luogu.org/problemnew/show/P2882" target="_blank" rel="noopener">Face the Right Way</a></h4><p>给出一个长为n的F/B序列，n&lt;=5000。</p>
 <p>你可以每次选择连续长度为k的一段，进行FB转换。</p>
 <p>使得最后整个序列全为F。</p>
@@ -196,6 +201,7 @@
 <p>左到右对于出现的每一个B翻转一次从当前点开始的区间，就能保证是最优解。</p>
 <p>但是我们会发现这样是$n^2$的，再枚举长度，就变为了$n^3$。</p>
 <p>因此，需要对区间翻转差分一下，总时间复杂度就是$n^2$的了。<br><img src="/img/p3.png" alt="p3"></p>
+<hr>
 <h3 id="problem-4"><a href="#problem-4" class="headerlink" title="problem 4"></a>problem 4</h3><h4 id="旅行家的预算"><a href="#旅行家的预算" class="headerlink" title="旅行家的预算"></a><a href="https://www.luogu.org/problemnew/show/P1016" target="_blank" rel="noopener">旅行家的预算</a></h4><p>一个旅行家想驾驶汽车以最少的费用从一个城市到另一个城市（假设出发时油箱是空的）。</p>
 <p>给定两个城市之间的距离D1、汽车油箱的容量C（以升为单位）、每升汽油能行驶的距离D2、出发点每升汽油价格P和沿途油站数N（N可以为零），油站i离出发点的距离Di、每升汽油价格Pi（i=1,2,…,N）。</p>
 <p>求最少的综费用，如果无法到达目的地，则输出“No Solution”。</p>
@@ -203,6 +209,7 @@
 <p>在一个加油站所需要加的油，就是能够支持它到达下一个油价比它低的加油站的量</p>
 <p>如果在这个加油站即使加满油，都不能到达一个比它油价低的加油站，就把油箱加满，前往能够到达的加油站中油价最低的那个</p>
 <p>如果在这个加油站即使加满油，都不能到达任意一个加油站，也不能到达终点城市，说明无解</p>
+<hr>
 <h3 id="problem-5"><a href="#problem-5" class="headerlink" title="problem 5"></a>problem 5</h3><h4 id="The-Minima-Game"><a href="#The-Minima-Game" class="headerlink" title="The Minima Game"></a><a href="https://www.luogu.org/problemnew/show/P3507" target="_blank" rel="noopener">The Minima Game</a></h4><p>给出N个正整数，AB两个人轮流取数，A先取。每次可以取任意多个数，直到N个数都被取走。每次获得的得分为取的数中的最小值，A和B的策略都是尽可能使得自己的得分减去对手的得分更大。在这样的情况下，最终A的得分减去B的得分为多少。</p>
 <p>$n\leq 10^5$</p>
 <h4 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a><a href="https://www.luogu.org/problemnew/solution/P3507" target="_blank" rel="noopener">题解</a></h4><ul>
@@ -219,6 +226,7 @@
 <ul>
 <li>所以我们倒着来考虑一下，将所有的数从小到大排列之后，f[i]表示两人取完前i个数，先手减去后手的最大值。(这里先手后手是相对的，因为我们是倒序的，和实际取法是完全相反的，它实际上是处理出了1~i个数的情况下的最优解，A先从i开始往左边取，所以说考虑先手减后手最大值）</li>
 </ul>
+<hr>
 <h3 id="problem-6"><a href="#problem-6" class="headerlink" title="problem 6"></a>problem 6</h3><h4 id="ZJOI2005-午餐"><a href="#ZJOI2005-午餐" class="headerlink" title="[ZJOI2005]午餐"></a><a href="https://www.luogu.org/problemnew/show/P2577" target="_blank" rel="noopener">[ZJOI2005]午餐</a></h4><p>N人来到了食堂，每个人由自己的打饭时间和吃饭时间。</p>
 <p>食堂有两个打饭窗口，我们要把所有的人分成两队，然后一号队伍到一号窗口去排队打饭，二号队伍到二号窗口。每个人打完饭后立刻开始吃。</p>
 <p>现在给定了每个人的打饭时间和吃饭时间，要求安排一种最佳的分队和排队方案使得所有人都吃完饭的时间尽量早。 </p>
@@ -232,6 +240,7 @@
 <p>所以，状态是f[i][j]表示当前做到第i个人， 第一列队伍前面所有人打饭的时间和是j时最后一个人吃完饭的最小时间</p>
 <p>如果把这个人放在第一列$f[i][j]=min(f[i][j],max(f[i−1][j−Get[i]],j+eat[i]))$</p>
 <p>另外把这个人放在第二列$f[i][j]=max(f[i−1][j],sum[i]−j+eat[i])$</p>
+<hr>
 <h3 id="problem-7"><a href="#problem-7" class="headerlink" title="problem 7"></a>problem 7</h3><h4 id="Water-Tanks"><a href="#Water-Tanks" class="headerlink" title="Water Tanks"></a>Water Tanks</h4><p>给你一棵树，k升水，p块钱，进行一次游戏。</p>
 <p>在游戏进行前，可以在任意个节点上放置1升水（总数不超过k）</p>
 <p>游戏进行若干轮，每轮游戏开放所有节点，可以选择若干个节点关闭，代价为该节点的水数量。然后所有未关闭节点的水流向它的父亲(不会连续移动)。</p>
@@ -264,6 +273,13 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/07/13/清北学堂noip2019-test1/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">清北学堂noip2019-test1</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -341,7 +357,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        51
+                        52
                     </p>
                 </div>
             </div>
@@ -518,7 +534,7 @@
                 <span class="level-item">OI</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">48</span>
+                <span class="level-item tag">49</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/OI/知识点/">
@@ -534,7 +550,7 @@
                 <span class="level-item">集训</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">12</span>
+                <span class="level-item tag">13</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/OI/题目/">
@@ -575,6 +591,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/07/13/清北学堂noip2019-test1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="清北学堂noip2019-test1">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-13T12:11:30.000Z">2019-07-13</time></div>
+                    <a href="/2019/07/13/清北学堂noip2019-test1/" class="has-link-black-ter is-size-6">清北学堂noip2019-test1</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/集训/">集训</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -652,25 +687,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/06/01/luogu-p2948-usaco09open-e6-bb-91-e9-9b-aa-e8-af-beski-lessons/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P2948 [USACO09OPEN]滑雪课Ski Lessons		">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-01T01:32:17.000Z">2019-06-01</time></div>
-                    <a href="/2019/06/01/luogu-p2948-usaco09open-e6-bb-91-e9-9b-aa-e8-af-beski-lessons/" class="has-link-black-ter is-size-6"> Luogu P2948 [USACO09OPEN]滑雪课Ski Lessons		</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -689,7 +705,7 @@
                     <span class="level-item">七月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -909,6 +925,25 @@
         
         <article class="media">
             
+            <a href="/2019/07/13/清北学堂noip2019-test1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="清北学堂noip2019-test1">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-13T12:11:30.000Z">2019-07-13</time></div>
+                    <a href="/2019/07/13/清北学堂noip2019-test1/" class="has-link-black-ter is-size-6">清北学堂noip2019-test1</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/集训/">集训</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/07/13/清北学堂noip2019-Day1/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="清北学堂noip2019-Day1">
@@ -983,25 +1018,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/06/01/luogu-p2948-usaco09open-e6-bb-91-e9-9b-aa-e8-af-beski-lessons/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P2948 [USACO09OPEN]滑雪课Ski Lessons		">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-01T01:32:17.000Z">2019-06-01</time></div>
-                    <a href="/2019/06/01/luogu-p2948-usaco09open-e6-bb-91-e9-9b-aa-e8-af-beski-lessons/" class="has-link-black-ter is-size-6"> Luogu P2948 [USACO09OPEN]滑雪课Ski Lessons		</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1020,7 +1036,7 @@
                     <span class="level-item">七月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
