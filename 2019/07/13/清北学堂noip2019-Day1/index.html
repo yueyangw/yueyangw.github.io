@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>清北学堂noip2019-Day1 - Blog of YorkWu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="清北学堂noip2019-Day1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="清北学堂noip2019-Day1">
+<meta property="og:url" content="http://yueyangwu.cn/2019/07/13/清北学堂noip2019-Day1/index.html">
+<meta property="og:site_name" content="Blog of YorkWu">
+<meta property="og:description" content="清北学堂noip2019-Day1">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yueyangwu.cn/images/og_image.png">
+<meta property="og:updated_time" content="2019-07-13T04:37:54.695Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="清北学堂noip2019-Day1">
+<meta name="twitter:description" content="清北学堂noip2019-Day1">
+<meta name="twitter:image" content="http://yueyangwu.cn/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                Blog of YorkWu
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">主页</a>
+                
+                <a class="navbar-item" href="/archives">文章</a>
+                
+                <a class="navbar-item" href="/categories">分类</a>
+                
+                <a class="navbar-item" href="/tags">标签</a>
+                
+                <a class="navbar-item" href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        <!--top置顶排序2019/7/12-->
+        
+        <!--排序结束-->
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-07-13T04:20:33.000Z">2019-07-13</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/OI/">OI</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/OI/集训/">集训</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    14 分钟 读完 (大约 2026 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                清北学堂noip2019-Day1
+            
+        </h1>
+        <div class="content">
+            <h1 id="清北学堂noip2019-Day1"><a href="#清北学堂noip2019-Day1" class="headerlink" title="清北学堂noip2019-Day1"></a>清北学堂noip2019-Day1</h1><a id="more"></a>
+
+<h2 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h2><blockquote>
+<p>P.S. 每道题的代码我之后补加。。。</p>
+</blockquote>
+<h3 id="problem-1：Chocolate"><a href="#problem-1：Chocolate" class="headerlink" title="problem 1：Chocolate"></a>problem 1：Chocolate</h3><h4 id="Chocolate"><a href="#Chocolate" class="headerlink" title="Chocolate"></a><a href="https://www.luogu.org/problemnew/show/P2706" target="_blank" rel="noopener">Chocolate</a></h4><p>一块$n\times m$的巧克力， 切成$n\times m$块。</p>
+<p>巧克力上共有$n-1$条横线和$m-1$条竖线，每次沿着一条线将巧克力切开。</p>
+<p>无论切割长短，横线切一次的代价是$y_1,y_2,y_3,…,y_{n-1}$，竖线是$x_1,x_2,x_3,…,x_{m-1}$。</p>
+<p>求最小总代价。</p>
+<p>$n,m\leq 10^5$</p>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a><a href="https://www.luogu.org/problemnew/solution/P2706" target="_blank" rel="noopener">题解</a></h4><p>横向切会使纵向次数+1，纵向同理。</p>
+<p>所以肯定先切大的，再切小的。</p>
+<p>于是把横纵放到一起排序，依次取最大值统计答案即可。</p>
+<h3 id="problem-2"><a href="#problem-2" class="headerlink" title="problem 2"></a>problem 2</h3><h4 id="USACO-Allowance"><a href="#USACO-Allowance" class="headerlink" title="USACO Allowance"></a><a href="https://www.luogu.org/problemnew/show/P2376" target="_blank" rel="noopener">USACO Allowance</a></h4><ul>
+<li>John决定每个星期给b一点零花钱</li>
+<li>j有一些硬币， 共n种面额。每一个面额都能整除比他大的所有面额。</li>
+<li>他想用给定的硬币集合（给出硬币种类及数量），每个星期至少给b某个零花钱的数目C。</li>
+<li>请计算他最多能给多少星期零花钱。</li>
+</ul>
+<h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a><a href="https://www.luogu.org/problemnew/solution/P2376" target="_blank" rel="noopener">题解</a></h4><ul>
+<li><p>阶段一：尽快接近C，用大面额的凑。</p>
+</li>
+<li><p>阶段二：超过C尽量少，用小面额的凑。</p>
+</li>
+<li><p>开始能用大面额就用大面额，直到凑到的$sum + a_i&gt;C$，然后尽量用小的凑，直到$sum+a_i&gt;C$。</p>
+</li>
+</ul>
+<h3 id="problem-3"><a href="#problem-3" class="headerlink" title="problem 3"></a>problem 3</h3><h4 id="Face-the-Right-Way"><a href="#Face-the-Right-Way" class="headerlink" title="Face the Right Way"></a><a href="https://www.luogu.org/problemnew/show/P2882" target="_blank" rel="noopener">Face the Right Way</a></h4><p>给出一个长为n的F/B序列，n&lt;=5000。</p>
+<p>你可以每次选择连续长度为k的一段，进行FB转换。</p>
+<p>使得最后整个序列全为F。</p>
+<p>求最少的操作次数和对应的最小长度。</p>
+<h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a><a href="https://www.luogu.org/problemnew/solution/P2882?page=2" target="_blank" rel="noopener">题解</a></h4><p> 因为同一个点翻转两次就与没有翻转的效果相同了，因此我们有一个贪心策略为：</p>
+<p>左到右对于出现的每一个B翻转一次从当前点开始的区间，就能保证是最优解。</p>
+<p>但是我们会发现这样是$n^2$的，再枚举长度，就变为了$n^3$。</p>
+<p>因此，需要对区间翻转差分一下，总时间复杂度就是$n^2$的了。<br><img src="/p3.png" alt="p3"></p>
+<h3 id="problem-4"><a href="#problem-4" class="headerlink" title="problem 4"></a>problem 4</h3><h4 id="旅行家的预算"><a href="#旅行家的预算" class="headerlink" title="旅行家的预算"></a><a href="https://www.luogu.org/problemnew/show/P1016" target="_blank" rel="noopener">旅行家的预算</a></h4><p>一个旅行家想驾驶汽车以最少的费用从一个城市到另一个城市（假设出发时油箱是空的）。</p>
+<p>给定两个城市之间的距离D1、汽车油箱的容量C（以升为单位）、每升汽油能行驶的距离D2、出发点每升汽油价格P和沿途油站数N（N可以为零），油站i离出发点的距离Di、每升汽油价格Pi（i=1,2,…,N）。</p>
+<p>求最少的综费用，如果无法到达目的地，则输出“No Solution”。</p>
+<h4 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a><a href="https://www.luogu.org/problemnew/solution/P1016" target="_blank" rel="noopener">题解</a></h4><p>枚举途中经过的加油站，每经过一个加油站，计算一次花费</p>
+<p>在一个加油站所需要加的油，就是能够支持它到达下一个油价比它低的加油站的量</p>
+<p>如果在这个加油站即使加满油，都不能到达一个比它油价低的加油站，就把油箱加满，前往能够到达的加油站中油价最低的那个</p>
+<p>如果在这个加油站即使加满油，都不能到达任意一个加油站，也不能到达终点城市，说明无解</p>
+<h3 id="problem-5"><a href="#problem-5" class="headerlink" title="problem 5"></a>problem 5</h3><h4 id="The-Minima-Game"><a href="#The-Minima-Game" class="headerlink" title="The Minima Game"></a><a href="https://www.luogu.org/problemnew/show/P3507" target="_blank" rel="noopener">The Minima Game</a></h4><p>给出N个正整数，AB两个人轮流取数，A先取。每次可以取任意多个数，直到N个数都被取走。每次获得的得分为取的数中的最小值，A和B的策略都是尽可能使得自己的得分减去对手的得分更大。在这样的情况下，最终A的得分减去B的得分为多少。</p>
+<p>$n\leq 10^5$</p>
+<h4 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a><a href="https://www.luogu.org/problemnew/solution/P3507" target="_blank" rel="noopener">题解</a></h4><ul>
+<li>身临其境的分析：</li>
+</ul>
+<p>一方面要让自己取的数中的最小值尽量大，</p>
+<p>一方面要让剩下数中的最大值尽量小。</p>
+<p>故先手肯定会从大到小的取数，</p>
+<p>并且取出的数是连续的一段。</p>
+<ul>
+<li><strong>证明：</strong></li>
+</ul>
+<p>从大到小取数显然，若不是连续取数，则留下的数更多，大的数更多，会给对方更多的机会。所以必然是连续取数。</p>
+<ul>
+<li>所以我们倒着来考虑一下，将所有的数从小到大排列之后，f[i]表示两人取完前i个数，先手减去后手的最大值。(这里先手后手是相对的，因为我们是倒序的，和实际取法是完全相反的，它实际上是处理出了1~i个数的情况下的最优解，A先从i开始往左边取，所以说考虑先手减后手最大值）</li>
+</ul>
+<h3 id="problem-6"><a href="#problem-6" class="headerlink" title="problem 6"></a>problem 6</h3><h4 id="ZJOI2005-午餐"><a href="#ZJOI2005-午餐" class="headerlink" title="[ZJOI2005]午餐"></a><a href="https://www.luogu.org/problemnew/show/P2577" target="_blank" rel="noopener">[ZJOI2005]午餐</a></h4><p>N人来到了食堂，每个人由自己的打饭时间和吃饭时间。</p>
+<p>食堂有两个打饭窗口，我们要把所有的人分成两队，然后一号队伍到一号窗口去排队打饭，二号队伍到二号窗口。每个人打完饭后立刻开始吃。</p>
+<p>现在给定了每个人的打饭时间和吃饭时间，要求安排一种最佳的分队和排队方案使得所有人都吃完饭的时间尽量早。 </p>
+<p>两个窗口是并行操作互不影响的，要求输出最佳方案下所有人吃完饭的时刻。</p>
+<h4 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a><a href="https://www.luogu.org/problemnew/solution/P2577" target="_blank" rel="noopener">题解</a></h4><p>贪心的理解，如果所有人都要早点走</p>
+<p>那么吃饭时间长的就先吃，吃饭时间短的就晚点吃</p>
+<p>所以，按照吃饭时间排序</p>
+<p>每个人吃完饭的时间之和前面所有人的打饭的时间和有关</p>
+<p>$f[i][j][k]$表示当前做到第i个人，第一列，第二列前面的人的打饭时间之和分别为$j,k$，最后一个人吃完饭的最小时间.</p>
+<p>但直接三维状态会炸？</p>
+<p>所以，状态是f[i][j]表示当前做到第i个人， 第一列队伍前面所有人打饭的时间和是j时最后一个人吃完饭的最小时间</p>
+<p>如果把这个人放在第一列$f[i][j]=min(f[i][j],max(f[i−1][j−Get[i]],j+eat[i]))$</p>
+<p>另外把这个人放在第二列$f[i][j]=max(f[i−1][j],sum[i]−j+eat[i])$</p>
+<h3 id="problem-7"><a href="#problem-7" class="headerlink" title="problem 7"></a>problem 7</h3><h4 id="Water-Tanks"><a href="#Water-Tanks" class="headerlink" title="Water Tanks"></a>Water Tanks</h4><p>给你一棵树，k升水，p块钱，进行一次游戏。</p>
+<p>在游戏进行前，可以在任意个节点上放置1升水（总数不超过k）</p>
+<p>游戏进行若干轮，每轮游戏开放所有节点，可以选择若干个节点关闭，代价为该节点的水数量。然后所有未关闭节点的水流向它的父亲(不会连续移动)。</p>
+<p>最后，根节点中的水会被取走，水的数量为该轮游戏的盈利。</p>
+<p>求最大盈利-代价。</p>
+<h4 id="题解-6"><a href="#题解-6" class="headerlink" title="题解"></a>题解</h4><p>在放置水的选择上，应该尽量选择深度相邻的节点，即将所有节点按照深度排序后，所选择放水的节点应该是连续的一段。</p>
+<p>考虑选择某段区间后，所需要花费的钱。</p>
+<p>假设深度范围[l , r] ，某个深度的点为 a[i] ，则花费钱为sigma(a[i]*(r-i)) </p>
+<p>用两个指针进行扫描即可。</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+<!--
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+        </div>
+    </div>
+</div>
+-->
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/07/12/清北学堂noip2019-D0/">
+                <span class="level-item">清北学堂noip2019-D0</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: 'VhCUvV5j4du8FG8am6lS3zuL-MdYXbMMI',
+        app_key: '1K6hpxMjRvaSWqUX7oxwHNtB',
+        placeholder: '来说点啥呗...'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                        <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="Yueyang Wu">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        Yueyang Wu
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        山西省实验中学蒟蒻OIer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>China,Shanxi,Taiyuan</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        51
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        6
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        19
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/yueyangw" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/yueyangw">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Email" href="mailto:yueyang_wu@outlook.com">
+                
+                <i class="fab fa-tags"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="RSS" href="/atom.xml">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="http://lire.yuyuko.cc" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">LittleWritter</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">lire.yuyuko.cc</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="http://hlz.ink" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">ohh_haolin</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hlz.ink</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="http://https://www.luogu.org/blog/qwerdkr/" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">qwerdkr</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">https</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.luogu.org/blog/cuizhaofeng/" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">asdfczf</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.luogu.org</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://baka.online" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">kai586123</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">baka.online</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://gekoo.xyz" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Gekoo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">gekoo.xyz</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.cnblogs.com/chloris/" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Chloris</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.cnblogs.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://zhehao.top/" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">ACCEPT</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">zhehao.top</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/OI/">
+            <span class="level-start">
+                <span class="level-item">OI</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">48</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/OI/知识点/">
+            <span class="level-start">
+                <span class="level-item">知识点</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/OI/集训/">
+            <span class="level-start">
+                <span class="level-item">集训</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">12</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/OI/题目/">
+            <span class="level-start">
+                <span class="level-item">题目</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">30</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/政治/">
+            <span class="level-start">
+                <span class="level-item">政治</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/随笔/">
+            <span class="level-start">
+                <span class="level-item">随笔</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/07/13/清北学堂noip2019-Day1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="清北学堂noip2019-Day1">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-13T04:20:33.000Z">2019-07-13</time></div>
+                    <a href="/2019/07/13/清北学堂noip2019-Day1/" class="has-link-black-ter is-size-6">清北学堂noip2019-Day1</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/集训/">集训</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/07/12/清北学堂noip2019-D0/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="清北学堂noip2019-D0">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-12T14:36:50.000Z">2019-07-12</time></div>
+                    <a href="/2019/07/12/清北学堂noip2019-D0/" class="has-link-black-ter is-size-6">清北学堂noip2019-D0</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/集训/">集训</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/06/06/codeforces-484-b-maximum-value/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" CodeForces 484 B. Maximum Value">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-06T07:05:38.000Z">2019-06-06</time></div>
+                    <a href="/2019/06/06/codeforces-484-b-maximum-value/" class="has-link-black-ter is-size-6"> CodeForces 484 B. Maximum Value</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/06/03/luogu-p1983-e8-bd-a6-e7-ab-99-e5-88-86-e7-ba-a7/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P1983 车站分级		">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-03T01:36:43.000Z">2019-06-03</time></div>
+                    <a href="/2019/06/03/luogu-p1983-e8-bd-a6-e7-ab-99-e5-88-86-e7-ba-a7/" class="has-link-black-ter is-size-6"> Luogu P1983 车站分级		</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/06/01/luogu-p2948-usaco09open-e6-bb-91-e9-9b-aa-e8-af-beski-lessons/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P2948 [USACO09OPEN]滑雪课Ski Lessons		">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-01T01:32:17.000Z">2019-06-01</time></div>
+                    <a href="/2019/06/01/luogu-p2948-usaco09open-e6-bb-91-e9-9b-aa-e8-af-beski-lessons/" class="has-link-black-ter is-size-6"> Luogu P2948 [USACO09OPEN]滑雪课Ski Lessons		</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">14</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">26</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/LCA/">
+                        <span class="tag">LCA</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Tarjan/">
+                        <span class="tag">Tarjan</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/dp/">
+                        <span class="tag">dp</span>
+                        <span class="tag is-grey">23</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/优/">
+                        <span class="tag">优</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/前缀和/">
+                        <span class="tag">前缀和</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/区间dp/">
+                        <span class="tag">区间dp</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/图论/">
+                        <span class="tag">图论</span>
+                        <span class="tag is-grey">11</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/字符串/">
+                        <span class="tag">字符串</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/并查集/">
+                        <span class="tag">并查集</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/拓扑排序/">
+                        <span class="tag">拓扑排序</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/搜索/">
+                        <span class="tag">搜索</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数据结构/">
+                        <span class="tag">数据结构</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数论/">
+                        <span class="tag">数论</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/最小生成树/">
+                        <span class="tag">最小生成树</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/枚举/">
+                        <span class="tag">枚举</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/树形结构/">
+                        <span class="tag">树形结构</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/状态压缩，状压/">
+                        <span class="tag">状态压缩，状压</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/精/">
+                        <span class="tag">精</span>
+                        <span class="tag is-grey">7</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/背包问题/">
+                        <span class="tag">背包问题</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/07/13/清北学堂noip2019-Day1/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="清北学堂noip2019-Day1">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-13T04:20:33.000Z">2019-07-13</time></div>
+                    <a href="/2019/07/13/清北学堂noip2019-Day1/" class="has-link-black-ter is-size-6">清北学堂noip2019-Day1</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/集训/">集训</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/07/12/清北学堂noip2019-D0/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="清北学堂noip2019-D0">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-12T14:36:50.000Z">2019-07-12</time></div>
+                    <a href="/2019/07/12/清北学堂noip2019-D0/" class="has-link-black-ter is-size-6">清北学堂noip2019-D0</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/集训/">集训</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/06/06/codeforces-484-b-maximum-value/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" CodeForces 484 B. Maximum Value">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-06T07:05:38.000Z">2019-06-06</time></div>
+                    <a href="/2019/06/06/codeforces-484-b-maximum-value/" class="has-link-black-ter is-size-6"> CodeForces 484 B. Maximum Value</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/06/03/luogu-p1983-e8-bd-a6-e7-ab-99-e5-88-86-e7-ba-a7/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P1983 车站分级		">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-03T01:36:43.000Z">2019-06-03</time></div>
+                    <a href="/2019/06/03/luogu-p1983-e8-bd-a6-e7-ab-99-e5-88-86-e7-ba-a7/" class="has-link-black-ter is-size-6"> Luogu P1983 车站分级		</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/06/01/luogu-p2948-usaco09open-e6-bb-91-e9-9b-aa-e8-af-beski-lessons/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P2948 [USACO09OPEN]滑雪课Ski Lessons		">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-01T01:32:17.000Z">2019-06-01</time></div>
+                    <a href="/2019/06/01/luogu-p2948-usaco09open-e6-bb-91-e9-9b-aa-e8-af-beski-lessons/" class="has-link-black-ter is-size-6"> Luogu P2948 [USACO09OPEN]滑雪课Ski Lessons		</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">14</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">26</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/LCA/">
+                        <span class="tag">LCA</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Tarjan/">
+                        <span class="tag">Tarjan</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/dp/">
+                        <span class="tag">dp</span>
+                        <span class="tag is-grey">23</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/优/">
+                        <span class="tag">优</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/前缀和/">
+                        <span class="tag">前缀和</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/区间dp/">
+                        <span class="tag">区间dp</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/图论/">
+                        <span class="tag">图论</span>
+                        <span class="tag is-grey">11</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/字符串/">
+                        <span class="tag">字符串</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/并查集/">
+                        <span class="tag">并查集</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/拓扑排序/">
+                        <span class="tag">拓扑排序</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/搜索/">
+                        <span class="tag">搜索</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数据结构/">
+                        <span class="tag">数据结构</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数论/">
+                        <span class="tag">数论</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/最小生成树/">
+                        <span class="tag">最小生成树</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/枚举/">
+                        <span class="tag">枚举</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/树形结构/">
+                        <span class="tag">树形结构</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/状态压缩，状压/">
+                        <span class="tag">状态压缩，状压</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/精/">
+                        <span class="tag">精</span>
+                        <span class="tag is-grey">7</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/背包问题/">
+                        <span class="tag">背包问题</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    Blog of YorkWu
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Yueyang Wu&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a href="https://github.com/yueyangw" target="_blank">YorkWu</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="My GitHub" href="https://github.com/yueyangw">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
