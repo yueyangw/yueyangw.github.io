@@ -15,7 +15,7 @@
 <meta property="og:description" content="清北学堂noip2019-Day1">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yueyangwu.cn/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-13T04:37:54.695Z">
+<meta property="og:updated_time" content="2019-07-13T04:39:40.375Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="清北学堂noip2019-Day1">
 <meta name="twitter:description" content="清北学堂noip2019-Day1">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    14 分钟 读完 (大约 2026 个字)
+                    14 分钟 读完 (大约 2027 个字)
                 </span>
                 
                 
@@ -195,7 +195,7 @@
 <h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a><a href="https://www.luogu.org/problemnew/solution/P2882?page=2" target="_blank" rel="noopener">题解</a></h4><p> 因为同一个点翻转两次就与没有翻转的效果相同了，因此我们有一个贪心策略为：</p>
 <p>左到右对于出现的每一个B翻转一次从当前点开始的区间，就能保证是最优解。</p>
 <p>但是我们会发现这样是$n^2$的，再枚举长度，就变为了$n^3$。</p>
-<p>因此，需要对区间翻转差分一下，总时间复杂度就是$n^2$的了。<br><img src="/p3.png" alt="p3"></p>
+<p>因此，需要对区间翻转差分一下，总时间复杂度就是$n^2$的了。<br><img src="/img/p3.png" alt="p3"></p>
 <h3 id="problem-4"><a href="#problem-4" class="headerlink" title="problem 4"></a>problem 4</h3><h4 id="旅行家的预算"><a href="#旅行家的预算" class="headerlink" title="旅行家的预算"></a><a href="https://www.luogu.org/problemnew/show/P1016" target="_blank" rel="noopener">旅行家的预算</a></h4><p>一个旅行家想驾驶汽车以最少的费用从一个城市到另一个城市（假设出发时油箱是空的）。</p>
 <p>给定两个城市之间的距离D1、汽车油箱的容量C（以升为单位）、每升汽油能行驶的距离D2、出发点每升汽油价格P和沿途油站数N（N可以为零），油站i离出发点的距离Di、每升汽油价格Pi（i=1,2,…,N）。</p>
 <p>求最少的综费用，如果无法到达目的地，则输出“No Solution”。</p>
