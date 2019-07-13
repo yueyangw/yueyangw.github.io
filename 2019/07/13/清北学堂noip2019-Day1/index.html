@@ -15,7 +15,7 @@
 <meta property="og:description" content="清北学堂noip2019-Day1">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yueyangwu.cn/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-13T15:42:06.379Z">
+<meta property="og:updated_time" content="2019-07-13T23:33:48.873Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="清北学堂noip2019-Day1">
 <meta name="twitter:description" content="清北学堂noip2019-Day1">
@@ -204,7 +204,7 @@
 <hr>
 <h3 id="problem-4"><a href="#problem-4" class="headerlink" title="problem 4"></a>problem 4</h3><h4 id="旅行家的预算"><a href="#旅行家的预算" class="headerlink" title="旅行家的预算"></a><a href="https://www.luogu.org/problemnew/show/P1016" target="_blank" rel="noopener">旅行家的预算</a></h4><p>一个旅行家想驾驶汽车以最少的费用从一个城市到另一个城市（假设出发时油箱是空的）。</p>
 <p>给定两个城市之间的距离D1、汽车油箱的容量C（以升为单位）、每升汽油能行驶的距离D2、出发点每升汽油价格P和沿途油站数N（N可以为零），油站i离出发点的距离Di、每升汽油价格Pi（i=1,2,…,N）。</p>
-<p>求最少的综费用，如果无法到达目的地，则输出“No Solution”。</p>
+<p>求最少的总费用，如果无法到达目的地，则输出“No Solution”。</p>
 <h4 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a><a href="https://www.luogu.org/problemnew/solution/P1016" target="_blank" rel="noopener">题解</a></h4><p>枚举途中经过的加油站，每经过一个加油站，计算一次花费</p>
 <p>在一个加油站所需要加的油，就是能够支持它到达下一个油价比它低的加油站的量</p>
 <p>如果在这个加油站即使加满油，都不能到达一个比它油价低的加油站，就把油箱加满，前往能够到达的加油站中油价最低的那个</p>
