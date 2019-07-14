@@ -15,7 +15,7 @@
 <meta property="og:description" content="清北学堂noip2019-Day1">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yueyangwu.cn/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-13T23:33:48.873Z">
+<meta property="og:updated_time" content="2019-07-14T01:08:22.623Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="清北学堂noip2019-Day1">
 <meta name="twitter:description" content="清北学堂noip2019-Day1">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    15 分钟 读完 (大约 2178 个字)
+                    15 分钟 读完 (大约 2287 个字)
                 </span>
                 
                 
@@ -166,12 +166,12 @@
 <h2 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h2><blockquote>
 <p>P.S. 每道题的代码我之后补加。。。</p>
 </blockquote>
-<h3 id="problem-1：Chocolate"><a href="#problem-1：Chocolate" class="headerlink" title="problem 1：Chocolate"></a>problem 1：Chocolate</h3><h4 id="Chocolate"><a href="#Chocolate" class="headerlink" title="Chocolate"></a><a href="https://www.luogu.org/problemnew/show/P2706" target="_blank" rel="noopener">Chocolate</a></h4><p>一块$n\times m$的巧克力， 切成$n\times m$块。</p>
+<h3 id="problem-1：Chocolate"><a href="#problem-1：Chocolate" class="headerlink" title="problem 1：Chocolate"></a>problem 1：Chocolate</h3><h4 id="Chocolate"><a href="#Chocolate" class="headerlink" title="Chocolate"></a><a href="https://www.luogu.org/problemnew/show/P3173" target="_blank" rel="noopener">Chocolate</a></h4><p>一块$n\times m$的巧克力， 切成$n\times m$块。</p>
 <p>巧克力上共有$n-1$条横线和$m-1$条竖线，每次沿着一条线将巧克力切开。</p>
 <p>无论切割长短，横线切一次的代价是$y_1,y_2,y_3,…,y_{n-1}$，竖线是$x_1,x_2,x_3,…,x_{m-1}$。</p>
 <p>求最小总代价。</p>
 <p>$n,m\leq 10^5$</p>
-<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a><a href="https://www.luogu.org/problemnew/solution/P2706" target="_blank" rel="noopener">题解</a></h4><p>横向切会使纵向次数+1，纵向同理。</p>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a><a href="https://www.luogu.org/problemnew/solution/P3173" target="_blank" rel="noopener">题解</a></h4><p>横向切会使纵向次数+1，纵向同理。</p>
 <p>所以肯定先切大的，再切小的。</p>
 <p>于是把横纵放到一起排序，依次取最大值统计答案即可。</p>
 <hr>
@@ -201,6 +201,9 @@
 <p>左到右对于出现的每一个B翻转一次从当前点开始的区间，就能保证是最优解。</p>
 <p>但是我们会发现这样是$n^2$的，再枚举长度，就变为了$n^3$。</p>
 <p>因此，需要对区间翻转差分一下，总时间复杂度就是$n^2$的了。<br><img src="/img/p3.png" alt="p3"></p>
+<p>然后下面是我的代码：</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> n, a[<span class="hljs-number">5009</span>], dif[<span class="hljs-number">5009</span>];</span><br><span class="line"><span class="hljs-keyword">int</span> mincnt = <span class="hljs-number">0x3f3f3f3f</span>, minlen;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;n);</span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">		<span class="hljs-keyword">char</span> c;</span><br><span class="line">		<span class="hljs-built_in">cin</span>&gt;&gt;c;</span><br><span class="line">		a[i] = (c == <span class="hljs-string">'F'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> len = <span class="hljs-number">1</span>; len &lt;= n; len++)&#123;</span><br><span class="line">		<span class="hljs-keyword">int</span> now = <span class="hljs-number">0</span>, cnt = <span class="hljs-number">0</span>;</span><br><span class="line">		<span class="hljs-keyword">bool</span> flag = <span class="hljs-literal">true</span>;</span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) dif[i] = <span class="hljs-number">0</span>;</span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">			now ^= dif[i];</span><br><span class="line">			<span class="hljs-keyword">if</span>(!(a[i] ^ now))&#123;</span><br><span class="line">				<span class="hljs-keyword">if</span>(i + len - <span class="hljs-number">1</span> &gt; n)&#123;</span><br><span class="line">					flag = <span class="hljs-literal">false</span>;</span><br><span class="line">					<span class="hljs-keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				now ^= <span class="hljs-number">1</span>;</span><br><span class="line">				dif[i] ^= <span class="hljs-number">1</span>;</span><br><span class="line">				dif[i + len] ^= <span class="hljs-number">1</span>;</span><br><span class="line">				cnt++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-keyword">if</span>(flag)&#123;</span><br><span class="line">			<span class="hljs-keyword">if</span>(cnt &lt; mincnt)&#123;</span><br><span class="line">				minlen = len;</span><br><span class="line">				mincnt = cnt;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d %d\n"</span>, minlen, mincnt);</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <hr>
 <h3 id="problem-4"><a href="#problem-4" class="headerlink" title="problem 4"></a>problem 4</h3><h4 id="旅行家的预算"><a href="#旅行家的预算" class="headerlink" title="旅行家的预算"></a><a href="https://www.luogu.org/problemnew/show/P1016" target="_blank" rel="noopener">旅行家的预算</a></h4><p>一个旅行家想驾驶汽车以最少的费用从一个城市到另一个城市（假设出发时油箱是空的）。</p>
 <p>给定两个城市之间的距离D1、汽车油箱的容量C（以升为单位）、每升汽油能行驶的距离D2、出发点每升汽油价格P和沿途油站数N（N可以为零），油站i离出发点的距离Di、每升汽油价格Pi（i=1,2,…,N）。</p>
@@ -357,7 +360,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        52
+                        53
                     </p>
                 </div>
             </div>
@@ -534,7 +537,7 @@
                 <span class="level-item">OI</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">49</span>
+                <span class="level-item tag">50</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/OI/知识点/">
@@ -550,7 +553,7 @@
                 <span class="level-item">集训</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">13</span>
+                <span class="level-item tag">14</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/OI/题目/">
@@ -591,6 +594,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/07/14/清北学堂noip2019-Day2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="清北学堂noip2019-Day2">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-14T00:13:10.000Z">2019-07-14</time></div>
+                    <a href="/2019/07/14/清北学堂noip2019-Day2/" class="has-link-black-ter is-size-6">清北学堂noip2019-Day2</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/集训/">集训</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -668,25 +690,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/06/03/luogu-p1983-e8-bd-a6-e7-ab-99-e5-88-86-e7-ba-a7/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P1983 车站分级		">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-03T01:36:43.000Z">2019-06-03</time></div>
-                    <a href="/2019/06/03/luogu-p1983-e8-bd-a6-e7-ab-99-e5-88-86-e7-ba-a7/" class="has-link-black-ter is-size-6"> Luogu P1983 车站分级		</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -705,7 +708,7 @@
                     <span class="level-item">七月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -925,6 +928,25 @@
         
         <article class="media">
             
+            <a href="/2019/07/14/清北学堂noip2019-Day2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="清北学堂noip2019-Day2">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-14T00:13:10.000Z">2019-07-14</time></div>
+                    <a href="/2019/07/14/清北学堂noip2019-Day2/" class="has-link-black-ter is-size-6">清北学堂noip2019-Day2</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/集训/">集训</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/07/13/清北学堂noip2019-test1/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="清北学堂noip2019-test1">
@@ -999,25 +1021,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/06/03/luogu-p1983-e8-bd-a6-e7-ab-99-e5-88-86-e7-ba-a7/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt=" Luogu P1983 车站分级		">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-03T01:36:43.000Z">2019-06-03</time></div>
-                    <a href="/2019/06/03/luogu-p1983-e8-bd-a6-e7-ab-99-e5-88-86-e7-ba-a7/" class="has-link-black-ter is-size-6"> Luogu P1983 车站分级		</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1036,7 +1039,7 @@
                     <span class="level-item">七月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>

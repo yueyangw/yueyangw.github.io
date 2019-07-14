@@ -2,22 +2,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>分类: OI - Blog of YorkWu</title>
+<title>清北学堂noip2019-Day2 - Blog of YorkWu</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="信息学竞赛，博客，c++，集训，山西省实验中学，noip">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Blog of YorkWu">
-<meta property="og:url" content="http://yueyangwu.cn/categories/OI/index.html">
+    <meta name="description" content="分治算法（持续更新）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="清北学堂noip2019-Day2">
+<meta property="og:url" content="http://yueyangwu.cn/2019/07/14/清北学堂noip2019-Day2/index.html">
 <meta property="og:site_name" content="Blog of YorkWu">
-<meta property="og:description" content="信息学竞赛，博客，c++，集训，山西省实验中学，noip">
+<meta property="og:description" content="分治算法（持续更新）">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yueyangwu.cn/images/og_image.png">
+<meta property="og:updated_time" content="2019-07-14T02:52:31.685Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Blog of YorkWu">
-<meta name="twitter:description" content="信息学竞赛，博客，c++，集训，山西省实验中学，noip">
+<meta name="twitter:title" content="清北学堂noip2019-Day2">
+<meta name="twitter:description" content="分治算法（持续更新）">
 <meta name="twitter:image" content="http://yueyangwu.cn/images/og_image.png">
 
 
@@ -129,18 +130,6 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/categories">分类</a></li>
-            
-            <li class="is-active"><a href="#" aria-current="page">OI</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
     
     <div class="card-content article ">
         <!--top置顶排序2019/7/12-->
@@ -168,550 +157,146 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/07/14/清北学堂noip2019-Day2/">清北学堂noip2019-Day2</a>
+                清北学堂noip2019-Day2
             
         </h1>
         <div class="content">
             <h2 id="分治算法"><a href="#分治算法" class="headerlink" title="分治算法"></a>分治算法</h2><p>（持续更新）</p>
+<a id="more"></a>
+
+<blockquote>
+<p>最小值最大，二分</p>
+</blockquote>
+<hr>
+<h3 id="problem-1"><a href="#problem-1" class="headerlink" title="problem 1"></a>problem 1</h3><h4 id="愤怒的牛"><a href="#愤怒的牛" class="headerlink" title="愤怒的牛"></a>愤怒的牛</h4><p>n个点，取出m个点使得相邻的点的最小距离最大</p>
+<p>$n\leq 10^5, m\leq n$</p>
+<ul>
+<li>最小距离最大</li>
+<li>如果太大了，会选不出m个点</li>
+<li>限制的最小距离越大，选出的点越少</li>
+<li>符合二分性质<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4></li>
+<li>二分最小距离k，然后贪心验证。</li>
+<li>首先第一个点必须取，然后后面的点超过k就取。</li>
+<li>最后看能不能取完m个点。</li>
+<li>复杂度$O(nlog_2n)$</li>
+</ul>
+<hr>
+<h3 id="problem-2"><a href="#problem-2" class="headerlink" title="problem 2"></a>problem 2</h3><h4 id="Slicing"><a href="#Slicing" class="headerlink" title="Slicing"></a>Slicing</h4><p>给定$n\times m$的数字矩阵，要求横着切$A - 1$刀，对每块再竖着切$B-1$刀。</p>
+<p>使得最小子矩阵最大。</p>
+<p>$n,m\leq 500$</p>
+<h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h4><ul>
+<li>二分，然后贪心切</li>
+<li>每次扫一行，看这行和上次切割的行之间能否满足二分条件k，如果能就横切+1，最后看可行条能否到n。</li>
+</ul>
+<hr>
+<h3 id="problem-4"><a href="#problem-4" class="headerlink" title="problem 4"></a>problem 4</h3><h4 id="花盆"><a href="#花盆" class="headerlink" title="花盆"></a>花盆</h4><p>给出n个点坐标，根据x轴选定区间$[L,R]$，使得其中的点的y值的最大和最小之差&gt;=D。求$min{R-L}$</p>
+<p>$n\leq 10^5$</p>
+<h4 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h4><p>二分枚举区间大小，然后通过单调队列求出每个区间最大值和最小值，最后得出答案即可。</p>
+<hr>
+<h3 id="problem-5"><a href="#problem-5" class="headerlink" title="problem 5"></a>problem 5</h3><h4 id="组题"><a href="#组题" class="headerlink" title="组题"></a>组题</h4><ul>
+<li>给出一个长度为n的序列，求一段长度大于等于k的字串。</li>
+<li>使得它们的平均值最大。</li>
+<li>$n\leq 10^5, k\leq n$<h4 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h4></li>
+<li>分数规划，二分答案（平均值）</li>
+<li>让每个数减去平均值，检测是否有一个长度大于等于k的字串，使其和为非负。</li>
+<li>平均值问题转化为求和问题。</li>
+<li>把区间和转化为前缀和相减的形式。</li>
+<li>枚举右端点i，判定的就是$sum[i]-min{sum[j]}(0\leq j\leq i-k)$是否大于等于0。</li>
+</ul>
+<hr>
+<h3 id="problem-6"><a href="#problem-6" class="headerlink" title="problem 6"></a>problem 6</h3><h4 id="猜数"><a href="#猜数" class="headerlink" title="猜数"></a>猜数</h4><ul>
+<li>给一个长度为n的数列，但不知道这个数列。</li>
+<li>有q条限制条件$l_i,r_i,x_i$，表示$(l,r)$所有数的最小值为x。</li>
+<li>问从第几个限制条件开始出现矛盾，无矛盾输出0。</li>
+<li>$n\leq 10^6,q\leq 25000$</li>
+<li>例如：$(3,5)$最小值为2，$(1,7)$最小值为4，矛盾。<h4 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h4></li>
+<li>会矛盾的情况就是出现了包含关系，并且被包含的区间最小值更小。</li>
+<li>先对区间按x排序</li>
+<li>处理某个区间时，发现已经被之前的某个区间$(l,r)$包含了。矛盾。</li>
+</ul>
+<hr>
+<h3 id="problem-7"><a href="#problem-7" class="headerlink" title="problem 7"></a>problem 7</h3><h4 id="Tree"><a href="#Tree" class="headerlink" title="Tree"></a>Tree</h4><ul>
+<li>给一个无向带权连通图，每条边是黑色或者白色。求一颗最小权的恰好有need条白色边的生成树。</li>
+<li>题目保证有解，$n,m\leq 10^5$<h4 id="分析及题解"><a href="#分析及题解" class="headerlink" title="分析及题解"></a>分析及题解</h4></li>
+<li>生成树权值变化时，白边数目可能变大或者变小。</li>
+<li>不能直接二分。</li>
+</ul>
+<h3 id="problem-8"><a href="#problem-8" class="headerlink" title="problem 8"></a>problem 8</h3><h4 id="电话线"><a href="#电话线" class="headerlink" title="电话线"></a>电话线</h4><ul>
+<li>给出n个点m条边的DAG</li>
+<li>可以选择k条边，使其权值变为0</li>
+<li>需要让1-n的最长路径最短</li>
+<li>$n,m\leq 50000$</li>
+</ul>
+<hr>
+<h3 id="problem-9"><a href="#problem-9" class="headerlink" title="problem 9"></a>problem 9</h3><h4 id="Dynamite"><a href="#Dynamite" class="headerlink" title="Dynamite"></a>Dynamite</h4><ul>
+<li>给出一颗n个节点的树，上面有k个关键节点。</li>
+<li>树上选m个点，求最小化关键节点到选择点的最大距离。</li>
+<li>$n\leq 10^5$<h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4></li>
+<li>二分一个数L表示答案</li>
+<li>问题转化为一个判定问题，判定能否用m个点覆盖（范围为L）整个树上的关键点。</li>
+<li>树形DP，考虑子树情况：<ol>
+<li>子树内关键点都覆盖完了，并且子树内有选择点的贡献可以向上。</li>
+<li>子树内有不被覆盖的点，没有节点可以继续贡献。</li>
+<li>子树内都被覆盖，但没有对上面的贡献</li>
+</ol>
+</li>
+</ul>
+
         </div>
         
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/07/14/清北学堂noip2019-Day2/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
         
         
     </div>
 </div>
 
 
-<!---->
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <!--top置顶排序2019/7/12-->
-        
-        <!--排序结束-->
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-07-13T12:11:30.000Z">2019-07-13</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI/">OI</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/OI/集训/">集训</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    1 分钟 读完 (大约 176 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+<!--
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
             
-                <a class="has-link-black-ter" href="/2019/07/13/清北学堂noip2019-test1/">清北学堂noip2019-test1</a>
-            
-        </h1>
-        <div class="content">
-            <p>考试题3道，考的第10名。。。自闭了</p>
         </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/07/13/清北学堂noip2019-test1/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
     </div>
 </div>
+-->
 
 
-<!---->
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <!--top置顶排序2019/7/12-->
-        
-        <!--排序结束-->
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-07-13T04:20:33.000Z">2019-07-13</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI/">OI</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/OI/集训/">集训</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    15 分钟 读完 (大约 2287 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/07/13/清北学堂noip2019-Day1/">清北学堂noip2019-Day1</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="清北学堂noip2019-Day1"><a href="#清北学堂noip2019-Day1" class="headerlink" title="清北学堂noip2019-Day1"></a>清北学堂noip2019-Day1</h1>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/07/13/清北学堂noip2019-Day1/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-<!---->
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <!--top置顶排序2019/7/12-->
-        
-        <!--排序结束-->
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-07-12T14:36:50.000Z">2019-07-12</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI/">OI</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/OI/集训/">集训</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    1 分钟 读完 (大约 177 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/07/12/清北学堂noip2019-D0/">清北学堂noip2019-D0</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="济南清北学堂游记-Day0"><a href="#济南清北学堂游记-Day0" class="headerlink" title="济南清北学堂游记 Day0"></a>济南清北学堂游记 Day0</h2>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/07/12/清北学堂noip2019-D0/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-<!---->
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <!--top置顶排序2019/7/12-->
-        
-        <!--排序结束-->
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-06-06T07:05:38.000Z">2019-06-06</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI/">OI</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2 分钟 读完 (大约 262 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/06/06/codeforces-484-b-maximum-value/"> CodeForces 484 B. Maximum Value</a>
-            
-        </h1>
-        <div class="content">
-            <p><a href="http://codeforces.com/problemset/problem/484/B" title="题目链接" target="_blank" rel="noopener">题目链接</a></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/06/06/codeforces-484-b-maximum-value/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-<!---->
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <!--top置顶排序2019/7/12-->
-        
-        <!--排序结束-->
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-06-03T01:36:43.000Z">2019-06-03</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI/">OI</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 分钟 读完 (大约 445 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/06/03/luogu-p1983-e8-bd-a6-e7-ab-99-e5-88-86-e7-ba-a7/"> Luogu P1983 车站分级		</a>
-            
-        </h1>
-        <div class="content">
-            <p><a href="https://www.luogu.org/problemnew/show/P1983" title="题目链接" target="_blank" rel="noopener">题目链接</a></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/06/03/luogu-p1983-e8-bd-a6-e7-ab-99-e5-88-86-e7-ba-a7/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-<!---->
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <!--top置顶排序2019/7/12-->
-        
-        <!--排序结束-->
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-06-01T01:32:17.000Z">2019-06-01</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI/">OI</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2 分钟 读完 (大约 369 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/06/01/luogu-p2948-usaco09open-e6-bb-91-e9-9b-aa-e8-af-beski-lessons/"> Luogu P2948 [USACO09OPEN]滑雪课Ski Lessons		</a>
-            
-        </h1>
-        <div class="content">
-            <p><a href="https://www.luogu.org/problemnew/show/P2948" title="题目链接" target="_blank" rel="noopener">题目链接</a></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/06/01/luogu-p2948-usaco09open-e6-bb-91-e9-9b-aa-e8-af-beski-lessons/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-<!---->
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <!--top置顶排序2019/7/12-->
-        
-        <!--排序结束-->
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-06-01T00:19:54.000Z">2019-06-01</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI/">OI</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2 分钟 读完 (大约 350 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/06/01/luogu-p1875-e4-bd-b3-e4-bd-b3-e7-9a-84-e9-ad-94-e6-b3-95-e8-8d-af-e6-b0-b4/"> Luogu P1875 佳佳的魔法药水		</a>
-            
-        </h1>
-        <div class="content">
-            <p><a href="https://www.luogu.org/problemnew/show/P1875" title="链接" target="_blank" rel="noopener">链接</a></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/06/01/luogu-p1875-e4-bd-b3-e4-bd-b3-e7-9a-84-e9-ad-94-e6-b3-95-e8-8d-af-e6-b0-b4/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-<!---->
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <!--top置顶排序2019/7/12-->
-        
-        <!--排序结束-->
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-05-31T12:58:04.000Z">2019-05-31</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI/">OI</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 分钟 读完 (大约 485 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/05/31/luogu-p1363-e5-b9-bb-e6-83-b3-e8-bf-b7-e5-ae-ab/"> Luogu P1363 幻想迷宫		</a>
-            
-        </h1>
-        <div class="content">
-            <p><a href="https://www.luogu.org/problemnew/show/P1363" title="链接" target="_blank" rel="noopener">链接</a></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/05/31/luogu-p1363-e5-b9-bb-e6-83-b3-e8-bf-b7-e5-ae-ab/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-<!---->
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        <!--top置顶排序2019/7/12-->
-        
-        <!--排序结束-->
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-05-28T13:01:45.000Z">2019-05-28</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI/">OI</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2 分钟 读完 (大约 312 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/05/28/luogu-p1896-scoi2005-e4-ba-92-e4-b8-8d-e4-be-b5-e7-8a-af/"> Luogu P1896 [SCOI2005]互不侵犯		</a>
-            
-        </h1>
-        <div class="content">
-            <p>我感觉这道题还不错，状压dp的一类典型问题？ <a href="https://www.luogu.org/problemnew/show/P1896" title="题目链接" target="_blank" rel="noopener">题目链接</a></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/05/28/luogu-p1896-scoi2005-e4-ba-92-e4-b8-8d-e4-be-b5-e7-8a-af/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-<!---->
-
-
-
-
-
-
-    
 <div class="card card-transparent">
-    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-        <div class="pagination-previous is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/categories/OI/page/0/">上一页</a>
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/07/13/清北学堂noip2019-test1/">
+                <span class="level-item">清北学堂noip2019-test1</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
         </div>
-        <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/categories/OI/page/2/">下一页</a>
-        </div>
-        <ul class="pagination-list is-hidden-mobile">
-            
-            <li><a class="pagination-link is-current" href="/categories/OI/">1</a></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/categories/OI/page/2/">2</a></li>
-            
-            <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/categories/OI/page/5/">5</a></li>
-            
-        </ul>
-    </nav>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: 'VhCUvV5j4du8FG8am6lS3zuL-MdYXbMMI',
+        app_key: '1K6hpxMjRvaSWqUX7oxwHNtB',
+        placeholder: '来说点啥呗...'
+    });
+</script>
+
+    </div>
 </div>
 </div>
                 
