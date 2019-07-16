@@ -2,24 +2,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title> Luogu P3398 仓鼠找sugar		 - Blog of YorkWu</title>
+<title>清北学堂noip2019-Day4 - Blog of YorkWu</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="Luogu P3398 仓鼠找sugar">
-<meta name="keywords" content="LCA">
+    <meta name="description" content="图论">
 <meta property="og:type" content="article">
-<meta property="og:title" content=" Luogu P3398 仓鼠找sugar		">
-<meta property="og:url" content="http://yueyangwu.cn/2019/03/09/luogu-p3398-e4-bb-93-e9-bc-a0-e6-89-besugar/index.html">
+<meta property="og:title" content="清北学堂noip2019-Day4">
+<meta property="og:url" content="http://yueyangwu.cn/2019/07/16/清北学堂noip2019-Day4/index.html">
 <meta property="og:site_name" content="Blog of YorkWu">
-<meta property="og:description" content="Luogu P3398 仓鼠找sugar">
+<meta property="og:description" content="图论">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yueyangwu.cn/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-12T02:56:24.153Z">
+<meta property="og:updated_time" content="2019-07-16T10:19:37.204Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content=" Luogu P3398 仓鼠找sugar		">
-<meta name="twitter:description" content="Luogu P3398 仓鼠找sugar">
+<meta name="twitter:title" content="清北学堂noip2019-Day4">
+<meta name="twitter:description" content="图论">
 <meta name="twitter:image" content="http://yueyangwu.cn/images/og_image.png">
 
 
@@ -139,17 +138,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-03-09T15:51:36.000Z">2019-03-09</time>
+                <time class="level-item has-text-grey" datetime="2019-07-16T00:16:20.000Z">2019-07-16</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI/">OI</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
+                <a class="has-link-grey -link" href="/categories/OI/">OI</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/OI/集训/">集训</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 674 个字)
+                    7 分钟 读完 (大约 1047 个字)
                 </span>
                 
                 
@@ -158,40 +157,59 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                 Luogu P3398 仓鼠找sugar		
+                清北学堂noip2019-Day4
             
         </h1>
         <div class="content">
-            <p>Luogu P3398 仓鼠找sugar</p>
-<a id="more"></a>
-<h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>小仓鼠的和他的基（mei）友（zi）sugar住在地下洞穴中，每个节点的编号为1~n。地下洞穴是一个树形结构。这一天小仓鼠打算从从他的卧室（a）到餐厅（b），而他的基友同时要从他的卧室（c）到图书馆（d）。他们都会走最短路径。现在小仓鼠希望知道，有没有可能在某个地方，可以碰到他的基友？ 小仓鼠那么弱，还要天天被zzq大爷虐，请你快来救救他吧！</p>
-<h4 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h4><h5 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h5><p>第一行两个正整数n和q，表示这棵树节点的个数和询问的个数。 接下来n-1行，每行两个正整数u和v，表示节点u到节点v之间有一条边。 接下来q行，每行四个正整数a、b、c和d，表示节点编号，也就是一次询问，其意义如上。</p>
-<h5 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h5><p>对于每个询问，如果有公共点，输出大写字母“Y”；否则输出“N”。</p>
-<h4 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h4><h5 id="输入样例-1："><a href="#输入样例-1：" class="headerlink" title="输入样例#1："></a>输入样例#1：</h5><pre><code>5 5
-2 5
-4 2
-1 3
-1 4
-5 1 5 1
-2 2 1 4
-4 1 3 4
-3 1 1 5
-3 5 1 4</code></pre><h5 id="输出样例-1："><a href="#输出样例-1：" class="headerlink" title="输出样例#1："></a>输出样例#1：</h5><pre><code>Y
-N
-Y
-Y
-Y</code></pre><hr>
-<h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>首先很容易想到，若是两条路径有相交，记$x=lca(a,b),y=lca(c,d)$那么一定有x在c\<del>d上或者y在a\</del>b上。 那如何判断一个点是否在一条路径上呢？不妨记x点是否在a\<del>b上，那么若x在a\</del>b上，则一定有 1. $x$的深度大于$lca(a,b)$的深度 2. $lca(a,x)==x$或者$lca(b,x)==x$ 综上，代码如下：</p>
-<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-keyword">int</span> head[<span class="hljs-number">100009</span>],f[<span class="hljs-number">100009</span>][<span class="hljs-number">20</span>],d[<span class="hljs-number">100009</span>],tot,n,m,t,lg[<span class="hljs-number">100009</span>];</span><br><span class="line"><span class="hljs-built_in">queue</span>&lt;<span class="hljs-keyword">int</span> &gt; q;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span>&#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> to,next;</span><br><span class="line">&#125;e[<span class="hljs-number">2</span>*<span class="hljs-number">100009</span>];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    e[++tot].to=y;</span><br><span class="line">    e[tot].next=head[x];</span><br><span class="line">    head[x]=tot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">bfs</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    q.push(<span class="hljs-number">1</span>),d[<span class="hljs-number">1</span>]=<span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">while</span>(!q.empty())&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> x=q.front();q.pop();</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=head[x];i;i=e[i].next)&#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> y=e[i].to;</span><br><span class="line">            <span class="hljs-keyword">if</span>(d[y]) <span class="hljs-keyword">continue</span>;</span><br><span class="line">            d[y]=d[x]+<span class="hljs-number">1</span>;</span><br><span class="line">            f[y][<span class="hljs-number">0</span>]=x;</span><br><span class="line">            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">1</span>;(<span class="hljs-number">1</span>&lt;&lt;j)&lt;=d[y];j++) f[y][j]=f[f[y][j<span class="hljs-number">-1</span>]][j<span class="hljs-number">-1</span>];</span><br><span class="line">            q.push(y);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">lca</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span>(d[x]&gt;d[y]) swap(x,y);</span><br><span class="line">    <span class="hljs-keyword">while</span>(d[x]&lt;d[y]) y=f[y][lg[d[y]-d[x]]<span class="hljs-number">-1</span>];</span><br><span class="line">    <span class="hljs-keyword">if</span>(x==y) <span class="hljs-keyword">return</span> x;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=lg[d[x]]<span class="hljs-number">-1</span>;i&gt;=<span class="hljs-number">0</span>;i--) <span class="hljs-keyword">if</span>(f[x][i]!=f[y][i]) y=f[y][i],x=f[x][i];</span><br><span class="line">    <span class="hljs-keyword">return</span> f[x][<span class="hljs-number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> x,y;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>,&amp;x,&amp;y);</span><br><span class="line">        add(x,y),add(y,x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++) lg[i]=lg[i<span class="hljs-number">-1</span>]+(<span class="hljs-number">1</span>&lt;&lt;lg[i<span class="hljs-number">-1</span>]==i);</span><br><span class="line">    bfs();</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> a,b,c,d1;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d%d"</span>,&amp;a,&amp;b,&amp;c,&amp;d1);</span><br><span class="line">        <span class="hljs-keyword">int</span> x=lca(a,b),y=lca(c,d1);</span><br><span class="line">        <span class="hljs-keyword">if</span>(d[x]&lt;d[y])&#123;</span><br><span class="line">            swap(x,y),swap(a,c),swap(b,d1);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">if</span>(lca(x,c)==x||lca(x,d1)==x) <span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"Y"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">        <span class="hljs-keyword">else</span> <span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"N"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        </div>
-        
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/LCA/">LCA</a>
-                </div>
-            </div>
+            <h2 id="图论"><a href="#图论" class="headerlink" title="图论"></a>图论</h2><a id="more"></a>
+
+<hr>
+<h3 id="Boruvka算法求最小生成树"><a href="#Boruvka算法求最小生成树" class="headerlink" title="Boruvka算法求最小生成树"></a>Boruvka算法求最小生成树</h3><ul>
+<li>每次对每个当前的连通分量都找到连出的最短边，尝试<br>一同加入。</li>
+<li>此算法的正确性证明与Prim 算法类似，可以看作并行<br>的Prim.</li>
+<li>而且更好的性质是，如果这些最短边两两不同，一定是</li>
+<li>可以加入的（若有环，环上最大边根本不会被选！）。<br>加入完后新一轮缩点即可。</li>
+<li>边权相同的情况用一些方法破环，比如权相同时选序号<br>最小的。</li>
+<li>期望复杂度线性，优于普通Prim、堆优化Prim、Kruskal（注意是大大优于Kruskal，因为Kruskal 瓶颈是排序而不是并查集，后者可视作线性）。</li>
+<li>最坏复杂度与Kruskal 同阶。</li>
+</ul>
+<hr>
+<h3 id="k短路，k小生成树"><a href="#k短路，k小生成树" class="headerlink" title="k短路，k小生成树"></a>k短路，k小生成树</h3><ul>
+<li>以上理论算法的拓展较多，如次小生成树、次短路乃至<br>更一般的k 短路、k 小生成树，这方面可以详见俞鼎力的国家集训队论文，有比较系统的整理。</li>
+</ul>
+<hr>
+<h3 id="经典题型"><a href="#经典题型" class="headerlink" title="经典题型"></a>经典题型</h3><h4 id="2-SAT"><a href="#2-SAT" class="headerlink" title="2-SAT"></a>2-SAT</h4><ul>
+<li><p>婚礼问题</p>
+<p>  n对未婚夫妻想举行婚礼，每对有两个可供选择的时间，一个司仪能否参与所有婚礼？</p>
+</li>
+<li><p>本题甚至不需要利用时间的连续性质，直接把这道特殊<br>题转化为一般情况，任意给定每两对夫妻的两个时段的冲突情况也可解决。</p>
+</li>
+<li><p>每一对未婚夫妻拆点，不妨记为i1 和i2，那么i1 和j1<br>冲突就意味着i1 必选j2，j1 必选i2，因此由i1 向j2 连边，j1 向i2 连边。</p>
+</li>
+<li><p>每对必须选且仅选一个，且选了一个点必须选它的后继。</p>
+</li>
+<li><p>容易想到按照拓扑序贪心，但为了得到拓扑序必须先求<br>强连通分量缩点。</p>
+</li>
+<li><p>若某对夫妻的两点在同一个强连通分量中显然无解。<br>逆拓扑序选点即可，每选一个点立刻删除该对夫妻另一<br>个点，并递归删除前驱。</p>
+</li>
+<li><p>由于原图的对称性，缩点后仍然对称，因此这种贪心的<br>正确性易证。</p>
+</li>
+</ul>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> n, m;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span>&#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> to, nxt;</span><br><span class="line">&#125;e[<span class="hljs-number">4000009</span>];</span><br><span class="line"><span class="hljs-keyword">int</span> head[<span class="hljs-number">2000009</span>], tot;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> dfn[<span class="hljs-number">2000009</span>], low[<span class="hljs-number">2000009</span>], Time, color[<span class="hljs-number">2000009</span>], group;</span><br><span class="line"><span class="hljs-keyword">bool</span> vis[<span class="hljs-number">2000009</span>];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    e[++tot].to = y;</span><br><span class="line">    e[tot].nxt = head[x];</span><br><span class="line">    head[x] = tot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">stack</span>&lt;<span class="hljs-keyword">int</span>&gt; st;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">tarjan</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    low[x] = dfn[x] = ++Time;</span><br><span class="line">    vis[x] = <span class="hljs-number">1</span>;</span><br><span class="line">    st.push(x);</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = head[x]; i; i = e[i].nxt)&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> y = e[i].to;</span><br><span class="line">        <span class="hljs-keyword">if</span>(!dfn[y])&#123;</span><br><span class="line">            tarjan(y);</span><br><span class="line">            low[x] = min(low[x], low[y]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(vis[y])&#123;</span><br><span class="line">            low[x] = min(low[x], dfn[y]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">if</span>(dfn[x] == low[x])&#123;</span><br><span class="line">        group++;</span><br><span class="line">        <span class="hljs-keyword">while</span>(st.top() != x &amp;&amp; !st.empty())&#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> q = st.top();</span><br><span class="line">            st.pop();</span><br><span class="line">            color[q] = group;</span><br><span class="line">            vis[q] = <span class="hljs-number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        color[st.top()] = group;</span><br><span class="line">        vis[x] = <span class="hljs-number">0</span>;</span><br><span class="line">        st.pop();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> x, xv, y, yv;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d%d"</span>, &amp;x, &amp;xv, &amp;y, &amp;yv);</span><br><span class="line">        add(x + !xv * n, y + yv * n);</span><br><span class="line">        add(y + !yv * n, x + xv * n);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">2</span> * n; i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(!dfn[i]) tarjan(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(color[i] == color[i + n])&#123;</span><br><span class="line">            <span class="hljs-built_in">printf</span>(<span class="hljs-string">"IMPOSSIBLE\n"</span>);</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"POSSIBLE\n"</span>);</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d "</span>, color[i] &gt; color[i + n]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="带锁最短路"><a href="#带锁最短路" class="headerlink" title="带锁最短路"></a>带锁最短路</h4><ul>
+<li><p>钥匙路径</p>
+<p>  图的一些边上有锁，共有k 类锁（k 非常小，10 以内），一些边上有钥匙，每种钥匙对应一种锁，求最短路。</p>
+</li>
+<li><p>显然手上的钥匙不同能走的路径截然不同，应该把不同的手上钥匙状态视为不同状态。</p>
+</li>
+<li><p>用d[i][j] 表示钥匙状态为j 时走到点i 的最短距离，j 需要记录所有种类钥匙的有无。</p>
+</li>
+<li><p>此类问题容易遇到转移顺序的问题，所幸本题中钥匙只可能越来越多不可能变少，按钥匙数从少到多处理当前钥匙状态到所有点的距离即可，相同钥匙数更新顺序任意，注意计算时不仅要更新本层还要给钥匙数更多的状态提前更新“初始值”。</p>
+</li>
+</ul>
+
         </div>
         
         
@@ -215,17 +233,10 @@ Y</code></pre><hr>
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/03/10/e4-bd-a0-e5-a5-bd-ef-bc-8c-e5-88-9d-e6-ac-a1-e8-a7-81-e9-9d-a2-e3-80-82/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item"> 你好，初次见面。		</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/09/luogu-p3128-usaco15dec-e6-9c-80-e5-a4-a7-e6-b5-81max-flow/">
-                <span class="level-item"> Luogu P3128 [USACO15DEC]最大流Max Flow		</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/07/15/清北学堂noip2019-Day3/">
+                <span class="level-item">清北学堂noip2019-Day3</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
