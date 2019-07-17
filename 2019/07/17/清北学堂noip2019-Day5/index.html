@@ -2,23 +2,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title> 清北学堂noip2019-DP图论-Day1		 - Blog of YorkWu</title>
+<title>清北学堂noip2019-Day5 - Blog of YorkWu</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="上午都是些概念啥的。。。">
+    <meta name="description" content="动态规划">
 <meta property="og:type" content="article">
-<meta property="og:title" content=" 清北学堂noip2019-DP图论-Day1		">
-<meta property="og:url" content="http://yueyangwu.cn/2019/04/30/e6-b8-85-e5-8c-97-e5-ad-a6-e5-a0-82noip2019-dp-e5-9b-be-e8-ae-ba-day1/index.html">
+<meta property="og:title" content="清北学堂noip2019-Day5">
+<meta property="og:url" content="http://yueyangwu.cn/2019/07/17/清北学堂noip2019-Day5/index.html">
 <meta property="og:site_name" content="Blog of YorkWu">
-<meta property="og:description" content="上午都是些概念啥的。。。">
+<meta property="og:description" content="动态规划">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yueyangwu.cn/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-11T17:19:04.251Z">
+<meta property="og:updated_time" content="2019-07-17T09:49:28.484Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content=" 清北学堂noip2019-DP图论-Day1		">
-<meta name="twitter:description" content="上午都是些概念啥的。。。">
+<meta name="twitter:title" content="清北学堂noip2019-Day5">
+<meta name="twitter:description" content="动态规划">
 <meta name="twitter:image" content="http://yueyangwu.cn/images/og_image.png">
 
 
@@ -138,7 +138,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-04-30T12:17:14.000Z">2019-04-30</time>
+                <time class="level-item has-text-grey" datetime="2019-07-17T00:06:42.000Z">2019-07-17</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/OI/">OI</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/OI/集训/">集训</a>
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 629 个字)
+                    11 分钟 读完 (大约 1671 个字)
                 </span>
                 
                 
@@ -157,33 +157,189 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                 清北学堂noip2019-DP图论-Day1		
+                清北学堂noip2019-Day5
             
         </h1>
         <div class="content">
-            <p>上午都是些概念啥的。。。 <a href="https://yueyangwu.cn/wp-content/uploads/2019/04/dp.png" title="从沙雕题看dp"><img src="https://yueyangwu.cn/wp-content/uploads/2019/04/dp.png" alt="从沙雕题看dp" title="从沙雕题看dp"></a></p>
-<a id="more"></a>
-<hr>
-<h3 id="下午。。。"><a href="#下午。。。" class="headerlink" title="下午。。。"></a>下午。。。</h3><h4 id="回文问题"><a href="#回文问题" class="headerlink" title="回文问题"></a>回文问题</h4><ul>
-<li><p>Q1:给定一个数列，求一个最长的回文子序列。 f[i][j]:A[i ~ j]的最长回文子序列</p>
-<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++)</span><br><span class="line">    f[i][i] = <span class="hljs-number">1</span>;</span><br><span class="line"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> step = <span class="hljs-number">2</span>; step &lt;= n; step++) &#123;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i + step - <span class="hljs-number">1</span> &lt; n; i++) &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> j = i + step - <span class="hljs-number">1</span>;</span><br><span class="line">        f[i][j] = max(f[i + <span class="hljs-number">1</span>][j], f[i][j - <span class="hljs-number">1</span>]);</span><br><span class="line">        <span class="hljs-keyword">if</span> (A[i] == A[j])</span><br><span class="line">            f[i][j] = max(f[i][j], f[i + <span class="hljs-number">1</span>][j - <span class="hljs-number">1</span>] + <span class="hljs-number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Q2:给定一个数列，求回文子序列的个数 f[i][j]:A[i ~ j]的回文子序列个数 用了个容斥原理emmmmmmmm</p>
-<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++)</span><br><span class="line">    f[i][i] = <span class="hljs-number">1</span>;</span><br><span class="line"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> step = <span class="hljs-number">2</span>; step &lt;= n; step++) &#123;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i + step - <span class="hljs-number">1</span> &lt; n; i++) &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> j = i + step - <span class="hljs-number">1</span>;</span><br><span class="line">        f[i][j] = f[i][j - <span class="hljs-number">1</span>] + f[i + <span class="hljs-number">1</span>][j] - f[i + <span class="hljs-number">1</span>][j - <span class="hljs-number">1</span>];</span><br><span class="line">        <span class="hljs-keyword">if</span> (A[i] == A[j])</span><br><span class="line">            f[i][j] += f[i + <span class="hljs-number">1</span>][j - <span class="hljs-number">1</span>] + <span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><a id="more"></a>
 
+<hr>
+<h3 id="背包问题"><a href="#背包问题" class="headerlink" title="背包问题"></a>背包问题</h3><h4 id="01背包"><a href="#01背包" class="headerlink" title="01背包"></a>01背包</h4><ul>
+<li>正常01背包</li>
+<li>必须装满？</li>
+<li>初始化$f[i] = 0, f[other] = -\infty$</li>
+</ul>
+<h4 id="多重背包"><a href="#多重背包" class="headerlink" title="多重背包"></a>多重背包</h4><ul>
+<li>二进制拆分</li>
+</ul>
+<hr>
+<h3 id="热身题"><a href="#热身题" class="headerlink" title="热身题"></a>热身题</h3><h4 id="数字三角形"><a href="#数字三角形" class="headerlink" title="数字三角形+"></a>数字三角形+</h4><ul>
+<li>给出一个数字三角形，从第一行走到最后一行，每次只能往正下或者正右下走。每次累积经过的数，要求和最大。</li>
+<li>第X行第Y列这个点必须经过。</li>
+<li>$O(n^2)$</li>
+<li>题解：先从第一层到第x层跑一遍数字三角形，然后把第x行除第y列所有数赋为负无穷，然后再在下边跑一次数字三角形即可。</li>
+</ul>
+<hr>
+<h4 id="花店橱窗问题"><a href="#花店橱窗问题" class="headerlink" title="花店橱窗问题"></a>花店橱窗问题</h4><ul>
+<li>给定一个n*m的矩阵A(n&lt;=m)，求一个序列a1,a2,…,an满足$1&lt;=a_1&lt;a_2&lt;…&lt;a_n\leq m$。使得$A[1][a_1]+A[2][a_2]+…+A[n][a_n]$最大。</li>
+<li>A可能有负数。</li>
+<li>$O(nm^2)$</li>
+<li>题解：$f[i,j]$表示第i行最后选到了第j列的最大值。</li>
+<li>$f[i,j]=max{f[i-1,k]}+a[i,j](1\leq k&lt;j)$</li>
+</ul>
+<hr>
+<h4 id="烽火问题"><a href="#烽火问题" class="headerlink" title="烽火问题"></a>烽火问题</h4><ul>
+<li>给定n个非负整数，选择其中若干数字，使得每连续k个数中至少有一个数被选出。</li>
+<li>要求选择的数字之和尽可能小。</li>
+<li>$O(n^2)$</li>
+<li>$f[i]$表示上一个数选择的是第i个数。</li>
+<li>$f[i]=max(f[j])+a[i]$</li>
+</ul>
+<hr>
+<h3 id="0-1背包进阶"><a href="#0-1背包进阶" class="headerlink" title="0/1背包进阶"></a>0/1背包进阶</h3><h4 id="0-1背包"><a href="#0-1背包" class="headerlink" title="0/1背包+"></a>0/1背包+</h4><ul>
+<li>有n个任务，在一台机器上完成，机器一次只能做一个任务，第i个任务需要ti个连续的时刻完成，截止日期在第di个时刻。在截止日期前完成能得到收益vi。</li>
+<li>安排顺序，使得收益最大。</li>
+<li>$n&lt;=1000，max{di}&lt;=10000$</li>
+</ul>
+<hr>
+<h4 id="0-1背包-1"><a href="#0-1背包-1" class="headerlink" title="0/1背包++"></a>0/1背包++</h4><ul>
+<li>有n个物品，体积为m的背包，每个物品有一个价值vi，和体积ti，选择若干物品，使得体积之和不超过m的情况下价值之和最大。</li>
+<li>对于任意第i个物品，求第i个物品一定不在背包时的最大价值。</li>
+<li>$n&lt;=1000，m&lt;=10000$</li>
+<li>$f[i][j]$表示i从1到n取。</li>
+<li>$g[i][j]$表示i从n到1取。</li>
+<li>然后对于不取第p个，即为$f[p-1][j]+f[p+1][v-j]$</li>
+</ul>
+<hr>
+<h3 id="DP基础优化"><a href="#DP基础优化" class="headerlink" title="DP基础优化"></a>DP基础优化</h3><ul>
+<li>减少状态数</li>
+<li>减少状态转移时间</li>
+</ul>
+<h4 id="problem-1"><a href="#problem-1" class="headerlink" title="problem 1"></a>problem 1</h4><ul>
+<li>在河上有一座独木桥，一只青蛙想沿着独木桥从河的一侧跳到另一侧。在桥上有一些石子，青蛙很讨厌踩在这些石子上。由于桥的长度和青蛙一次跳过的距离都是正整数，我们可以把独木桥上青蛙可能到达的点看成数轴上的一串整点：0，1，……，L（其中L是桥的长度）。坐标为0的点表示桥的起点，坐标为L的点表示桥的终点。青蛙从桥的起点开始，不停的向终点方向跳跃。一次跳跃的距离是S到T之间的任意正整数（包括S,T）。当青蛙跳到或跳过坐标为L的点时，就算青蛙已经跳出了独木桥。 </li>
+<li>题目给出独木桥的长度L，青蛙跳跃的距离范围S,T，桥上石子的位置。你的任务是确定青蛙要想过河，最少需要踩到的石子数。</li>
+<li>$1&lt;=s&lt;=t&lt;=10，L&lt;=10^9$，石头个数&lt;=100</li>
+<li>$f[x] = min( f[x-j] + stone[x] ), (s\leq j\leq t)$</li>
+<li>但是，x高达10^9，难以计算</li>
+<li>但也容易发现，最多100个石子，所以很多时候两个石子距离隔得很远，这时后一石子坐标前的若干个连续的点都可达。</li>
+<li>稍微证明一下：</li>
+<li>当 s != t 时，存在 p 使得 s &lt;= p &lt; p+1 &lt;= t</li>
+<li>显然有 gcd(p, p+1) = 1</li>
+<li>当Q &gt;= p<em>(p-1)时，p</em>x + (p+1)*y = Q 一定有非负整数解</li>
+<li>也即，当Q足够大时，可以仅通过走若干个p步和p+1步，从而走长度恰好为Q的距离</li>
+</ul>
+<hr>
+<h4 id="传纸条"><a href="#传纸条" class="headerlink" title="传纸条"></a>传纸条</h4><ul>
+<li>你有一个n*m的矩阵，第i行第j列有ai,j个金币，有两个人都从(1,1)出发向右或者向下走到(n,m)，并拿到经过的金币，要求获得金币个数最多。</li>
+<li>$n,m\leq 200$</li>
+</ul>
+<h3 id="前缀和优化DP"><a href="#前缀和优化DP" class="headerlink" title="前缀和优化DP"></a>前缀和优化DP</h3><h4 id="花店橱窗问题-1"><a href="#花店橱窗问题-1" class="headerlink" title="花店橱窗问题"></a>花店橱窗问题</h4><ul>
+<li><p>给定一个n*m的矩阵A(n&lt;=m)，求一个序列$a_1,a_2,…,a_n$满足$1\leq a1&lt;a2&lt;…&lt;an\leq m$。使得$A[1][a_1]+A[2][a_2]+…+A[n][a_n]$最大。</p>
+</li>
+<li><p>A可能有负数。</p>
+</li>
+<li><p>$O(nm)$</p>
+</li>
+<li><p>预处理$s(i,j)$为第i行前j个的最大值，每行转移时求最大值直接$O(1)$更新。</p>
 </li>
 </ul>
 <hr>
-<h4 id="乌龟棋"><a href="#乌龟棋" class="headerlink" title="乌龟棋"></a>乌龟棋</h4><p><a href="http://yueyangwu.cn/wp-content/uploads/2019/04/图片1.png" title="1"><img src="http://yueyangwu.cn/wp-content/uploads/2019/04/%E5%9B%BE%E7%89%871.png" alt="1" title="1"></a> <a href="http://yueyangwu.cn/wp-content/uploads/2019/04/图片2.png" title="2"><img src="http://yueyangwu.cn/wp-content/uploads/2019/04/%E5%9B%BE%E7%89%872.png" alt="2" title="2"></a> 先使用一般的思路，可否使用下标作为状态？ 不行，因此使用每个类型卡牌的数量作为状态，定义$f[a][b][c][d]$为用a张1卡牌，b张2卡牌，c张3卡牌，d张4卡牌所得到的最高分数。这样可以判断当前位置$r=a+2\times b+3\times c+4\times d$，再使用$w[i]$表示每个点的权值，即可得到状态转移方程： $f[a][b][c][d]=max(f[a][b][c][d],f[a-1][b][c][d]+w[r])$ $f[a][b][c][d]=max(f[a][b][c][d],f[a][b-1][c][d]+w[r])$ $f[a][b][c][d]=max(f[a][b][c][d],f[a][b][c-1][d]+w[r])$ $f[a][b][c][d]=max(f[a][b][c][d],f[a][b][c][d-1]+w[r])$ 最终答案即为$f[n][m][l][k]$,其中$n,m,l,k$分别为第$1,2,3,4$类型卡牌的张数。</p>
-<hr>
-<h4 id="NlogN的sd题。。。"><a href="#NlogN的sd题。。。" class="headerlink" title="NlogN的sd题。。。"></a>NlogN的sd题。。。</h4><p><a href="http://yueyangwu.cn/wp-content/uploads/2019/04/QQ截图20190429074813.png" title="sdt"><img src="http://yueyangwu.cn/wp-content/uploads/2019/04/QQ%E6%88%AA%E5%9B%BE20190429074813.png" alt="sdt" title="sdt"></a></p>
-<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>; </span><br><span class="line"><span class="hljs-keyword">int</span> i,j,n,s,t,a[<span class="hljs-number">100001</span>];</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123; </span><br><span class="line">    <span class="hljs-built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    a[<span class="hljs-number">0</span>]=<span class="hljs-number">-1000000</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-built_in">cin</span>&gt;&gt;t;</span><br><span class="line">        <span class="hljs-keyword">if</span>(t&gt;a[s]) a[++s]=t;</span><br><span class="line">        <span class="hljs-keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> l=<span class="hljs-number">1</span>,h=s,m;</span><br><span class="line">            <span class="hljs-keyword">while</span>(l&lt;=h)</span><br><span class="line">            &#123;</span><br><span class="line">                m=(l+h)/<span class="hljs-number">2</span>;</span><br><span class="line">                <span class="hljs-keyword">if</span>(t&gt;a[m]) l=m+<span class="hljs-number">1</span>;</span><br><span class="line">                <span class="hljs-keyword">else</span> h=m<span class="hljs-number">-1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            a[l]=t;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">cout</span>&lt;&lt;s&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>sd题的nlogn告诉我们：有时候善用贪心规则可以优化 DP 的时间复杂度！</li>
+<h4 id="poj3046"><a href="#poj3046" class="headerlink" title="poj3046"></a>poj3046</h4><ul>
+<li><p>T种数，第i种数有a[i]个，总共有A个数。问取其中X个数作为子集，有多少种不同的子集。计算L&lt;=X&lt;=H的子集数之和，结果mod 1000000</p>
+</li>
+<li><p>$1\leq T\leq 1000, 1\leq a[i]\leq 100$，即$1 \leq  A \leq  100000, L\leq H\leq A$</p>
+</li>
+<li><p>基本想法：可以类比为把求max改为求sum的多重背包，所以基本的递推关系很好写，dp(i,j) = sum dp(i-1)(j-k) 其中k = 0~a[i] ，dp(i,j)表示前i种数，其中j个数作为子集的取法。</p>
+</li>
+<li><p>很明显，这样做会超时、超空间，超空间好说，是基本的滚动数组。我们主要解决超时的问题。</p>
+</li>
 </ul>
-<p><a href="http://yueyangwu.cn/wp-content/uploads/2019/04/图片3.png" title="片段1"><img src="http://yueyangwu.cn/wp-content/uploads/2019/04/%E5%9B%BE%E7%89%873.png" alt="片段1" title="片段1"></a> <a href="http://yueyangwu.cn/wp-content/uploads/2019/04/图片4.png" title="片段2"><img src="http://yueyangwu.cn/wp-content/uploads/2019/04/%E5%9B%BE%E7%89%874.png" alt="片段2" title="片段2"></a> 通过分析该题目可知，本质上是求一个最长抖动序列。。。类似lca这样的算法，$O(n^2)$只能码70分，满分算法需要$O(nlogn)$</p>
-<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> a[<span class="hljs-number">1000009</span>],f[<span class="hljs-number">1000009</span>][<span class="hljs-number">2</span>],n;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="hljs-built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    f[<span class="hljs-number">1</span>][<span class="hljs-number">0</span>]=f[<span class="hljs-number">1</span>][<span class="hljs-number">1</span>]=<span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">2</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(a[i]&gt;a[i<span class="hljs-number">-1</span>]) f[i][<span class="hljs-number">0</span>]=f[i<span class="hljs-number">-1</span>][<span class="hljs-number">1</span>]+<span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">if</span>(a[i]&lt;a[i<span class="hljs-number">-1</span>]) f[i][<span class="hljs-number">1</span>]=f[i<span class="hljs-number">-1</span>][<span class="hljs-number">0</span>]+<span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">if</span>(a[i]&lt;=a[i<span class="hljs-number">-1</span>]) f[i][<span class="hljs-number">0</span>]=f[i<span class="hljs-number">-1</span>][<span class="hljs-number">0</span>];</span><br><span class="line">        <span class="hljs-keyword">if</span>(a[i]&gt;=a[i<span class="hljs-number">-1</span>]) f[i][<span class="hljs-number">1</span>]=f[i<span class="hljs-number">-1</span>][<span class="hljs-number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">cout</span>&lt;&lt;max(f[n][<span class="hljs-number">0</span>],f[n][<span class="hljs-number">1</span>]);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="单调性优化"><a href="#单调性优化" class="headerlink" title="单调性优化"></a>单调性优化</h3><h4 id="最长上升子序列问题"><a href="#最长上升子序列问题" class="headerlink" title="最长上升子序列问题"></a>最长上升子序列问题</h4><ul>
+<li>有n个数，找到一个子序列，使得这些数单调递增，且这个子序列长度最大。</li>
+<li>$O(nlogn)$</li>
+<li>普通方法，$f[i]=max{f[j]}+1(a_j&lt;a_i且j&lt;i)$</li>
+<li>优化，对于最长上升子序列长度为i的，一定有结尾最低高度$h_i$并且这个高度一定是单调递增的，所以：<ol>
+<li>枚举i从1道n</li>
+<li>对于当前$a_i$在$h_i$上做一个二分。</li>
+<li>更新f数组</li>
+<li>通过f的更新来更新长度为$f[i]$的末尾最低高度</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h4 id="经典问题"><a href="#经典问题" class="headerlink" title="经典问题"></a>经典问题</h4><ul>
+<li>给定一个队列，维护三个操作。<ol>
+<li>将一个数x压入队列中。</li>
+<li>求队列中数的最大值。</li>
+<li>弹出队列尾的数。</li>
+</ol>
+</li>
+<li>$Q&lt;=1000$。</li>
+<li>$Q&lt;=100000$。</li>
+</ul>
+<hr>
+<h4 id="烽火传递"><a href="#烽火传递" class="headerlink" title="烽火传递"></a>烽火传递</h4><ul>
+<li>给定n个非负整数，选择其中若干数字，使得每连续k个数中至少有一个数被选出。</li>
+<li>要求选择的数字之和尽可能小。</li>
+<li>$O(n)$</li>
+<li>令$f[i]$表示只考虑前i个数，并且第i个数也选择了，并且此时$1$到$i$是满足条件的这个最小总和是多少。</li>
+<li>有$f[i]=min{f[j]}+a[i]$，其中j-i不超过k。</li>
+<li>时间复杂度$O(nk)$。</li>
+<li>考虑优化</li>
+</ul>
+<hr>
+<h4 id="最大字段和"><a href="#最大字段和" class="headerlink" title="最大字段和"></a>最大字段和</h4><ul>
+<li>有n个数，连成一个环，求最大子段和。（即对于所有区间的和求最大值）</li>
+<li>数字可以为负。</li>
+<li>$n&lt;=1000000$。</li>
+</ul>
+<hr>
+<h4 id="k背包问题-多重背包"><a href="#k背包问题-多重背包" class="headerlink" title="k背包问题(多重背包)"></a>k背包问题(多重背包)</h4><ul>
+<li>一个容量为m的背包，有n个物品，第i个物品的体积为wi，价值为ci，有ki个。</li>
+<li>选择若干物品，使得体积总和不超过m的情况下价值总和最大。</li>
+<li>能否利用单调队列进行优化？</li>
+<li>$O(nm)$</li>
+</ul>
+<hr>
+<h3 id="树形DP"><a href="#树形DP" class="headerlink" title="树形DP"></a>树形DP</h3><h4 id="没有上司的舞会"><a href="#没有上司的舞会" class="headerlink" title="没有上司的舞会"></a>没有上司的舞会</h4><ul>
+<li>给定一棵有点权的树，选择若干点，使得选出的点任意两个点都不相连，且选出的点权和最大。</li>
+<li>$n\leq 100000$。</li>
+</ul>
+<hr>
+<h4 id="没有上司的舞会-1"><a href="#没有上司的舞会-1" class="headerlink" title="没有上司的舞会+"></a>没有上司的舞会+</h4><ul>
+<li>给定一个树套环，选择若干点，使得选出的点任意两个点都不相连，且选出的点权和最大。（基环树）</li>
+<li>$n&lt;=100000$。<h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4></li>
+<li>有环怎么办？</li>
+<li>基环树一般先把树上的情况处理。</li>
+<li>先找到环，把每个环上的点为根，进行计算。</li>
+<li>这样可以把基环树变成环，进行破环成链。</li>
+<li>$f(i,0/1,0/1)$记录前i个，第i个是否被选，和第一个是否被选。</li>
+<li>$f(i,1,0/1)=f(i-1,0,0/1)+a(i,1)$</li>
+<li>$f(i,0,0/1)=max(f(i-1,0,0/1),f(i-1,1,0/1))+a(i,0)$</li>
+<li>那么答案就是$f(k,1,0)$或者$f(k,0,0/1)$</li>
+</ul>
+<hr>
+<h4 id="最远距离"><a href="#最远距离" class="headerlink" title="最远距离"></a>最远距离</h4><ul>
+<li>给定一棵带边权的树，求最远的两个点距离是多少。<h4 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h4></li>
+<li>对于每一个点，求其子树上的最长链a和次长链b，然后求$a_i+b_i$的最大值。</li>
+</ul>
+<hr>
+<h4 id="快餐店"><a href="#快餐店" class="headerlink" title="快餐店"></a>快餐店</h4><ul>
+<li>给定一棵带边权有n个点的树，要求以每个点出发，最远能走到哪里，距离是多少。</li>
+<li>$n\leq 100000$。<h4 id="分析-2"><a href="#分析-2" class="headerlink" title="分析"></a>分析</h4></li>
+<li>计算每个点能向下走的最远距离$f(x)$</li>
+<li>对于每一个节点，维护$g(x)$表示这个点向上走的最长距离。所以$g(x)=max(g(fa),f(bro)+len(bro,fa))+len(x,fa)$</li>
+</ul>
+<hr>
+<h3 id="状态压缩DP"><a href="#状态压缩DP" class="headerlink" title="状态压缩DP"></a>状态压缩DP</h3><ul>
+<li>状态压缩，一般用一个表示状态的数字来表征一堆元素的状态，如用2^10以内的二进制数表示10个元素的有无（0/1）</li>
+<li>最大特征：某一个重要数据的规模特别小</li>
+<li>常见优化：预处理哪些状态是合法的，以及状态转移的可行性，减少状态数和状态转移数。<h4 id="互不侵犯"><a href="#互不侵犯" class="headerlink" title="互不侵犯+"></a>互不侵犯+</h4></li>
+<li>在N×N的棋盘里面放若干国王，使他们互不攻击，共有多少种摆放方案。国王能攻击到它上下左右，以及左上左下右上右下八个方向上附近的各一个格子，共8个格子。</li>
+<li>N&lt;=15。</li>
+</ul>
+
         </div>
         
         
@@ -207,17 +363,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/05/01/e6-b8-85-e5-8c-97-e5-ad-a6-e5-a0-82noip2019-dp-e5-9b-be-e8-ae-ba-day2-e8-83-8c-e5-8c-85/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item"> 清北学堂noip2019-DP图论-Day2背包		</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/04/30/e6-b8-85-e5-8c-97-e5-ad-a6-e5-a0-82noip2019-dp-e5-9b-be-e8-ae-ba-day2-e6-a0-91-e5-bd-a2dp/">
-                <span class="level-item"> 清北学堂noip2019-DP图论-Day2树形DP		</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/07/16/清北学堂noip2019-Day4/">
+                <span class="level-item">清北学堂noip2019-Day4</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
