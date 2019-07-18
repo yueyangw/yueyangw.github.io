@@ -2,23 +2,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>分类 - Blog of YorkWu</title>
+<title>清北学堂noip2019-Day6 - Blog of YorkWu</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="信息学竞赛，博客，c++，集训，山西省实验中学，noip">
-<meta name="keywords" content="LCA,图论,精,Tarjan,dp,树形结构,优,字符串,搜索,背包问题,区间dp,最小生成树,状态压缩，状压,枚举,数论,拓扑排序,前缀和,并查集,数据结构">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Blog of YorkWu">
-<meta property="og:url" content="http://yueyangwu.cn/categories/index.html">
+    <meta name="description" content="数论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="清北学堂noip2019-Day6">
+<meta property="og:url" content="http://yueyangwu.cn/2019/07/18/清北学堂noip2019-Day6/index.html">
 <meta property="og:site_name" content="Blog of YorkWu">
-<meta property="og:description" content="信息学竞赛，博客，c++，集训，山西省实验中学，noip">
+<meta property="og:description" content="数论">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yueyangwu.cn/images/og_image.png">
+<meta property="og:updated_time" content="2019-07-18T01:23:32.386Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Blog of YorkWu">
-<meta name="twitter:description" content="信息学竞赛，博客，c++，集训，山西省实验中学，noip">
+<meta name="twitter:title" content="清北学堂noip2019-Day6">
+<meta name="twitter:description" content="数论">
 <meta name="twitter:image" content="http://yueyangwu.cn/images/og_image.png">
 
 
@@ -105,7 +105,7 @@
                 
                 <a class="navbar-item" href="/archives">文章</a>
                 
-                <a class="navbar-item is-active" href="/categories">分类</a>
+                <a class="navbar-item" href="/categories">分类</a>
                 
                 <a class="navbar-item" href="/tags">标签</a>
                 
@@ -129,67 +129,119 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-<div class="card widget">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        <!--top置顶排序2019/7/12-->
+        
+        <!--排序结束-->
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-07-18T00:05:57.000Z">2019-07-18</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/OI/">OI</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/OI/集训/">集训</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1 分钟 读完 (大约 135 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                清北学堂noip2019-Day6
+            
+        </h1>
+        <div class="content">
+            <h2 id="数论"><a href="#数论" class="headerlink" title="数论"></a>数论</h2><a id="more"></a>
+
+<h3 id="lcm，gcd性质"><a href="#lcm，gcd性质" class="headerlink" title="lcm，gcd性质"></a>lcm，gcd性质</h3><ul>
+<li>$gcd(a,b)=gcd(b,a mod b)$</li>
+<li>$lcm(a,b)= \frac{ab}{gcd(a,b)}$</li>
+<li>$$lcm(S)=\prod_{T\subset S}gcd(T)^{(-1)^{|T|+1}}$$</li>
+<li>$gcd(Fib(a),Fib(b))=Fib(gcd(a,b))$</li>
+<li>$gcd(x^a-1,x^b-1)=x^{gcd(a,b)}-1$</li>
+</ul>
+<h3 id="problem-1"><a href="#problem-1" class="headerlink" title="problem 1"></a>problem 1</h3><ul>
+<li>求<br>$$\sum_{i=1}^n(\lfloor \frac{n}{i} \rfloor)^3 \times i$$</li>
+<li>$n\leq 10^9$</li>
+</ul>
+<h3 id="problem-2"><a href="#problem-2" class="headerlink" title="problem 2"></a>problem 2</h3><ul>
+<li>求<br>$$\sum_{1\leq a,b\leq n}gcd(x^a-1,x^b-1)$$<br>$x,n\leq 10^5,300组数据$</li>
+</ul>
+<h4 id="推导"><a href="#推导" class="headerlink" title="推导"></a>推导</h4><ul>
+<li>$$ans=\sum_{1\leq a,b\leq n}(x^{gcda,b}-1)$$<br>  $$=\sum_{k=1}^n(x^k-1)]\sum_{a\leq a,b\leq n}[gcd(a,b)=k]$$<br>  $$=\sum_{k=1}^n(x^k-1)(2\sum_{i=1}^{\lfloor n/k\rfloor}\varphi(i)-1)$$</li>
+</ul>
+<hr>
+<h3 id="费马小定理"><a href="#费马小定理" class="headerlink" title="费马小定理"></a>费马小定理</h3><ul>
+<li>若p是一个</li>
+</ul>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+<!--
+<div class="card">
     <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                分类
-            </h3>
-            <ul class="menu-list">
-            <li>
-        <a class="level is-marginless" href="/categories/OI/">
-            <span class="level-start">
-                <span class="level-item">OI</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">54</span>
-            </span>
-        </a><ul><li>
-        <a class="level is-marginless" href="/categories/OI/知识点/">
-            <span class="level-start">
-                <span class="level-item">知识点</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/OI/集训/">
-            <span class="level-start">
-                <span class="level-item">集训</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">18</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/OI/题目/">
-            <span class="level-start">
-                <span class="level-item">题目</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">30</span>
-            </span>
-        </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/政治/">
-            <span class="level-start">
-                <span class="level-item">政治</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/随笔/">
-            <span class="level-start">
-                <span class="level-item">随笔</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li>
-            </ul>
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
         </div>
     </div>
-</div></div>
+</div>
+-->
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/07/17/清北学堂noip2019-Day5/">
+                <span class="level-item">清北学堂noip2019-Day5</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: 'VhCUvV5j4du8FG8am6lS3zuL-MdYXbMMI',
+        app_key: '1K6hpxMjRvaSWqUX7oxwHNtB',
+        placeholder: '来说点啥呗...'
+    });
+</script>
+
+    </div>
+</div>
+</div>
                 
 
 
