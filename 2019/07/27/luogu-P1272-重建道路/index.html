@@ -2,24 +2,24 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title> 最短路算法——SPFA		 - Blog of YorkWu</title>
+<title> Luogu P1272 重建道路 - Blog of YorkWu</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="emmmm。。。我不得不承认。。。学OI这么长时间，并不会写SPFA。。。">
-<meta name="keywords" content="图论">
+    <meta name="description" content="题目链接">
+<meta name="keywords" content="dp,树形结构">
 <meta property="og:type" content="article">
-<meta property="og:title" content=" 最短路算法——SPFA		">
-<meta property="og:url" content="http://yueyangwu.cn/2019/05/15/e6-9c-80-e7-9f-ad-e8-b7-af-e7-ae-97-e6-b3-95-spfa/index.html">
+<meta property="og:title" content=" Luogu P1272 重建道路">
+<meta property="og:url" content="http://yueyangwu.cn/2019/07/27/luogu-P1272-重建道路/index.html">
 <meta property="og:site_name" content="Blog of YorkWu">
-<meta property="og:description" content="emmmm。。。我不得不承认。。。学OI这么长时间，并不会写SPFA。。。">
+<meta property="og:description" content="题目链接">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yueyangwu.cn/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-11T17:07:45.266Z">
+<meta property="og:updated_time" content="2019-07-27T04:09:00.020Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content=" 最短路算法——SPFA		">
-<meta name="twitter:description" content="emmmm。。。我不得不承认。。。学OI这么长时间，并不会写SPFA。。。">
+<meta name="twitter:title" content=" Luogu P1272 重建道路">
+<meta name="twitter:description" content="题目链接">
 <meta name="twitter:image" content="http://yueyangwu.cn/images/og_image.png">
 
 
@@ -139,17 +139,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-05-15T12:13:40.000Z">2019-05-15</time>
+                <time class="level-item has-text-grey" datetime="2019-07-27T03:56:01.000Z">2019-07-27</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI/">OI</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/OI/知识点/">知识点</a>
+                <a class="has-link-grey -link" href="/categories/OI/">OI</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    1 分钟 读完 (大约 213 个字)
+                    2 分钟 读完 (大约 344 个字)
                 </span>
                 
                 
@@ -158,23 +158,24 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                 最短路算法——SPFA		
+                 Luogu P1272 重建道路
             
         </h1>
         <div class="content">
-            <p>emmmm。。。我不得不承认。。。学OI这么长时间，并不会写SPFA。。。</p>
+            <p><a href="https://www.luogu.org/problem/P1272" target="_blank" rel="noopener">题目链接</a></p>
 <a id="more"></a>
 
+<p>树形DP，有点背包的意思。</p>
 <hr>
-<p>好吧。。直接上代码</p>
-<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> n,m,s,dis[<span class="hljs-number">10009</span>];</span><br><span class="line"><span class="hljs-keyword">bool</span> flag,vis[<span class="hljs-number">10009</span>];</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> cnt[<span class="hljs-number">10009</span>];<span class="hljs-comment">//环 </span></span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span>&#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> to,nxt,w;</span><br><span class="line">&#125;e[<span class="hljs-number">500009</span>];</span><br><span class="line"><span class="hljs-keyword">int</span> head[<span class="hljs-number">10009</span>],tot;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> y,<span class="hljs-keyword">int</span> w)</span></span>&#123;</span><br><span class="line">    e[++tot].to=y;</span><br><span class="line">    e[tot].nxt=head[x];</span><br><span class="line">    e[tot].w=w;</span><br><span class="line">    head[x]=tot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">spfa</span><span class="hljs-params">(<span class="hljs-keyword">int</span> st)</span></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">queue</span>&lt;<span class="hljs-keyword">int</span>&gt; q;</span><br><span class="line">    q.push(st);</span><br><span class="line">    dis[st]=<span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">while</span>(!q.empty())&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> x=q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        vis[x]=<span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=head[x];i;i=e[i].nxt)&#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> y=e[i].to;</span><br><span class="line">            <span class="hljs-keyword">if</span>(dis[y]&gt;dis[x]+e[i].w)&#123;</span><br><span class="line">                dis[y]=dis[x]+e[i].w;</span><br><span class="line">                cnt[y]++;</span><br><span class="line">                <span class="hljs-keyword">if</span>(cnt[y]&gt;n)&#123;</span><br><span class="line">                    flag=<span class="hljs-number">1</span>;</span><br><span class="line">                    <span class="hljs-keyword">return</span>;</span><br><span class="line">                &#125;<span class="hljs-comment">//判环 </span></span><br><span class="line">                <span class="hljs-keyword">if</span>(!vis[y])&#123;</span><br><span class="line">                    q.push(y);</span><br><span class="line">                    vis[y]=<span class="hljs-number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        vis[x]=<span class="hljs-number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">cin</span>&gt;&gt;n&gt;&gt;m&gt;&gt;s;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> x,y,w;</span><br><span class="line">        <span class="hljs-built_in">cin</span>&gt;&gt;x&gt;&gt;y&gt;&gt;w;</span><br><span class="line">        add(x,y,w);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">memset</span>(dis,<span class="hljs-number">0x3f</span>,<span class="hljs-keyword">sizeof</span>(dis));</span><br><span class="line">    spfa(s);</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(dis[i]==<span class="hljs-number">0x3f3f3f3f</span>) <span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-number">2147483647</span>&lt;&lt;<span class="hljs-string">" "</span>;</span><br><span class="line">        <span class="hljs-keyword">else</span> <span class="hljs-built_in">cout</span>&lt;&lt;dis[i]&lt;&lt;<span class="hljs-string">" "</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用$f[x][i]$表示以x为根的子树，保留i个节点，最少割掉多少条边。然后搜一次树，回溯的时候转移，方程是$f[x][i]=min(f[x][i],f[x][j]+f[y][i-j]-2)$枚举j从1道i-1，具体看代码注释吧。</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> n, p, dig[<span class="hljs-number">159</span>];</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span>&#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> to, nxt;</span><br><span class="line">&#125;e[<span class="hljs-number">309</span>];</span><br><span class="line"><span class="hljs-keyword">int</span> head[<span class="hljs-number">159</span>], tot;</span><br><span class="line"><span class="hljs-keyword">int</span> f[<span class="hljs-number">159</span>][<span class="hljs-number">159</span>];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    e[++tot].to = y;</span><br><span class="line">    e[tot].nxt = head[x];</span><br><span class="line">    head[x] = tot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> fa)</span></span>&#123;</span><br><span class="line">    f[x][<span class="hljs-number">1</span>] = dig[x];</span><br><span class="line">    <span class="hljs-comment">//初始化一下，以x为根，只保留一个节点就是砍掉其他所有相连边，就是度数。</span></span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = head[x]; i; i = e[i].nxt)&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> y = e[i].to;</span><br><span class="line">        <span class="hljs-keyword">if</span>(y == fa) <span class="hljs-keyword">continue</span>;</span><br><span class="line">        dfs(y, x);</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = p; j &gt;= <span class="hljs-number">1</span>; j--)&#123;</span><br><span class="line">            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> k = <span class="hljs-number">1</span>; k &lt; j; k++)&#123;</span><br><span class="line">                f[x][j] = min(f[x][j], f[x][k] + f[y][j - k] - <span class="hljs-number">2</span>);</span><br><span class="line">                <span class="hljs-comment">//之所以要-2是因为刚刚初始化的时候砍掉了x-&gt;y的这条边，f[x][k]多砍了一次，f[y][j-k]又多砍了一次，所以减去2。</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;n, &amp;p);</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n - <span class="hljs-number">1</span>; i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> x, y;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;x, &amp;y);</span><br><span class="line">        add(x, y), add(y, x);</span><br><span class="line">        dig[x]++, dig[y]++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">memset</span>(f, <span class="hljs-number">0x3f</span>, <span class="hljs-keyword">sizeof</span>(f));</span><br><span class="line">    dfs(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>);</span><br><span class="line">    <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0x3f3f3f3f</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        ans = min(ans, f[i][p]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, ans);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/图论/">图论</a>
+                    <a class="has-link-grey -link" href="/tags/dp/">dp</a>, <a class="has-link-grey -link" href="/tags/树形结构/">树形结构</a>
                 </div>
             </div>
         </div>
@@ -200,17 +201,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/05/16/luogu-p1550-usaco08oct-e6-89-93-e4-ba-95watering-hole/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item"> Luogu P1550 [USACO08OCT]打井Watering Hole		</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/05/09/luogu-p2285-hnoi2004-e6-89-93-e9-bc-b9-e9-bc-a0/">
-                <span class="level-item"> Luogu P2285 [HNOI2004]打鼹鼠		</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/07/18/清北学堂noip2019-Day6/">
+                <span class="level-item">清北学堂noip2019-Day6</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
