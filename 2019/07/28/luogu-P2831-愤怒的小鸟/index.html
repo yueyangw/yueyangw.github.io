@@ -2,23 +2,24 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>luogu-P2467-地精部落 - Blog of YorkWu</title>
+<title>Luogu P2831 愤怒的小鸟 - Blog of YorkWu</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="信息学竞赛，博客，c++，集训，山西省实验中学，noip">
+    <meta name="description" content="题目链接 一个搜索，或者状压，蒟蒻不会状压dp，就写了搜索。。。">
+<meta name="keywords" content="搜索">
 <meta property="og:type" content="article">
-<meta property="og:title" content="luogu-P2467-地精部落">
-<meta property="og:url" content="http://yueyangwu.cn/2019/07/27/luogu-P2467-地精部落/index.html">
+<meta property="og:title" content="Luogu P2831 愤怒的小鸟">
+<meta property="og:url" content="http://yueyangwu.cn/2019/07/28/luogu-P2831-愤怒的小鸟/index.html">
 <meta property="og:site_name" content="Blog of YorkWu">
-<meta property="og:description" content="信息学竞赛，博客，c++，集训，山西省实验中学，noip">
+<meta property="og:description" content="题目链接 一个搜索，或者状压，蒟蒻不会状压dp，就写了搜索。。。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yueyangwu.cn/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-27T11:36:18.919Z">
+<meta property="og:updated_time" content="2019-07-28T06:09:55.156Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="luogu-P2467-地精部落">
-<meta name="twitter:description" content="信息学竞赛，博客，c++，集训，山西省实验中学，noip">
+<meta name="twitter:title" content="Luogu P2831 愤怒的小鸟">
+<meta name="twitter:description" content="题目链接 一个搜索，或者状压，蒟蒻不会状压dp，就写了搜索。。。">
 <meta name="twitter:image" content="http://yueyangwu.cn/images/og_image.png">
 
 
@@ -138,13 +139,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-07-27T11:36:18.000Z">2019-07-27</time>
+                <time class="level-item has-text-grey" datetime="2019-07-28T05:52:36.000Z">2019-07-28</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/OI/">OI</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
+                </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    几秒 读完 (大约 0 个字)
+                    5 分钟 读完 (大约 677 个字)
                 </span>
                 
                 
@@ -153,11 +158,38 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                luogu-P2467-地精部落
+                Luogu P2831 愤怒的小鸟
             
         </h1>
         <div class="content">
-            
+            <p><a href="https://www.luogu.org/problem/P2831" target="_blank" rel="noopener">题目链接</a></p>
+<p>一个搜索，或者状压，蒟蒻不会状压dp，就写了搜索。。。</p>
+<a id="more"></a>
+
+<hr>
+<ul>
+<li><p>一个猪，有两种方式死，一是只被一只鸟打死，另外一个是和之前一只猪一起被同一只鸟打死，因为两只猪确定一条抛物线。</p>
+</li>
+<li><p>然后搜索其实就是对于第i个猪，到目前为止已经确定了ok条抛物线，还有no个没有组成抛物线的猪（就是独自被一只鸟打死的），然后看一下之前已经组成的抛物线有没有一条能够打死该猪，可以的话就往后搜就行，不然就分两种情况：</p>
+<ol>
+<li><p>这只猪和这只猪之前的一只猪组成一条抛物线。</p>
+</li>
+<li><p>这只猪单独被打中。</p>
+<p>对于每种情况单独搜索即可。具体描述放在代码里。</p>
+</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> n, m, ans;</span><br><span class="line"><span class="hljs-keyword">int</span> maxn;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span>&#123;</span></span><br><span class="line">    <span class="hljs-keyword">double</span> x, y;</span><br><span class="line">&#125;a[<span class="hljs-number">20</span>];</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node1</span>&#123;</span></span><br><span class="line">    <span class="hljs-keyword">double</span> a, b;</span><br><span class="line">&#125;p[<span class="hljs-number">20</span>];</span><br><span class="line"><span class="hljs-keyword">bool</span> vis[<span class="hljs-number">20</span>];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">sam</span><span class="hljs-params">(<span class="hljs-keyword">double</span> a, <span class="hljs-keyword">double</span> b)</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-built_in">abs</span>(a - b) &lt;= <span class="hljs-number">1e-6</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> k, <span class="hljs-keyword">int</span> ok, <span class="hljs-keyword">int</span> no)</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span>(k == n + <span class="hljs-number">1</span>)&#123;</span><br><span class="line">        ans = min(ans, ok + no);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">if</span>(ok + no &gt;= ans) <span class="hljs-keyword">return</span>;</span><br><span class="line">    <span class="hljs-comment">//这个地方一定得注意，上面这句写&gt;=是最优性剪枝。</span></span><br><span class="line">    <span class="hljs-comment">//一定得写&gt;=,写&gt;会超时，T一个点。</span></span><br><span class="line">    <span class="hljs-comment">//下面一定得&gt;，因为会WA。。。</span></span><br><span class="line">    <span class="hljs-keyword">if</span>(ok + no &gt; maxn) <span class="hljs-keyword">return</span>;</span><br><span class="line">    <span class="hljs-keyword">int</span> flag = <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= ok; i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(sam(p[i].a*a[k].x*a[k].x+p[i].b*a[k].x, a[k].y))&#123;</span><br><span class="line">            <span class="hljs-comment">//这里处理了第一种情况，就是能和之前已经有的抛物线组成一起。</span></span><br><span class="line">            <span class="hljs-comment">//然后vis数组这个比较正常。</span></span><br><span class="line">            vis[k] = <span class="hljs-number">1</span>;</span><br><span class="line">            dfs(k + <span class="hljs-number">1</span>, ok, no);</span><br><span class="line">            vis[k] = <span class="hljs-number">0</span>;</span><br><span class="line">            flag = <span class="hljs-number">0</span>;</span><br><span class="line">            <span class="hljs-keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">if</span>(flag)&#123;</span><br><span class="line">        <span class="hljs-comment">//这里处理第二种情况，与这个猪前面其中一个猪组成一条抛物线。</span></span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; k; i++)&#123;</span><br><span class="line">            <span class="hljs-keyword">if</span>(vis[i]) <span class="hljs-keyword">continue</span>;</span><br><span class="line">            <span class="hljs-keyword">if</span>(a[i].x == a[k].x) <span class="hljs-keyword">continue</span>;</span><br><span class="line">            <span class="hljs-comment">//这里计算一下aa和bb，就是抛物线的a和b，拿方程组手推一下就出来了。</span></span><br><span class="line">            <span class="hljs-keyword">double</span> aa = (a[k].y*a[i].x/a[k].x-a[i].y)/(a[i].x*(a[k].x-a[i].x));</span><br><span class="line">            <span class="hljs-keyword">double</span> bb = (a[k].y-aa*a[k].x*a[k].x)/a[k].x;</span><br><span class="line">            <span class="hljs-keyword">if</span>(aa &lt; <span class="hljs-number">0</span>)&#123;</span><br><span class="line">                p[ok+<span class="hljs-number">1</span>].a = aa;</span><br><span class="line">                p[ok+<span class="hljs-number">1</span>].b = bb;</span><br><span class="line">                vis[i] = <span class="hljs-number">1</span>;</span><br><span class="line">                vis[k] = <span class="hljs-number">1</span>;</span><br><span class="line">                dfs(k + <span class="hljs-number">1</span>, ok + <span class="hljs-number">1</span>, no - <span class="hljs-number">1</span>);</span><br><span class="line">                vis[i] = <span class="hljs-number">0</span>;</span><br><span class="line">                vis[k] = <span class="hljs-number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-comment">//最后这里是第三种情况，就是这一个单独组成一个抛物线。。。</span></span><br><span class="line">        dfs(k + <span class="hljs-number">1</span>, ok, no + <span class="hljs-number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> T;</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;T);</span><br><span class="line">    <span class="hljs-keyword">while</span>(T--)&#123;</span><br><span class="line">        ans = <span class="hljs-number">0x3f3f3f3f</span>;</span><br><span class="line">        maxn = <span class="hljs-number">0x3f3f3f3f</span>;</span><br><span class="line">        <span class="hljs-built_in">memset</span>(vis, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(vis));</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">            <span class="hljs-keyword">double</span> x, y;</span><br><span class="line">            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lf%lf"</span>, &amp;x, &amp;y);</span><br><span class="line">            a[i].x = x;</span><br><span class="line">            a[i].y = y;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">if</span>(m == <span class="hljs-number">1</span>) maxn = <span class="hljs-built_in">ceil</span>(n / <span class="hljs-number">3.0</span> + <span class="hljs-number">1</span>);</span><br><span class="line">        dfs(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, ans);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/搜索/">搜索</a>
+                </div>
+            </div>
         </div>
         
         
@@ -181,17 +213,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/07/27/atcoder-abc135/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">AtCoder Beginner Contest 135</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/07/27/luogu-P4046-快递服务/">
-                <span class="level-item">Luogu P4046 [JSOI2010]快递服务</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/07/27/atcoder-abc135/">
+                <span class="level-item">AtCoder Beginner Contest 135</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
