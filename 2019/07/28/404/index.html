@@ -2,24 +2,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title> 清北学堂noip2019集训D6——动态规划		 - Blog of YorkWu</title>
+<title>404 Not Found：该页无法显示 - Blog of YorkWu</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="状态压缩DP">
-<meta name="keywords" content="dp">
+    <meta name="description" content="信息学竞赛，博客，c++，集训，山西省实验中学，noip">
 <meta property="og:type" content="article">
-<meta property="og:title" content=" 清北学堂noip2019集训D6——动态规划		">
-<meta property="og:url" content="http://yueyangwu.cn/2019/03/09/e6-b8-85-e5-8c-97-e5-ad-a6-e5-a0-82noip2019-e9-9b-86-e8-ae-add6-e5-8a-a8-e6-80-81-e8-a7-84-e5-88-92/index.html">
+<meta property="og:title" content="404 Not Found：该页无法显示">
+<meta property="og:url" content="http://yueyangwu.cn/2019/07/28//404/index.html">
 <meta property="og:site_name" content="Blog of YorkWu">
-<meta property="og:description" content="状态压缩DP">
+<meta property="og:description" content="信息学竞赛，博客，c++，集训，山西省实验中学，noip">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yueyangwu.cn/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-12T02:50:51.461Z">
+<meta property="og:updated_time" content="2019-07-28T06:56:09.453Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content=" 清北学堂noip2019集训D6——动态规划		">
-<meta name="twitter:description" content="状态压缩DP">
+<meta name="twitter:title" content="404 Not Found：该页无法显示">
+<meta name="twitter:description" content="信息学竞赛，博客，c++，集训，山西省实验中学，noip">
 <meta name="twitter:image" content="http://yueyangwu.cn/images/og_image.png">
 
 
@@ -139,17 +138,13 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-03-09T14:16:52.000Z">2019-03-09</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI/">OI</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/OI/集训/">集训</a>
-                </div>
+                <time class="level-item has-text-grey" datetime="2019-07-28T06:53:44.519Z">2019-07-28</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 287 个字)
+                    几秒 读完 (大约 0 个字)
                 </span>
                 
                 
@@ -158,59 +153,11 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                 清北学堂noip2019集训D6——动态规划		
+                404 Not Found：该页无法显示
             
         </h1>
         <div class="content">
-            <h3 id="状态压缩DP"><a href="#状态压缩DP" class="headerlink" title="状态压缩DP"></a>状态压缩DP</h3><a id="more"></a>
-
-<h4 id="最短哈密顿回路问题"><a href="#最短哈密顿回路问题" class="headerlink" title="最短哈密顿回路问题"></a>最短哈密顿回路问题</h4><ul>
-<li><p>给定一个完全图，带正边权$w(u,v)$。求出一个顶点的排列$v_1,v_2,…,v_n$，使得$w(v_1,v_2),w(v_2,v_3),…,w(v_{n-1},v_n),w(v_n,v_1)$的和最小。</p>
-</li>
-<li><p>$n\leq17$</p>
-</li>
-<li><p>$f[i][j]$表示在$i$这个点集中，从$0$到$j$的最短距离。（$0和$j$都在$i$集合里）//0~n-1</p>
-<pre><code>for(int i=0;i&lt;n;i++) for(int j=0;j&lt;n;j++) f[i][j]=inf;
-f[1&lt;&lt;0][0]=0;
-for(int i=1;i&lt;(1&lt;&lt;n);i++){
-    if(!(i&amp;1)) continue;
-    for(int j=0;j&lt;n;j++){
-        if(!((1&lt;&lt;j)&amp;1)) continue;
-        for(int k=1;k&lt;n;k++){
-            if((1&lt;&lt;k)&amp;i) continue;
-            f[i|(1&lt;&lt;k)][k]=min(f[i|(1&lt;&lt;k)][k],f[i][j]+w[j][k]);
-        }
-    }
-}
-
-int ans=inf;
-for(int j=1;j&lt;n;j++){
-    ans=min(ans,f[(1&lt;&lt;n)-1][j]+w[j][0]);
-}</code></pre></li>
-</ul>
-<h4 id="例题2"><a href="#例题2" class="headerlink" title="例题2"></a>例题2</h4><p><img src="https://img-blog.csdnimg.cn/20190130092435236." alt="例题2"> - 设计状态： $f[i][S]$表示只填入前i行当每个格子，有多少种合法方案，使得第$i$行当01串等于$S$。（合法：相邻两个格子不同时为$1$）。 <figure class="highlight cpp hljs"><figcaption><span>sum</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-keyword">bool</span> xl[<span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">10</span>];</span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;(<span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">10</span>);i++)</span><br><span class="line">    <span class="hljs-keyword">if</span>(<span class="hljs-string">"S串中存在两个相邻的1"</span>)&#123;</span><br><span class="line">        xl[S]=<span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> s=<span class="hljs-number">0</span>;s&lt;(<span class="hljs-number">1</span>&lt;&lt;m);s++)</span><br><span class="line">    f[<span class="hljs-number">1</span>][s]=!xl[s];</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">2</span>;i&lt;n;i++)&#123;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> =<span class="hljs-number">0</span>;s&lt;(<span class="hljs-number">1</span>&lt;&lt;m);s++)&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(xl[s]) f[i][s]=<span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">else</span>&#123;</span><br><span class="line">            <span class="hljs-comment">//假设上一行填的是t</span></span><br><span class="line">            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> t=<span class="hljs-number">0</span>;t&lt;(<span class="hljs-number">1</span>&lt;&lt;m);t++)&#123;</span><br><span class="line">                <span class="hljs-keyword">if</span>((t&amp;s)==<span class="hljs-number">0</span>) f[i][s]=(f[i][s]+f[i<span class="hljs-number">-1</span>][t])%p;</span><br><span class="line">            &#125; </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<pre><code>&lt;/code&gt;&lt;/pre&gt;
-
-- 优化后
-    <figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">    sum=<span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;(i&lt;&lt;n);i++)&#123;</span><br><span class="line">        sum=sum+f[n][i]%p;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">bool</span> xl[<span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">10</span>];</span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;(<span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">10</span>);i++)</span><br><span class="line">    <span class="hljs-keyword">if</span>(<span class="hljs-string">"S串中存在两个相邻的1"</span>)&#123;</span><br><span class="line">        xl[S]=<span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> s=<span class="hljs-number">0</span>;s&lt;(<span class="hljs-number">1</span>&lt;&lt;m);s++)</span><br><span class="line">    f[<span class="hljs-number">1</span>][s]=!xl[s];</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">2</span>;i&lt;n;i++)&#123;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> =<span class="hljs-number">0</span>;s&lt;(<span class="hljs-number">1</span>&lt;&lt;m);s++)&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(xl[s]) f[i][s]=<span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">else</span>&#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> buji=(<span class="hljs-number">1</span>&lt;&lt;m)<span class="hljs-number">-1</span>-s;<span class="hljs-comment">//补集 </span></span><br><span class="line">            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> t=buji;t;t=(t<span class="hljs-number">-1</span>)&amp;buji)&#123;</span><br><span class="line">                f[i][s]=(f[i][s]+f[i<span class="hljs-number">-1</span>][t])%p;</span><br><span class="line">            &#125;</span><br><span class="line">            f[i][s]=(f[i][s]+f[i<span class="hljs-number">-1</span>][<span class="hljs-number">0</span>])%p;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-Dominating set支配集
-
-
-一个无向图的支配集是一个点的子集$S$，使得图中每个点都属于S或者与至少与一个$S$中的节点相邻
-二者至少一个成立
-$n$个点的二分图，求其最小支配集。$n\leq30$(两边一共$n$个点)</code></pre>
-        </div>
-        
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/dp/">dp</a>
-                </div>
-            </div>
+            
         </div>
         
         
@@ -234,17 +181,10 @@ $n$个点的二分图，求其最小支配集。$n\leq30$(两边一共$n$个点)
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/03/09/luogu-p2024-noi2001-e9-a3-9f-e7-89-a9-e9-93-be/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item"> Luogu P2024 [NOI2001]食物链		</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/09/e6-b8-85-e5-8c-97-e5-ad-a6-e5-a0-82noip2019-e9-9b-86-e8-ae-add5-e5-8a-a8-e6-80-81-e8-a7-84-e5-88-92/">
-                <span class="level-item"> 清北学堂noip2019集训D5——动态规划		</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/07/28/luogu-P2831-愤怒的小鸟/">
+                <span class="level-item">Luogu P2831 愤怒的小鸟</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -517,7 +457,7 @@ $n$个点的二分图，求其最小支配集。$n\leq30$(两边一共$n$个点)
                 <span class="level-item">OI</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">58</span>
+                <span class="level-item tag">57</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/OI/知识点/">
@@ -541,7 +481,7 @@ $n$个点的二分图，求其最小支配集。$n\leq30$(两边一共$n$个点)
                 <span class="level-item">题目</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">34</span>
+                <span class="level-item tag">33</span>
             </span>
         </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/政治/">
@@ -577,18 +517,18 @@ $n$个点的二分图，求其最小支配集。$n\leq30$(两边一共$n$个点)
         
         <article class="media">
             
-            <a href="/2019/07/29/P2279-消防局的设立/" class="media-left">
+            <a href="/2019/07/28/404/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Luogu P2279 [HNOI2003]消防局的设立">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="404 Not Found：该页无法显示">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-29T10:16:10.000Z">2019-07-29</time></div>
-                    <a href="/2019/07/29/P2279-消防局的设立/" class="has-link-black-ter is-size-6">Luogu P2279 [HNOI2003]消防局的设立</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-28T06:53:44.519Z">2019-07-28</time></div>
+                    <a href="/2019/07/28/404/" class="has-link-black-ter is-size-6">404 Not Found：该页无法显示</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
+                        
                     </p>
                 </div>
             </div>
@@ -767,7 +707,7 @@ $n$个点的二分图，求其最小支配集。$n\leq30$(两边一共$n$个点)
                 <div class="control">
                     <a class="tags has-addons" href="/tags/dp/">
                         <span class="tag">dp</span>
-                        <span class="tag is-grey">26</span>
+                        <span class="tag is-grey">25</span>
                     </a>
                 </div>
                 
@@ -858,7 +798,7 @@ $n$个点的二分图，求其最小支配集。$n\leq30$(两边一共$n$个点)
                 <div class="control">
                     <a class="tags has-addons" href="/tags/树形结构/">
                         <span class="tag">树形结构</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -908,18 +848,18 @@ $n$个点的二分图，求其最小支配集。$n\leq30$(两边一共$n$个点)
         
         <article class="media">
             
-            <a href="/2019/07/29/P2279-消防局的设立/" class="media-left">
+            <a href="/2019/07/28/404/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Luogu P2279 [HNOI2003]消防局的设立">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="404 Not Found：该页无法显示">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-29T10:16:10.000Z">2019-07-29</time></div>
-                    <a href="/2019/07/29/P2279-消防局的设立/" class="has-link-black-ter is-size-6">Luogu P2279 [HNOI2003]消防局的设立</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-28T06:53:44.519Z">2019-07-28</time></div>
+                    <a href="/2019/07/28/404/" class="has-link-black-ter is-size-6">404 Not Found：该页无法显示</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI/">OI</a> / <a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
+                        
                     </p>
                 </div>
             </div>
@@ -1098,7 +1038,7 @@ $n$个点的二分图，求其最小支配集。$n\leq30$(两边一共$n$个点)
                 <div class="control">
                     <a class="tags has-addons" href="/tags/dp/">
                         <span class="tag">dp</span>
-                        <span class="tag is-grey">26</span>
+                        <span class="tag is-grey">25</span>
                     </a>
                 </div>
                 
@@ -1189,7 +1129,7 @@ $n$个点的二分图，求其最小支配集。$n\leq30$(两边一共$n$个点)
                 <div class="control">
                     <a class="tags has-addons" href="/tags/树形结构/">
                         <span class="tag">树形结构</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 

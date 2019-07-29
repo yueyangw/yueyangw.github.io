@@ -2,24 +2,24 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title> 清北学堂noip2019集训D6——动态规划		 - Blog of YorkWu</title>
+<title>Luogu P2279 [HNOI2003]消防局的设立 - Blog of YorkWu</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="状态压缩DP">
-<meta name="keywords" content="dp">
+    <meta name="description" content="题目链接">
+<meta name="keywords" content="树形结构,dp">
 <meta property="og:type" content="article">
-<meta property="og:title" content=" 清北学堂noip2019集训D6——动态规划		">
-<meta property="og:url" content="http://yueyangwu.cn/2019/03/09/e6-b8-85-e5-8c-97-e5-ad-a6-e5-a0-82noip2019-e9-9b-86-e8-ae-add6-e5-8a-a8-e6-80-81-e8-a7-84-e5-88-92/index.html">
+<meta property="og:title" content="Luogu P2279 [HNOI2003]消防局的设立">
+<meta property="og:url" content="http://yueyangwu.cn/2019/07/29/P2279-消防局的设立/index.html">
 <meta property="og:site_name" content="Blog of YorkWu">
-<meta property="og:description" content="状态压缩DP">
+<meta property="og:description" content="题目链接">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yueyangwu.cn/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-12T02:50:51.461Z">
+<meta property="og:updated_time" content="2019-07-29T10:40:29.228Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content=" 清北学堂noip2019集训D6——动态规划		">
-<meta name="twitter:description" content="状态压缩DP">
+<meta name="twitter:title" content="Luogu P2279 [HNOI2003]消防局的设立">
+<meta name="twitter:description" content="题目链接">
 <meta name="twitter:image" content="http://yueyangwu.cn/images/og_image.png">
 
 
@@ -139,17 +139,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-03-09T14:16:52.000Z">2019-03-09</time>
+                <time class="level-item has-text-grey" datetime="2019-07-29T10:16:10.000Z">2019-07-29</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI/">OI</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/OI/集训/">集训</a>
+                <a class="has-link-grey -link" href="/categories/OI/">OI</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 287 个字)
+                    3 分钟 读完 (大约 483 个字)
                 </span>
                 
                 
@@ -158,57 +158,33 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                 清北学堂noip2019集训D6——动态规划		
+                Luogu P2279 [HNOI2003]消防局的设立
             
         </h1>
         <div class="content">
-            <h3 id="状态压缩DP"><a href="#状态压缩DP" class="headerlink" title="状态压缩DP"></a>状态压缩DP</h3><a id="more"></a>
+            <p><a href="https://www.luogu.org/problem/P2279" target="_blank" rel="noopener">题目链接</a></p>
+<a id="more"></a>
 
-<h4 id="最短哈密顿回路问题"><a href="#最短哈密顿回路问题" class="headerlink" title="最短哈密顿回路问题"></a>最短哈密顿回路问题</h4><ul>
-<li><p>给定一个完全图，带正边权$w(u,v)$。求出一个顶点的排列$v_1,v_2,…,v_n$，使得$w(v_1,v_2),w(v_2,v_3),…,w(v_{n-1},v_n),w(v_n,v_1)$的和最小。</p>
-</li>
-<li><p>$n\leq17$</p>
-</li>
-<li><p>$f[i][j]$表示在$i$这个点集中，从$0$到$j$的最短距离。（$0和$j$都在$i$集合里）//0~n-1</p>
-<pre><code>for(int i=0;i&lt;n;i++) for(int j=0;j&lt;n;j++) f[i][j]=inf;
-f[1&lt;&lt;0][0]=0;
-for(int i=1;i&lt;(1&lt;&lt;n);i++){
-    if(!(i&amp;1)) continue;
-    for(int j=0;j&lt;n;j++){
-        if(!((1&lt;&lt;j)&amp;1)) continue;
-        for(int k=1;k&lt;n;k++){
-            if((1&lt;&lt;k)&amp;i) continue;
-            f[i|(1&lt;&lt;k)][k]=min(f[i|(1&lt;&lt;k)][k],f[i][j]+w[j][k]);
-        }
-    }
-}
-
-int ans=inf;
-for(int j=1;j&lt;n;j++){
-    ans=min(ans,f[(1&lt;&lt;n)-1][j]+w[j][0]);
-}</code></pre></li>
+<hr>
+<ul>
+<li>设计状态：$f[x][0-4]$表示以x为根节点的子树，能覆盖到向上2到-2个节点需要的最小消防局数量，这样明显$f[x][0]\leq f[x][1]\leq f[x][2] \leq f[x][3] \leq f[x][4]$所以转移的时候尽量选第二维大的转移，能保证最小：</li>
+<li>$f[x][0] = \sum f[y][4]+1$</li>
+<li>如果能延伸到x的祖父节点，那么x必须为消防局，所以答案是x的所有儿子向下2个，及x所有孙子的儿子都能被覆盖即可，因为x为消防局，所以数量加一。<br>$$<br>f[x][1] = min{\sum_{s\in t且s \not= k} f[s][3]+f[k][0]}<br>$$</li>
+<li>延伸到x的父亲，只需要保证所有的孙子已经被覆盖，并且其中一个儿子可以向上延伸2个，这就意味着所有的x的儿子和x本身还有x的父亲都可以被这个消防局覆盖。</li>
+<li>$f[x][2]$同理</li>
+<li>$f[x][3] = \sum f[y][2]$</li>
+<li>能保证x的儿子们都被覆盖，相当于儿子们自己都被覆盖。</li>
+<li>$f[x][4] = \sum f[y][3]$</li>
+<li>同理</li>
 </ul>
-<h4 id="例题2"><a href="#例题2" class="headerlink" title="例题2"></a>例题2</h4><p><img src="https://img-blog.csdnimg.cn/20190130092435236." alt="例题2"> - 设计状态： $f[i][S]$表示只填入前i行当每个格子，有多少种合法方案，使得第$i$行当01串等于$S$。（合法：相邻两个格子不同时为$1$）。 <figure class="highlight cpp hljs"><figcaption><span>sum</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-keyword">bool</span> xl[<span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">10</span>];</span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;(<span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">10</span>);i++)</span><br><span class="line">    <span class="hljs-keyword">if</span>(<span class="hljs-string">"S串中存在两个相邻的1"</span>)&#123;</span><br><span class="line">        xl[S]=<span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> s=<span class="hljs-number">0</span>;s&lt;(<span class="hljs-number">1</span>&lt;&lt;m);s++)</span><br><span class="line">    f[<span class="hljs-number">1</span>][s]=!xl[s];</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">2</span>;i&lt;n;i++)&#123;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> =<span class="hljs-number">0</span>;s&lt;(<span class="hljs-number">1</span>&lt;&lt;m);s++)&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(xl[s]) f[i][s]=<span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">else</span>&#123;</span><br><span class="line">            <span class="hljs-comment">//假设上一行填的是t</span></span><br><span class="line">            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> t=<span class="hljs-number">0</span>;t&lt;(<span class="hljs-number">1</span>&lt;&lt;m);t++)&#123;</span><br><span class="line">                <span class="hljs-keyword">if</span>((t&amp;s)==<span class="hljs-number">0</span>) f[i][s]=(f[i][s]+f[i<span class="hljs-number">-1</span>][t])%p;</span><br><span class="line">            &#125; </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<pre><code>&lt;/code&gt;&lt;/pre&gt;
-
-- 优化后
-    <figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">    sum=<span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;(i&lt;&lt;n);i++)&#123;</span><br><span class="line">        sum=sum+f[n][i]%p;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">bool</span> xl[<span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">10</span>];</span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;(<span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">10</span>);i++)</span><br><span class="line">    <span class="hljs-keyword">if</span>(<span class="hljs-string">"S串中存在两个相邻的1"</span>)&#123;</span><br><span class="line">        xl[S]=<span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> s=<span class="hljs-number">0</span>;s&lt;(<span class="hljs-number">1</span>&lt;&lt;m);s++)</span><br><span class="line">    f[<span class="hljs-number">1</span>][s]=!xl[s];</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">2</span>;i&lt;n;i++)&#123;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> =<span class="hljs-number">0</span>;s&lt;(<span class="hljs-number">1</span>&lt;&lt;m);s++)&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(xl[s]) f[i][s]=<span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">else</span>&#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> buji=(<span class="hljs-number">1</span>&lt;&lt;m)<span class="hljs-number">-1</span>-s;<span class="hljs-comment">//补集 </span></span><br><span class="line">            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> t=buji;t;t=(t<span class="hljs-number">-1</span>)&amp;buji)&#123;</span><br><span class="line">                f[i][s]=(f[i][s]+f[i<span class="hljs-number">-1</span>][t])%p;</span><br><span class="line">            &#125;</span><br><span class="line">            f[i][s]=(f[i][s]+f[i<span class="hljs-number">-1</span>][<span class="hljs-number">0</span>])%p;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-Dominating set支配集
-
-
-一个无向图的支配集是一个点的子集$S$，使得图中每个点都属于S或者与至少与一个$S$中的节点相邻
-二者至少一个成立
-$n$个点的二分图，求其最小支配集。$n\leq30$(两边一共$n$个点)</code></pre>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> n;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span>&#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> to, nxt;</span><br><span class="line">&#125;e[<span class="hljs-number">2009</span>];</span><br><span class="line"><span class="hljs-keyword">int</span> head[<span class="hljs-number">1009</span>], tot;</span><br><span class="line"><span class="hljs-keyword">int</span> f[<span class="hljs-number">1009</span>][<span class="hljs-number">5</span>];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    e[++tot].to = y;</span><br><span class="line">    e[tot].nxt = head[x];</span><br><span class="line">    head[x] = tot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> fa)</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = head[x]; i; i = e[i].nxt)&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> y = e[i].to;</span><br><span class="line">        <span class="hljs-keyword">if</span>(y == fa) <span class="hljs-keyword">continue</span>;</span><br><span class="line">        dfs(y, x);</span><br><span class="line">        f[x][<span class="hljs-number">0</span>] += f[y][<span class="hljs-number">4</span>];</span><br><span class="line">        f[x][<span class="hljs-number">3</span>] += f[y][<span class="hljs-number">2</span>];</span><br><span class="line">        f[x][<span class="hljs-number">4</span>] += f[y][<span class="hljs-number">3</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    f[x][<span class="hljs-number">0</span>] += <span class="hljs-number">1</span>;</span><br><span class="line">    f[x][<span class="hljs-number">1</span>] = f[x][<span class="hljs-number">2</span>] = <span class="hljs-number">0x3f3f3f3f</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = head[x]; i; i = e[i].nxt)&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> y = e[i].to;</span><br><span class="line">        <span class="hljs-keyword">if</span>(y == fa) <span class="hljs-keyword">continue</span>;</span><br><span class="line">        f[x][<span class="hljs-number">1</span>] = min(f[x][<span class="hljs-number">1</span>], f[x][<span class="hljs-number">4</span>] - f[y][<span class="hljs-number">3</span>] + f[y][<span class="hljs-number">0</span>]);</span><br><span class="line">        f[x][<span class="hljs-number">2</span>] = min(f[x][<span class="hljs-number">2</span>], f[x][<span class="hljs-number">3</span>] - f[y][<span class="hljs-number">2</span>] + f[y][<span class="hljs-number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    f[x][<span class="hljs-number">1</span>] = min(f[x][<span class="hljs-number">1</span>], f[x][<span class="hljs-number">0</span>]);</span><br><span class="line">    f[x][<span class="hljs-number">2</span>] = min(f[x][<span class="hljs-number">2</span>], f[x][<span class="hljs-number">1</span>]);</span><br><span class="line">    f[x][<span class="hljs-number">3</span>] = min(f[x][<span class="hljs-number">3</span>], f[x][<span class="hljs-number">2</span>]);</span><br><span class="line">    f[x][<span class="hljs-number">4</span>] = min(f[x][<span class="hljs-number">4</span>], f[x][<span class="hljs-number">3</span>]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> y;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;y);</span><br><span class="line">        add(i, y), add(y, i);</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>);</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, f[<span class="hljs-number">1</span>][<span class="hljs-number">2</span>]);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/dp/">dp</a>
+                    <a class="has-link-grey -link" href="/tags/dp/">dp</a>, <a class="has-link-grey -link" href="/tags/树形结构/">树形结构</a>
                 </div>
             </div>
         </div>
@@ -234,17 +210,10 @@ $n$个点的二分图，求其最小支配集。$n\leq30$(两边一共$n$个点)
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/03/09/luogu-p2024-noi2001-e9-a3-9f-e7-89-a9-e9-93-be/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item"> Luogu P2024 [NOI2001]食物链		</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/09/e6-b8-85-e5-8c-97-e5-ad-a6-e5-a0-82noip2019-e9-9b-86-e8-ae-add5-e5-8a-a8-e6-80-81-e8-a7-84-e5-88-92/">
-                <span class="level-item"> 清北学堂noip2019集训D5——动态规划		</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/07/28/luogu-P2831-愤怒的小鸟/">
+                <span class="level-item">Luogu P2831 愤怒的小鸟</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>

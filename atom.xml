@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yueyangwu.cn/"/>
-  <updated>2019-07-28T06:09:55.156Z</updated>
+  <updated>2019-07-29T10:40:29.228Z</updated>
   <id>http://yueyangwu.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Luogu P2279 [HNOI2003]消防局的设立</title>
+    <link href="http://yueyangwu.cn/2019/07/29/P2279-%E6%B6%88%E9%98%B2%E5%B1%80%E7%9A%84%E8%AE%BE%E7%AB%8B/"/>
+    <id>http://yueyangwu.cn/2019/07/29/P2279-消防局的设立/</id>
+    <published>2019-07-29T10:16:10.000Z</published>
+    <updated>2019-07-29T10:40:29.228Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://www.luogu.org/problem/P2279" target="_blank" rel="noopener">题目链接</a></p><a id="more"></a><hr><ul><li>设计状态：$f[x][0-4]$表示以x为根节点的子树，能覆盖到向上2到-2个节点需要的最小消防局数量，这样明显$f[x][0]\leq f[x][1]\leq f[x][2] \leq f[x][3] \leq f[x][4]$所以转移的时候尽量选第二维大的转移，能保证最小：</li><li>$f[x][0] = \sum f[y][4]+1$</li><li>如果能延伸到x的祖父节点，那么x必须为消防局，所以答案是x的所有儿子向下2个，及x所有孙子的儿子都能被覆盖即可，因为x为消防局，所以数量加一。<br>$$<br>f[x][1] = min{\sum_{s\in t且s \not= k} f[s][3]+f[k][0]}<br>$$</li><li>延伸到x的父亲，只需要保证所有的孙子已经被覆盖，并且其中一个儿子可以向上延伸2个，这就意味着所有的x的儿子和x本身还有x的父亲都可以被这个消防局覆盖。</li><li>$f[x][2]$同理</li><li>$f[x][3] = \sum f[y][2]$</li><li>能保证x的儿子们都被覆盖，相当于儿子们自己都被覆盖。</li><li>$f[x][4] = \sum f[y][3]$</li><li>同理</li></ul><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> n;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span>&#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> to, nxt;</span><br><span class="line">&#125;e[<span class="hljs-number">2009</span>];</span><br><span class="line"><span class="hljs-keyword">int</span> head[<span class="hljs-number">1009</span>], tot;</span><br><span class="line"><span class="hljs-keyword">int</span> f[<span class="hljs-number">1009</span>][<span class="hljs-number">5</span>];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    e[++tot].to = y;</span><br><span class="line">    e[tot].nxt = head[x];</span><br><span class="line">    head[x] = tot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> fa)</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = head[x]; i; i = e[i].nxt)&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> y = e[i].to;</span><br><span class="line">        <span class="hljs-keyword">if</span>(y == fa) <span class="hljs-keyword">continue</span>;</span><br><span class="line">        dfs(y, x);</span><br><span class="line">        f[x][<span class="hljs-number">0</span>] += f[y][<span class="hljs-number">4</span>];</span><br><span class="line">        f[x][<span class="hljs-number">3</span>] += f[y][<span class="hljs-number">2</span>];</span><br><span class="line">        f[x][<span class="hljs-number">4</span>] += f[y][<span class="hljs-number">3</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    f[x][<span class="hljs-number">0</span>] += <span class="hljs-number">1</span>;</span><br><span class="line">    f[x][<span class="hljs-number">1</span>] = f[x][<span class="hljs-number">2</span>] = <span class="hljs-number">0x3f3f3f3f</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = head[x]; i; i = e[i].nxt)&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> y = e[i].to;</span><br><span class="line">        <span class="hljs-keyword">if</span>(y == fa) <span class="hljs-keyword">continue</span>;</span><br><span class="line">        f[x][<span class="hljs-number">1</span>] = min(f[x][<span class="hljs-number">1</span>], f[x][<span class="hljs-number">4</span>] - f[y][<span class="hljs-number">3</span>] + f[y][<span class="hljs-number">0</span>]);</span><br><span class="line">        f[x][<span class="hljs-number">2</span>] = min(f[x][<span class="hljs-number">2</span>], f[x][<span class="hljs-number">3</span>] - f[y][<span class="hljs-number">2</span>] + f[y][<span class="hljs-number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    f[x][<span class="hljs-number">1</span>] = min(f[x][<span class="hljs-number">1</span>], f[x][<span class="hljs-number">0</span>]);</span><br><span class="line">    f[x][<span class="hljs-number">2</span>] = min(f[x][<span class="hljs-number">2</span>], f[x][<span class="hljs-number">1</span>]);</span><br><span class="line">    f[x][<span class="hljs-number">3</span>] = min(f[x][<span class="hljs-number">3</span>], f[x][<span class="hljs-number">2</span>]);</span><br><span class="line">    f[x][<span class="hljs-number">4</span>] = min(f[x][<span class="hljs-number">4</span>], f[x][<span class="hljs-number">3</span>]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> y;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;y);</span><br><span class="line">        add(i, y), add(y, i);</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>);</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, f[<span class="hljs-number">1</span>][<span class="hljs-number">2</span>]);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://www.luogu.org/problem/P2279&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;题目链接&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="OI" scheme="http://yueyangwu.cn/categories/OI/"/>
+    
+      <category term="题目" scheme="http://yueyangwu.cn/categories/OI/%E9%A2%98%E7%9B%AE/"/>
+    
+    
+      <category term="树形结构" scheme="http://yueyangwu.cn/tags/%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="dp" scheme="http://yueyangwu.cn/tags/dp/"/>
+    
+  </entry>
   
   <entry>
     <title>Luogu P2831 愤怒的小鸟</title>
@@ -120,9 +146,9 @@
       <category term="题目" scheme="http://yueyangwu.cn/categories/OI/%E9%A2%98%E7%9B%AE/"/>
     
     
-      <category term="dp" scheme="http://yueyangwu.cn/tags/dp/"/>
-    
       <category term="树形结构" scheme="http://yueyangwu.cn/tags/%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="dp" scheme="http://yueyangwu.cn/tags/dp/"/>
     
   </entry>
   
@@ -374,9 +400,9 @@
       <category term="题目" scheme="http://yueyangwu.cn/categories/OI/%E9%A2%98%E7%9B%AE/"/>
     
     
-      <category term="精" scheme="http://yueyangwu.cn/tags/%E7%B2%BE/"/>
-    
       <category term="dp" scheme="http://yueyangwu.cn/tags/dp/"/>
+    
+      <category term="精" scheme="http://yueyangwu.cn/tags/%E7%B2%BE/"/>
     
   </entry>
   
@@ -455,34 +481,6 @@
       <category term="dp" scheme="http://yueyangwu.cn/tags/dp/"/>
     
       <category term="状态压缩，状压" scheme="http://yueyangwu.cn/tags/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9%EF%BC%8C%E7%8A%B6%E5%8E%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title> Luogu P1026 统计单词个数		</title>
-    <link href="http://yueyangwu.cn/2019/05/28/luogu-p1026-e7-bb-9f-e8-ae-a1-e5-8d-95-e8-af-8d-e4-b8-aa-e6-95-b0/"/>
-    <id>http://yueyangwu.cn/2019/05/28/luogu-p1026-e7-bb-9f-e8-ae-a1-e5-8d-95-e8-af-8d-e4-b8-aa-e6-95-b0/</id>
-    <published>2019-05-28T12:42:23.000Z</published>
-    <updated>2019-07-11T17:22:46.451Z</updated>
-    
-    <content type="html"><![CDATA[<p>这两天都忙得忘了写了。。。 今天把这几天做的好题都补一下吧。。。 <a href="https://www.luogu.org/problemnew/show/P1026" title="题目链接" target="_blank" rel="noopener">题目链接</a></p><a id="more"></a><hr><p>老实说，这道题已经困扰我好几个月了，刚学dp就知道这道题，现在才做出来，所以准备写一下。。 题意大概就是给一个字符串，和一堆单词，问把这个字符串分成k段后，每段的单词数量的和的最大值是多少。 这道题用string的几个方法非常方便。 - <string>1.find(<string>2)在第一个字符串中查找字符串2，并返回第一个下标，如果不存在，返回1844674407370955161这是个什么鬼东西我也不知道。 - <string>.substr(x,len)取出字符串中以x开头长度为len的一个子字符串。 设计状态：$f[i][k]$代表前i个字符分成k段的最大单词总数。 转移：$f[i][k]=max(f[i][k],f[j][k-1]+sum[j+1][i])$枚举断点j，$sum[i][j]$代表原字符串从i到j的单词总数，先预处理一下。 剩下的看代码吧：</string></string></string></p><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> n,k,m;</span><br><span class="line"><span class="hljs-built_in">string</span> s,x;</span><br><span class="line"><span class="hljs-built_in">string</span> d[<span class="hljs-number">8</span>];</span><br><span class="line"><span class="hljs-keyword">int</span> dl[<span class="hljs-number">8</span>],sum[<span class="hljs-number">209</span>][<span class="hljs-number">209</span>];</span><br><span class="line"><span class="hljs-keyword">int</span> dp[<span class="hljs-number">209</span>][<span class="hljs-number">49</span>];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">pd</span><span class="hljs-params">(<span class="hljs-keyword">int</span> l,<span class="hljs-keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">string</span> x=s.substr(l,r-l+<span class="hljs-number">1</span>);</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(x.find(d[i])==<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">cin</span>&gt;&gt;n&gt;&gt;k;</span><br><span class="line">    s=<span class="hljs-string">"0"</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="hljs-built_in">cin</span>&gt;&gt;x;</span><br><span class="line">        s=s+x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">cin</span>&gt;&gt;m;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="hljs-built_in">cin</span>&gt;&gt;d[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">int</span> len=s.length()<span class="hljs-number">-1</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=len;i&gt;=<span class="hljs-number">1</span>;i--)&#123;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=i;j&gt;=<span class="hljs-number">1</span>;j--)&#123;</span><br><span class="line">            sum[j][i]=sum[j+<span class="hljs-number">1</span>][i];</span><br><span class="line">            <span class="hljs-keyword">if</span>(pd(j,i)) sum[j][i]++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=len;i++) dp[i][<span class="hljs-number">1</span>]=sum[<span class="hljs-number">1</span>][i];</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> q=<span class="hljs-number">1</span>;q&lt;=k;q++)&#123;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=q+<span class="hljs-number">1</span>;i&lt;=len;i++)&#123;</span><br><span class="line">            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=q;j&lt;i;j++)&#123;</span><br><span class="line">                dp[i][q]=max(dp[i][q],dp[j][q<span class="hljs-number">-1</span>]+sum[j+<span class="hljs-number">1</span>][i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">cout</span>&lt;&lt;dp[len][k];</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这两天都忙得忘了写了。。。 今天把这几天做的好题都补一下吧。。。 &lt;a href=&quot;https://www.luogu.org/problemnew/show/P1026&quot; title=&quot;题目链接&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;题目链接&lt;/a&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="OI" scheme="http://yueyangwu.cn/categories/OI/"/>
-    
-      <category term="题目" scheme="http://yueyangwu.cn/categories/OI/%E9%A2%98%E7%9B%AE/"/>
-    
-    
-      <category term="dp" scheme="http://yueyangwu.cn/tags/dp/"/>
-    
-      <category term="优" scheme="http://yueyangwu.cn/tags/%E4%BC%98/"/>
-    
-      <category term="字符串" scheme="http://yueyangwu.cn/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
   </entry>
   
