@@ -2,24 +2,24 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title> Luogu P1282 多米诺骨牌（精）		 - Blog of YorkWu</title>
+<title>luogu-P1831-重要的城市 - Blog of YorkWu</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="题目链接 总结一下：这种题用背包。。。（蒟蒻的我看不出来qwq）">
-<meta name="keywords" content="dp,精">
+    <meta name="description" content="题目链接">
+<meta name="keywords" content="dp,图论,floyd">
 <meta property="og:type" content="article">
-<meta property="og:title" content=" Luogu P1282 多米诺骨牌（精）		">
-<meta property="og:url" content="http://yueyangwu.cn/2019/05/08/luogu-p1282-e5-a4-9a-e7-b1-b3-e8-af-ba-e9-aa-a8-e7-89-8c-ef-bc-88-e7-b2-be-ef-bc-89/index.html">
+<meta property="og:title" content="luogu-P1831-重要的城市">
+<meta property="og:url" content="http://yueyangwu.cn/2019/07/29/luogu-P1831-重要的城市/index.html">
 <meta property="og:site_name" content="Blog of YorkWu">
-<meta property="og:description" content="题目链接 总结一下：这种题用背包。。。（蒟蒻的我看不出来qwq）">
+<meta property="og:description" content="题目链接">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yueyangwu.cn/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-11T17:24:06.581Z">
+<meta property="og:updated_time" content="2019-07-29T11:24:29.750Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content=" Luogu P1282 多米诺骨牌（精）		">
-<meta name="twitter:description" content="题目链接 总结一下：这种题用背包。。。（蒟蒻的我看不出来qwq）">
+<meta name="twitter:title" content="luogu-P1831-重要的城市">
+<meta name="twitter:description" content="题目链接">
 <meta name="twitter:image" content="http://yueyangwu.cn/images/og_image.png">
 
 
@@ -139,7 +139,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-05-08T14:29:21.000Z">2019-05-08</time>
+                <time class="level-item has-text-grey" datetime="2019-07-29T11:20:03.000Z">2019-07-29</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/OI/">OI</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
@@ -149,7 +149,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 541 个字)
+                    2 分钟 读完 (大约 274 个字)
                 </span>
                 
                 
@@ -158,23 +158,23 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                 Luogu P1282 多米诺骨牌（精）		
+                luogu-P1831-重要的城市
             
         </h1>
         <div class="content">
-            <p><a href="https://www.luogu.org/problemnew/show/P1282" title="题目链接" target="_blank" rel="noopener">题目链接</a> 总结一下：这种题用背包。。。（蒟蒻的我看不出来qwq）</p>
+            <p><a href="https://www.luogu.org/problem/P1841" target="_blank" rel="noopener">题目链接</a></p>
 <a id="more"></a>
 
 <hr>
-<p>我们先把骨牌翻转，调整至点数大的在上面 这样，我们就能保证上方的点数一定比下方大，并且保证每翻转一 次，都能使上下的点数之差变小，而变小的点数，就是上下点数之差乘以2。 把改变的点数看成物品的体积，初始上下方的点数之差看做背包体积，不难看出背包问题的模型。 那么物品的重量是什么呢？ 因为我们一开始就把点数大的放在了上面，而每放一次，翻转次数就+1。考虑：要是我后来后悔了，我发现不翻这个骨牌更好怎么办？那我会把它翻回来，那么相当于没有翻这个骨牌。 因此，一开始翻过的骨牌重量就是-1，未翻过的骨牌重量就是1（重量等价于翻转次数） 当然，上下相同的骨牌就是体积为0，重量为0的物品，因为他们无论怎么翻，都不会对上下点数差造成影响。 至此，背包的模型就出来了。这个问题被简化成：有n个物品，给出每个物品的体积v[i],他们的重量是1或-1。背包的重量为base，体积为tot，现在请把这n个物品放到背包里去，总体积不能超过tot，体积最大的情况下使得物品重量之和最小。 其中，dp[i][j]表示前i件物品能装到体积为j的最小重量 vs[i][j]表示前i件物品能否装到j体积</p>
-<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> n,m,c;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span>&#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> a,b;</span><br><span class="line">&#125;a[<span class="hljs-number">1009</span>];</span><br><span class="line"><span class="hljs-keyword">int</span> f[<span class="hljs-number">1009</span>][<span class="hljs-number">5009</span>],v[<span class="hljs-number">1009</span>],w[<span class="hljs-number">1009</span>];</span><br><span class="line"><span class="hljs-keyword">bool</span> vis[<span class="hljs-number">1009</span>][<span class="hljs-number">5009</span>];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="hljs-built_in">cin</span>&gt;&gt;a[i].a&gt;&gt;a[i].b;</span><br><span class="line">        <span class="hljs-keyword">if</span>(a[i].a&lt;a[i].b)&#123;</span><br><span class="line">            swap(a[i].a,a[i].b);</span><br><span class="line">            w[i]=<span class="hljs-number">-1</span>;</span><br><span class="line">            v[i]=a[i].a-a[i].b;</span><br><span class="line">            m+=v[i];</span><br><span class="line">            v[i]*=<span class="hljs-number">2</span>;</span><br><span class="line">            c++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">else</span>&#123;</span><br><span class="line">            w[i]=<span class="hljs-number">1</span>;</span><br><span class="line">            v[i]=a[i].a-a[i].b;</span><br><span class="line">            m+=v[i];</span><br><span class="line">            v[i]*=<span class="hljs-number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">1</span>;j&lt;=m;j++)&#123;</span><br><span class="line">            f[i][j]=f[i<span class="hljs-number">-1</span>][j];</span><br><span class="line">            vis[i][j]=vis[i<span class="hljs-number">-1</span>][j];</span><br><span class="line">            <span class="hljs-keyword">if</span>(vis[i<span class="hljs-number">-1</span>][j-v[i]]||j-v[i]==<span class="hljs-number">0</span>)&#123;</span><br><span class="line">                <span class="hljs-keyword">if</span>(!vis[i][j])&#123;</span><br><span class="line">                    f[i][j]=f[i<span class="hljs-number">-1</span>][j-v[i]]+w[i];</span><br><span class="line">                    vis[i][j]=<span class="hljs-number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="hljs-keyword">else</span>&#123;</span><br><span class="line">                    f[i][j]=min(f[i][j],f[i<span class="hljs-number">-1</span>][j-v[i]]+w[i]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=m;i&gt;=<span class="hljs-number">0</span>;i--)&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(vis[n][i])&#123;</span><br><span class="line">            <span class="hljs-built_in">cout</span>&lt;&lt;f[n][i]+c;</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>跑一次floyd即可，新建一个数组c，如果i到j的最短路能被k更新，那么说明最短路一定会经过k，所以c[i][j]保存一下k，如果更新过程发现存在一个相等的更新条件，说明最短路有多条，这个时候就可以删去c[i][j]里面的数.</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> n, m;</span><br><span class="line"><span class="hljs-keyword">int</span> f[<span class="hljs-number">209</span>][<span class="hljs-number">209</span>], cnt[<span class="hljs-number">209</span>][<span class="hljs-number">209</span>];</span><br><span class="line"><span class="hljs-keyword">bool</span> ans[<span class="hljs-number">209</span>];</span><br><span class="line"><span class="hljs-keyword">int</span> tot;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">    <span class="hljs-built_in">memset</span>(f, <span class="hljs-number">0x3f</span>, <span class="hljs-keyword">sizeof</span>(f));</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        f[i][i] = <span class="hljs-number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> x, y, w;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>, &amp;x, &amp;y, &amp;w);</span><br><span class="line">        f[x][y] = w;</span><br><span class="line">        f[y][x] = w;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> k = <span class="hljs-number">1</span>; k &lt;= n; k++)&#123;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">            <span class="hljs-keyword">if</span>(i == k) <span class="hljs-keyword">continue</span>;</span><br><span class="line">            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= n; j++)&#123;</span><br><span class="line">                <span class="hljs-keyword">if</span>(i == j || j == k) <span class="hljs-keyword">continue</span>;</span><br><span class="line">                <span class="hljs-keyword">if</span>(f[i][k] + f[k][j] &lt; f[i][j])&#123;</span><br><span class="line">                    f[i][j] = f[i][k] + f[k][j];</span><br><span class="line">                    cnt[i][j] = k;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(f[i][k] + f[k][j] == f[i][j])&#123;</span><br><span class="line">                    cnt[i][j] = <span class="hljs-number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= n; j++)&#123;</span><br><span class="line">            ans[cnt[i][j]] = <span class="hljs-number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(ans[i]) <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d "</span>, i), tot++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">if</span>(tot == <span class="hljs-number">0</span>) <span class="hljs-built_in">printf</span>(<span class="hljs-string">"No important cities."</span>);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/dp/">dp</a>, <a class="has-link-grey -link" href="/tags/精/">精</a>
+                    <a class="has-link-grey -link" href="/tags/dp/">dp</a>, <a class="has-link-grey -link" href="/tags/floyd/">floyd</a>, <a class="has-link-grey -link" href="/tags/图论/">图论</a>
                 </div>
             </div>
         </div>
@@ -200,17 +200,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/05/09/luogu-p2285-hnoi2004-e6-89-93-e9-bc-b9-e9-bc-a0/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item"> Luogu P2285 [HNOI2004]打鼹鼠		</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/05/07/luogu-p2340-e5-a5-b6-e7-89-9b-e4-bc-9a-e5-b1-95/">
-                <span class="level-item"> Luogu P2340 奶牛会展		</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/07/29/P2279-消防局的设立/">
+                <span class="level-item">Luogu P2279 [HNOI2003]消防局的设立</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>

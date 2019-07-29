@@ -2,24 +2,22 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title> Luogu P1282 多米诺骨牌（精）		 - Blog of YorkWu</title>
+<title>标签: floyd - Blog of YorkWu</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="题目链接 总结一下：这种题用背包。。。（蒟蒻的我看不出来qwq）">
-<meta name="keywords" content="dp,精">
-<meta property="og:type" content="article">
-<meta property="og:title" content=" Luogu P1282 多米诺骨牌（精）		">
-<meta property="og:url" content="http://yueyangwu.cn/2019/05/08/luogu-p1282-e5-a4-9a-e7-b1-b3-e8-af-ba-e9-aa-a8-e7-89-8c-ef-bc-88-e7-b2-be-ef-bc-89/index.html">
+    <meta name="description" content="信息学竞赛，博客，c++，集训，山西省实验中学，noip">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Blog of YorkWu">
+<meta property="og:url" content="http://yueyangwu.cn/tags/floyd/index.html">
 <meta property="og:site_name" content="Blog of YorkWu">
-<meta property="og:description" content="题目链接 总结一下：这种题用背包。。。（蒟蒻的我看不出来qwq）">
+<meta property="og:description" content="信息学竞赛，博客，c++，集训，山西省实验中学，noip">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yueyangwu.cn/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-11T17:24:06.581Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content=" Luogu P1282 多米诺骨牌（精）		">
-<meta name="twitter:description" content="题目链接 总结一下：这种题用背包。。。（蒟蒻的我看不出来qwq）">
+<meta name="twitter:title" content="Blog of YorkWu">
+<meta name="twitter:description" content="信息学竞赛，博客，c++，集训，山西省实验中学，noip">
 <meta name="twitter:image" content="http://yueyangwu.cn/images/og_image.png">
 
 
@@ -131,6 +129,17 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    <div class="card-content">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/tags">标签</a></li>
+            <li class="is-active"><a href="#" aria-current="page">floyd</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
+    <div class="card">
     
     <div class="card-content article ">
         <!--top置顶排序2019/7/12-->
@@ -139,7 +148,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-05-08T14:29:21.000Z">2019-05-08</time>
+                <time class="level-item has-text-grey" datetime="2019-07-29T11:20:03.000Z">2019-07-29</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/OI/">OI</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
@@ -149,7 +158,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 541 个字)
+                    2 分钟 读完 (大约 274 个字)
                 </span>
                 
                 
@@ -158,104 +167,34 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                 Luogu P1282 多米诺骨牌（精）		
+                <a class="has-link-black-ter" href="/2019/07/29/luogu-P1831-重要的城市/">luogu-P1831-重要的城市</a>
             
         </h1>
         <div class="content">
-            <p><a href="https://www.luogu.org/problemnew/show/P1282" title="题目链接" target="_blank" rel="noopener">题目链接</a> 总结一下：这种题用背包。。。（蒟蒻的我看不出来qwq）</p>
-<a id="more"></a>
-
-<hr>
-<p>我们先把骨牌翻转，调整至点数大的在上面 这样，我们就能保证上方的点数一定比下方大，并且保证每翻转一 次，都能使上下的点数之差变小，而变小的点数，就是上下点数之差乘以2。 把改变的点数看成物品的体积，初始上下方的点数之差看做背包体积，不难看出背包问题的模型。 那么物品的重量是什么呢？ 因为我们一开始就把点数大的放在了上面，而每放一次，翻转次数就+1。考虑：要是我后来后悔了，我发现不翻这个骨牌更好怎么办？那我会把它翻回来，那么相当于没有翻这个骨牌。 因此，一开始翻过的骨牌重量就是-1，未翻过的骨牌重量就是1（重量等价于翻转次数） 当然，上下相同的骨牌就是体积为0，重量为0的物品，因为他们无论怎么翻，都不会对上下点数差造成影响。 至此，背包的模型就出来了。这个问题被简化成：有n个物品，给出每个物品的体积v[i],他们的重量是1或-1。背包的重量为base，体积为tot，现在请把这n个物品放到背包里去，总体积不能超过tot，体积最大的情况下使得物品重量之和最小。 其中，dp[i][j]表示前i件物品能装到体积为j的最小重量 vs[i][j]表示前i件物品能否装到j体积</p>
-<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> n,m,c;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span>&#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> a,b;</span><br><span class="line">&#125;a[<span class="hljs-number">1009</span>];</span><br><span class="line"><span class="hljs-keyword">int</span> f[<span class="hljs-number">1009</span>][<span class="hljs-number">5009</span>],v[<span class="hljs-number">1009</span>],w[<span class="hljs-number">1009</span>];</span><br><span class="line"><span class="hljs-keyword">bool</span> vis[<span class="hljs-number">1009</span>][<span class="hljs-number">5009</span>];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="hljs-built_in">cin</span>&gt;&gt;a[i].a&gt;&gt;a[i].b;</span><br><span class="line">        <span class="hljs-keyword">if</span>(a[i].a&lt;a[i].b)&#123;</span><br><span class="line">            swap(a[i].a,a[i].b);</span><br><span class="line">            w[i]=<span class="hljs-number">-1</span>;</span><br><span class="line">            v[i]=a[i].a-a[i].b;</span><br><span class="line">            m+=v[i];</span><br><span class="line">            v[i]*=<span class="hljs-number">2</span>;</span><br><span class="line">            c++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">else</span>&#123;</span><br><span class="line">            w[i]=<span class="hljs-number">1</span>;</span><br><span class="line">            v[i]=a[i].a-a[i].b;</span><br><span class="line">            m+=v[i];</span><br><span class="line">            v[i]*=<span class="hljs-number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">1</span>;j&lt;=m;j++)&#123;</span><br><span class="line">            f[i][j]=f[i<span class="hljs-number">-1</span>][j];</span><br><span class="line">            vis[i][j]=vis[i<span class="hljs-number">-1</span>][j];</span><br><span class="line">            <span class="hljs-keyword">if</span>(vis[i<span class="hljs-number">-1</span>][j-v[i]]||j-v[i]==<span class="hljs-number">0</span>)&#123;</span><br><span class="line">                <span class="hljs-keyword">if</span>(!vis[i][j])&#123;</span><br><span class="line">                    f[i][j]=f[i<span class="hljs-number">-1</span>][j-v[i]]+w[i];</span><br><span class="line">                    vis[i][j]=<span class="hljs-number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="hljs-keyword">else</span>&#123;</span><br><span class="line">                    f[i][j]=min(f[i][j],f[i<span class="hljs-number">-1</span>][j-v[i]]+w[i]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=m;i&gt;=<span class="hljs-number">0</span>;i--)&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(vis[n][i])&#123;</span><br><span class="line">            <span class="hljs-built_in">cout</span>&lt;&lt;f[n][i]+c;</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <p><a href="https://www.luogu.org/problem/P1841" target="_blank" rel="noopener">题目链接</a></p>
         </div>
         
-        <div class="level is-size-7 is-uppercase">
+        
+        <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/dp/">dp</a>, <a class="has-link-grey -link" href="/tags/精/">精</a>
+                <a class="button is-size-7 is-light" href="/2019/07/29/luogu-P1831-重要的城市/#more">阅读更多</a>
                 </div>
             </div>
         </div>
         
         
-        
     </div>
 </div>
 
 
-<!--
-<div class="card">
-    <div class="card-content">
-        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
-        <div class="buttons is-centered">
-            
-        </div>
-    </div>
+<!---->
+
+
+
+
+
 </div>
--->
-
-
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/05/09/luogu-p2285-hnoi2004-e6-89-93-e9-bc-b9-e9-bc-a0/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item"> Luogu P2285 [HNOI2004]打鼹鼠		</span>
-            </a>
-        </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/05/07/luogu-p2340-e5-a5-b6-e7-89-9b-e4-bc-9a-e5-b1-95/">
-                <span class="level-item"> Luogu P2340 奶牛会展		</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
-        
-    </div>
-</div>
-
-
-
-<div class="card">
-    <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">评论</h3>
-        
-<div id="valine-thread" class="content"></div>
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-<script>
-    new Valine({
-        el: '#valine-thread' ,
-        notify: false,
-        verify: false,
-        app_id: 'VhCUvV5j4du8FG8am6lS3zuL-MdYXbMMI',
-        app_key: '1K6hpxMjRvaSWqUX7oxwHNtB',
-        placeholder: '来说点啥呗...'
-    });
-</script>
-
-    </div>
-</div>
-
-<script>
-    (function(){
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        }
-        else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-    </script>
-    </div>
                 
 
 
