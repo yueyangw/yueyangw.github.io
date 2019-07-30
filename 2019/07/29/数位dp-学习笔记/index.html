@@ -7,19 +7,19 @@
 
 
 
-    <meta name="description" content="数位dp基本模型，给定闭区间$[l,r]$，求这个闭区间中满足题目要求的数的个数。  我们可以从数字的每一位来枚举，从高位向低位枚举，我们可以用 dp[i][j] 来表示枚举到 i 位时，数字为 j 时的方案数（答案数）。但是我们需要考虑一些限制我们决策的条件，假设我们要求小于等于 243 的数字中符合条件的有几个：  当我们第一项为 1 时，我们后面一位可以枚举 0∼9 当我们第一项为 2">
+    <meta name="description" content="数位dp基本模型，给定闭区间$[l,r]$，求这个闭区间中满足题目要求的数的个数。">
 <meta name="keywords" content="dp,数位dp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数位DP 学习笔记">
 <meta property="og:url" content="http://yueyangwu.cn/2019/07/29/数位dp-学习笔记/index.html">
 <meta property="og:site_name" content="Blog of YorkWu">
-<meta property="og:description" content="数位dp基本模型，给定闭区间$[l,r]$，求这个闭区间中满足题目要求的数的个数。  我们可以从数字的每一位来枚举，从高位向低位枚举，我们可以用 dp[i][j] 来表示枚举到 i 位时，数字为 j 时的方案数（答案数）。但是我们需要考虑一些限制我们决策的条件，假设我们要求小于等于 243 的数字中符合条件的有几个：  当我们第一项为 1 时，我们后面一位可以枚举 0∼9 当我们第一项为 2">
+<meta property="og:description" content="数位dp基本模型，给定闭区间$[l,r]$，求这个闭区间中满足题目要求的数的个数。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yueyangwu.cn/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-29T13:31:56.636Z">
+<meta property="og:updated_time" content="2019-07-30T03:36:52.719Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数位DP 学习笔记">
-<meta name="twitter:description" content="数位dp基本模型，给定闭区间$[l,r]$，求这个闭区间中满足题目要求的数的个数。  我们可以从数字的每一位来枚举，从高位向低位枚举，我们可以用 dp[i][j] 来表示枚举到 i 位时，数字为 j 时的方案数（答案数）。但是我们需要考虑一些限制我们决策的条件，假设我们要求小于等于 243 的数字中符合条件的有几个：  当我们第一项为 1 时，我们后面一位可以枚举 0∼9 当我们第一项为 2">
+<meta name="twitter:description" content="数位dp基本模型，给定闭区间$[l,r]$，求这个闭区间中满足题目要求的数的个数。">
 <meta name="twitter:image" content="http://yueyangwu.cn/images/og_image.png">
 
 
@@ -162,11 +162,11 @@
             
         </h1>
         <div class="content">
-            <a id="more"></a>
-
-<blockquote>
+            <blockquote>
 <p>数位dp基本模型，给定闭区间$[l,r]$，求这个闭区间中满足题目要求的数的个数。</p>
 </blockquote>
+<a id="more"></a>
+
 <p>我们可以从数字的每一位来枚举，从高位向低位枚举，我们可以用 dp[i][j] 来表示枚举到 i 位时，数字为 j 时的方案数（答案数）。但是我们需要考虑一些限制我们决策的条件，假设我们要求小于等于 243 的数字中符合条件的有几个：</p>
 <ol>
 <li>当我们第一项为 1 时，我们后面一位可以枚举 0∼9</li>
