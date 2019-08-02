@@ -178,7 +178,7 @@
         if(j-v[i]&gt;=0)
             f[i][j]+=f[i-1][j-v[i]];
     }
-}</code></pre><h5 id="最优方案总数"><a href="#最优方案总数" class="headerlink" title="最优方案总数"></a>最优方案总数</h5><p>$f[i][j]$是一个正常01背包，$g[i][j]$表示前i个物品选择j体积的物品的最优方案总数。</p>
+}</code></pre><h5 id="最优方案总数"><a href="#最优方案总数" class="headerlink" title="最优方案总数"></a>最优方案总数</h5><p>$f\[i\]\[j\]$是一个正常01背包，$g\[i\]\[j\]$表示前i个物品选择j体积的物品的最优方案总数。</p>
 <pre><code>for (int i = 1; i &lt;= n; i++)
     for (int j = 1; j &lt;= V; j++) {
         f[i][j] = f[i - 1][j];
@@ -193,7 +193,7 @@ for (int i = 1; i &lt;= n; i++)
     }</code></pre><h5 id="例题——Luogu-P1489"><a href="#例题——Luogu-P1489" class="headerlink" title="例题——Luogu P1489"></a>例题——Luogu P1489</h5><ul>
 <li><p>Q1：问一共 n 个人分成两队拔河，要求在保证两队人数的差的绝对值不超过1的情况下，输出两队体重差的绝对值的最小值。</p>
 </li>
-<li><p>这题看起来和背包没啥关系，但是仔细思考，可以发现$f[i][j][k]$表示前i个人里选j个可否组成k，这样问题就变成了01背包变形，第一维可以省去。</p>
+<li><p>这题看起来和背包没啥关系，但是仔细思考，可以发现$f\[i\]\[j\]\[k\]$表示前i个人里选j个可否组成k，这样问题就变成了01背包变形，第一维可以省去。</p>
 <p>#include&lt;bits/stdc++.h&gt;<br>using namespace std;</p>
 <p>int n,a[209],sum;<br>bool f[209][80009];</p>
 <p>int main(){</p>
@@ -233,7 +233,7 @@ return 0;</code></pre><p>}</p>
             if(j-k*w[i]&gt;=0) f[j]=max(f[j],f[j-k*v[i]]+k*w[i]);
         }
     }
-}</code></pre><p>但很明显，这样做复杂度很高。 - 思路2：我们注意到我们只关心最终答案是几，而不关心我放进几个物品，所以当$T_i=3$时，我们可以不必放入3个$(V_i,W_i)$，而可以放入一个$(V_i,W_i)$和一个$(2V_i,2W_i)$，这样仍然可以枚举出放入3个的情况。因此，我们把每个$T_i$都分解为2的幂次，复杂度可以降到$O(n^2logn)$。</p>
+}</code></pre><p>但很明显，这样做复杂度很高。 \- 思路2：我们注意到我们只关心最终答案是几，而不关心我放进几个物品，所以当$T\_i=3$时，我们可以不必放入3个$(V\_i,W\_i)$，而可以放入一个$(V\_i,W\_i)$和一个$(2V\_i,2W\_i)$，这样仍然可以枚举出放入3个的情况。因此，我们把每个$T\_i$都分解为2的幂次，复杂度可以降到$O(n^2logn)$。</p>
 <pre><code>for(int i=1;i&lt;=n;i++){
     int tt=t[i];
     for(int k=1;k&lt;=tt;k&lt;&lt;=1){
@@ -375,7 +375,7 @@ return 0;</code></pre><p>}</p>
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        66
+                        67
                     </p>
                 </div>
             </div>
@@ -395,7 +395,7 @@ return 0;</code></pre><p>}</p>
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        21
+                        22
                     </p>
                 </div>
             </div>
@@ -560,7 +560,7 @@ return 0;</code></pre><p>}</p>
                 <span class="level-item">OI</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">61</span>
+                <span class="level-item tag">62</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/OI/知识点/">
@@ -568,7 +568,7 @@ return 0;</code></pre><p>}</p>
                 <span class="level-item">知识点</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">6</span>
+                <span class="level-item tag">7</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/OI/集训/">
@@ -615,6 +615,17 @@ return 0;</code></pre><p>}</p>
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/07/">
@@ -806,7 +817,14 @@ return 0;</code></pre><p>}</p>
                 <div class="control">
                     <a class="tags has-addons" href="/tags/树形结构/">
                         <span class="tag">树形结构</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/树链剖分/">
+                        <span class="tag">树链剖分</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

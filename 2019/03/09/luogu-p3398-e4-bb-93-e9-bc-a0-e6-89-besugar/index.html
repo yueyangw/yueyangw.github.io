@@ -181,7 +181,7 @@ N
 Y
 Y
 Y</code></pre><hr>
-<h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>首先很容易想到，若是两条路径有相交，记$x=lca(a,b),y=lca(c,d)$那么一定有x在c\<del>d上或者y在a\</del>b上。 那如何判断一个点是否在一条路径上呢？不妨记x点是否在a\<del>b上，那么若x在a\</del>b上，则一定有 1. $x$的深度大于$lca(a,b)$的深度 2. $lca(a,x)==x$或者$lca(b,x)==x$ 综上，代码如下：</p>
+<h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>首先很容易想到，若是两条路径有相交，记$x=lca(a,b),y=lca(c,d)$那么一定有x在c\\~d上或者y在a\\~b上。 那如何判断一个点是否在一条路径上呢？不妨记x点是否在a\\~b上，那么若x在a\\~b上，则一定有 1. $x$的深度大于$lca(a,b)$的深度 2. $lca(a,x)==x$或者$lca(b,x)==x$ 综上，代码如下：</p>
 <figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-keyword">int</span> head[<span class="hljs-number">100009</span>],f[<span class="hljs-number">100009</span>][<span class="hljs-number">20</span>],d[<span class="hljs-number">100009</span>],tot,n,m,t,lg[<span class="hljs-number">100009</span>];</span><br><span class="line"><span class="hljs-built_in">queue</span>&lt;<span class="hljs-keyword">int</span> &gt; q;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span>&#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> to,next;</span><br><span class="line">&#125;e[<span class="hljs-number">2</span>*<span class="hljs-number">100009</span>];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    e[++tot].to=y;</span><br><span class="line">    e[tot].next=head[x];</span><br><span class="line">    head[x]=tot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">bfs</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    q.push(<span class="hljs-number">1</span>),d[<span class="hljs-number">1</span>]=<span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">while</span>(!q.empty())&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> x=q.front();q.pop();</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=head[x];i;i=e[i].next)&#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> y=e[i].to;</span><br><span class="line">            <span class="hljs-keyword">if</span>(d[y]) <span class="hljs-keyword">continue</span>;</span><br><span class="line">            d[y]=d[x]+<span class="hljs-number">1</span>;</span><br><span class="line">            f[y][<span class="hljs-number">0</span>]=x;</span><br><span class="line">            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">1</span>;(<span class="hljs-number">1</span>&lt;&lt;j)&lt;=d[y];j++) f[y][j]=f[f[y][j<span class="hljs-number">-1</span>]][j<span class="hljs-number">-1</span>];</span><br><span class="line">            q.push(y);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">lca</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span>(d[x]&gt;d[y]) swap(x,y);</span><br><span class="line">    <span class="hljs-keyword">while</span>(d[x]&lt;d[y]) y=f[y][lg[d[y]-d[x]]<span class="hljs-number">-1</span>];</span><br><span class="line">    <span class="hljs-keyword">if</span>(x==y) <span class="hljs-keyword">return</span> x;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=lg[d[x]]<span class="hljs-number">-1</span>;i&gt;=<span class="hljs-number">0</span>;i--) <span class="hljs-keyword">if</span>(f[x][i]!=f[y][i]) y=f[y][i],x=f[x][i];</span><br><span class="line">    <span class="hljs-keyword">return</span> f[x][<span class="hljs-number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> x,y;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>,&amp;x,&amp;y);</span><br><span class="line">        add(x,y),add(y,x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++) lg[i]=lg[i<span class="hljs-number">-1</span>]+(<span class="hljs-number">1</span>&lt;&lt;lg[i<span class="hljs-number">-1</span>]==i);</span><br><span class="line">    bfs();</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> a,b,c,d1;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d%d"</span>,&amp;a,&amp;b,&amp;c,&amp;d1);</span><br><span class="line">        <span class="hljs-keyword">int</span> x=lca(a,b),y=lca(c,d1);</span><br><span class="line">        <span class="hljs-keyword">if</span>(d[x]&lt;d[y])&#123;</span><br><span class="line">            swap(x,y),swap(a,c),swap(b,d1);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">if</span>(lca(x,c)==x||lca(x,d1)==x) <span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"Y"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">        <span class="hljs-keyword">else</span> <span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"N"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
@@ -314,7 +314,7 @@ Y</code></pre><hr>
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        66
+                        67
                     </p>
                 </div>
             </div>
@@ -334,7 +334,7 @@ Y</code></pre><hr>
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        21
+                        22
                     </p>
                 </div>
             </div>
@@ -499,7 +499,7 @@ Y</code></pre><hr>
                 <span class="level-item">OI</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">61</span>
+                <span class="level-item tag">62</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/OI/知识点/">
@@ -507,7 +507,7 @@ Y</code></pre><hr>
                 <span class="level-item">知识点</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">6</span>
+                <span class="level-item tag">7</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/OI/集训/">
@@ -554,6 +554,17 @@ Y</code></pre><hr>
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/07/">
@@ -745,7 +756,14 @@ Y</code></pre><hr>
                 <div class="control">
                     <a class="tags has-addons" href="/tags/树形结构/">
                         <span class="tag">树形结构</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/树链剖分/">
+                        <span class="tag">树链剖分</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

@@ -7,19 +7,19 @@
 
 
 
-    <meta name="description" content="题目链接">
+    <meta name="description" content="[题目链接](https://www.luogu.org/problemnew/show/P1622 “题目链接”)">
 <meta name="keywords" content="dp,区间dp">
 <meta property="og:type" content="article">
 <meta property="og:title" content=" Luogu P1622 释放囚犯		">
 <meta property="og:url" content="http://yueyangwu.cn/2019/03/15/luogu-p1622-e9-87-8a-e6-94-be-e5-9b-9a-e7-8a-af/index.html">
 <meta property="og:site_name" content="Blog of YorkWu">
-<meta property="og:description" content="题目链接">
+<meta property="og:description" content="[题目链接](https://www.luogu.org/problemnew/show/P1622 “题目链接”)">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yueyangwu.cn/images/og_image.png">
 <meta property="og:updated_time" content="2019-07-11T17:26:44.459Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" Luogu P1622 释放囚犯		">
-<meta name="twitter:description" content="题目链接">
+<meta name="twitter:description" content="[题目链接](https://www.luogu.org/problemnew/show/P1622 “题目链接”)">
 <meta name="twitter:image" content="http://yueyangwu.cn/images/og_image.png">
 
 
@@ -162,10 +162,10 @@
             
         </h1>
         <div class="content">
-            <p><a href="https://www.luogu.org/problemnew/show/P1622" title="题目链接" target="_blank" rel="noopener">题目链接</a></p>
+            <p>[题目链接](<a href="https://www.luogu.org/problemnew/show/P1622" target="_blank" rel="noopener">https://www.luogu.org/problemnew/show/P1622</a> “题目链接”)</p>
 <a id="more"></a>
 
-<h4 id="区间dp"><a href="#区间dp" class="headerlink" title="区间dp"></a>区间dp</h4><p>$f[i][j]$表示释放$i$\~$j$的罪犯所需要的最少的肉，转移枚举分界点$k$。 转移方程:$f[i][j]=min(f[i][j],f[i][k-1]+f[k+1][j]+a[j+1]-a[i-1]-1)$ $a[j+1]-a[i-1]-1$就是第$i-1$到$j+1$个罪犯之间的人数，及所需肉的数量。 - 注意，上述方程需要满足单调性，所以先排序。</p>
+<h4 id="区间dp"><a href="#区间dp" class="headerlink" title="区间dp"></a>区间dp</h4><p>$f\[i\]\[j\]$表示释放$i$\\~$j$的罪犯所需要的最少的肉，转移枚举分界点$k$。 转移方程:$f\[i\]\[j\]=min(f\[i\]\[j\],f\[i\]\[k-1\]+f\[k+1\]\[j\]+a\[j+1\]-a\[i-1\]-1)$ $a\[j+1\]-a\[i-1\]-1$就是第$i-1$到$j+1$个罪犯之间的人数，及所需肉的数量。 - 注意，上述方程需要满足单调性，所以先排序。</p>
 <h4 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下:"></a>代码如下:</h4><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-keyword">int</span> a[<span class="hljs-number">1009</span>],f[<span class="hljs-number">109</span>][<span class="hljs-number">109</span>];</span><br><span class="line"><span class="hljs-keyword">int</span> n,m;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="hljs-built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">        f[i][i]=n<span class="hljs-number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    a[m+<span class="hljs-number">1</span>]=n+<span class="hljs-number">1</span>;</span><br><span class="line">    sort(a+<span class="hljs-number">1</span>,a+m+<span class="hljs-number">1</span>);</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> l=<span class="hljs-number">1</span>;l&lt;=m;l++)&#123;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i+l<span class="hljs-number">-1</span>&lt;=m;i++)&#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> j=i+l<span class="hljs-number">-1</span>;</span><br><span class="line">            f[i][j]=<span class="hljs-number">0x3f3f3f3f</span>;</span><br><span class="line">            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> k=i;k&lt;=j;k++)&#123;</span><br><span class="line">                <span class="hljs-keyword">if</span>(f[i][j]&gt;f[i][k<span class="hljs-number">-1</span>]+f[k+<span class="hljs-number">1</span>][j]+a[j+<span class="hljs-number">1</span>]-a[i<span class="hljs-number">-1</span>]<span class="hljs-number">-2</span>)</span><br><span class="line">                    f[i][j]=f[i][k<span class="hljs-number">-1</span>]+f[k+<span class="hljs-number">1</span>][j]+a[j+<span class="hljs-number">1</span>]-a[i<span class="hljs-number">-1</span>]<span class="hljs-number">-2</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">cout</span>&lt;&lt;f[<span class="hljs-number">1</span>][m];</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
@@ -298,7 +298,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        66
+                        67
                     </p>
                 </div>
             </div>
@@ -318,7 +318,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        21
+                        22
                     </p>
                 </div>
             </div>
@@ -483,7 +483,7 @@
                 <span class="level-item">OI</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">61</span>
+                <span class="level-item tag">62</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/OI/知识点/">
@@ -491,7 +491,7 @@
                 <span class="level-item">知识点</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">6</span>
+                <span class="level-item tag">7</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/OI/集训/">
@@ -538,6 +538,17 @@
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/07/">
@@ -729,7 +740,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/树形结构/">
                         <span class="tag">树形结构</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/树链剖分/">
+                        <span class="tag">树链剖分</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

@@ -7,19 +7,19 @@
 
 
 
-    <meta name="description" content="题目链接">
+    <meta name="description" content="[题目链接](https://www.luogu.org/problemnew/show/P2733 “题目链接”)">
 <meta name="keywords" content="dp">
 <meta property="og:type" content="article">
 <meta property="og:title" content=" Luogu P2733 家的范围		">
 <meta property="og:url" content="http://yueyangwu.cn/2019/03/14/luogu-p2733-e5-ae-b6-e7-9a-84-e8-8c-83-e5-9b-b4/index.html">
 <meta property="og:site_name" content="Blog of YorkWu">
-<meta property="og:description" content="题目链接">
+<meta property="og:description" content="[题目链接](https://www.luogu.org/problemnew/show/P2733 “题目链接”)">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yueyangwu.cn/images/og_image.png">
 <meta property="og:updated_time" content="2019-07-11T17:29:13.911Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" Luogu P2733 家的范围		">
-<meta name="twitter:description" content="题目链接">
+<meta name="twitter:description" content="[题目链接](https://www.luogu.org/problemnew/show/P2733 “题目链接”)">
 <meta name="twitter:image" content="http://yueyangwu.cn/images/og_image.png">
 
 
@@ -162,10 +162,10 @@
             
         </h1>
         <div class="content">
-            <p><a href="https://www.luogu.org/problemnew/show/P2733" title="题目链接" target="_blank" rel="noopener">题目链接</a></p>
+            <p>[题目链接](<a href="https://www.luogu.org/problemnew/show/P2733" target="_blank" rel="noopener">https://www.luogu.org/problemnew/show/P2733</a> “题目链接”)</p>
 <a id="more"></a>
 
-<h4 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h4><p>给定一个$n\times n$的01矩阵，问其中所有由1组成的边长不同的正方形的数量。</p>
+<h4 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h4><p>给定一个$n\\times n$的01矩阵，问其中所有由1组成的边长不同的正方形的数量。</p>
 <h4 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h4><pre><code>6
 101111
 001111
@@ -175,7 +175,7 @@
 111001</code></pre><h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><pre><code>2 10
 3 4
 4 1</code></pre><hr>
-<p>原来曾经做过一道题，用两个数组分别表示从一个点$(i,j)$向上、左走分别到达的第一个零的位置，这道题也能用。 - $l[i][j]$表示从$(i,j)$点开始向左走，最长的1序列的长度。 - 同理，$u[i][j]$表示从$(i,j)$点开始向上走，最长的1序列的长度。 - 理论复杂度$O(n^3)$ 详细解释看代码：</p>
+<p>原来曾经做过一道题，用两个数组分别表示从一个点$(i,j)$向上、左走分别到达的第一个零的位置，这道题也能用。 - $l\[i\]\[j\]$表示从$(i,j)$点开始向左走，最长的1序列的长度。 - 同理，$u\[i\]\[j\]$表示从$(i,j)$点开始向上走，最长的1序列的长度。 - 理论复杂度$O(n^3)$ 详细解释看代码：</p>
 <figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-keyword">int</span> f[<span class="hljs-number">259</span>],l[<span class="hljs-number">259</span>][<span class="hljs-number">259</span>],u[<span class="hljs-number">259</span>][<span class="hljs-number">259</span>],n;</span><br><span class="line"><span class="hljs-keyword">bool</span> a[<span class="hljs-number">259</span>][<span class="hljs-number">259</span>];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">cin</span>&gt;&gt;n;</span><br><span class="line">    <span class="hljs-built_in">string</span> s;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="hljs-built_in">cin</span>&gt;&gt;s;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">            a[i][j]=s[j<span class="hljs-number">-1</span>]-<span class="hljs-string">'0'</span>;</span><br><span class="line">            <span class="hljs-keyword">if</span>(a[i][j]) l[i][j]=u[i][j]=<span class="hljs-number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">            <span class="hljs-keyword">if</span>(a[i][j]) l[i][j]=max(l[i][j<span class="hljs-number">-1</span>]+<span class="hljs-number">1</span>,l[i][j]);<span class="hljs-comment">//预处理l，u数组</span></span><br><span class="line">            <span class="hljs-keyword">if</span>(a[i][j]) u[i][j]=max(u[i<span class="hljs-number">-1</span>][j]+<span class="hljs-number">1</span>,u[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">int</span> minx=<span class="hljs-number">0x3f3f3f3f</span>,maxx=<span class="hljs-number">0</span>,maxn=<span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">            minx=<span class="hljs-number">0x3f3f3f3f</span>;</span><br><span class="line">            maxx=<span class="hljs-number">0</span>;<span class="hljs-comment">//maxx代表以（i，j）作为右下角的最大正方形的边长。</span></span><br><span class="line">            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> k=i;i-k&lt;u[i][j];k--)&#123;</span><br><span class="line">                minx=min(minx,l[k][j]);<span class="hljs-comment">//将minx更新为当前第k行至第i行最大矩阵的长。</span></span><br><span class="line">                <span class="hljs-keyword">if</span>(min(minx,u[i][j])&gt;=<span class="hljs-number">2</span>&amp;&amp;(i-k+<span class="hljs-number">1</span>&lt;=min(minx,u[i][j]))) maxx=max(maxx,i-k+<span class="hljs-number">1</span>);</span><br><span class="line">                <span class="hljs-comment">//如果当前边长大于二，并且当前宽小于等于长，就让maxx更新为最长边长的正方形。</span></span><br><span class="line">            &#125;</span><br><span class="line">            f[maxx]++;<span class="hljs-comment">//以(i,j)为右下角的最大正方形的边长加一。</span></span><br><span class="line">            maxn=max(maxx,maxn);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">int</span> t=<span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=maxn;i&gt;<span class="hljs-number">1</span>;i--)&#123;</span><br><span class="line">        f[i<span class="hljs-number">-1</span>]+=f[i];<span class="hljs-comment">//因为如果容纳一个边长为x的正方形，那一定可以容纳边长比i小的正方形。</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">2</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span>(f[i]) <span class="hljs-built_in">cout</span>&lt;&lt;i&lt;&lt;<span class="hljs-string">" "</span>&lt;&lt;f[i]&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
@@ -308,7 +308,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        66
+                        67
                     </p>
                 </div>
             </div>
@@ -328,7 +328,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        21
+                        22
                     </p>
                 </div>
             </div>
@@ -493,7 +493,7 @@
                 <span class="level-item">OI</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">61</span>
+                <span class="level-item tag">62</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/OI/知识点/">
@@ -501,7 +501,7 @@
                 <span class="level-item">知识点</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">6</span>
+                <span class="level-item tag">7</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/OI/集训/">
@@ -548,6 +548,17 @@
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/07/">
@@ -739,7 +750,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/树形结构/">
                         <span class="tag">树形结构</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/树链剖分/">
+                        <span class="tag">树链剖分</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

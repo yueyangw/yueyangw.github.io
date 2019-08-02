@@ -168,9 +168,9 @@
 <a id="more"></a>
 
 <h2 id="图的读入"><a href="#图的读入" class="headerlink" title="图的读入"></a>图的读入</h2><ul>
-<li><p>n m m行，u，v 例如： 6 8 1 2 1 3 2 4 3 4 3 5 4 1 4 6 5 6 <img src="https://img-blog.csdn.net/20181004080841828?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMyNDQwNDg=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="在这里插入图片描述"></p>
+<li><p>n m m行，u，v 例如： 6 8 1 2 1 3 2 4 3 4 3 5 4 1 4 6 5 6 ![在这里插入图片描述](<a href="https://img-blog.csdn.net/20181004080841828?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMyNDQwNDg=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" target="_blank" rel="noopener">https://img-blog.csdn.net/20181004080841828?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMyNDQwNDg=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70</a>)</p>
 </li>
-<li><p>6 8 1 1 1 2 1 5 2 5 2 3 3 4 4 5 4 6 <img src="https://img-blog.csdn.net/20181004081027337?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMyNDQwNDg=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="在这里插入图片描述"></p>
+<li><p>6 8 1 1 1 2 1 5 2 5 2 3 3 4 4 5 4 6 ![在这里插入图片描述](<a href="https://img-blog.csdn.net/20181004081027337?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMyNDQwNDg=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" target="_blank" rel="noopener">https://img-blog.csdn.net/20181004081027337?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMyNDQwNDg=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70</a>)</p>
 </li>
 <li><p>一些术语</p>
 <ul>
@@ -190,12 +190,12 @@
 <li>遍历（枚举）一个点的所有出边。</li>
 </ul>
 </li>
-<li><p>#### 邻接矩阵</p>
+<li><p>\#### 邻接矩阵</p>
 <ul>
-<li>检查两点之间是否有边。 <img src="https://img-blog.csdn.net/20181004082507397?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMyNDQwNDg=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="在这里插入图片描述"></li>
+<li>检查两点之间是否有边。 ![在这里插入图片描述](<a href="https://img-blog.csdn.net/20181004082507397?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMyNDQwNDg=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" target="_blank" rel="noopener">https://img-blog.csdn.net/20181004082507397?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMyNDQwNDg=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70</a>)</li>
 <li>注意空间<ul>
 <li>256 MB</li>
-<li>256*1024*1024 B</li>
+<li>256\*1024\*1024 B</li>
 <li>bool 1B</li>
 <li>int 4B</li>
 <li>long long 8B</li>
@@ -206,7 +206,7 @@
 <li>1s $10^7$ O(n)</li>
 </ul>
 </li>
-<li>代码如下 <code>cpp #include&lt;bits/stdc++.h&gt; using namespace std; int n,m; // n*n int graph[105][105]; int main(){ scanf(&quot;%d%d&quot;,&amp;m,&amp;n); int x,y; for(int i=0;i&lt;n;i++){ scanf(&quot;%d%d&quot;,&amp;x,&amp;y); x--;y--; graph[x][y]=1; graph[y][x]=1; //重边：graph[x][y]++; //graph[x][y]++; //权值：graph[x][y]=z; //graph[y][x]=z; } for(int i=0;i&lt;n;i++){ for(int j=0;j&lt;n;j++){ cout&lt;&lt;graph[i][j]&lt;&lt;&quot; &quot;; } cout&lt;&lt;endl; } return 0; }</code></li>
+<li>代码如下 `cpp #include&lt;bits/stdc++.h&gt; using namespace std; int n,m; // n*n int graph[105][105]; int main(){ scanf(“%d%d”,&amp;m,&amp;n); int x,y; for(int i=0;i&lt;n;i++){ scanf(“%d%d”,&amp;x,&amp;y); x–;y–; graph[x][y]=1; graph[y][x]=1; //重边：graph[x][y]++; //graph[x][y]++; //权值：graph[x][y]=z; //graph[y][x]=z; } for(int i=0;i&lt;n;i++){ for(int j=0;j&lt;n;j++){ cout&lt;&lt;graph[i][j]&lt;&lt;” “; } cout&lt;&lt;endl; } return 0; }`</li>
 </ul>
 </li>
 <li><h4 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h4><ul>
@@ -1142,7 +1142,7 @@ int main(){
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        66
+                        67
                     </p>
                 </div>
             </div>
@@ -1162,7 +1162,7 @@ int main(){
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        21
+                        22
                     </p>
                 </div>
             </div>
@@ -1327,7 +1327,7 @@ int main(){
                 <span class="level-item">OI</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">61</span>
+                <span class="level-item tag">62</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/OI/知识点/">
@@ -1335,7 +1335,7 @@ int main(){
                 <span class="level-item">知识点</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">6</span>
+                <span class="level-item tag">7</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/OI/集训/">
@@ -1382,6 +1382,17 @@ int main(){
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/07/">
@@ -1573,7 +1584,14 @@ int main(){
                 <div class="control">
                     <a class="tags has-addons" href="/tags/树形结构/">
                         <span class="tag">树形结构</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/树链剖分/">
+                        <span class="tag">树链剖分</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

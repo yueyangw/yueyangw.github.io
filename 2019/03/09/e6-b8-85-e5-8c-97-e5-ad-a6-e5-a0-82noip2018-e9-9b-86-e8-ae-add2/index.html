@@ -167,7 +167,7 @@
 
 <hr>
 <blockquote>
-<h5 id="P-S"><a href="#P-S" class="headerlink" title="P.S."></a>P.S.</h5><p><strong>今天讲数据结构，大概包括了二叉堆，二叉搜索树，线段树，树状数组，并查集，st表，RMQ，LCA。</strong></p>
+<h5 id="P-S"><a href="#P-S" class="headerlink" title="P.S."></a>P.S.</h5><p>**今天讲数据结构，大概包括了二叉堆，二叉搜索树，线段树，树状数组，并查集，st表，RMQ，LCA。**</p>
 </blockquote>
 <h2 id="二叉堆"><a href="#二叉堆" class="headerlink" title="二叉堆"></a>二叉堆</h2><ul>
 <li>基本功能<ol>
@@ -204,7 +204,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="新建一个堆，将删除的元素放入新堆里。即可实现删除。"><a href="#新建一个堆，将删除的元素放入新堆里。即可实现删除。" class="headerlink" title="- 新建一个堆，将删除的元素放入新堆里。即可实现删除。"></a>- 新建一个堆，将删除的元素放入新堆里。即可实现删除。</h2><h2 id="二叉搜索树"><a href="#二叉搜索树" class="headerlink" title="二叉搜索树"></a>二叉搜索树</h2><ul>
+<h2 id="新建一个堆，将删除的元素放入新堆里。即可实现删除。"><a href="#新建一个堆，将删除的元素放入新堆里。即可实现删除。" class="headerlink" title="\- 新建一个堆，将删除的元素放入新堆里。即可实现删除。"></a>\- 新建一个堆，将删除的元素放入新堆里。即可实现删除。</h2><h2 id="二叉搜索树"><a href="#二叉搜索树" class="headerlink" title="二叉搜索树"></a>二叉搜索树</h2><ul>
 <li>基本功能<ul>
 <li>排序</li>
 <li>查询元素大小排名</li>
@@ -227,7 +227,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="查询到节点后向上更新其他节点。"><a href="#查询到节点后向上更新其他节点。" class="headerlink" title="- 查询到节点后向上更新其他节点。"></a>- 查询到节点后向上更新其他节点。</h2><h2 id="线段树"><a href="#线段树" class="headerlink" title="线段树"></a>线段树</h2><ul>
+<h2 id="查询到节点后向上更新其他节点。"><a href="#查询到节点后向上更新其他节点。" class="headerlink" title="\- 查询到节点后向上更新其他节点。"></a>\- 查询到节点后向上更新其他节点。</h2><h2 id="线段树"><a href="#线段树" class="headerlink" title="线段树"></a>线段树</h2><ul>
 <li>基本功能<ul>
 <li>建树</li>
 <li>单点查询</li>
@@ -247,7 +247,7 @@
 </li>
 <li>基本思想：二分</li>
 <li>特殊性质<ul>
-<li>左子节点区间为[l,mid],右为[mid+1,r].</li>
+<li>左子节点区间为\[l,mid\],右为\[mid+1,r\].</li>
 <li>对于一个节点k，左子节点为2k，右子节点为2k+1.</li>
 </ul>
 </li>
@@ -258,21 +258,21 @@
 </ul>
 </li>
 <li>单点查询<ul>
-<li>在左右节点搜索是确定的，由节点的mid决定，如果要查询的点大于mid，则在右子树搜索，反之在左子树搜索。代码如下： <code>cpp #include&lt;bits/stdc++.h&gt; using namespace std; #define LL long long const int MAXN = 100000; struct tree{ int l,r,s; }mi[4*MAXN+20]; void build(int k,int l,int r){ mi[k].l=l; mi[k].r=r; if(l==r){ mi[k].s=r; return; } int mid=(l+r)/2; build(2*k,l,mid); build(2*k+1,mid+1,r); mi[k].s=mi[k*2].s+mi[k*2+1].s; } int search(int k,int n){ if(mi[k].l==mi[k].r&amp;&amp;mi[k].r==n){ return k; } int mid=(mi[k].l+mi[k].r)/2; if(n&lt;=mid) return search(k*2,n); else return search(k*2+1,n); } int main(){ build(1,1,6); cout&lt;&lt;search(1,5); return 0; }</code></li>
+<li>在左右节点搜索是确定的，由节点的mid决定，如果要查询的点大于mid，则在右子树搜索，反之在左子树搜索。代码如下： `cpp #include&lt;bits/stdc++.h&gt; using namespace std; #define LL long long const int MAXN = 100000; struct tree{ int l,r,s; }mi[4*MAXN+20]; void build(int k,int l,int r){ mi[k].l=l; mi[k].r=r; if(l==r){ mi[k].s=r; return; } int mid=(l+r)/2; build(2*k,l,mid); build(2*k+1,mid+1,r); mi[k].s=mi[k*2].s+mi[k*2+1].s; } int search(int k,int n){ if(mi[k].l==mi[k].r&amp;&amp;mi[k].r==n){ return k; } int mid=(mi[k].l+mi[k].r)/2; if(n&lt;=mid) return search(k*2,n); else return search(k*2+1,n); } int main(){ build(1,1,6); cout&lt;&lt;search(1,5); return 0; }`</li>
 </ul>
 </li>
 <li>单点修改<ul>
 <li>先执行单点搜索，然后执行修改操作，再向上更新状态。</li>
-<li>代码如下<br><code>cpp int insert(int k,int n,int v){ int now=search(k,n); mi[now].s+=v; while(now!=1){ now/=2; mi[now].s=mi[2*now].s+mi[2*now+1].s; } }</code></li>
+<li>代码如下<br>```cpp int insert(int k,int n,int v){ int now=search(k,n); mi[now].s+=v; while(now!=1){ now/=2; mi[now].s=mi[2*now].s+mi[2*now+1].s; } }```</li>
 </ul>
 </li>
 <li>区间查询<ul>
-<li>令[l,r]为当前节点代表的区间，mid代表区间中点，[x,y]代表要查询的区间。</li>
-<li>若[l,r]=[x,y]直接返回即可。</li>
-<li>如果$y\leq mid$,[l,r]-&gt;[l,mid],[x,y]不变，递归查询。</li>
-<li>如果$x &gt; mid$,[l,r]-&gt;[mid+1,r],[x,y]不变，递归查询。</li>
-<li>否则，[x,y]跨过了mid的两端，将其分成了两个子问题，$[l,mid]$中查$[x,mid]$.$[mid+1,r]$中查$[mid+1,y]$.</li>
-<li>代码如下： <code>cpp int query_sum(int k,int x,int y){ if(y&lt;mi[k].l||x&gt;mi[k].r) return 0; if(x==mi[k].l&amp;&amp;mi[k].r==y) return mi[k].s; int mid=(mi[k].l+mi[k].r)/2; return query_sum(k*2,x,mid)+query_sum(k*2+1,mid+1,y); }</code></li>
+<li>令\[l,r\]为当前节点代表的区间，mid代表区间中点，\[x,y\]代表要查询的区间。</li>
+<li>若\[l,r\]=\[x,y\]直接返回即可。</li>
+<li>如果$y\\leq mid$,\[l,r\]-&gt;\[l,mid\],\[x,y\]不变，递归查询。</li>
+<li>如果$x &gt; mid$,\[l,r\]-&gt;\[mid+1,r\],\[x,y\]不变，递归查询。</li>
+<li>否则，\[x,y\]跨过了mid的两端，将其分成了两个子问题，$\[l,mid\]$中查$\[x,mid\]$.$\[mid+1,r\]$中查$\[mid+1,y\]$.</li>
+<li>代码如下： `cpp int query_sum(int k,int x,int y){ if(y&lt;mi[k].l||x&gt;mi[k].r) return 0; if(x==mi[k].l&amp;&amp;mi[k].r==y) return mi[k].s; int mid=(mi[k].l+mi[k].r)/2; return query_sum(k*2,x,mid)+query_sum(k*2+1,mid+1,y); }`</li>
 </ul>
 </li>
 <li>区间修改<ul>
@@ -350,9 +350,9 @@ int main(){
 </li>
 <li><p>结构</p>
 <ul>
-<li>我们定义c[i]为区间$[i-lowbit(i)+1,i]$。</li>
-<li>怎么直观的看一看呢？ <img src="https://img-blog.csdn.net/20181002141812320?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMyNDQwNDg=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="树状数组"> <img src="https://img-blog.csdn.net/20181002165151143?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMyNDQwNDg=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="在这里插入图片描述"></li>
-<li>$S_n=S_{(n-lowbit(n))}+C_n$</li>
+<li>我们定义c\[i\]为区间$\[i-lowbit(i)+1,i\]$。</li>
+<li>怎么直观的看一看呢？ ![树状数组](<a href="https://img-blog.csdn.net/20181002141812320?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMyNDQwNDg=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" target="_blank" rel="noopener">https://img-blog.csdn.net/20181002141812320?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMyNDQwNDg=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70</a>) ![在这里插入图片描述](<a href="https://img-blog.csdn.net/20181002165151143?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMyNDQwNDg=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" target="_blank" rel="noopener">https://img-blog.csdn.net/20181002165151143?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMyNDQwNDg=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70</a>)</li>
+<li>$S\_n=S\_{(n-lowbit(n))}+C_n$</li>
 </ul>
 </li>
 <li><p>查询代码</p>
@@ -391,7 +391,7 @@ return 0;</code></pre><p>}</p>
 </ul>
 </li>
 </ul>
-<h2 id="对于将-l-r-加-x-的操作，可以将点-l-加-x-，将点-r-1-减-x-，这时候求点-n-的前缀和就能得到点-n-真实的值。"><a href="#对于将-l-r-加-x-的操作，可以将点-l-加-x-，将点-r-1-减-x-，这时候求点-n-的前缀和就能得到点-n-真实的值。" class="headerlink" title="- 对于将$[l,r]$加$x$的操作，可以将点$l$加$x$，将点$r+1$减$x$，这时候求点$n$的前缀和就能得到点$n$真实的值。"></a>- 对于将$[l,r]$加$x$的操作，可以将点$l$加$x$，将点$r+1$减$x$，这时候求点$n$的前缀和就能得到点$n$真实的值。</h2><h2 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h2><ul>
+<h2 id="对于将-l-r-加-x-的操作，可以将点-l-加-x-，将点-r-1-减-x-，这时候求点-n-的前缀和就能得到点-n-真实的值。"><a href="#对于将-l-r-加-x-的操作，可以将点-l-加-x-，将点-r-1-减-x-，这时候求点-n-的前缀和就能得到点-n-真实的值。" class="headerlink" title="\- 对于将$\[l,r\]$加$x$的操作，可以将点$l$加$x$，将点$r+1$减$x$，这时候求点$n$的前缀和就能得到点$n$真实的值。"></a>\- 对于将$\[l,r\]$加$x$的操作，可以将点$l$加$x$，将点$r+1$减$x$，这时候求点$n$的前缀和就能得到点$n$真实的值。</h2><h2 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h2><ul>
 <li><p>基本功能</p>
 <ul>
 <li>合并两个集合</li>
@@ -412,18 +412,18 @@ return 0;</code></pre><p>}</p>
 <li>因此只需要不断向父亲节点走，直到走到根为止返回即可。</li>
 </ul>
 </li>
-<li><p>合并集合 <img src="http://images.cnitblog.com/blog/277239/201310/03213536-c6b449badcc643578a9c4c65ed8a5f23.jpg" alt="在这里插入图片描述"></p>
+<li><p>合并集合 ![在这里插入图片描述](<a href="http://images.cnitblog.com/blog/277239/201310/03213536-c6b449badcc643578a9c4c65ed8a5f23.jpg" target="_blank" rel="noopener">http://images.cnitblog.com/blog/277239/201310/03213536-c6b449badcc643578a9c4c65ed8a5f23.jpg</a>)</p>
 </li>
-<li><p>路径压缩优化 <img src="data:image/jpeg;base64,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RAlRMZkPWcX01JxbdXWfJmAP6dYE2VV+ra4tTp8NjKvYw5q07FQP43/D0Hc9jE03EU1xIrsC0jqFYC6wdNwDzVp/qP4R1utPSqKFQBVUYUAYAHYADoIHnPY72H0nDDqDQCftTAnmA91AuOQYGMcxc9B8WOwls/AdIf8AtKv5coP0UgSziBG0mgppz4VaJnqVUAn5nvJMRAREQEREBERAREQEREBERAREQEg6rhOntbmepSx/iAw38wwZOiBA0/BtMjBlqXmXoze8w+RbJEnYmYgIiICIiBpbUrgqyhlPUEAg/MGV54BpP/EBjsCwX+UHEs4gcNJpKql5akWsdcKoGT5nHUzvEQEREBGIiBjEzEQERECqsdtRY1aMyVVHlsdThnfAJRG/hABGWG+dgRgyZpOH00jlrrVAdzgDLHzY9WPqdzIXsuc6Spv4rFNjfndizf1JnTj3ETp61ZcZZuUc3w/CzbnIA+HuR/sCHfV8NptA8RAxXdW6Op80cYZT6giRtLc1NgosYuHz4VhxzEgZat8dWA3B7gH7pJkcI1nj0V3YA8RAxAOQCRuAe+DIntHtSrj4q7qCvzNqKcfNWYfJjAtgZmYEzAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAqeHN4DnTvsGdnpPZlbLsn5lJbb7uD54tDvOOp0yWKUccynt6jcEEbgggEEbjE8r7J8Uvs1Woody9dLlUBwSBju2OY/UmB7HMqtR/1FyVqc10OHtPY2LulY9Q2HPlyqO8oeOcSvPEKdLzlabc8yr7pO2fjXDD6Geu09CVqERQiqMAAYAEDtERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERA//9k=" alt="在这里插入图片描述"></p>
+<li><p>路径压缩优化 ![在这里插入图片描述](data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw8QEBUQEBMVEBIQFRYVFhYVFRUVFRUTFxgWFxcWFRYYHSggGRslHBYXITEhJSkrMS4uFyAzRDMsQygtLisBCgoKBQUFDgUFDisZExkrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAJsBRQMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAABAUBAgMGB//EAD8QAAICAQIEAwUFBQYGAwAAAAECAAMRBCEFEjFBE1FhBiIycYEUUmJykRYzQpKhI1WCk6KxBxUkQ1PBNGNz/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/APuMREBERAREQEREBERASHxHV+EBgc72HlRQcFnwT17AAEk9gD8jMlTV7+usz0oorC+jWtYXP6VIP1gBwjxPe1TtaT/AGKUr+EIpHMPVyfp0BfZ3Rj4KUrP3q81t/MmDLRzgZlTwTiLXu5wRWyU2VhuXPLYH328+UHB3GflAyWs0u9jm2jIyzYNlWehYge/XnAyd1zkkjJW2zNbKwwIYZDAgg9CCMESv9nHY6ZAxyai9JJ3LeDY1XMT5nkz9YFnERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBKnVf2OqW4/Bei0ueyurM1RPkCbHXPmyiWpM8h/wAReOarTaZzoqq9VaozbU4d8UkEcxVe3XYkZGcdIHsJG0vD6KiTVWlZbGSqhSQOgOPKUnAtNxKvTVmx6rLSgL1uGVUY78ldg5m5RnHvBjt9BP59edvD06fi8ayzHyXwlz/MIEriOsFNZbHM3RFHV3PwqPU/+iexmvB9IaaK6ieZlX3j96w7u31Yk/Wa6ThxDeJa5ut7NjlVAeorQfD8zlj3OMAT4CIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiJgmBmas2Bk9BKxtbdcSNKFC9PGsyUyOvhoCDZ88qPUyPrOC33KBZqmbG5Twq/Cf0dOrD05v1gdzqrNRtR7lXQ343bzFIPX85GPINJuj0aVLyoMZOSTuzN3ZmO5PqZCXWXU7alUKf+asEIPz1kk1j1DMO5xLVYDEzEQEREBERAREQEREBERAREQEREBERARKy3iFjsU0yhipw1jkipSOoGN7GB6gYHUcwIxMLo9WRltV734aUCD/CSTj/ABQLSJUfa9TR+/C3VjrbUrKV9XqJbb8Sk/IS0qcMAQQQRkEdCD3EDeIiAiIgIiICIiAiIgIiICIiAlXxxy3hacEj7TZysR1FSq1j4+YXkz2589paSp40eSzT3fw12FX9FtUop+XOUHyMC0rQKAAMADAA6ADtOK62o2GoODYNyudxsD+uGU48mHmJ3Eg6XhgrtexWPLYxcrgbOyqre915fcBx5/QAJrqCMEZB7HoR5GVnBSUNun6ihwEycnwmUOg+mSvyWWhMq+Ee/dqLh0axax6ipeU/6y4+kC1iIgIiICIiAiIgIiICIiAiIgIiICVvG7HFfLWSr3OtQYdVDnDMPUKGI9QJnW8RAY1VKbrcbqpwEz3sfog7+fkDPD8K9nOIaW63Wa/VPqa6bkalediqUn97Yw7lQ5G46IT3ED6Jp6VrUIo5UUYA8gJC13FUruqp2Z7m5cc2CoK2MGI8j4ZHb+hlgDmVl3BFbUC8Oy++jsuAQzIj1jc9Byudh3A9chadpV8LHhXW6cfAAtqD7q2FgyD051Yjy5sdAJaTwntrwbV67xm0F76fUaUVpWyOUV3957K37EYdN+xHzED3kSg4VqH0dKUaxmcoAPtJPMlh87Cf3beh93cYJ6C9DQNoiICIiAiIgIiICIiAiIgJS+2PGadFo7NRqK2tqUAOqAE4YhdwSNskD6yfrtctWBgu7/Ai7s3nt2HmTgCRqOHGw+JqeWx98J8VVYIwQoI95sEguRkgnYA4gUvsn7Q336RNSaLW09mTWfda8VDYNYgPv9NiuSRjbO5t/wBotN52Z+79n1HN/L4ef6Sy0unSpFrrUIlahFVRgKqjCqB2AAAnWBUm6/UbKjaeo9Xfa1h/9adUJ+82CPu9xY6ehK0VEAVUGAB0AHadYgIiICIiAiIgImrOB1OM7D5+UzmBmIiAiIgImCwlXZxFrTyaUCzGxtbPgoe+CP3hH3V7jBYQJus1ldK81jBR0HUknyVRux9ACZAxqNR8XNpqfIfv3HqRtUPQZbpuvSSNJw1UbxXJutxjxGxkDuqDoi+g64Gc9ZPgcNHpa6k5EUKo3wPM7knuTnfJ3zOrKCDkZzNogVCrdptkQ30j4QpHi1j7o5iA6jtuCAMbzVvaXSg8rNYrfdai8OcdcKUycZHTzHnLgzwvtFwHX28Z0mqq1K110I/LUVYhl93xuYg9WDgenIIHpftl9+1NbUoettq8px38Oo+9zfnAAyNm6SdotMtSCtRgLnruSSSSxPckkknuSZIiBgqMYxtKo8Oek82lIC96Xz4R/wDzI3qPyyv4d8y2iBA0XElsbw2DVWgb1vgN81I2dfVSfodpPkbWaGu5eWxQwByD0ZT2ZWG6t6ggyEx1Gn89VV5jHjoPUdLR8sHbo0C2icNHrK7V5q2DDocdQR1Vgd1YdwdxO2YGYiICIiAgxOGt1K1Vva+eWtSxx1wBnb1gaa3X10gGw45jhQAWZm68qqN2Ox6eUr9VxTVFT4GksJ6A2PUg/Ny8/N9Dj6dZK4ZpT++uAN9g949QincVofujb5nJko3pz+Hkc/LzcvflzjPyzApuH6muo/2y21XWnBe4L77fwqHRiijyQEfrub5ZrdUrqVZQysMEEAgg9QQeolbw92qtOmY5Xl8SpicnkB5WRj3Kkrg/dcDsSQtYiICIiBgz5zxj2x49VfZXTwg21oxCP4nxr2bbzn0eIHy39ufaP+5T/mGP259o/wC5T/mGfUogfLf259o/7lP+YY/bn2j/ALlP+YZ9SiB8D/4k+1fGr9AU1XDjoqxZW3jCwkq6tlceRz3j/hV7ecducUCluJUrgF2wjVDbrdjB+TZM+18e4Jp9dV4GpTxaudXK5IBKHI5sdRnt3krR6SulBXUi1ouyqoCqB6AQOynYZ2Pl5TMTBga22BQWYhVUZJJwAB1JPYSt/wCc8+9FFt6n+MBEQ+oNjLkeoBmoX7Tc3N71OnYKq9Q9wwWZvMLkADz5jvgYtoHmGtvsOddRbXV2rq5bKyB3tatvEf8ALyhfnPQ6Syt0VqiprIHKVxy49MTtKnXgaZxegwljqtwHT3yFW30IYjJ7qT5CBbxAiAiJC4prDTWWA5mJVEXoGschUBPYcxGT2GTAzrOJV1EK2S7fCigs7Y6kKN8DI3O28q7tVqWuqtXSW8la2Ahn04fL8mML4mP4e5EtNBoxUCT71j7u5G7t/wClGdh2E616hGZkBBavHMO65GRn5iBF0vF0dhW6vTY3RLRgtjqFYEq2B90mWAM5arTJahSxQynz8xuCPIg7g9pE4Te+XosPM9JGG+/W26MfXYqfMqTtnECxiIgYJldqtc5c1UKGdcc7Nnw68jIBxuzYIPKOx3I2z24xrPA09t2MmutmA8yASB9TgTPDNH4NS155iN2buzseZ2PqWJP1gVv/ACB2s8dtTatmOtS01qR5MCjFx5cxOJ38LV1brZ9qUdVsVK7CPwugCk+QKgHzHWStZr6qseI3LzehIxkDfA2GWHXzksQOGj1a2rzpnqQQRhlYbFWHYiJ532qOrpsWzRcoNwxbzDYlMBGHrhiCfJV8ogeqiIgJW+0f/wAWw9lAZvyqwZv6AyymlqgqQwBUggg9CD1B9IGwMoeNcNvsvW2olcVhAwcryt4qPlgPiXlU7b+WN5y4d7QaWp/sjaiuzwwArixXKp0VbyCSjDpzNgNtvkkT0SsDuN/lvAyTK3UkHWUgdRXcSfwk1D/f/adtbxKurAY5dvhrX3rGPoo3+Z6DuRNOHaVuZ77f3tuBjIIrrXJWsHzySSe5PkBAsBERAREQEREBERAREQEREBMGZiBU+zm1dinZl1Op5v8AFfY6n6qyn5ESRxim16iKThuZCd8EoHBdQ3YlcgH1nHUVtRY16KXSzHiooywKjAtQdWOMAr1IAx0wZml1lVq81bq6+akHfuD5EeRgNDWVQA5GM/E3O2MnGW77SH7UH/o7x3epkX1scclYHqWZQJO1OpStS9jLWo6sxCgfU7SuUnVOjlStFbB15hg2uPhblO4RfiGdycHbAyFuIiICVfGzjwWPwrqK8/4sov8AqZZaThrdKt1bVv8AC4wcbEeRB7EHBB7ECB2zKG7ht/2w3ISqu1RJDnl5ESwOrJ0JJZcfr2kvT8R8MirUnkfornau3yKt0DkdU69cZAzLLMDMraMHW2YHSioE+pe0gfp/vN9XxREbw1/tbSNq0ILfN+yL+I/1O034ZpDWGLHmstYvY3YtsAB+FQAo9B6mBNiIgQuN6Q3aa2pdmsrZVPkxB5T+uJ04fqxdUtg25huO6t0ZT6ggj6STKvUaS2tjZp+U8271MeVXP3lYA8j+exBx26wM8W4LXqSC7MMKy+7y9GIORzA4OVG4lioxKxuNcvx6fUKfIVGz+tfMJh9dqLfdppNWf+5dhQB5rWDzMfQ8o9YFX7W6nVl0r0aeKyAtYOYLyhscn68rRPQaHRrWpAJZmOXc/E7feY/IAAdAAAMARAlRMZkPWcX01JxbdXWfJmAP6dYE2VV+ra4tTp8NjKvYw5q07FQP43/D0Hc9jE03EU1xIrsC0jqFYC6wdNwDzVp/qP4R1utPSqKFQBVUYUAYAHYADoIHnPY72H0nDDqDQCftTAnmA91AuOQYGMcxc9B8WOwls/AdIf8AtKv5coP0UgSziBG0mgppz4VaJnqVUAn5nvJMRAREQEREBERAREQEREBERAREQEg6rhOntbmepSx/iAw38wwZOiBA0/BtMjBlqXmXoze8w+RbJEnYmYgIiICIiBpbUrgqyhlPUEAg/MGV54BpP/EBjsCwX+UHEs4gcNJpKql5akWsdcKoGT5nHUzvEQEREBGIiBjEzEQERECqsdtRY1aMyVVHlsdThnfAJRG/hABGWG+dgRgyZpOH00jlrrVAdzgDLHzY9WPqdzIXsuc6Spv4rFNjfndizf1JnTj3ETp61ZcZZuUc3w/CzbnIA+HuR/sCHfV8NptA8RAxXdW6Op80cYZT6giRtLc1NgosYuHz4VhxzEgZat8dWA3B7gH7pJkcI1nj0V3YA8RAxAOQCRuAe+DIntHtSrj4q7qCvzNqKcfNWYfJjAtgZmYEzAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAqeHN4DnTvsGdnpPZlbLsn5lJbb7uD54tDvOOp0yWKUccynt6jcEEbgggEEbjE8r7J8Uvs1Woody9dLlUBwSBju2OY/UmB7HMqtR/1FyVqc10OHtPY2LulY9Q2HPlyqO8oeOcSvPEKdLzlabc8yr7pO2fjXDD6Geu09CVqERQiqMAAYAEDtERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERA//9k=)</p>
 </li>
-<li><p>示例代码 ```cpp #include&lt;bits/stdc++.h&gt; using namespace std; int fa[200010]; int n; int find(int x) { if(fa[x] == 0) return x; return fa[x] = find(fa[x]); } void add(int x,int y){ int xx=find(x),yy=find(y); fa[yy]=xx; } int main(){ cin&gt;&gt;n; int x,y,m,z; for(int i=0;i&lt;n;i++){ cin&gt;&gt;x&gt;&gt;y; add(x,y); } cin&gt;&gt;m&gt;&gt;z; cout&lt;&lt;find(m)&lt;&lt;” “&lt;&lt;find(z); return 0; }</p></li> </ul> <h2> ```<p></p>
+<li><p>示例代码 \`\`\`cpp #include&lt;bits/stdc++.h&gt; using namespace std; int fa\[200010\]; int n; int find(int x) { if(fa\[x\] == 0) return x; return fa\[x\] = find(fa\[x\]); } void add(int x,int y){ int xx=find(x),yy=find(y); fa\[yy\]=xx; } int main(){ cin&gt;&gt;n; int x,y,m,z; for(int i=0;i&lt;n;i++){ cin&gt;&gt;x&gt;&gt;y; add(x,y); } cin&gt;&gt;m&gt;&gt;z; cout&lt;&lt;find(m)&lt;&lt;” “&lt;&lt;find(z); return 0; }</p></li> </ul> <h2> \`\`\`<p></p>
 <h2 id="RMQ问题"><a href="#RMQ问题" class="headerlink" title="RMQ问题"></a>RMQ问题</h2><ul>
 <li>R——Range</li>
 <li>M——Minimum/Maximum</li>
 <li>Q——Query</li>
 <li>即区间最值问题</li>
 </ul>
-<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><p><img src="https://img-blog.csdn.net/20181002170826284?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMyNDQwNDg=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="例题"> - 方法1：使用线段树 - 方法2：st表</p>
+<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><p>![例题](<a href="https://img-blog.csdn.net/20181002170826284?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMyNDQwNDg=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" target="_blank" rel="noopener">https://img-blog.csdn.net/20181002170826284?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMyNDQwNDg=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70</a>) \- 方法1：使用线段树 - 方法2：st表</p>
 <h3 id="ST表"><a href="#ST表" class="headerlink" title="ST表"></a>ST表</h3><ul>
 <li><p>基本功能</p>
 <ul>
@@ -432,21 +432,21 @@ return 0;</code></pre><p>}</p>
 </li>
 <li><p>结构</p>
 <ul>
-<li>$f[i][j]$表示区间$[i,i+2^j-1]$的信息。</li>
-<li>整个$f$数组就是ST表。 <img src="https://img-blog.csdn.net/20181002171349563?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMyNDQwNDg=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="ST表"></li>
+<li>$f\[i\]\[j\]$表示区间$\[i,i+2^j-1\]$的信息。</li>
+<li>整个$f$数组就是ST表。 ![ST表](<a href="https://img-blog.csdn.net/20181002171349563?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMyNDQwNDg=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" target="_blank" rel="noopener">https://img-blog.csdn.net/20181002171349563?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMyNDQwNDg=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70</a>)</li>
 </ul>
 </li>
 <li><p>建表</p>
 <ul>
-<li>$f[i][0]$就是单点i的信息</li>
-<li>当$j&gt;0$时，$f[i][j]$为$f[i][j-1],f[i+2^{j-1}-1][j-1]$两个区间信息的并集。</li>
+<li>$f\[i\]\[0\]$就是单点i的信息</li>
+<li>当$j&gt;0$时，$f\[i\]\[j\]$为$f\[i\]\[j-1\],f\[i+2^{j-1}-1\]\[j-1\]$两个区间信息的并集。</li>
 </ul>
 </li>
 <li><p>查询</p>
 <ul>
-<li>比方说我们要查询区间$[x,y]$的信息。</li>
-<li>令t为最大的正整数使得$2^t\leq y-x+1$</li>
-<li>那么答案就是$[x,x+2^t-1]\cup[y-2^t+1,y]$</li>
+<li>比方说我们要查询区间$\[x,y\]$的信息。</li>
+<li>令t为最大的正整数使得$2^t\\leq y-x+1$</li>
+<li>那么答案就是$\[x,x+2^t-1\]\\cup\[y-2^t+1,y\]$</li>
 </ul>
 </li>
 <li><p>代码如下：</p>
@@ -625,7 +625,7 @@ return 0;</code></pre><p>} </p>
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        66
+                        67
                     </p>
                 </div>
             </div>
@@ -645,7 +645,7 @@ return 0;</code></pre><p>} </p>
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        21
+                        22
                     </p>
                 </div>
             </div>
@@ -810,7 +810,7 @@ return 0;</code></pre><p>} </p>
                 <span class="level-item">OI</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">61</span>
+                <span class="level-item tag">62</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/OI/知识点/">
@@ -818,7 +818,7 @@ return 0;</code></pre><p>} </p>
                 <span class="level-item">知识点</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">6</span>
+                <span class="level-item tag">7</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/OI/集训/">
@@ -865,6 +865,17 @@ return 0;</code></pre><p>} </p>
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/07/">
@@ -1056,7 +1067,14 @@ return 0;</code></pre><p>} </p>
                 <div class="control">
                     <a class="tags has-addons" href="/tags/树形结构/">
                         <span class="tag">树形结构</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/树链剖分/">
+                        <span class="tag">树链剖分</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

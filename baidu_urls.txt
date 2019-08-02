@@ -1,5 +1,5 @@
+http://yueyangwu.cn/2019/08/02/树链剖分-学习笔记/
 http://yueyangwu.cn/2019/07/30/数论-学习笔记/
 http://yueyangwu.cn/2019/07/29/数位dp-学习笔记/
 http://yueyangwu.cn/2019/07/29/luogu-P1831-重要的城市/
 http://yueyangwu.cn/2019/07/29/P2279-消防局的设立/
-http://yueyangwu.cn/2019/07/28/luogu-P2831-愤怒的小鸟/

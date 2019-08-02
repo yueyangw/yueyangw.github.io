@@ -165,9 +165,9 @@
             <p>Tarjan求割点</p>
 <a id="more"></a>
 <h4 id="割点判定法则"><a href="#割点判定法则" class="headerlink" title="割点判定法则"></a>割点判定法则</h4><ul>
-<li>若x不是搜索树的根节点，则x是割点当且仅当搜索树上存在一个x的子节点y，满足：$dfn[x]\leq low[y]$。 特别的，若x是搜索树的根节点，则x是割点当且仅当搜索树上至少存在两个子节点$y_1,y_2$满足此条件。</li>
+<li>若x不是搜索树的根节点，则x是割点当且仅当搜索树上存在一个x的子节点y，满足：$dfn\[x\]\\leq low\[y\]$。 特别的，若x是搜索树的根节点，则x是割点当且仅当搜索树上至少存在两个子节点$y\_1,y\_2$满足此条件。</li>
 <li>证明方法与求桥雷同。</li>
-<li>因为判定是小于等于，所以求割点时，无需考虑父节点和重边的问题，从x出发访问的所有时间戳均可更新$low[x]$。</li>
+<li>因为判定是小于等于，所以求割点时，无需考虑父节点和重边的问题，从x出发访问的所有时间戳均可更新$low\[x\]$。</li>
 </ul>
 <hr>
 <h4 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h4><pre><code>#include&lt;bits/stdc++.h&gt;
@@ -358,7 +358,7 @@ int main(){
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        66
+                        67
                     </p>
                 </div>
             </div>
@@ -378,7 +378,7 @@ int main(){
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        21
+                        22
                     </p>
                 </div>
             </div>
@@ -543,7 +543,7 @@ int main(){
                 <span class="level-item">OI</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">61</span>
+                <span class="level-item tag">62</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/OI/知识点/">
@@ -551,7 +551,7 @@ int main(){
                 <span class="level-item">知识点</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">6</span>
+                <span class="level-item tag">7</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/OI/集训/">
@@ -598,6 +598,17 @@ int main(){
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/07/">
@@ -789,7 +800,14 @@ int main(){
                 <div class="control">
                     <a class="tags has-addons" href="/tags/树形结构/">
                         <span class="tag">树形结构</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/树链剖分/">
+                        <span class="tag">树链剖分</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

@@ -194,7 +194,7 @@
 <li>queue：</li>
 <li>定义：queue a; 插入队尾：a.push(x); 删除队首：a.pop(); 查询队尾：a.back(); 查询队首：a.front(); 查询长度：a.size(); 清空只能慢慢pop。</li>
 <li>deque：</li>
-<li>定义：deque a; 插入队尾：a.push_back(x); 插入队首：a.push_front(x); 删除队首：a.pop_front(); 删除队尾：a.pop_back(); 查询队尾：a.back(); 查询队首：a.front(); 查询长度：a.size(); 清空：a.clear();</li>
+<li>定义：deque a; 插入队尾：a.push\_back(x); 插入队首：a.push\_front(x); 删除队首：a.pop\_front(); 删除队尾：a.pop\_back(); 查询队尾：a.back(); 查询队首：a.front(); 查询长度：a.size(); 清空：a.clear();</li>
 </ul>
 <h4 id="例题1-1"><a href="#例题1-1" class="headerlink" title="例题1"></a>例题1</h4><ul>
 <li><p>给定一个队列，维护三个操作。 1：将一个数x压入队列中。 2：求队列中数的最大值。 3：弹出队列的数。 Q&lt;=1000。 Q&lt;=100000。</p>
@@ -228,20 +228,20 @@ return 0; </code></pre><p>}<br>O(Q) </p>
 <li>给定一个队列，维护五个操作。 1：将一个数x压入队列中。 2：求队列中数的最大值。 3：弹出队列的数。 4：求队列中的最大前缀和。 5：求队列中的最大后缀和。 = 总和 - 最小前缀和 Q&lt;=1000。 Q&lt;=100000。</li>
 </ul>
 <h4 id="例题2——广告印刷"><a href="#例题2——广告印刷" class="headerlink" title="例题2——广告印刷"></a>例题2——广告印刷</h4><ul>
-<li>有n个数ai。从中选出一段区间[L,R]，使得(R-L+1)*min{a_L,…,a_R}最大。 n&lt;=100000。</li>
-<li><strong>思路：</strong>枚举最小值a[i]，之后向右找最远扩展到哪里，右边最近的且比a[i]小的</li>
-<li>对于每个i，都在右边找一个最近且比a[i]小的。 这件事情可以用单调队列解决。</li>
+<li>有n个数ai。从中选出一段区间\[L,R\]，使得(R-L+1)*min{a\_L,…,a\_R}最大。 n&lt;=100000。</li>
+<li>**思路：**枚举最小值a\[i\]，之后向右找最远扩展到哪里，右边最近的且比a\[i\]小的</li>
+<li>对于每个i，都在右边找一个最近且比a\[i\]小的。 这件事情可以用单调队列解决。</li>
 <li>考虑对于第i个数，求出当这个数成为最小值时，往左往右分别最远能到哪里。 用这些来更新答案就可以了。 使用单调队列来实现这一过程。</li>
 </ul>
 <h4 id="例题3-1"><a href="#例题3-1" class="headerlink" title="例题3"></a>例题3</h4><ul>
-<li>给定n*m的01矩阵 找一个面积最大的全0子矩阵。 $n,m\leq1000$ <code>cpp if (a[i][j]==0) f[i][j] = f[i-1][j] + 1; else f[i][j] = 0;</code></li>
+<li>给定n*m的01矩阵 找一个面积最大的全0子矩阵。 $n,m\\leq1000$ `cpp if (a[i][j]==0) f[i][j] = f[i-1][j] + 1; else f[i][j] = 0;`</li>
 </ul>
 <h2 id="RMQ问题"><a href="#RMQ问题" class="headerlink" title="RMQ问题"></a>RMQ问题</h2><ul>
 <li><p>给定n个数，有Q次询问，每次询问一段区间的最小值。</p>
 </li>
 <li><p>倍增。 nlgn 1 线段树。 n lgn 分块。 nsqrtn sqrtn 整体二分。</p>
 </li>
-<li><p>倍增：记录所有长度为2的幂次的区间的最小值。 n=5 [1,1] [2,2] [3,3] [4,4] [5,5] [1,2] [2,3] [3,4] [4,5] [1,4] [2,5] f[i][j] 表示 [i,i+2^j-1] 这段区间的最小值 [2,5] f[2][2] nlgn项</p>
+<li><p>倍增：记录所有长度为2的幂次的区间的最小值。 n=5 \[1,1\] \[2,2\] \[3,3\] \[4,4\] \[5,5\] \[1,2\] \[2,3\] \[3,4\] \[4,5\] \[1,4\] \[2,5\] f\[i\]\[j\] 表示 \[i,i+2^j-1\] 这段区间的最小值 \[2,5\] f\[2\]\[2\] nlgn项</p>
 <pre><code>f[i][0] = a[i]     f[i][j]表示[i,i+2^j-1]这段区间的最小值
 f[i][j] = min(f[i][j-1],f[i+(1&lt;&lt;j-1)][j-1])
 for (j=1; j&lt;=20; j++)
@@ -255,11 +255,11 @@ k=p[R-L+1];
 min(f[L][k],f[R-(1&lt;&lt;k)+1][k])       开车旅行</code></pre></li>
 </ul>
 <ul>
-<li>我们考虑记录a[x]<del>a[x+2^k-1]的最小值，令其为f[x][k]。这可以在nlgn的时间内求出。 对于每次询问L</del>R，令k=log[R-L+1]。有ans=min(f[L][k],f[R-2^k+1][k])。(即进行O(1)询问)</li>
+<li>我们考虑记录a\[x\]~a\[x+2^k-1\]的最小值，令其为f\[x\]\[k\]。这可以在nlgn的时间内求出。 对于每次询问L~R，令k=log\[R-L+1\]。有ans=min(f\[L\]\[k\],f\[R-2^k+1\]\[k\])。(即进行O(1)询问)</li>
 </ul>
 <h2 id="LCA"><a href="#LCA" class="headerlink" title="LCA"></a>LCA</h2><ul>
 <li>给定一棵树，求两个点的最近公共祖先。 通过倍增来求LCA。</li>
-<li><strong>思路：</strong> 1.将两个点深度变成一样。</li>
+<li>**思路：** 1.将两个点深度变成一样。</li>
 </ul>
 <ol start="2">
 <li>一起往上走找最近公共祖先。</li>
@@ -269,11 +269,11 @@ min(f[L][k],f[R-(1&lt;&lt;k)+1][k])       开车旅行</code></pre></li>
 </li>
 <li><p>dfs</p>
 </li>
-<li><p>fa[i]表示i的父亲，dep[i]表示i的深度 第一步：将x和y走到同一层。 if (dep[x]&lt;dep[y]) swap(x,y); // 保证dep[x]&gt;=dep[y] 意味着 x要向上走dep[x]-dep[y]步。</p>
+<li><p>fa\[i\]表示i的父亲，dep\[i\]表示i的深度 第一步：将x和y走到同一层。 if (dep\[x\]&lt;dep\[y\]) swap(x,y); // 保证dep\[x\]&gt;=dep\[y\] 意味着 x要向上走dep\[x\]-dep\[y\]步。</p>
 </li>
-<li><p>f[i][j] 表示 i向上走2^j步后，能到哪儿 f[i][0]=fa[i]; f[i][j]=f[f[i][j-1]][j-1] for (j=1; j&lt;=20; j++) for (i=1; i&lt;=n; i++) f[i][j]=f[f[i][j-1]][j-1] 通过f数组来加速x向上走这个过程。</p>
+<li><p>f\[i\]\[j\] 表示 i向上走2^j步后，能到哪儿 f\[i\]\[0\]=fa\[i\]; f\[i\]\[j\]=f\[f\[i\]\[j-1\]\]\[j-1\] for (j=1; j&lt;=20; j++) for (i=1; i&lt;=n; i++) f\[i\]\[j\]=f\[f\[i\]\[j-1\]\]\[j-1\] 通过f数组来加速x向上走这个过程。</p>
 </li>
-<li><p>x向上走dep[x]-dep[y]步。 t=dep[x]-dep[y] 将t二进制分解 10 = 1010 x先向上跳8步，再向上跳2步 for (i=20; i&gt;=0; i–) if (t&amp;(1&lt;&lt;i)) x=f[x][i]; x和y就会到达同一层 让x和y一起往上跳，找它们的最近公共祖先</p>
+<li><p>x向上走dep\[x\]-dep\[y\]步。 t=dep\[x\]-dep\[y\] 将t二进制分解 10 = 1010 x先向上跳8步，再向上跳2步 for (i=20; i&gt;=0; i–) if (t&amp;(1&lt;&lt;i)) x=f\[x\]\[i\]; x和y就会到达同一层 让x和y一起往上跳，找它们的最近公共祖先</p>
 <pre><code>for (i=20; i&gt;=0; i--)
   if (f[x][i]!=f[y][i]) x=f[x][i],y=f[y][i] 
 
@@ -303,21 +303,21 @@ dfs(1,1);</code></pre></li>
 <h4 id="链上最大值问题"><a href="#链上最大值问题" class="headerlink" title="链上最大值问题"></a>链上最大值问题</h4><ul>
 <li><p>给定一棵带边权的树，每次询问两个点x,y，求这两个点的路径上最长的边是多少。</p>
 </li>
-<li><p><strong>思路：</strong> f[i][j]从i出发向上走2^j步能走到哪儿 g[i][j]从i出发向上走2^j步的过程中经过的最长边是什么</p>
+<li><p>**思路：** f\[i\]\[j\]从i出发向上走2^j步能走到哪儿 g\[i\]\[j\]从i出发向上走2^j步的过程中经过的最长边是什么</p>
 </li>
-<li><p>f[i][0]=fa[i],g[i][0]=dis(i,fa[i]); f[i][j]=f[f[i][j-1]][j-1] g[i][j]=max(g[i][j-1],g[f[i][j-1]][j-1]). 求答案的时候，用g数组来更新最大值</p>
+<li><p>f\[i\]\[0\]=fa\[i\],g\[i\]\[0\]=dis(i,fa\[i\]); f\[i\]\[j\]=f\[f\[i\]\[j-1\]\]\[j-1\] g\[i\]\[j\]=max(g\[i\]\[j-1\],g\[f\[i\]\[j-1\]\]\[j-1\]). 求答案的时候，用g数组来更新最大值</p>
 </li>
 </ul>
 <h4 id="链上和问题"><a href="#链上和问题" class="headerlink" title="链上和问题"></a>链上和问题</h4><ul>
 <li>给定一棵树，每次询问两个点x,y，求这条路径上边权和是多少。</li>
-<li><strong>思路：</strong> dis[i] 从根节点出发到i经过的边的长度和 x~y的路径长度 dis[x]+dis[y] – 2*dis[LCA(x,y)]</li>
+<li>**思路：** dis\[i\] 从根节点出发到i经过的边的长度和 x~y的路径长度 dis\[x\]+dis\[y\] – 2*dis\[LCA(x,y)\]</li>
 </ul>
 <h4 id="链上异或问题"><a href="#链上异或问题" class="headerlink" title="链上异或问题"></a>链上异或问题</h4><ul>
 <li>给定一棵树，每次询问两个点x,y，求这条路径上边权异或和是多少。</li>
-<li><strong>思路：</strong> dis[i]表示从1出发到i经过的边的边权亦或和 x~y = dis[x]^dis[y]</li>
+<li>**思路：** dis\[i\]表示从1出发到i经过的边的边权亦或和 x~y = dis\[x\]^dis\[y\]</li>
 </ul>
 <h2 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h2><h3 id="简单Hash"><a href="#简单Hash" class="headerlink" title="简单Hash"></a>简单Hash</h3><ul>
-<li><p>有100个数字，每个数字的大小都是$\leq10^5$。 问是否存在一对数字的值相等。 要求一个线性做法。</p>
+<li><p>有100个数字，每个数字的大小都是$\\leq10^5$。 问是否存在一对数字的值相等。 要求一个线性做法。</p>
 <pre><code>for (i=1; i&lt;=100; i++)
 {
   cin&gt;&gt;A; f[A]++;
@@ -326,7 +326,7 @@ dfs(1,1);</code></pre></li>
 return false;</code></pre></li>
 </ul>
 <ul>
-<li><p>$\leq10^9$ 呢？</p>
+<li><p>$\\leq10^9$ 呢？</p>
 <pre><code>for (i=1; i&lt;=100; i++)
 {
   cin&gt;&gt;A; A%=12345678; f[A]++;
@@ -494,7 +494,7 @@ if (Query(A)==2) return true;</code></pre><ul>
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        66
+                        67
                     </p>
                 </div>
             </div>
@@ -514,7 +514,7 @@ if (Query(A)==2) return true;</code></pre><ul>
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        21
+                        22
                     </p>
                 </div>
             </div>
@@ -679,7 +679,7 @@ if (Query(A)==2) return true;</code></pre><ul>
                 <span class="level-item">OI</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">61</span>
+                <span class="level-item tag">62</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/OI/知识点/">
@@ -687,7 +687,7 @@ if (Query(A)==2) return true;</code></pre><ul>
                 <span class="level-item">知识点</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">6</span>
+                <span class="level-item tag">7</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/OI/集训/">
@@ -734,6 +734,17 @@ if (Query(A)==2) return true;</code></pre><ul>
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/07/">
@@ -925,7 +936,14 @@ if (Query(A)==2) return true;</code></pre><ul>
                 <div class="control">
                     <a class="tags has-addons" href="/tags/树形结构/">
                         <span class="tag">树形结构</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/树链剖分/">
+                        <span class="tag">树链剖分</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

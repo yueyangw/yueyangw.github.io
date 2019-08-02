@@ -166,18 +166,18 @@
 <a id="more"></a>
 <h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>这里有一个n*m的矩阵，请你选出其中k个子矩阵，使得这个k个子矩阵分值之和最大。注意：选出的k个子矩阵不能相互重叠。</p>
 <h4 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h4><h5 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h5><p>第一行为n,m,k（1≤n≤100,1≤m≤2,1≤k≤10），接下来n行描述矩阵每行中的每个元素的分值(每个元素的分值的绝对值不超过32767)。</p>
-<h5 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h5><p>只有一行为k个子矩阵分值之和最大为多少。 <a href="https://www.luogu.org/problemnew/show/P2331" title="题目链接" target="_blank" rel="noopener">题目链接</a></p>
+<h5 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h5><p>只有一行为k个子矩阵分值之和最大为多少。 [题目链接](<a href="https://www.luogu.org/problemnew/show/P2331" target="_blank" rel="noopener">https://www.luogu.org/problemnew/show/P2331</a> “题目链接”)</p>
 <h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><ul>
 <li><p>首先，可以注意到，m只能为1或2，那不妨分情况讨论。</p>
 </li>
-<li><p>当m=1时，可以发现答案即最大连续字段和，设计状态$dp(i,j)$表示从前i个元素里选择j个矩形的最大和，因此状态转移方程： 若选，$dp(i,j)=max(dp(len,j-1)+sum[i]-sum[j-1])$ 若不选，$dp(i,j)=max(dp(i,j),dp(i-1,j))$</p>
+<li><p>当m=1时，可以发现答案即最大连续字段和，设计状态$dp(i,j)$表示从前i个元素里选择j个矩形的最大和，因此状态转移方程： 若选，$dp(i,j)=max(dp(len,j-1)+sum\[i\]-sum\[j-1\])$ 若不选，$dp(i,j)=max(dp(i,j),dp(i-1,j))$</p>
 </li>
 <li><p>当m=2时，$dp(i,j,k)$表示第一列前i个元素，第二列前j个元素，一共选择k个矩阵所得的最大值，因此状态转移方程分四种情况：</p>
 <ol>
 <li>当两列均不选时：$dp(i,j,k)=max(dp(i,j-1,k),dp(i-1,j,k))$</li>
-<li>当只选择第一列时，$dp(i,j,k)=max(dp(len,j,k-1)+sum_1[i]-sum_1[len-1]),len\in[1,i)$</li>
-<li>当只选择第二列时，$dp(i,j,k)=max(dp(i,len,k-1)+sum_2[j]-sum_2[len-1]),len\in[1,j)$</li>
-<li>当$i=j$时，两列都选，$dp(i,j,k)=max(dp(len,len,k-1)+sum_1[i]-sum_1[len-1]+sum_2[j]-sum_2[len-1])$ <strong>最后这四种情况取最大值。</strong></li>
+<li>当只选择第一列时，$dp(i,j,k)=max(dp(len,j,k-1)+sum\_1\[i\]-sum\_1\[len-1\]),len\\in\[1,i)$</li>
+<li>当只选择第二列时，$dp(i,j,k)=max(dp(i,len,k-1)+sum\_2\[j\]-sum\_2\[len-1\]),len\\in\[1,j)$</li>
+<li>当$i=j$时，两列都选，$dp(i,j,k)=max(dp(len,len,k-1)+sum\_1\[i\]-sum\_1\[len-1\]+sum\_2\[j\]-sum\_2\[len-1\])$ **最后这四种情况取最大值。**</li>
 </ol>
 </li>
 </ul>
@@ -355,7 +355,7 @@ int main(){
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        66
+                        67
                     </p>
                 </div>
             </div>
@@ -375,7 +375,7 @@ int main(){
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        21
+                        22
                     </p>
                 </div>
             </div>
@@ -540,7 +540,7 @@ int main(){
                 <span class="level-item">OI</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">61</span>
+                <span class="level-item tag">62</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/OI/知识点/">
@@ -548,7 +548,7 @@ int main(){
                 <span class="level-item">知识点</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">6</span>
+                <span class="level-item tag">7</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/OI/集训/">
@@ -595,6 +595,17 @@ int main(){
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/07/">
@@ -786,7 +797,14 @@ int main(){
                 <div class="control">
                     <a class="tags has-addons" href="/tags/树形结构/">
                         <span class="tag">树形结构</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/树链剖分/">
+                        <span class="tag">树链剖分</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
