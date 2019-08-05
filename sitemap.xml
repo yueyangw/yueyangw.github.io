@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yueyangwu.cn/testtt/index.html</loc>
+    
+    <lastmod>2019-08-05T11:10:14.479Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yueyangwu.cn/2019/08/02/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
     
     <lastmod>2019-08-02T11:14:26.801Z</lastmod>
@@ -75,13 +82,6 @@
     <loc>http://yueyangwu.cn/2019/06/06/codeforces-484-b-maximum-value/</loc>
     
     <lastmod>2019-07-27T03:55:31.311Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yueyangwu.cn/testtt/index.html</loc>
-    
-    <lastmod>2019-07-18T06:08:22.969Z</lastmod>
     
   </url>
   
