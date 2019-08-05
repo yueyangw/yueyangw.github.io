@@ -165,8 +165,8 @@
             <p>Tarjan求割点、桥</p>
 <a id="more"></a>
 <h4 id="割边判定法则"><a href="#割边判定法则" class="headerlink" title="割边判定法则"></a>割边判定法则</h4><ul>
-<li>无向边$(x,y)$是桥，当且仅当搜索树上x的子节点y，满足$dfn\[x\] &lt; low\[y\]$。</li>
-<li>**桥一定是搜索树上的边**，并且**一个简单环中的边一定不是桥！**</li>
+<li>无向边$(x,y)$是桥，当且仅当搜索树上x的子节点y，满足$dfn[x] &lt; low[y]$。</li>
+<li><strong>桥一定是搜索树上的边</strong>，并且<strong>一个简单环中的边一定不是桥！</strong></li>
 </ul>
 <p>求出一个无向图中所有的桥：</p>
 <pre><code>#include&lt;bits/stdc++.h&gt;

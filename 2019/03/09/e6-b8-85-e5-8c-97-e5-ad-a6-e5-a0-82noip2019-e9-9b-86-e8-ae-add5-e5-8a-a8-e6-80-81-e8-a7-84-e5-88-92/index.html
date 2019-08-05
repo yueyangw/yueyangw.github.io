@@ -171,13 +171,13 @@
 <li>多做题</li>
 </ul>
 <h3 id="最长上升子序列问题"><a href="#最长上升子序列问题" class="headerlink" title="最长上升子序列问题"></a>最长上升子序列问题</h3><ul>
-<li><p>**题目：** （）</p>
+<li><p><strong>题目：</strong> （）</p>
 </li>
 <li><p>设计状态：</p>
 </li>
-<li><p>$f\[i\]$表示以$a\[i\]$结尾的最长上升子序列长度。</p>
+<li><p>$f[i]$表示以$a[i]$结尾的最长上升子序列长度。</p>
 </li>
-<li><p>最终答案$max_1\\leq i \\leq n$</p>
+<li><p>最终答案$max_1\leq i \leq n$</p>
 </li>
 <li><p>如何转移？</p>
 <p>for(int i=1;i&lt;=n;i++){</p>
@@ -194,9 +194,9 @@ for(int j=1;j&lt;i;j++){
 <h4 id="方法一：树状数组优化"><a href="#方法一：树状数组优化" class="headerlink" title="方法一：树状数组优化"></a>方法一：树状数组优化</h4><ul>
 <li><p>假设$a_i$互不相同。</p>
 </li>
-<li><p>离散化：$a\_1,a\_2,…,a_n$是一个${1,2,…,n}$的排列</p>
+<li><p>离散化：$a_1,a_2,…,a_n$是一个${1,2,…,n}$的排列</p>
 </li>
-<li><p>DP值$f\[i\]$插入数组的$a_i$位置（这里树状数组用于求前缀max）</p>
+<li><p>DP值$f[i]$插入数组的$a_i$位置（这里树状数组用于求前缀max）</p>
 </li>
 <li><p>离散化？</p>
 <p>//a[i]互不相同时<br>int a[N];<br>int a2[N];<br>int ord[N];<br>int cmp(int i,int j){</p>
@@ -214,48 +214,48 @@ for(int i=1;i&lt;=n;i++){
 <li>时间复杂度$O(nlogn)$。</li>
 </ul>
 <h4 id="方法二：”单调栈”"><a href="#方法二：”单调栈”" class="headerlink" title="方法二：”单调栈”"></a>方法二：”单调栈”</h4><ul>
-<li>令$g\[j\]$表示目前为止，长度为j的上升子序列的末尾元素最小是多少。</li>
-<li>$a\[1…5\]={1,5,2,4,3}$ $g\[1\]=inf$ 插入1，$g\[1\]=1,g\[2\]=inf$ 插入5，$g\[1\]=1,g\[2\]=5,g\[3\]=inf$ 插入2，$g\[1\]=1,g\[2\]=2,g\[3\]=inf$ 插入4，$g\[1\]=1,g\[2\]=2,g\[3\]=4,g\[4\]=inf$ 插入3，$g\[1\]=1,g\[2\]=2,g\[3\]=3,g\[4\]=inf$</li>
+<li>令$g[j]$表示目前为止，长度为j的上升子序列的末尾元素最小是多少。</li>
+<li>$a[1…5]={1,5,2,4,3}$ $g[1]=inf$ 插入1，$g[1]=1,g[2]=inf$ 插入5，$g[1]=1,g[2]=5,g[3]=inf$ 插入2，$g[1]=1,g[2]=2,g[3]=inf$ 插入4，$g[1]=1,g[2]=2,g[3]=4,g[4]=inf$ 插入3，$g[1]=1,g[2]=2,g[3]=3,g[4]=inf$</li>
 <li>如何快速更新？</li>
 <li>二分查找？</li>
 <li>时间复杂度$O(nlogn)$</li>
 <li>假如输入数列有重复？ 映射到不同的值上。</li>
 </ul>
 <h4 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h4><ul>
-<li>输入一个整数序列$a\_1,a\_2,…,a_n$，最少需要修改几次使整个序列变成严格上升序列？（要求修改后均为整数）。</li>
+<li>输入一个整数序列$a_1,a_2,…,a_n$，最少需要修改几次使整个序列变成严格上升序列？（要求修改后均为整数）。</li>
 <li>让$a_i$减去$i$，得到一个数列，求n-该数列最长不下降子序列长度。</li>
 </ul>
 <h3 id="最长公共子序列"><a href="#最长公共子序列" class="headerlink" title="最长公共子序列"></a>最长公共子序列</h3><ul>
-<li>状态：$f\[i\]\[j\]$表示$s\[1..i\],t\[1,,j\]$的最长公共子序列</li>
-<li>转移方程： $s\[i\]=t\[j\]：f\[i\]\[j\]=f\[i-1\]\[j-1\]+1$ $s\[i\]\\neq t\[j\]：f\[i\]\[j\]=max{f\[i-1\]\[j\],f\[i\]\[j-1\]}$</li>
+<li>状态：$f[i][j]$表示$s[1..i],t[1,,j]$的最长公共子序列</li>
+<li>转移方程： $s[i]=t[j]：f[i][j]=f[i-1][j-1]+1$ $s[i]\neq t[j]：f[i][j]=max{f[i-1][j],f[i][j-1]}$</li>
 <li>时间复杂度$O(n^2)$</li>
 </ul>
-<h5 id="如果-s-t-leq100000-呢？"><a href="#如果-s-t-leq100000-呢？" class="headerlink" title="如果$s,t\\leq100000$呢？"></a>如果$s,t\\leq100000$呢？</h5><ul>
+<h5 id="如果-s-t-leq100000-呢？"><a href="#如果-s-t-leq100000-呢？" class="headerlink" title="如果$s,t\leq100000$呢？"></a>如果$s,t\leq100000$呢？</h5><ul>
 <li>保证s中每一个元素出现的次数小于10次。</li>
 </ul>
 <h6 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h6><ul>
 <li>如果互不相同</li>
 <li>让t中在s中没有出现过的元素删去，让t以s的顺序排序，算一个最长上升子序列。</li>
-<li>那次数$\\leq10$呢？</li>
+<li>那次数$\leq10$呢？</li>
 <li>转化为LIS（最长上升子序列）</li>
 <li>例如： s=abdbad t=abcbd a:5,1 b:4,2 c:。。 d:6,3 所以t转化为5，1，4，2，4，2，6，3 再求t的最长上升子序列。</li>
 <li>总结起来就是： 将每个元素在s中出现的下表以降序存在一个链表里，未完。。。</li>
 </ul>
 <h3 id="DAG上的dp"><a href="#DAG上的dp" class="headerlink" title="DAG上的dp"></a>DAG上的dp</h3><ul>
-<li>输入一个有向无环图（DAG），并给定起点s，边权为正，计算从s到每个点u的最长路长度$d\[u\]$.</li>
+<li>输入一个有向无环图（DAG），并给定起点s，边权为正，计算从s到每个点u的最长路长度$d[u]$.</li>
 <li>要求时间复杂度$O(n+m)$</li>
-<li>先进行拓扑排序$v\_1,v\_2…,v\_n$ 假设$v\_1=s$。（否则，s走不到排在s前面的点，可以直接设置它们最短路为-inf）</li>
-<li>$d\[v\_i\]=0$ 从$i=2,…,n$，枚举所有指向$v\_i$的边，计算的$d\[v\_i\]=max{d\[v\_j\]+w(v\_j,v\_i)}$</li>
+<li>先进行拓扑排序$v_1,v_2…,v_n$ 假设$v_1=s$。（否则，s走不到排在s前面的点，可以直接设置它们最短路为-inf）</li>
+<li>$d[v_i]=0$ 从$i=2,…,n$，枚举所有指向$v_i$的边，计算的$d[v_i]=max{d[v_j]+w(v_j,v_i)}$</li>
 </ul>
-<h4 id="记忆化搜索"><a href="#记忆化搜索" class="headerlink" title="记忆化搜索"></a>记忆化搜索</h4><p>![记忆化搜索](<a href="https://img-blog.csdnimg.cn/20190129102104444.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMyNDQwNDg=,size_16,color_FFFFFF,t_70" target="_blank" rel="noopener">https://img-blog.csdnimg.cn/20190129102104444.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMyNDQwNDg=,size_16,color_FFFFFF,t_70</a>)</p>
+<h4 id="记忆化搜索"><a href="#记忆化搜索" class="headerlink" title="记忆化搜索"></a>记忆化搜索</h4><p><img src="https://img-blog.csdnimg.cn/20190129102104444.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMyNDQwNDg=,size_16,color_FFFFFF,t_70" alt="记忆化搜索"></p>
 <h3 id="背包问题"><a href="#背包问题" class="headerlink" title="背包问题"></a>背包问题</h3><h4 id="01背包"><a href="#01背包" class="headerlink" title="01背包"></a>01背包</h4><ul>
-<li><p>有$n$个物品，每个有体积$w\[i\]$,价值$v\[i\]$。总体积为$W$的背包最多能装多少总价值？</p>
+<li><p>有$n$个物品，每个有体积$w[i]$,价值$v[i]$。总体积为$W$的背包最多能装多少总价值？</p>
 </li>
-<li><p>$(n,W\\leq2000)$</p>
+<li><p>$(n,W\leq2000)$</p>
 </li>
-<li><p>设计状态：$f\[i\]\[j\]$表示$j$体积装前$i$件物品，最大的总价值。</p>
+<li><p>设计状态：$f[i][j]$表示$j$体积装前$i$件物品，最大的总价值。</p>
 </li>
-<li><p>如何转移？ $f\[i\]\[j\]=max(f\[i-1\]\[j\],f\[i-1\]\[j-w\[i\]\]+v\[i\])$ `cpp for(int i=1;i&lt;=n;i++){ for(int j=0;j&lt;=w[i];j++) f[i][j]=f[i-1][j]; for(int j=w[i];j&lt;=W;j++){ f[i][j]=max(f[i-1][j],f[i-1][j-w[i]]+v[i]) } }` 优化空间后：</p>
+<li><p>如何转移？ $f[i][j]=max(f[i-1][j],f[i-1][j-w[i]]+v[i])$ <code>cpp for(int i=1;i&lt;=n;i++){ for(int j=0;j&lt;=w[i];j++) f[i][j]=f[i-1][j]; for(int j=w[i];j&lt;=W;j++){ f[i][j]=max(f[i-1][j],f[i-1][j-w[i]]+v[i]) } }</code> 优化空间后：</p>
 <pre><code>for(int i=1;i&lt;=n;i++){
     for(int j=W;j&gt;=w[i];j--){
         f[j]=max(f[j],f[j-w[i]]+v[i])
@@ -263,21 +263,21 @@ for(int i=1;i&lt;=n;i++){
 }</code></pre></li>
 </ul>
 <h4 id="完全背包"><a href="#完全背包" class="headerlink" title="完全背包"></a>完全背包</h4><ul>
-<li>有$n$种物品，每种有体积$w\[i\]$,价值$v\[i\]$且有无限个。总体积为$W$的背包最多能装多少总价值？</li>
-<li>$(n,W\\leq2000)$ `cpp for(int i=1;i&lt;=n;i++){ for(int j=w[i];j&lt;=W;j++){ f[j]=max(f[j],f[j-w[i]]+v[i]) } }`</li>
+<li>有$n$种物品，每种有体积$w[i]$,价值$v[i]$且有无限个。总体积为$W$的背包最多能装多少总价值？</li>
+<li>$(n,W\leq2000)$ <code>cpp for(int i=1;i&lt;=n;i++){ for(int j=w[i];j&lt;=W;j++){ f[j]=max(f[j],f[j-w[i]]+v[i]) } }</code></li>
 </ul>
 <h4 id="子集和问题"><a href="#子集和问题" class="headerlink" title="子集和问题"></a>子集和问题</h4><ul>
 <li>有$n$个物品，第$i$个体积为$w_i$。能否选出一个子集和，使总容量为$W$的背包装满？</li>
-<li>$f\[i\]\[j\]=1 or 0$表示用前$i$件物品能否凑出$j$体积。</li>
-<li>$f\[0\]\[0\]=1$ `cpp for(int i=1;i&lt;=n;i++){ for(int j=0;j&lt;=W;j++) f[i][j]=f[i-1][j]; for(int j=w[i];j&lt;=W;j++){ if(f[i-1][j-w[i]]) f[i][j]=1; } } //f[n][W]==1 or 0?`</li>
+<li>$f[i][j]=1 or 0$表示用前$i$件物品能否凑出$j$体积。</li>
+<li>$f[0][0]=1$ <code>cpp for(int i=1;i&lt;=n;i++){ for(int j=0;j&lt;=W;j++) f[i][j]=f[i-1][j]; for(int j=w[i];j&lt;=W;j++){ if(f[i-1][j-w[i]]) f[i][j]=1; } } //f[n][W]==1 or 0?</code></li>
 </ul>
-<h4 id="动态子集和问题"><a href="#动态子集和问题" class="headerlink" title="动态子集和问题"></a>动态子集和问题</h4><p>![动态子集和问题](<a href="https://img-blog.csdnimg.cn/20190129105743142" target="_blank" rel="noopener">https://img-blog.csdnimg.cn/20190129105743142</a>.)</p>
+<h4 id="动态子集和问题"><a href="#动态子集和问题" class="headerlink" title="动态子集和问题"></a>动态子集和问题</h4><p><img src="https://img-blog.csdnimg.cn/20190129105743142." alt="动态子集和问题"></p>
 <h4 id="01背包-1"><a href="#01背包-1" class="headerlink" title="01背包"></a>01背包</h4><ul>
-<li><p>有$n$个物品，每个有体积$w\[i\]$,价值$v\[i\]$。总体积为$W$的背包最多能装多少总价值？</p>
+<li><p>有$n$个物品，每个有体积$w[i]$,价值$v[i]$。总体积为$W$的背包最多能装多少总价值？</p>
 </li>
-<li><p>$(n\\leq2000，v\[1\]+v\[2\]+···+v\[n\]\\leq2000,W\\leq10^9)$</p>
+<li><p>$(n\leq2000，v[1]+v[2]+···+v[n]\leq2000,W\leq10^9)$</p>
 </li>
-<li><p>小技巧：反转状态和dp值 状态$f\[i\]\[v\]$表示前$i$件物品凑出$v$的总价值最小总体积。 边界$f\[0\]\[0\]=0$。</p>
+<li><p>小技巧：反转状态和dp值 状态$f[i][v]$表示前$i$件物品凑出$v$的总价值最小总体积。 边界$f[0][0]=0$。</p>
 </li>
 <li><p>伪代码：</p>
 <p>f[0][0]=0;<br>for(int i=0;i&lt;=n;i++){</p>
@@ -292,27 +292,27 @@ for(int j=0;j&lt;=2000;j++){
 </li>
 </ul>
 <h3 id="区间DP"><a href="#区间DP" class="headerlink" title="区间DP"></a>区间DP</h3><h4 id="合法子序列问题"><a href="#合法子序列问题" class="headerlink" title="合法子序列问题"></a>合法子序列问题</h4><ul>
-<li>一个由$$组成的序列，求出最长的合法子序列长度，$(n\\leq300)$。</li>
-<li>定义：合法子序列是一个合法的括号序列，每一对匹配的括号都是同一类型的。比如$[()\[\]](()())$是合法的。</li>
-<li>设计状态： $f\[i\]\[j\]$表示在$\[i,j\]$有多长的合法子序列。</li>
-<li>转移： 如果$a\[l\],a\[r\]$是匹配的括号，则$2+f\[l+1\]\[r-1\]$ 枚举断点$k:f\[l\]\[k\]+f\[k+1\]\[r\]$</li>
+<li>一个由$$组成的序列，求出最长的合法子序列长度，$(n\leq300)$。</li>
+<li>定义：合法子序列是一个合法的括号序列，每一对匹配的括号都是同一类型的。比如$<a href="()()">()[]</a>$是合法的。</li>
+<li>设计状态： $f[i][j]$表示在$[i,j]$有多长的合法子序列。</li>
+<li>转移： 如果$a[l],a[r]$是匹配的括号，则$2+f[l+1][r-1]$ 枚举断点$k:f[l][k]+f[k+1][r]$</li>
 <li>按什么顺序进行DP？ 区间长度从小到大的顺序。 （或者：记忆化搜索）</li>
 <li>时间复杂度：$O(n^3)$</li>
 </ul>
 <h4 id="矩阵链乘法"><a href="#矩阵链乘法" class="headerlink" title="矩阵链乘法"></a>矩阵链乘法</h4><ul>
-<li>将一个$p \\times q$的矩阵乘一个$q \\times r$的矩阵，得到一个$p \\times r$的矩阵，运算花费是$p \\times q \\times r$。</li>
-<li>现在输入$p\_1,p\_2,p\_3,…,p\_n$。将$p\_1 \\times p\_2,p\_2 \\times p\_3,…,p_{n-1} \\times p_n$的矩阵乘起来，最小的总运算花费是多少？</li>
+<li>将一个$p \times q$的矩阵乘一个$q \times r$的矩阵，得到一个$p \times r$的矩阵，运算花费是$p \times q \times r$。</li>
+<li>现在输入$p_1,p_2,p_3,…,p_n$。将$p_1 \times p_2,p_2 \times p_3,…,p_{n-1} \times p_n$的矩阵乘起来，最小的总运算花费是多少？</li>
 </ul>
-<h4 id="例题n（记不清了）"><a href="#例题n（记不清了）" class="headerlink" title="例题n（记不清了）"></a>例题n（记不清了）</h4><p>![例题](<a href="https://img-blog.csdnimg.cn/20190129151756823.?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMyNDQwNDg=,size_16,color_FFFFFF,t_70" target="_blank" rel="noopener">https://img-blog.csdnimg.cn/20190129151756823.?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMyNDQwNDg=,size_16,color_FFFFFF,t_70</a>) \- 设计状态： $f\[l\]\[r\]$表示$a\[l,r\]$字串的答案。 - 转移：$f\[l\]\[k\]+f\[k+1\]\[r\]$ 当a\[l\]==a\[r\]时，未完。。。</p>
+<h4 id="例题n（记不清了）"><a href="#例题n（记不清了）" class="headerlink" title="例题n（记不清了）"></a>例题n（记不清了）</h4><p><img src="https://img-blog.csdnimg.cn/20190129151756823.?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMyNDQwNDg=,size_16,color_FFFFFF,t_70" alt="例题"> - 设计状态： $f[l][r]$表示$a[l,r]$字串的答案。 - 转移：$f[l][k]+f[k+1][r]$ 当a[l]==a[r]时，未完。。。</p>
 <h4 id="Floyd也是dp"><a href="#Floyd也是dp" class="headerlink" title="Floyd也是dp"></a>Floyd也是dp</h4><ul>
 <li>n个点的无向图，有向点和边权。每一对s，t，计算从s到t的路径，使得最小化：路径上的总边权+路径最大点权</li>
-<li>$(n\\leq300)$</li>
+<li>$(n\leq300)$</li>
 </ul>
 <h3 id="状态压缩DP"><a href="#状态压缩DP" class="headerlink" title="状态压缩DP"></a>状态压缩DP</h3><h4 id="经典问题"><a href="#经典问题" class="headerlink" title="经典问题"></a>经典问题</h4><ul>
 <li>求n个点的无向图的色数。（可以把顶点染成k种颜色之一，使得每条边两端不同色。最小的k是多少）</li>
-<li>$n\\leq16$</li>
-<li>设计状态，用f\[s\]表示结点子集S的色数。枚举子集进行转移。</li>
-<li>$f\[S\]=min(f\[S\],1+f\[S-T\])$，T是S的子集$((T\\&amp;S)==t)$，T中的点两两不相邻。</li>
+<li>$n\leq16$</li>
+<li>设计状态，用f[s]表示结点子集S的色数。枚举子集进行转移。</li>
+<li>$f[S]=min(f[S],1+f[S-T])$，T是S的子集$((T\&amp;S)==t)$，T中的点两两不相邻。</li>
 </ul>
 
         </div>

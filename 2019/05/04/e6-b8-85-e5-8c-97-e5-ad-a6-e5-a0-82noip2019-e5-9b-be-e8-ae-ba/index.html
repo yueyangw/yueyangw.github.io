@@ -172,7 +172,7 @@
 </ul>
 <hr>
 <h4 id="拓扑排序（DAG一定存在）"><a href="#拓扑排序（DAG一定存在）" class="headerlink" title="拓扑排序（DAG一定存在）"></a>拓扑排序（DAG一定存在）</h4><ul>
-<li>例如： ![](<a href="http://yueyangwu.cn/wp-content/uploads/2019/05/图片1.png">http://yueyangwu.cn/wp-content/uploads/2019/05/图片1.png</a>)</li>
+<li>例如： <img src="http://yueyangwu.cn/wp-content/uploads/2019/05/%E5%9B%BE%E7%89%871.png" alt></li>
 <li>$v1,v2,v5,v4,v3,v7,v6$为该图的一个拓扑序。</li>
 <li>我们每次寻找入度为$0$的点加入序列中。</li>
 <li>并将当前点连接的所有边均删除，更新其它点的度数。</li>
@@ -186,30 +186,30 @@
 </ul>
 <h4 id="求“割点”"><a href="#求“割点”" class="headerlink" title="求“割点”"></a>求“割点”</h4><ul>
 <li>给定一张n个点m条边的拓扑图（保证1号点能走到n号点），求存在多少点，将其删去后1号点走不到n号点。</li>
-<li>$n,m\\leq 100000$</li>
+<li>$n,m\leq 100000$</li>
 <li>这个题和图论没啥关系……</li>
-<li>令$S\[i\]$表示从1号点走到i号点的方案总数，令$T\[i\]$表示从n号点反向走到i号点的方案总数。（这个可以用动态规划求出）</li>
-<li>对于一个点i，若$S\[i\]*T\[i\]=S\[n\]$，则它是割点。</li>
+<li>令$S[i]$表示从1号点走到i号点的方案总数，令$T[i]$表示从n号点反向走到i号点的方案总数。（这个可以用动态规划求出）</li>
+<li>对于一个点i，若$S[i]*T[i]=S[n]$，则它是割点。</li>
 </ul>
 <hr>
 <h3 id="最短路"><a href="#最短路" class="headerlink" title="最短路"></a>最短路</h3><h4 id="Dijkstra"><a href="#Dijkstra" class="headerlink" title="Dijkstra"></a>Dijkstra</h4><ul>
-<li>令dis\[i\]表示当前u到i的最短路是多少。<ol>
-<li>将dis\[u\]=0,dis\[i\]=inf(i!=u)。</li>
-<li>寻找最小的dis\[x\]且x曾经没被找到过。</li>
+<li>令dis[i]表示当前u到i的最短路是多少。<ol>
+<li>将dis[u]=0,dis[i]=inf(i!=u)。</li>
+<li>寻找最小的dis[x]且x曾经没被找到过。</li>
 <li>若x=v，输出答案并退出。</li>
-<li>枚举x的所有边，用dis\[x\]去更新其余dis\[\]，回到步骤2。</li>
+<li>枚举x的所有边，用dis[x]去更新其余dis[]，回到步骤2。</li>
 </ol>
 </li>
 <li>时间复杂度为$O(n^2)$。</li>
-<li>使用范围：不存在负权边。 ![](<a href="http://yueyangwu.cn/wp-content/uploads/2019/05/图片2.jpg">http://yueyangwu.cn/wp-content/uploads/2019/05/图片2.jpg</a>) ![](<a href="http://yueyangwu.cn/wp-content/uploads/2019/05/QQ图片20190501153441.gif">http://yueyangwu.cn/wp-content/uploads/2019/05/QQ图片20190501153441.gif</a>)</li>
+<li>使用范围：不存在负权边。 <img src="http://yueyangwu.cn/wp-content/uploads/2019/05/%E5%9B%BE%E7%89%872.jpg" alt> <img src="http://yueyangwu.cn/wp-content/uploads/2019/05/QQ%E5%9B%BE%E7%89%8720190501153441.gif" alt></li>
 </ul>
 <hr>
 <h4 id="SPFA"><a href="#SPFA" class="headerlink" title="SPFA"></a>SPFA</h4><ul>
-<li>令dis\[i\]表示当前u到i的最短路是多少。<ol>
-<li>将$dis\[u\]=0,dis\[i\]=inf(i!=u)$，并将u加入队列中。</li>
+<li>令dis[i]表示当前u到i的最短路是多少。<ol>
+<li>将$dis[u]=0,dis[i]=inf(i!=u)$，并将u加入队列中。</li>
 <li>设当前队首为$x$，枚举$x$。</li>
-<li>枚举x的所有边，用$dis\[x\]$去更新其余$dis\[\]$，若$dis\[i\]$此时被更新且$i$当前不在队列中，将其加入队列。</li>
-<li>将$x$弹出队列，若此时队列为空，结束，否则返回步骤2。 复杂度$O(nm)$ ![](<a href="http://yueyangwu.cn/wp-content/uploads/2019/05/图片3.jpg">http://yueyangwu.cn/wp-content/uploads/2019/05/图片3.jpg</a>)</li>
+<li>枚举x的所有边，用$dis[x]$去更新其余$dis[]$，若$dis[i]$此时被更新且$i$当前不在队列中，将其加入队列。</li>
+<li>将$x$弹出队列，若此时队列为空，结束，否则返回步骤2。 复杂度$O(nm)$ <img src="http://yueyangwu.cn/wp-content/uploads/2019/05/%E5%9B%BE%E7%89%873.jpg" alt></li>
 </ol>
 </li>
 <li>判断负环：如果有一个点进入队列超过$n-1$次，就有负权环。</li>
@@ -217,14 +217,14 @@
 <hr>
 <h3 id="差分约束"><a href="#差分约束" class="headerlink" title="差分约束"></a>差分约束</h3><ul>
 <li>设有$n$个变量和$m$个约束条件。</li>
-<li>第i个约数条件形如$x\[ai\]-x\[bi\] \\leq ci$，我们称之为差分约数系统。</li>
+<li>第i个约数条件形如$x[ai]-x[bi] \leq ci$，我们称之为差分约数系统。</li>
 <li>求解一组解使得这$n$个变量满足所有约束条件即为差分约束系统。</li>
 </ul>
 <h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><ul>
 <li>对于一个ai - bi &lt;= ci的限制</li>
 <li>我们抽象成bi -&gt; ai 有一条长为ci的边。</li>
 <li>在跑最短路时，就保证了ai至多为bi+ci。</li>
-<li>具体实现时可以再增加一个虚拟点来作为源点跑最短路。 ![](<a href="http://yueyangwu.cn/wp-content/uploads/2019/05/1.png">http://yueyangwu.cn/wp-content/uploads/2019/05/1.png</a>)</li>
+<li>具体实现时可以再增加一个虚拟点来作为源点跑最短路。 <img src="http://yueyangwu.cn/wp-content/uploads/2019/05/1.png" alt></li>
 </ul>
 <hr>
 <h3 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h3><ul>
@@ -257,10 +257,10 @@
 <li>求有向图的所有强连通分量</li>
 <li>Tarjan!</li>
 </ul>
-<h4 id="Tarjan"><a href="#Tarjan" class="headerlink" title="Tarjan"></a>Tarjan</h4><p>![](<a href="http://yueyangwu.cn/wp-content/uploads/2019/03/t01fa3958a07f2aa839.png">http://yueyangwu.cn/wp-content/uploads/2019/03/t01fa3958a07f2aa839.png</a>) 存在3个极大强连通分量，1234，5，6。</p>
+<h4 id="Tarjan"><a href="#Tarjan" class="headerlink" title="Tarjan"></a>Tarjan</h4><p><img src="http://yueyangwu.cn/wp-content/uploads/2019/03/t01fa3958a07f2aa839.png" alt> 存在3个极大强连通分量，1234，5，6。</p>
 <ul>
-<li>我们定义$DFN\[x\]$为搜索到x时的时间戳（即搜索到的时间）。$LOW\[x\]$为搜索树中x以及它的子孙可以访问到的最早祖先的时间戳。有$LOW\[x\]=min(DFN\[x\],DFN\[j\],LOW\[k\])$，其中存在边$(x,j)，(x,k)$，$j$为$x$的祖先，$k$为$x$的子孙。</li>
-<li>令v\[i\]表示i是否已被搜索过以及是否找到了极大强连通分量。若i已经找到了极大强连通分量或者还未被搜索过，则$v\[i\]=0$，否则$v\[i\]=1$。</li>
+<li>我们定义$DFN[x]$为搜索到x时的时间戳（即搜索到的时间）。$LOW[x]$为搜索树中x以及它的子孙可以访问到的最早祖先的时间戳。有$LOW[x]=min(DFN[x],DFN[j],LOW[k])$，其中存在边$(x,j)，(x,k)$，$j$为$x$的祖先，$k$为$x$的子孙。</li>
+<li>令v[i]表示i是否已被搜索过以及是否找到了极大强连通分量。若i已经找到了极大强连通分量或者还未被搜索过，则$v[i]=0$，否则$v[i]=1$。</li>
 </ul>
 <ol>
 <li>如果出点是自己的祖先，则拿祖先的DFN值更新。</li>
@@ -278,9 +278,9 @@
 <li>给定n个数，有Q次询问，每次询问一段区间的最小值。</li>
 </ul>
 <h4 id="RMQ问题"><a href="#RMQ问题" class="headerlink" title="RMQ问题"></a>RMQ问题</h4><ul>
-<li>$f\[i\]\[j\]$表示从$i$开始，长度为$2^i-1$的序列的最小值。</li>
-<li>我们考虑记录$a\[x\]~a\[x+2^k-1\]$的最小值，令其为$f\[x\]\[k\]$。这可以在nlgn的时间内求出。</li>
-<li>对于每次询问$L~R$，令$k=log\[R-L+1\]$。有$ans=min(f\[L\]\[k\],f\[R-2^k+1\]\[k\])$。(即进行$O(1)$询问)<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">f[x][<span class="hljs-number">0</span>] = a[x]</span><br><span class="line"></span><br><span class="line">f[x][i]  x~x+<span class="hljs-number">2</span>^i<span class="hljs-number">-1</span></span><br><span class="line">f[x][i<span class="hljs-number">-1</span>]  x~x+<span class="hljs-number">2</span>^(i<span class="hljs-number">-1</span>)<span class="hljs-number">-1</span></span><br><span class="line">f[x+<span class="hljs-number">2</span>^(i<span class="hljs-number">-1</span>)][i<span class="hljs-number">-1</span>]  x</span><br><span class="line">f[x][i] = min(f[x][i<span class="hljs-number">-1</span>],f[x+<span class="hljs-number">2</span>^(i<span class="hljs-number">-1</span>)][i<span class="hljs-number">-1</span>])</span><br><span class="line"></span><br><span class="line">n  i <span class="hljs-built_in">log</span>(n)/<span class="hljs-built_in">log</span>(<span class="hljs-number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">for</span> (i=<span class="hljs-number">1</span>; i&lt;=n; i++) LG[i]=<span class="hljs-keyword">int</span>(<span class="hljs-built_in">log</span>(i)/<span class="hljs-built_in">log</span>(<span class="hljs-number">2</span>));  <span class="hljs-comment">//  log(i)  lglgi </span></span><br><span class="line"><span class="hljs-keyword">for</span> (i=<span class="hljs-number">1</span>; i&lt;=LG[n]; i++)</span><br><span class="line">    <span class="hljs-keyword">for</span> (x=<span class="hljs-number">1</span>; x&lt;=n-(<span class="hljs-number">1</span>&lt;&lt;i)+<span class="hljs-number">1</span>; x++) </span><br><span class="line">        f[x][i] = min(f[x][i<span class="hljs-number">-1</span>],f[x+<span class="hljs-number">2</span>^(i<span class="hljs-number">-1</span>)][i<span class="hljs-number">-1</span>])</span><br></pre></td></tr></table></figure>
+<li>$f[i][j]$表示从$i$开始，长度为$2^i-1$的序列的最小值。</li>
+<li>我们考虑记录$a[x]~a[x+2^k-1]$的最小值，令其为$f[x][k]$。这可以在nlgn的时间内求出。</li>
+<li>对于每次询问$L~R$，令$k=log[R-L+1]$。有$ans=min(f[L][k],f[R-2^k+1][k])$。(即进行$O(1)$询问)<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">f[x][<span class="hljs-number">0</span>] = a[x]</span><br><span class="line"></span><br><span class="line">f[x][i]  x~x+<span class="hljs-number">2</span>^i<span class="hljs-number">-1</span></span><br><span class="line">f[x][i<span class="hljs-number">-1</span>]  x~x+<span class="hljs-number">2</span>^(i<span class="hljs-number">-1</span>)<span class="hljs-number">-1</span></span><br><span class="line">f[x+<span class="hljs-number">2</span>^(i<span class="hljs-number">-1</span>)][i<span class="hljs-number">-1</span>]  x</span><br><span class="line">f[x][i] = min(f[x][i<span class="hljs-number">-1</span>],f[x+<span class="hljs-number">2</span>^(i<span class="hljs-number">-1</span>)][i<span class="hljs-number">-1</span>])</span><br><span class="line"></span><br><span class="line">n  i <span class="hljs-built_in">log</span>(n)/<span class="hljs-built_in">log</span>(<span class="hljs-number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">for</span> (i=<span class="hljs-number">1</span>; i&lt;=n; i++) LG[i]=<span class="hljs-keyword">int</span>(<span class="hljs-built_in">log</span>(i)/<span class="hljs-built_in">log</span>(<span class="hljs-number">2</span>));  <span class="hljs-comment">//  log(i)  lglgi </span></span><br><span class="line"><span class="hljs-keyword">for</span> (i=<span class="hljs-number">1</span>; i&lt;=LG[n]; i++)</span><br><span class="line">    <span class="hljs-keyword">for</span> (x=<span class="hljs-number">1</span>; x&lt;=n-(<span class="hljs-number">1</span>&lt;&lt;i)+<span class="hljs-number">1</span>; x++) </span><br><span class="line">        f[x][i] = min(f[x][i<span class="hljs-number">-1</span>],f[x+<span class="hljs-number">2</span>^(i<span class="hljs-number">-1</span>)][i<span class="hljs-number">-1</span>])</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -290,11 +290,11 @@
 <h4 id="倍增法"><a href="#倍增法" class="headerlink" title="倍增法"></a>倍增法</h4><ul>
 <li><p>为了简化问题，我们假设$x,y$在同一高度。</p>
 </li>
-<li><p>令$f\[i\]\[j\]$表示i向上跳$2^j$步的父亲是啥。</p>
+<li><p>令$f[i][j]$表示i向上跳$2^j$步的父亲是啥。</p>
 </li>
-<li><p>将k从$logn$枚举到$0$，若$f\[x\]\[k\]$与$f\[y\]\[k\]$不同，则将$x$跳至$f\[x\]\[k\]$，将$y$跳至$f\[y\]\[k\]$。</p>
+<li><p>将k从$logn$枚举到$0$，若$f[x][k]$与$f[y][k]$不同，则将$x$跳至$f[x][k]$，将$y$跳至$f[y][k]$。</p>
 </li>
-<li><p>最后若$x=y$，则$LCA=x$，否则$LCA=f\[x\]\[0\]$。</p>
+<li><p>最后若$x=y$，则$LCA=x$，否则$LCA=f[x][0]$。</p>
 <p>f[x][i] 表示从x出发向上跳2^i步能到达的点的编号<br>g[x][i] 表示x向上跳2^i步经过的路径中最长边是多少 </p>
 <figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">f[x][<span class="hljs-number">0</span>] = fa[x];</span><br><span class="line">g[x][<span class="hljs-number">0</span>] = x和fa[x]的边的长度 </span><br><span class="line"><span class="hljs-keyword">for</span> (i=<span class="hljs-number">1</span>; i&lt;=LG[n]; i++)</span><br><span class="line">    <span class="hljs-keyword">for</span> (j=<span class="hljs-number">1</span>; j&lt;=n; j++) </span><br><span class="line">        f[j][i] = f[f[j][i<span class="hljs-number">-1</span>]][i<span class="hljs-number">-1</span>],</span><br><span class="line">        g[j][i] = max(g[j][i<span class="hljs-number">-1</span>],g[f[j][i<span class="hljs-number">-1</span>]][i<span class="hljs-number">-1</span>]);</span><br></pre></td></tr></table></figure>
 
@@ -307,8 +307,8 @@
 <li>给定一棵树，每次询问两个点x,y，求这两个点的路径上最长的边是多少。</li>
 </ul>
 <h5 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h5><ul>
-<li>同样的令f\[i\]\[j\]表示i向上跳2^j能跳到哪儿。</li>
-<li>也令g\[i\]\[j\]表示i向上跳2^j的过程中遇到的最长的边是多少。</li>
+<li>同样的令f[i][j]表示i向上跳2^j能跳到哪儿。</li>
+<li>也令g[i][j]表示i向上跳2^j的过程中遇到的最长的边是多少。</li>
 <li>现在我们先求出两个点x,y的LCA。</li>
 <li>用倍增的方法求出x到LCA的最长边，y到LCA的最长边就可以了。</li>
 </ul>

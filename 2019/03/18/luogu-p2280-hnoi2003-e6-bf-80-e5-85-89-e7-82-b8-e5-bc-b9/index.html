@@ -7,19 +7,19 @@
 
 
 
-    <meta name="description" content="[题目链接](https://www.luogu.org/problemnew/show/P2280 “题目链接”)">
+    <meta name="description" content="题目链接">
 <meta name="keywords" content="dp,枚举">
 <meta property="og:type" content="article">
 <meta property="og:title" content=" Luogu P2280 [HNOI2003]激光炸弹		">
 <meta property="og:url" content="http://yueyangwu.cn/2019/03/18/luogu-p2280-hnoi2003-e6-bf-80-e5-85-89-e7-82-b8-e5-bc-b9/index.html">
 <meta property="og:site_name" content="Blog of YorkWu">
-<meta property="og:description" content="[题目链接](https://www.luogu.org/problemnew/show/P2280 “题目链接”)">
+<meta property="og:description" content="题目链接">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yueyangwu.cn/images/og_image.png">
 <meta property="og:updated_time" content="2019-07-11T17:28:04.049Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" Luogu P2280 [HNOI2003]激光炸弹		">
-<meta name="twitter:description" content="[题目链接](https://www.luogu.org/problemnew/show/P2280 “题目链接”)">
+<meta name="twitter:description" content="题目链接">
 <meta name="twitter:image" content="http://yueyangwu.cn/images/og_image.png">
 
 
@@ -162,7 +162,7 @@
             
         </h1>
         <div class="content">
-            <p>[题目链接](<a href="https://www.luogu.org/problemnew/show/P2280" target="_blank" rel="noopener">https://www.luogu.org/problemnew/show/P2280</a> “题目链接”)</p>
+            <p><a href="https://www.luogu.org/problemnew/show/P2280" title="题目链接" target="_blank" rel="noopener">题目链接</a></p>
 <a id="more"></a>
 
 <hr>
@@ -170,7 +170,7 @@
 <h4 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h4><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N=<span class="hljs-number">5009</span>;</span><br><span class="line"><span class="hljs-keyword">int</span> a[N][N],ans;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> n,r;</span><br><span class="line">    <span class="hljs-built_in">cin</span>&gt;&gt;n&gt;&gt;r;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> x,y,z;</span><br><span class="line">        <span class="hljs-built_in">cin</span>&gt;&gt;x&gt;&gt;y&gt;&gt;z;</span><br><span class="line">        a[x+<span class="hljs-number">1</span>][y+<span class="hljs-number">1</span>]=z;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=<span class="hljs-number">5001</span>;i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">1</span>;j&lt;=<span class="hljs-number">5001</span>;j++)&#123;</span><br><span class="line">            a[i][j]+=a[i<span class="hljs-number">-1</span>][j]+a[i][j<span class="hljs-number">-1</span>]-a[i<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=r;i&lt;=<span class="hljs-number">5001</span>;i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=r;j&lt;=<span class="hljs-number">5001</span>;j++)&#123;</span><br><span class="line">            ans=max(ans,a[i][j]-a[i-r][j]-a[i][j-r]+a[i-r][j-r]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">if</span>(ans==<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-built_in">cout</span>&lt;&lt;ans;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>P.S.绿题难度怎么差异这么大，~也太简单了吧!~</p>
+<p>P.S.绿题难度怎么差异这么大，<del>也太简单了吧!</del></p>
 </blockquote>
 
         </div>

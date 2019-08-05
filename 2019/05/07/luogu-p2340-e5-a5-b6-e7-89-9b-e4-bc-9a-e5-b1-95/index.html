@@ -7,19 +7,19 @@
 
 
 
-    <meta name="description" content="题意：给定$n$组数，每组数包含2个数字$S\_i$和$F\_i$。 要求：取其中几组数，要求他们的和最大，并且所有$S\_i$的和与$F\_i$的和均大于0。 $1\\leq N\\leq 400$ $-1000\\leq S\_i,F\_i\\leq 1000$">
+    <meta name="description" content="题意：给定$n$组数，每组数包含2个数字$S_i$和$F_i$。 要求：取其中几组数，要求他们的和最大，并且所有$S_i$的和与$F_i$的和均大于0。 $1\leq N\leq 400$ $-1000\leq S_i,F_i\leq 1000$">
 <meta name="keywords" content="dp,精">
 <meta property="og:type" content="article">
 <meta property="og:title" content=" Luogu P2340 奶牛会展		">
 <meta property="og:url" content="http://yueyangwu.cn/2019/05/07/luogu-p2340-e5-a5-b6-e7-89-9b-e4-bc-9a-e5-b1-95/index.html">
 <meta property="og:site_name" content="Blog of YorkWu">
-<meta property="og:description" content="题意：给定$n$组数，每组数包含2个数字$S\_i$和$F\_i$。 要求：取其中几组数，要求他们的和最大，并且所有$S\_i$的和与$F\_i$的和均大于0。 $1\\leq N\\leq 400$ $-1000\\leq S\_i,F\_i\\leq 1000$">
+<meta property="og:description" content="题意：给定$n$组数，每组数包含2个数字$S_i$和$F_i$。 要求：取其中几组数，要求他们的和最大，并且所有$S_i$的和与$F_i$的和均大于0。 $1\leq N\leq 400$ $-1000\leq S_i,F_i\leq 1000$">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yueyangwu.cn/images/og_image.png">
 <meta property="og:updated_time" content="2019-07-11T17:29:00.397Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" Luogu P2340 奶牛会展		">
-<meta name="twitter:description" content="题意：给定$n$组数，每组数包含2个数字$S\_i$和$F\_i$。 要求：取其中几组数，要求他们的和最大，并且所有$S\_i$的和与$F\_i$的和均大于0。 $1\\leq N\\leq 400$ $-1000\\leq S\_i,F\_i\\leq 1000$">
+<meta name="twitter:description" content="题意：给定$n$组数，每组数包含2个数字$S_i$和$F_i$。 要求：取其中几组数，要求他们的和最大，并且所有$S_i$的和与$F_i$的和均大于0。 $1\leq N\leq 400$ $-1000\leq S_i,F_i\leq 1000$">
 <meta name="twitter:image" content="http://yueyangwu.cn/images/og_image.png">
 
 
@@ -163,15 +163,15 @@
         </h1>
         <div class="content">
             <ul>
-<li>题意：给定$n$组数，每组数包含2个数字$S\_i$和$F\_i$。 要求：取其中几组数，要求他们的和最大，并且所有$S\_i$的和与$F\_i$的和均大于0。</li>
-<li>$1\\leq N\\leq 400$ $-1000\\leq S\_i,F\_i\\leq 1000$</li>
+<li>题意：给定$n$组数，每组数包含2个数字$S_i$和$F_i$。 要求：取其中几组数，要求他们的和最大，并且所有$S_i$的和与$F_i$的和均大于0。</li>
+<li>$1\leq N\leq 400$ $-1000\leq S_i,F_i\leq 1000$</li>
 <li><a id="more"></a>
 
 </li>
 </ul>
 <hr>
 <ul>
-<li>可以看出，每组数有选与不选两种情况，可以转化为01背包，让$S\_i$作为物品体积，$F\_i$作为物品价值。但是由题意可以发现，$S\_i$有可能为负数，又因为$-1000\\leq S\_i\leq 1000$，所以背包体积可以是$-400000\\leq m\\leq 400000$，因为数组下标不可以为负，所以将整个数组向右平移$400000$个单位，把$400000$当做$0$。</li>
+<li>可以看出，每组数有选与不选两种情况，可以转化为01背包，让$S_i$作为物品体积，$F_i$作为物品价值。但是由题意可以发现，$S_i$有可能为负数，又因为$-1000\leq S_i\leq 1000$，所以背包体积可以是$-400000\leq m\leq 400000$，因为数组下标不可以为负，所以将整个数组向右平移$400000$个单位，把$400000$当做$0$。</li>
 <li>这样如果$S_i&lt;0$那么正序枚举，反之倒序枚举。</li>
 </ul>
 <p>代码：</p>

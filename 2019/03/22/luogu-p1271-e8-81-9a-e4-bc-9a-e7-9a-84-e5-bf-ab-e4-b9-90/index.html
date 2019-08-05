@@ -7,19 +7,19 @@
 
 
 
-    <meta name="description" content="[题目链接](https://www.luogu.org/problemnew/show/P1271 “题目链接”)">
+    <meta name="description" content="题目链接">
 <meta name="keywords" content="树形结构,dp,字符串">
 <meta property="og:type" content="article">
 <meta property="og:title" content=" Luogu P1271 聚会的快乐		">
 <meta property="og:url" content="http://yueyangwu.cn/2019/03/22/luogu-p1271-e8-81-9a-e4-bc-9a-e7-9a-84-e5-bf-ab-e4-b9-90/index.html">
 <meta property="og:site_name" content="Blog of YorkWu">
-<meta property="og:description" content="[题目链接](https://www.luogu.org/problemnew/show/P1271 “题目链接”)">
+<meta property="og:description" content="题目链接">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yueyangwu.cn/images/og_image.png">
 <meta property="og:updated_time" content="2019-07-11T17:23:45.524Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" Luogu P1271 聚会的快乐		">
-<meta name="twitter:description" content="[题目链接](https://www.luogu.org/problemnew/show/P1271 “题目链接”)">
+<meta name="twitter:description" content="题目链接">
 <meta name="twitter:image" content="http://yueyangwu.cn/images/og_image.png">
 
 
@@ -162,17 +162,17 @@
             
         </h1>
         <div class="content">
-            <p>[题目链接](<a href="https://www.luogu.org/problemnew/show/P1271" target="_blank" rel="noopener">https://www.luogu.org/problemnew/show/P1271</a> “题目链接”)</p>
+            <p><a href="https://www.luogu.org/problemnew/show/P1271" title="题目链接" target="_blank" rel="noopener">题目链接</a></p>
 <a id="more"></a>
 
 <hr>
 <ul>
 <li>树上dp</li>
 <li>水题，和《没有上司的舞会》基本一样，多个字符串的hash（可以直接用STL-map）</li>
-<li>设计状态：f\[i\]\[0/1\]表示第i个节点参加活动（1）或者不参加活动（0）。</li>
+<li>设计状态：f[i][0/1]表示第i个节点参加活动（1）或者不参加活动（0）。</li>
 <li>状态转移方程：<ol>
-<li>$f\[fa\]\[1\]+=f\[x\]\[0\]$</li>
-<li>$f\[fa\]\[0\]+=max(f\[x\]\[0\],f\[x\]\[1\])$</li>
+<li>$f[fa][1]+=f[x][0]$</li>
+<li>$f[fa][0]+=max(f[x][0],f[x][1])$</li>
 </ol>
 </li>
 </ul>

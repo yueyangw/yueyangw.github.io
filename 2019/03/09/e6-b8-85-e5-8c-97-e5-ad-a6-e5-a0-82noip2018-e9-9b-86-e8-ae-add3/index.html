@@ -180,7 +180,7 @@
 </li>
 </ul>
 <h2 id="快速幂"><a href="#快速幂" class="headerlink" title="快速幂"></a>快速幂</h2><ul>
-<li>$a^bmodc;a,b,c\\le 10^9$</li>
+<li>$a^bmodc;a,b,c\le 10^9$</li>
 <li>代码见Day1</li>
 </ul>
 <h2 id="进制转换"><a href="#进制转换" class="headerlink" title="进制转换"></a>进制转换</h2><ul>
@@ -199,34 +199,34 @@
 <h2 id="素数"><a href="#素数" class="headerlink" title="素数"></a>素数</h2><ul>
 <li>大于一且因数只有1和它本身。</li>
 <li>算数基本定理<ul>
-<li>任何一个大于1的自然数 N,如果N不为质数，那么N可以唯一分解成有限个质数的乘积$N=P\_1^{a\_1}\\times P\_2^{a\_2}\\times P\_3^{a\_3}\\times ……\\times P\_n^{a\_n}$，这里$P\_1&lt;P\_2&lt;P\_3……&lt;P\_n$均为质数，其中指数$a_i$是正整数。</li>
+<li>任何一个大于1的自然数 N,如果N不为质数，那么N可以唯一分解成有限个质数的乘积$N=P_1^{a_1}\times P_2^{a_2}\times P_3^{a_3}\times ……\times P_n^{a_n}$，这里$P_1&lt;P_2&lt;P_3……&lt;P_n$均为质数，其中指数$a_i$是正整数。</li>
 </ul>
 </li>
 <li>判断一个数是不是素数</li>
-<li>一般算法 `cpp #include&lt;bits/stdc++.h&gt; using namespace std; bool is_prime(int x){ for(int i=2;i*i&lt;=x;i++){ if(x%i==0) return 0; } return 1; } int main(){ int n; cin&gt;&gt;n; cout&lt;&lt;is_prime(i); return 0; }`</li>
-<li>$O(nloglogn)$算法 `cpp #include&lt;bits/stdc++.h&gt; using namespace std; bool a[100000005]; int x[100000005]; int find_prime(int n){ int tot=0; for(int i=2;i&lt;=n;i++){ if(!a[i]){ x[tot++]=i; for(int j=2;j*i&lt;=n;j++){ a[j*i]=1; } } } return tot; } int main(){ int len=find_prime(100000); for(int i=0;i&lt;len;i++){ cout&lt;&lt;x[i]&lt;&lt;” “; } return 0; }`</li>
+<li>一般算法 <code>cpp #include&lt;bits/stdc++.h&gt; using namespace std; bool is_prime(int x){ for(int i=2;i*i&lt;=x;i++){ if(x%i==0) return 0; } return 1; } int main(){ int n; cin&gt;&gt;n; cout&lt;&lt;is_prime(i); return 0; }</code></li>
+<li>$O(nloglogn)$算法 <code>cpp #include&lt;bits/stdc++.h&gt; using namespace std; bool a[100000005]; int x[100000005]; int find_prime(int n){ int tot=0; for(int i=2;i&lt;=n;i++){ if(!a[i]){ x[tot++]=i; for(int j=2;j*i&lt;=n;j++){ a[j*i]=1; } } } return tot; } int main(){ int len=find_prime(100000); for(int i=0;i&lt;len;i++){ cout&lt;&lt;x[i]&lt;&lt;&quot; &quot;; } return 0; }</code></li>
 </ul>
 <h2 id="gcd-lcm"><a href="#gcd-lcm" class="headerlink" title="gcd/lcm"></a>gcd/lcm</h2><ul>
 <li>gcd:最大公约数</li>
 <li>lcm:最小公倍数</li>
-<li>$(a,b)\[a,b\]=ab$</li>
+<li>$(a,b)[a,b]=ab$</li>
 </ul>
 <h3 id="gcd"><a href="#gcd" class="headerlink" title="gcd"></a>gcd</h3><ul>
-<li>$gcd(a,b)=p\_1^{min(a\_1,b\_1)}\\times p\_2^{min(a\_2,b\_2)}\\times …\\times p\_n^{min(a\_n,b_n)}$</li>
+<li>$gcd(a,b)=p_1^{min(a_1,b_1)}\times p_2^{min(a_2,b_2)}\times …\times p_n^{min(a_n,b_n)}$</li>
 <li>怎么算？</li>
 <li>辗转相减 $gcd(a,b) = gcd(b,a-b)$</li>
-<li>辗转相除法 $gcd(a,b) = gcd(b,a\\%b)$</li>
-<li>代码如下： `cpp int gcd(int a,int b){ if(b==0) return a; return gcd(b,a%b); }`</li>
+<li>辗转相除法 $gcd(a,b) = gcd(b,a\%b)$</li>
+<li>代码如下： <code>cpp int gcd(int a,int b){ if(b==0) return a; return gcd(b,a%b); }</code></li>
 </ul>
 <h3 id="lcm"><a href="#lcm" class="headerlink" title="lcm"></a>lcm</h3><ul>
-<li>$lcm(a,b)=p\_1^{max(a\_1,b\_1)}\\times p\_2^{max(a\_2,b\_2)}\\times …\\times p\_n^{max(a\_n,b_n)}$</li>
-<li>代码如下： `cpp int lcm(int a,int b){ return a*b/gcd(a,b); }`</li>
+<li>$lcm(a,b)=p_1^{max(a_1,b_1)}\times p_2^{max(a_2,b_2)}\times …\times p_n^{max(a_n,b_n)}$</li>
+<li>代码如下： <code>cpp int lcm(int a,int b){ return a*b/gcd(a,b); }</code></li>
 </ul>
 <h4 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h4><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">gcd</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span>(b==<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> a;</span><br><span class="line">    <span class="hljs-keyword">return</span> gcd(b,a%b);</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">lcm</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> a*b/gcd(a,b);</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">cout</span>&lt;&lt;gcd(<span class="hljs-number">3</span>,<span class="hljs-number">4</span>)&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">    <span class="hljs-built_in">cout</span>&lt;&lt;lcm(<span class="hljs-number">3</span>,<span class="hljs-number">4</span>);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="裴蜀定理"><a href="#裴蜀定理" class="headerlink" title="裴蜀定理"></a>裴蜀定理</h2><ul>
-<li>$gcd(a,b)=d\\Rightarrow ax+by=d$</li>
-<li>$gcd(a,b)=1\\Leftarrow\\Rightarrow ax+by=1$</li>
+<li>$gcd(a,b)=d\Rightarrow ax+by=d$</li>
+<li>$gcd(a,b)=1\Leftarrow\Rightarrow ax+by=1$</li>
 </ul>
 
         </div>
