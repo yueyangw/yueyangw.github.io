@@ -2,24 +2,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title> Luogu P3398 仓鼠找sugar		 - Blog of YorkWu</title>
+<title>luogu P2055 [ZJOI2009]假期的宿舍 - Blog of YorkWu</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="Luogu P3398 仓鼠找sugar">
-<meta name="keywords" content="LCA">
+    <meta name="description" content="二分图匹配？">
 <meta property="og:type" content="article">
-<meta property="og:title" content=" Luogu P3398 仓鼠找sugar		">
-<meta property="og:url" content="http://yueyangwu.cn/2019/03/09/luogu-p3398-e4-bb-93-e9-bc-a0-e6-89-besugar/index.html">
+<meta property="og:title" content="luogu P2055 [ZJOI2009]假期的宿舍">
+<meta property="og:url" content="http://yueyangwu.cn/2019/08/22/luogu-P2055-ZJOI2009-假期的宿舍/index.html">
 <meta property="og:site_name" content="Blog of YorkWu">
-<meta property="og:description" content="Luogu P3398 仓鼠找sugar">
+<meta property="og:description" content="二分图匹配？">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yueyangwu.cn/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-12T02:56:24.153Z">
+<meta property="og:updated_time" content="2019-08-22T02:10:53.199Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content=" Luogu P3398 仓鼠找sugar		">
-<meta name="twitter:description" content="Luogu P3398 仓鼠找sugar">
+<meta name="twitter:title" content="luogu P2055 [ZJOI2009]假期的宿舍">
+<meta name="twitter:description" content="二分图匹配？">
 <meta name="twitter:image" content="http://yueyangwu.cn/images/og_image.png">
 
 
@@ -139,17 +138,13 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-03-09T15:51:36.000Z">2019-03-09</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI/">OI</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/OI/题目/">题目</a>
-                </div>
+                <time class="level-item has-text-grey" datetime="2019-08-22T01:47:51.000Z">2019-08-22</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 674 个字)
+                    2 分钟 读完 (大约 338 个字)
                 </span>
                 
                 
@@ -158,40 +153,19 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                 Luogu P3398 仓鼠找sugar		
+                luogu P2055 [ZJOI2009]假期的宿舍
             
         </h1>
         <div class="content">
-            <p>Luogu P3398 仓鼠找sugar</p>
+            <p>二分图匹配？</p>
 <a id="more"></a>
-<h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>小仓鼠的和他的基（mei）友（zi）sugar住在地下洞穴中，每个节点的编号为1~n。地下洞穴是一个树形结构。这一天小仓鼠打算从从他的卧室（a）到餐厅（b），而他的基友同时要从他的卧室（c）到图书馆（d）。他们都会走最短路径。现在小仓鼠希望知道，有没有可能在某个地方，可以碰到他的基友？ 小仓鼠那么弱，还要天天被zzq大爷虐，请你快来救救他吧！</p>
-<h4 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h4><h5 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h5><p>第一行两个正整数n和q，表示这棵树节点的个数和询问的个数。 接下来n-1行，每行两个正整数u和v，表示节点u到节点v之间有一条边。 接下来q行，每行四个正整数a、b、c和d，表示节点编号，也就是一次询问，其意义如上。</p>
-<h5 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h5><p>对于每个询问，如果有公共点，输出大写字母“Y”；否则输出“N”。</p>
-<h4 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h4><h5 id="输入样例-1："><a href="#输入样例-1：" class="headerlink" title="输入样例#1："></a>输入样例#1：</h5><pre><code>5 5
-2 5
-4 2
-1 3
-1 4
-5 1 5 1
-2 2 1 4
-4 1 3 4
-3 1 1 5
-3 5 1 4</code></pre><h5 id="输出样例-1："><a href="#输出样例-1：" class="headerlink" title="输出样例#1："></a>输出样例#1：</h5><pre><code>Y
-N
-Y
-Y
-Y</code></pre><hr>
-<h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>首先很容易想到，若是两条路径有相交，记$x=lca(a,b),y=lca(c,d)$那么一定有x在c\<del>d上或者y在a\</del>b上。 那如何判断一个点是否在一条路径上呢？不妨记x点是否在a\<del>b上，那么若x在a\</del>b上，则一定有 1. $x$的深度大于$lca(a,b)$的深度 2. $lca(a,x)==x$或者$lca(b,x)==x$ 综上，代码如下：</p>
-<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-keyword">int</span> head[<span class="hljs-number">100009</span>],f[<span class="hljs-number">100009</span>][<span class="hljs-number">20</span>],d[<span class="hljs-number">100009</span>],tot,n,m,t,lg[<span class="hljs-number">100009</span>];</span><br><span class="line"><span class="hljs-built_in">queue</span>&lt;<span class="hljs-keyword">int</span> &gt; q;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span>&#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> to,next;</span><br><span class="line">&#125;e[<span class="hljs-number">2</span>*<span class="hljs-number">100009</span>];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    e[++tot].to=y;</span><br><span class="line">    e[tot].next=head[x];</span><br><span class="line">    head[x]=tot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">bfs</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    q.push(<span class="hljs-number">1</span>),d[<span class="hljs-number">1</span>]=<span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">while</span>(!q.empty())&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> x=q.front();q.pop();</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=head[x];i;i=e[i].next)&#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> y=e[i].to;</span><br><span class="line">            <span class="hljs-keyword">if</span>(d[y]) <span class="hljs-keyword">continue</span>;</span><br><span class="line">            d[y]=d[x]+<span class="hljs-number">1</span>;</span><br><span class="line">            f[y][<span class="hljs-number">0</span>]=x;</span><br><span class="line">            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">1</span>;(<span class="hljs-number">1</span>&lt;&lt;j)&lt;=d[y];j++) f[y][j]=f[f[y][j<span class="hljs-number">-1</span>]][j<span class="hljs-number">-1</span>];</span><br><span class="line">            q.push(y);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">lca</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span>(d[x]&gt;d[y]) swap(x,y);</span><br><span class="line">    <span class="hljs-keyword">while</span>(d[x]&lt;d[y]) y=f[y][lg[d[y]-d[x]]<span class="hljs-number">-1</span>];</span><br><span class="line">    <span class="hljs-keyword">if</span>(x==y) <span class="hljs-keyword">return</span> x;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=lg[d[x]]<span class="hljs-number">-1</span>;i&gt;=<span class="hljs-number">0</span>;i--) <span class="hljs-keyword">if</span>(f[x][i]!=f[y][i]) y=f[y][i],x=f[x][i];</span><br><span class="line">    <span class="hljs-keyword">return</span> f[x][<span class="hljs-number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> x,y;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>,&amp;x,&amp;y);</span><br><span class="line">        add(x,y),add(y,x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++) lg[i]=lg[i<span class="hljs-number">-1</span>]+(<span class="hljs-number">1</span>&lt;&lt;lg[i<span class="hljs-number">-1</span>]==i);</span><br><span class="line">    bfs();</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> a,b,c,d1;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d%d"</span>,&amp;a,&amp;b,&amp;c,&amp;d1);</span><br><span class="line">        <span class="hljs-keyword">int</span> x=lca(a,b),y=lca(c,d1);</span><br><span class="line">        <span class="hljs-keyword">if</span>(d[x]&lt;d[y])&#123;</span><br><span class="line">            swap(x,y),swap(a,c),swap(b,d1);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">if</span>(lca(x,c)==x||lca(x,d1)==x) <span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"Y"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">        <span class="hljs-keyword">else</span> <span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"N"</span>&lt;&lt;<span class="hljs-built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        </div>
-        
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/LCA/">LCA</a>
-                </div>
-            </div>
+
+<p>可能是我第一道二分图匹配的题吧，反正是前几道，太菜了。。。<br>我是看的题解，二分图匹配，匈牙利算法。</p>
+<ol>
+<li>对于本校学生并且不回家，先直接让他们睡自己的床。</li>
+<li>对于外校学生，枚举每一张床，如果他认识这床的主人，那么，第一种情况，没人要预定这张床，他直接睡下即可；第二种情况，这张床已经有人占了，那么就看看预定这张床的人能不能换一张，如果能，就让原来的人走，他留下。</li>
+</ol>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Solution</span>&#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> T, n;</span><br><span class="line">    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; in, ho, match, book;</span><br><span class="line">    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &gt; e;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span>&#123;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">            <span class="hljs-keyword">if</span>(!book[i] &amp;&amp; in[i] &amp;&amp; e[x][i] == <span class="hljs-number">1</span>)&#123;</span><br><span class="line">                book[i] = <span class="hljs-number">1</span>;</span><br><span class="line">                <span class="hljs-keyword">if</span>(match[i] == <span class="hljs-number">0</span> || dfs(match[i]))&#123;</span><br><span class="line">                    match[i] = x;</span><br><span class="line">                    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">work</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">            book = <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; (n + <span class="hljs-number">1</span>, <span class="hljs-number">0</span>);</span><br><span class="line">            <span class="hljs-keyword">if</span>((in[i] == <span class="hljs-number">0</span> || ho[i] == <span class="hljs-number">0</span>) &amp;&amp; dfs(i) == <span class="hljs-number">0</span>)&#123;</span><br><span class="line">                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Solve</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;T);</span><br><span class="line">        <span class="hljs-keyword">while</span>(T--)&#123;</span><br><span class="line">            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;n);</span><br><span class="line">            in = <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; (n + <span class="hljs-number">1</span>, <span class="hljs-number">0</span>);</span><br><span class="line">            ho = <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; (n + <span class="hljs-number">1</span>, <span class="hljs-number">0</span>);</span><br><span class="line">            match = <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; (n + <span class="hljs-number">1</span>, <span class="hljs-number">0</span>);</span><br><span class="line">            e.resize(n + <span class="hljs-number">1</span>);</span><br><span class="line">            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) e[i].resize(n + <span class="hljs-number">1</span>, <span class="hljs-number">0</span>);</span><br><span class="line">            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;in[i]);</span><br><span class="line">            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;ho[i]);</span><br><span class="line">            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">                <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= n; j++)&#123;</span><br><span class="line">                    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;e[i][j]);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="hljs-keyword">if</span>(in[i] == <span class="hljs-number">1</span>) e[i][i] = <span class="hljs-number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="hljs-keyword">if</span>(work()) <span class="hljs-built_in">printf</span>(<span class="hljs-string">"^_^\n"</span>);</span><br><span class="line">            <span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span>(<span class="hljs-string">"T_T\n"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;</span><br><span class="line">    Solution().Solve();</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
         
@@ -215,17 +189,10 @@ Y</code></pre><hr>
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/03/10/e4-bd-a0-e5-a5-bd-ef-bc-8c-e5-88-9d-e6-ac-a1-e8-a7-81-e9-9d-a2-e3-80-82/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item"> 你好，初次见面。		</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/09/luogu-p3128-usaco15dec-e6-9c-80-e5-a4-a7-e6-b5-81max-flow/">
-                <span class="level-item"> Luogu P3128 [USACO15DEC]最大流Max Flow		</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/08/06/luogu-P2146-软件包管理器/">
+                <span class="level-item">luogu-P2146-软件包管理器</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
