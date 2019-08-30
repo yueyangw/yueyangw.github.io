@@ -1,5 +1,5 @@
+http://yueyangwu.cn/2019/08/30/2019-8-30随笔/
 http://yueyangwu.cn/2019/08/30/矩阵快速幂与矩阵加速/
 http://yueyangwu.cn/2019/08/22/luogu-P2055-ZJOI2009-假期的宿舍/
 http://yueyangwu.cn/2019/08/06/luogu-P2146-软件包管理器/
 http://yueyangwu.cn/2019/08/02/树链剖分-学习笔记/
-http://yueyangwu.cn/2019/07/30/数论-学习笔记/
