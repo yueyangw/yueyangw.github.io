@@ -16,7 +16,7 @@
 <meta property="og:description" content="OI Wiki了解一下">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yueyangwu.cn/images/og_image.png">
-<meta property="og:updated_time" content="2019-08-02T05:31:04.678Z">
+<meta property="og:updated_time" content="2019-09-16T14:25:26.825Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数论 学习笔记">
 <meta name="twitter:description" content="OI Wiki了解一下">
@@ -149,7 +149,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    5 分钟 读完 (大约 768 个字)
+                    6 分钟 读完 (大约 934 个字)
                 </span>
                 
                 
@@ -180,6 +180,8 @@
 </ul>
 <hr>
 <h2 id="乘法逆元"><a href="#乘法逆元" class="headerlink" title="乘法逆元"></a>乘法逆元</h2><p>如果一个线性同余方程$ax\equiv 1(mod\ b)$，则$x$称为$a\mod b$的逆元，记作$a^{-1}$。</p>
+<p>$a^{-1}\cdot a \equiv 1(\mod n)$<br>例如：$3 \times 7\equiv 1(\mod 20)$</p>
+<p>求解：$ab\equiv 1 (\mod n)$<br>转化为：$n|ab-1$<br>即：$nk=ab-1$<br>移项：$ab-nk=1$<br>即可用exgcd求解（已知$a,n$求$b,k$）</p>
 <h3 id="求解a的逆元"><a href="#求解a的逆元" class="headerlink" title="求解a的逆元"></a>求解a的逆元</h3><h4 id="扩展欧几里得法"><a href="#扩展欧几里得法" class="headerlink" title="扩展欧几里得法"></a>扩展欧几里得法</h4><ul>
 <li><p>扩展欧几里得法和求解线性同余方程是一个原理，在这里不展开解释。</p>
 <h4 id="快速幂法"><a href="#快速幂法" class="headerlink" title="快速幂法"></a>快速幂法</h4></li>
@@ -221,6 +223,13 @@
 </ul>
 <p><a href="https://www.luogu.org/problemnew/show/P4777" target="_blank" rel="noopener">【模板】扩展中国剩余定理</a></p>
 <p><a href="https://www.luogu.org/problemnew/show/P4774" target="_blank" rel="noopener">屠龙勇士</a></p>
+<h2 id="高斯消元"><a href="#高斯消元" class="headerlink" title="高斯消元"></a>高斯消元</h2><h3 id="列主元Gauss-Jordan消元法"><a href="#列主元Gauss-Jordan消元法" class="headerlink" title="列主元Gauss-Jordan消元法"></a>列主元Gauss-Jordan消元法</h3><p>$$<br>\left<br>{<br>    \begin{array}{ccc}<br>        3x+2y+z=10\\<br>        2x+y+3z=21\\<br>        x+3y+2z=9<br>    \end{array}<br>\right.<br>$$</p>
+<p>化简</p>
+<p>$$<br>\left<br>{<br>    \begin{array}{ccc}<br>        x+\frac{2}{3}y+\frac{1}{3}z=\frac{20}{3}\\<br>        2x+y+3z=21\\<br>        x+3y+2z=9<br>    \end{array}<br>\right.<br>$$</p>
+<p>(1),(2)消元</p>
+<p>$$<br>\left<br>{<br>    \begin{array}{ccc}<br>        x+\frac{2}{3}y+\frac{1}{3}z=\frac{20}{3}\\<br>        2x+y+3z=21\\<br>        x+3y+2z=9<br>    \end{array}<br>\right.<br>-&gt;<br>\left {<br>    \begin{array}{ccc}<br>        -\frac{1}{3}y+\frac{7}{3}z=\frac{23}{3}\\<br>        \frac{7}{3}y+\frac{5}{3}z=\frac{7}{3}<br>    \end{array}<br>\right.<br>$$</p>
+<p>原(2),(3)消元</p>
+<p>$$<br>\left {<br>    \begin{array}{ccc}<br>        -\frac{1}{3}y+\frac{7}{3}z=\frac{23}{3}\\<br>        \frac{7}{3}y+\frac{5}{3}z=\frac{7}{3}<br>    \end{array}<br>\right.<br>-&gt;<br>\left {<br>        -\frac{54}{21}y=\frac{66}{21}<br>\right.<br>$$<br>往回代即可</p>
 
         </div>
         
@@ -353,7 +362,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        78
+                        80
                     </p>
                 </div>
             </div>
@@ -373,7 +382,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        27
+                        28
                     </p>
                 </div>
             </div>
@@ -527,7 +536,7 @@
                 <span class="level-item">OI</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">71</span>
+                <span class="level-item tag">73</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/OI/知识点/">
@@ -535,7 +544,7 @@
                 <span class="level-item">知识点</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">7</span>
+                <span class="level-item tag">8</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/OI/集训/">
@@ -559,7 +568,7 @@
                 <span class="level-item">题目</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">44</span>
+                <span class="level-item tag">45</span>
             </span>
         </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/政治/">
@@ -597,7 +606,7 @@
                     <span class="level-item">九月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">8</span>
+                    <span class="level-item tag">10</span>
                 </span>
             </a>
         </li>
@@ -698,7 +707,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/dp/">
                         <span class="tag">dp</span>
-                        <span class="tag is-grey">29</span>
+                        <span class="tag is-grey">30</span>
                     </a>
                 </div>
                 
@@ -740,6 +749,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/区间dp/">
                         <span class="tag">区间dp</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/单调队列/">
+                        <span class="tag">单调队列</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -803,7 +819,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/数论/">
                         <span class="tag">数论</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 

@@ -1,5 +1,5 @@
+http://yueyangwu.cn/2019/09/20/luogu-p2034-选择数字/
+http://yueyangwu.cn/2019/09/16/数论/
 http://yueyangwu.cn/2019/09/14/luogu-SP283-naptime/
 http://yueyangwu.cn/2019/09/13/luogu-P1948-USACO08JAN-电话线/
 http://yueyangwu.cn/2019/09/12/luogu-P1379-八数码难题/
-http://yueyangwu.cn/2019/09/12/luogu-P2859-USACO06FEB-摊位预订/
-http://yueyangwu.cn/2019/09/12/luogu-p2862-USACO06JAN-把牛/
